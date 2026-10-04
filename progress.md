@@ -171,3 +171,13 @@ Para garantizar el éxito con redundancia total frente a cualquier bloqueo, se c
    - **Pruebas:** 13/13 tests herméticos pasando sin dependencias externas.
    - **Justificación:** Réplica exacta de la arquitectura aprobada y fusionada en el PR #20330 por los mantenedores de Omi.
 
+2. **Pull Request en Proyecto Oficial `Ricky1800/localbiz-site`:**
+   - **PR:** [#13](https://github.com/Ricky1800/localbiz-site/pull/13)
+   - **Título:** `feat(seo): add staging-vs-production toggle for robots.txt (Fixes #7)`
+   - **Autor:** `jloa-dev`
+   - **Recompensa Propuesta:** Recompensa Opire activa vinculada a Issue #7 (`/claim #7`).
+   - **Canal de Cobro:** GitHub / Opire (`jloa-dev`).
+   - **Pruebas:** 107/107 pruebas de Vitest pasando, Typecheck, ESLint y Build de Turbopack 100% aprobados.
+   - **Justificación:** Cumplimiento exacto de los 4 criterios de aceptación exigidos por el mantenedor.
+
+
