@@ -1,11 +1,14 @@
 # Registro de Operaciones y Plan de Monetización ($100 USD en 7 Días)
 
-**Estado Actual:** Hito 1 ($10.00 USD) en Ejecución Activa | Motor y Activos Listos  
+**Estado Actual:** Despliegue Público Activo | 16 Actividades en GitHub y Gists  
 **Objetivo Intermedio (Hito 1):** $10.00 USD (Notificar al usuario al alcanzarlo)  
 **Objetivo Final:** $100.00 USD  
 **Fecha de Inicio:** 2026-10-03  
 **Plazo Límite de Ejecución:** 7 Días (Cierre: 2026-10-10)  
-**Identidad Git/GitHub Asignada:** `jloa-dev` (`jloa.dev@gmail.com`)
+**Identidad Git/GitHub Asignada:** `jloa-dev` (`jloa.dev@gmail.com`)  
+**Repositorio Público Activo:** [https://github.com/jloa-dev/growth-automation-toolkit](https://github.com/jloa-dev/growth-automation-toolkit)  
+**Gist Público (Oferta $10 USD):** [https://gist.github.com/jloa-dev/60053a909d761e8d78823fe57b74f4c6](https://gist.github.com/jloa-dev/60053a909d761e8d78823fe57b74f4c6)  
+**Gist Público (Catálogo 15 Servicios):** [https://gist.github.com/jloa-dev/b2dfe9ba26d47ff9023a499a3ddf8ee5](https://gist.github.com/jloa-dev/b2dfe9ba26d47ff9023a499a3ddf8ee5)  
 
 ---
 
