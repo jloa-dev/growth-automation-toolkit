@@ -157,3 +157,17 @@ Para garantizar el éxito con redundancia total frente a cualquier bloqueo, se c
 - [x] Identidad Git verificada en `jloa-dev` (`jloa.dev@gmail.com`).
 - [x] **Hito 1 ($10 USD):** Mecanismo de caza y radar autónomo en ejecución permanente.
 - [x] **15 Actividades Adicionales Construidas Estrictamente:** 15 módulos de código independientes, probados y documentados.
+
+---
+
+## 10. Oportunidades Concretas en Trámite (Bounty Submissions)
+
+1. **Pull Request en Repositorio Oficial `BasedHardware/omi`:**
+   - **PR:** [#20574](https://github.com/BasedHardware/omi/pull/20574)
+   - **Título:** `fix(cli): coerce loosely typed records and sanitize surrogates in action_items_to_sqlite ($25 bounty proposal)`
+   - **Autor:** `jloa-dev`
+   - **Recompensa Propuesta:** **$25.00 USD**
+   - **Canal de Cobro:** PayPal (`jloa.dev@gmail.com`)
+   - **Pruebas:** 13/13 tests herméticos pasando sin dependencias externas.
+   - **Justificación:** Réplica exacta de la arquitectura aprobada y fusionada en el PR #20330 por los mantenedores de Omi.
+

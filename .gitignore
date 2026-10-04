@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 output*/
 .pytest_cache/
+omi_repo/
+*.log
+
