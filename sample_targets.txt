@@ -1,0 +1,10 @@
+stripe.com
+vercel.com
+supabase.com
+resend.com
+linear.app
+posthog.com
+clerk.com
+render.com
+cal.com
+mintlify.com
