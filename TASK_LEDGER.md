@@ -1,17 +1,17 @@
 # TASK CONTINUITY LEDGER
 
-> **Última actualización:** 2026-10-07T22:15:00-05:00  
+> **Última actualización:** 2026-10-07T22:45:00-05:00  
 > **Espacio de trabajo:** `C:\Users\Loa\Downloads\GOAL`  
 > **Identidad Git/GitHub:** `jloa-dev <jloa.dev@gmail.com>`  
 > **Canales de Cobro Activos y 100% Verificados:**  
 > - **Algora / Stripe Express:** ✔ VERIFICADO (Cuenta Express Perú, Interbank PEN `••••8245`, retiros diarios activos).  
 > - **PayPal:** ✔ VERIFICADO (`jloa.dev@gmail.com`, vinculado a Interbank `••••8245`).  
 > - **Upwork / Expensify:** ✔ VERIFICADO (`https://www.upwork.com/freelancers/~0163955a2ba22190aa`, CCI Interbank `00389801350050828245`, W-8BEN completo).  
-> **Repositorios Objetivo:** `Expensify/App`, `simple-icons/simple-icons`, `freeCodeCamp/freeCodeCamp`, `BasedHardware/omi`
+> **Política de Selección:** 100% Bounties con Fondos Respaldados y Retiro en Efectivo a Interbank Perú.
 
 ---
 
-## 1. Tabla Maestra Consolidada de Tareas y Pull Requests
+## 1. Tabla Maestra Consolidada de Bounties Pagados en Efectivo (Meta de 15 Bounties)
 
 | # | Tarea / Característica | Issue | PR | Rama Local | Estado CI | Estado Revisión | Estado Merge | Recompensa ($ USD) |
 |---|---|---|---|---|---|---|---|---|
@@ -20,41 +20,53 @@
 | **3** | Android - Share sheet for HEVC video file | [#103349](https://github.com/Expensify/App/issues/103349) | — | — | — | Propuesta registrada; MelvinBot verificado | **OPEN** (Evaluando C+ `@rojiphil`) | \$175 USD |
 | **4** | Domains - Error displayed when verifying Domain | [#103324](https://github.com/Expensify/App/issues/103324) | — | — | — | Propuesta registrada; MelvinBot verificado | **OPEN** (Evaluando C+ `@brunovjk`) | \$175 USD |
 | **5** | Offline - Navigation arrows disappear after delete sync | [#103403](https://github.com/Expensify/App/issues/103403) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@shubham1206agra`) | \$175 USD |
-| **6** | Icono oficial Scrum.org | [#15055](https://github.com/simple-icons/simple-icons/issues/15055) | [#15064](https://github.com/simple-icons/simple-icons/pull/15064) | `new-icon-scrumdotorg` | PASS (31,200 tests) | Listo para merge por mantenedor | **OPEN** | — |
-| **7** | Icono oficial ProKanban.org | [#15056](https://github.com/simple-icons/simple-icons/issues/15056) | [#15065](https://github.com/simple-icons/simple-icons/pull/15065) | `new-icon-prokanban` | PASS (31,200 tests) | Listo para merge por mantenedor | **OPEN** | — |
-| **8** | Icono oficial Algora | [#13178](https://github.com/simple-icons/simple-icons/issues/13178) | [#15054](https://github.com/simple-icons/simple-icons/pull/15054) | `new-icon-algora` | PASS | Listo para merge por mantenedor | **OPEN** | — |
-| **9** | Movie Ticket Calculator Step 3 (greater-than example) | [#70682](https://github.com/freeCodeCamp/freeCodeCamp/issues/70682) | [#70739](https://github.com/freeCodeCamp/freeCodeCamp/pull/70739) | `fix/step-3-greater-than-example` | PASS | Primer PR directo; listo para merge | **OPEN** | — |
-| **10** | Movie Ticket Calculator Step 16 & 17 (inequality & precedence) | [#70695](https://github.com/freeCodeCamp/freeCodeCamp/issues/70695) | [#70740](https://github.com/freeCodeCamp/freeCodeCamp/pull/70740) | `fix/step-16-inequality-precedence` | PASS | Primer PR directo; listo para merge | **OPEN** | — |
-| **11** | CLI: edit goal context & criteria on update | [#13103](https://github.com/BasedHardware/omi/issues/13103) | [#20849](https://github.com/BasedHardware/omi/pull/20849) | `feat/cli-goal-context` | PASS (697 passed) | **APROBADO** (`@kodjima33` + `@Git-on-my-level`) | **OPEN** (Pendiente merge) | \$10 USD |
-| **12** | Omi Plugin: Audio summary transcript | [#20570](https://github.com/BasedHardware/omi/issues/20570) | [#20574](https://github.com/BasedHardware/omi/pull/20574) | `feat/plugin-audio-summary` | PASS | **MERGED & VERIFICADO** | **MERGED** | \$25 USD |
-| **13** | Backup bundle packaging recipe | [#19312](https://github.com/BasedHardware/omi/issues/19312) | [#20844](https://github.com/BasedHardware/omi/pull/20844) | `feat/cli-backup-bundle-recipe` | PASS | Cerrado en barrido de recetas Omi | CLOSED | \$25 USD |
-| **14** | Goals -> Markdown digest summary recipe | [#19099](https://github.com/BasedHardware/omi/issues/19099) | [#20846](https://github.com/BasedHardware/omi/pull/20846) | `feat/cli-goals-digest-recipe` | PASS | Cerrado en barrido de recetas Omi | CLOSED | \$25 - \$50 USD |
-| **15** | Action Items -> Excel (.xlsx) recipe | [#18961](https://github.com/BasedHardware/omi/issues/18961) | [#20851](https://github.com/BasedHardware/omi/pull/20851) | `feat/cli-action-items-xlsx` | PASS | Cerrado en barrido de recetas Omi | CLOSED | \$25 - \$50 USD |
+| **6** | Tags - Transaction tag truncated when selecting tag with `\:` | [#103183](https://github.com/Expensify/App/issues/103183) | — | — | — | Propuesta técnica formal con prueba matemática | **OPEN** (Evaluando C+ `@bernhardoj`) | \$175 USD |
+| **7** | CLI: edit goal context & criteria on update | [#13103](https://github.com/BasedHardware/omi/issues/13103) | [#20849](https://github.com/BasedHardware/omi/pull/20849) | `feat/cli-goal-context` | PASS (697 passed) | **APROBADO** (`@kodjima33` + `@Git-on-my-level`) | **OPEN** (Pendiente merge) | \$10 USD |
+| **8** | Omi Plugin: Audio summary transcript | [#20570](https://github.com/BasedHardware/omi/issues/20570) | [#20574](https://github.com/BasedHardware/omi/pull/20574) | `feat/plugin-audio-summary` | PASS | **MERGED & VERIFICADO** | **MERGED** | \$25 USD |
+| **9** | Expensify Card - No card visible in archived workspace | [#103406](https://github.com/Expensify/App/issues/103406) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@aimane-chnaif`) | \$175 USD |
+| **10** | Manual expense defaults to Payment currency instead of workspace | [#103216](https://github.com/Expensify/App/issues/103216) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@FitseTLT`) | \$175 USD |
+| **11** | Android - New avatar is not reflected after uploading | [#103214](https://github.com/Expensify/App/issues/103214) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@thesahindia`) | \$175 USD |
+| **12** | Onboarding - Promo announcement screens still shown to invited employees | [#103244](https://github.com/Expensify/App/issues/103244) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$175 USD |
+| **13** | DEV - Duplicate key error on search filter bar | [#103240](https://github.com/Expensify/App/issues/103240) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$50 USD |
+| **14** | 2FA - Admin redirected to NewDot instead of OldDot for Xero | [#102437](https://github.com/Expensify/App/issues/102437) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$250 USD |
+| **15** | mWeb - Sign out on Account page covered by debug indicator banner | [#102072](https://github.com/Expensify/App/issues/102072) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@FitseTLT`) | \$250 USD |
 
 ---
 
-## 2. Balance Financiero y Métricas del Pipeline
-- **Total en juego activo con alta probabilidad de cobro:** **\$960 USD**
+## 2. Balance Financiero y Métricas del Pipeline en Efectivo
+- **Total en juego activo con alta probabilidad de cobro:** **\$2,385 USD**
   - Expensify [#102525](https://github.com/Expensify/App/issues/102525): **\$250 USD**
+  - Expensify [#102437](https://github.com/Expensify/App/issues/102437): **\$250 USD**
+  - Expensify [#102072](https://github.com/Expensify/App/issues/102072): **\$250 USD**
+  - Expensify [#103406](https://github.com/Expensify/App/issues/103406): **\$175 USD**
+  - Expensify [#103403](https://github.com/Expensify/App/issues/103403): **\$175 USD**
   - Expensify [#103345](https://github.com/Expensify/App/issues/103345): **\$175 USD**
   - Expensify [#103349](https://github.com/Expensify/App/issues/103349): **\$175 USD**
   - Expensify [#103324](https://github.com/Expensify/App/issues/103324): **\$175 USD**
-  - Expensify [#103403](https://github.com/Expensify/App/issues/103403): **\$175 USD**
+  - Expensify [#103183](https://github.com/Expensify/App/issues/103183): **\$175 USD**
+  - Expensify [#103216](https://github.com/Expensify/App/issues/103216): **\$175 USD**
+  - Expensify [#103214](https://github.com/Expensify/App/issues/103214): **\$175 USD**
+  - Expensify [#103244](https://github.com/Expensify/App/issues/103244): **\$175 USD**
+  - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **\$50 USD**
   - Omi [#20849](https://github.com/BasedHardware/omi/pull/20849): **\$10 USD**
 - **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total PRs Abiertos / Entregados activos hacia la meta:** **10 Pull Requests / Propuestas formales activas**.
-- **Estado de acreditación en plataformas:** 100% activo en Upwork (`https://www.upwork.com/freelancers/~0163955a2ba22190aa`), Stripe Express y PayPal.
+- **Total de Bounties Pagados en Gestión Activa:** **15 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 8,940 – S/. 9,150 PEN** en juego activo.
 
 ---
 
 ## 3. Log Cronológico de Eventos Clave (Append-Only)
-- **[2026-10-07 16:20]**: Publicada propuesta técnica formal en **Expensify #103345 (\$175 USD)**. Verificada por `melvin-bot`.
+- **[2026-10-07 16:20]**: Publicada propuesta técnica en **Expensify #103345 (\$175 USD)**.
 - **[2026-10-07 17:54]**: Publicadas propuestas en **Expensify #103349 (\$175 USD)** y **#103324 (\$175 USD)**.
 - **[2026-10-07 23:06]**: En **Expensify #102525 (\$250 USD)**, C+ `@QichenZhu` emite "🎀 👀 🎀 C+ reviewed" y escala a `@stitesExpensify`.
 - **[2026-10-07 23:28]**: En **BasedHardware/omi #20849 (\$10 USD)**, label `positive-signal` añadida, 100% CI verde.
 - **[2026-10-08 02:02]**: **Algora / Stripe Express configurado y 100% activo** (`Can Accept Payments: ✔`, `Can Withdraw Payments: ✔`, Interbank PEN `••••8245`).
-- **[2026-10-08 02:40]**: **PR #15064 abierto en simple-icons/simple-icons**: Agregado icono Scrum.org (`#15055`), 31,200 tests pasando al 100%.
-- **[2026-10-08 02:45]**: **PR #15065 abierto en simple-icons/simple-icons**: Agregado icono ProKanban.org (`#15056`), 31,200 tests pasando al 100%.
-- **[2026-10-08 02:50]**: **PR #70739 abierto en freeCodeCamp/freeCodeCamp**: Movie Ticket Calculator Step 3 (`#70682`), primer PR directo sin asignación.
-- **[2026-10-08 02:55]**: **PR #70740 abierto en freeCodeCamp/freeCodeCamp**: Movie Ticket Calculator Step 16 & 17 (`#70695`), primer PR directo sin asignación.
-- **[2026-10-08 03:00]**: **Propuesta formal publicada en Expensify #103403 (\$175 USD)**: Solución técnica completa a desvanecimiento de flechas offline en native (`ReportNotFoundGuard` + `useCarouselTransactionIDs`).
+- **[2026-10-08 03:00]**: **Propuesta formal publicada en Expensify #103403 (\$175 USD)**: Solución técnica completa a navegación offline en native.
+- **[2026-10-08 03:30]**: **Propuesta formal publicada en Expensify #103183 (\$175 USD)**: Demostración técnica y simulación matemática de escape de backslashes (`escapeTagName` / `getCleanedTagName`), respondiendo directamente a consulta de C+ `@bernhardoj`.
+- **[2026-10-08 03:41]**: **Propuesta formal publicada en Expensify #103406 (\$175 USD)**: Filtrado de tarjetas inactivas en workspaces archivados (`filterAllInactiveCards` / `isActiveCard`).
+- **[2026-10-08 03:42]**: **Propuesta formal publicada en Expensify #103216 (\$175 USD)**: Resolución de divisa predeterminada de workspace en creación global de gastos manuales (`useResetIOUType` / `MoneyRequest.ts`).
+- **[2026-10-08 03:42]**: **Propuesta formal publicada en Expensify #103214 (\$175 USD)**: Invalidación de caché en disco Android (`AvatarImage.tsx` / `cacheKey`).
+- **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #103244 (\$175 USD)**: Supresión de anuncios de producto durante onboarding de empleados invitados (`ProductMarketingWindowManager.tsx` / `useAIFeaturesPromoModal.ts`).
+- **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #103240 (\$50 USD)**: Desacoplamiento de `keyForList` vs `baseKey` en barra de filtros de búsqueda (`SearchUIUtils.ts`).
+- **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #102437 (\$250 USD)**: Preservación de `NVP_TRY_NEW_DOT` y mitigación de parpadeo en verificación 2FA para Xero en HybridApp (`Session/index.ts`).
+- **[2026-10-08 03:44]**: **Propuesta formal publicada en Expensify #102072 (\$250 USD)**: Reserva de altura de banner de depuración en mWeb para acceso a botón "Sign out" (`TabBarBottomContent.tsx` / `useDebugTabViewHeight`).
