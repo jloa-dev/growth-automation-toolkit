@@ -30,14 +30,19 @@
 | **13** | DEV - Duplicate key error on search filter bar | [#103240](https://github.com/Expensify/App/issues/103240) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103240-duplicate-key-search-filter) | `fix/103240-duplicate-key-search-filter` (`d0dbc62`) | Pre-codeado & testeado | Propuesta técnica formal registrada | **LISTO PARA PR** (Asignación C+) | \$50 USD |
 | **14** | 2FA - Admin redirected to NewDot instead of OldDot for Xero | [#102437](https://github.com/Expensify/App/issues/102437) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$250 USD |
 | **15** | GPS Distance counter label localized with Intl | [#103488](https://github.com/Expensify/App/issues/103488) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103488-gps-distance-intl) | `fix/103488-gps-distance-intl` (`766e7f0`) | Pre-codeado & testeado | Propuesta formal publicada; validada por `melvin-bot` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **16** | Workspaces - Unable to remove RBR on archived Workspace | [#103492](https://github.com/Expensify/App/issues/103492) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103492-archived-workspace-rbr) | `fix/103492-archived-workspace-rbr` (`3947b8f`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6067591602`) | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **17** | Inconsistent receipt replacement on drag and drop | [#103493](https://github.com/Expensify/App/issues/103493) | — | — | — | Propuesta formal publicada (`#issuecomment-6067633114`) | **OPEN** (Evaluando C+ `@truph01`) | \$175 USD |
 
 ---
 
 ## 2. Balance Financiero y Métricas del Pipeline en Efectivo
-- **Total en juego activo con alta probabilidad de cobro:** **\$2,385 USD**
+- **Total en juego activo con alta probabilidad de cobro:** **\$2,735 USD**
   - Expensify [#102525](https://github.com/Expensify/App/issues/102525): **\$250 USD**
   - Expensify [#102437](https://github.com/Expensify/App/issues/102437): **\$250 USD**
   - Expensify [#102072](https://github.com/Expensify/App/issues/102072): **\$250 USD**
+  - Expensify [#103492](https://github.com/Expensify/App/issues/103492): **\$175 USD**
+  - Expensify [#103493](https://github.com/Expensify/App/issues/103493): **\$175 USD**
+  - Expensify [#103488](https://github.com/Expensify/App/issues/103488): **\$175 USD**
   - Expensify [#103406](https://github.com/Expensify/App/issues/103406): **\$175 USD**
   - Expensify [#103403](https://github.com/Expensify/App/issues/103403): **\$175 USD**
   - Expensify [#103345](https://github.com/Expensify/App/issues/103345): **\$175 USD**
@@ -50,8 +55,9 @@
   - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **\$50 USD**
   - Omi [#20849](https://github.com/BasedHardware/omi/pull/20849): **\$10 USD**
 - **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **15 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
-- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 8,940 – S/. 9,150 PEN** en juego activo.
+- **Total de Bounties Pagados en Gestión Activa:** **17 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 10,250 – S/. 10,500 PEN** en juego activo.
+- **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **7 ramas listas (\$1,100 USD en código listo)**.
 
 ---
 
@@ -79,6 +85,8 @@
 - **[2026-10-08 13:31]**: **Screening Inicial en Outlier.ai Superado**: Evaluación oral y escrita de competencias aprobada con éxito por Scale AI. Dashboard de proyectos desbloqueado.
 - **[2026-10-08 13:35]**: **Publicado Recordatorio de Liquidación en Omi #20574 (\$25 USD)**: Solicitada liberación de fondos a PayPal `jloa.dev@gmail.com` al maintainer `@kodjima33` tras merge en `main`.
 - **[2026-10-08 14:05]**: **Publicada Propuesta & Pre-codeado Expensify #103488 (\$175 USD)**: Propuesta técnica registrada con `Intl.NumberFormat.formatToParts` validada por `melvin-bot`; rama `fix/103488-gps-distance-intl` (`766e7f0`) subida a `jloa-dev/App`.
+- **[2026-10-08 14:35]**: **Publicada Propuesta & Pre-codeado Expensify #103492 (\$175 USD)**: Propuesta técnica de alta precisión publicada (`#issuecomment-6067591602`); rama `fix/103492-archived-workspace-rbr` (`3947b8f`) subida a `jloa-dev/App`.
+- **[2026-10-08 14:38]**: **Publicada Propuesta Expensify #103493 (\$175 USD)**: Solución exhaustiva a reemplazo de recibo por Drag & Drop publicada (`#issuecomment-6067633114`).
 
 ---
 
