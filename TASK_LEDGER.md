@@ -29,7 +29,7 @@
 | **12** | Onboarding - Promo announcement screens still shown to invited employees | [#103244](https://github.com/Expensify/App/issues/103244) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$175 USD |
 | **13** | DEV - Duplicate key error on search filter bar | [#103240](https://github.com/Expensify/App/issues/103240) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103240-duplicate-key-search-filter) | `fix/103240-duplicate-key-search-filter` (`d0dbc62`) | Pre-codeado & testeado | Propuesta técnica formal registrada | **LISTO PARA PR** (Asignación C+) | \$50 USD |
 | **14** | 2FA - Admin redirected to NewDot instead of OldDot for Xero | [#102437](https://github.com/Expensify/App/issues/102437) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+) | \$250 USD |
-| **15** | mWeb - Sign out on Account page covered by debug indicator banner | [#102072](https://github.com/Expensify/App/issues/102072) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@FitseTLT`) | \$250 USD |
+| **15** | mWeb - Sign out on Account page covered by debug indicator banner | [#102072](https://github.com/Expensify/App/issues/102072) | — | — | — | C+ preseleccionó a `@yusufdeveloper2903` | **CLOSED/ASIGNADO A OTRO** | \$250 USD |
 
 ---
 
