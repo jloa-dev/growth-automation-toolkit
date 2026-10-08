@@ -15,10 +15,10 @@
 
 | # | Tarea / Característica | Issue | PR | Rama Local | Estado CI | Estado Revisión | Estado Merge | Recompensa ($ USD) |
 |---|---|---|---|---|---|---|---|---|
-| **1** | User Settings - Crash when adding contact with '%' | [#103345](https://github.com/Expensify/App/issues/103345) | — | — | — | Propuesta registrada; Upwork verificado | **OPEN** (Evaluando C+ `@hoangzinh`) | \$175 USD |
+| **1** | User Settings - Crash when adding contact with '%' | [#103345](https://github.com/Expensify/App/issues/103345) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103345-contact-method-percent-crash) | `fix/103345-contact-method-percent-crash` (`9379e9e`) | Pre-codeado & testeado | C+ `@hoangzinh` validó diagnóstico con MelvinBot | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **2** | To do - Employee held report in To do tab | [#102525](https://github.com/Expensify/App/issues/102525) | — | — | — | Propuesta registrada; C+ reviewed | **OPEN** (Escalado a `@stitesExpensify`) | \$250 USD |
 | **3** | Android - Share sheet for HEVC video file | [#103349](https://github.com/Expensify/App/issues/103349) | — | — | — | Propuesta registrada; MelvinBot verificado | **OPEN** (Evaluando C+ `@rojiphil`) | \$175 USD |
-| **4** | Domains - Error displayed when verifying Domain | [#103324](https://github.com/Expensify/App/issues/103324) | — | — | — | Propuesta registrada; MelvinBot verificado | **OPEN** (Evaluando C+ `@brunovjk`) | \$175 USD |
+| **4** | Domains - Error displayed when verifying Domain | [#103324](https://github.com/Expensify/App/issues/103324) | — | — | — | Maintainer `@mountiny` identificó fallo en credenciales de prueba | **INVESTIGANDO TEST ACC** | \$175 USD |
 | **5** | Offline - Navigation arrows disappear after delete sync | [#103403](https://github.com/Expensify/App/issues/103403) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103403-offline-nav-arrows) | `fix/103403-offline-nav-arrows` (`2a73160`) | Pre-codeado & testeado | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **6** | Tags - Transaction tag truncated when selecting tag with `\:` | [#103183](https://github.com/Expensify/App/issues/103183) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103183-tag-escaping) | `fix/103183-tag-escaping` (`9d6b950`) | PASS (Tests Node/Jest) | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **7** | CLI: edit goal context & criteria on update | [#13103](https://github.com/BasedHardware/omi/issues/13103) | [#20849](https://github.com/BasedHardware/omi/pull/20849) | `feat/cli-goal-context` | PASS (697 passed) | **APROBADO** (`@kodjima33` + `@Git-on-my-level`) | **OPEN** (Pendiente merge) | \$10 USD |
@@ -74,4 +74,5 @@
 - **[2026-10-08 08:27]**: **Pre-codeado & Pushed Expensify #103403 ($175 USD)**: Rama `fix/103403-offline-nav-arrows` (`2a73160`) subida a `jloa-dev/App`. Estabilización de `ReportNotFoundGuard` sin desmontaje de árbol.
 - **[2026-10-08 08:30]**: **Pre-codeado & Pushed Expensify #103406 ($175 USD)**: Rama `fix/103406-archived-cards` (`061f6fc`) subida a `jloa-dev/App`. Retención de tarjetas en workspaces archivados con tests unitarios.
 - **[2026-10-08 08:33]**: **Pre-codeado & Pushed Expensify #103240 ($50 USD)**: Rama `fix/103240-duplicate-key-search-filter` (`d0dbc62`) subida a `jloa-dev/App`. Desambiguación de chips mediante `filterKey ?? key`.
+- **[2026-10-08 11:20]**: **Pre-codeado & Pushed Expensify #103345 ($175 USD)**: Rama `fix/103345-contact-method-percent-crash` (`9379e9e`) subida a `jloa-dev/App`. C+ `@hoangzinh` consultó a MelvinBot confirmando nuestro diagnóstico sobre decodificación en router.
 
