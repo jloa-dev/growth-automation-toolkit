@@ -76,6 +76,8 @@
 - **[2026-10-08 08:33]**: **Pre-codeado & Pushed Expensify #103240 ($50 USD)**: Rama `fix/103240-duplicate-key-search-filter` (`d0dbc62`) subida a `jloa-dev/App`. Desambiguación de chips mediante `filterKey ?? key`.
 - **[2026-10-08 11:20]**: **Pre-codeado & Pushed Expensify #103345 ($175 USD)**: Rama `fix/103345-contact-method-percent-crash` (`9379e9e`) subida a `jloa-dev/App`. C+ `@hoangzinh` consultó a MelvinBot confirmando nuestro diagnóstico sobre decodificación en router.
 - **[2026-10-08 11:25]**: **Formalizado Grupo "Tareas Fuera de GitHub"**: Registradas las 3 vías de baja competencia (\$0 costo de entrada: Eval de IA en DataAnnotation, White-Label B2B y Reverse Bounties a Startups).
+- **[2026-10-08 13:31]**: **Screening Inicial en Outlier.ai Superado**: Evaluación oral y escrita de competencias aprobada con éxito por Scale AI. Dashboard de proyectos desbloqueado.
+- **[2026-10-08 13:35]**: **Publicado Recordatorio de Liquidación en Omi #20574 (\$25 USD)**: Solicitada liberación de fondos a PayPal `jloa.dev@gmail.com` al maintainer `@kodjima33` tras merge en `main`.
 
 ---
 
@@ -85,7 +87,7 @@
 
 | ID | Vía / Mercado | Mecanismo Operativo | Tarifa Estimada | Competencia | Estado / Acción Inmediata |
 |---|---|---|---|---|---|
-| **EXT-1** | **Eval de Código para IA** (DataAnnotation.tech / Outlier.ai) | Evaluación, unit tests (Jest/PyTest) y auditoría de código para modelos LLM. Cobro semanal a PayPal `jloa.dev@gmail.com`. | **\$35 – \$55 USD/hora** (\$30–\$80/tarea) | **Casi Nula** (95% rebota en examen técnico) | **EN CURSO**: Perfil creado en DataAnnotation; pendiente completar assessment técnico inicial. |
+| **EXT-1** | **Eval de Código para IA** (Outlier.ai / Scale AI) | Evaluación, unit tests (Jest/PyTest) y auditoría de código para modelos LLM. Cobro semanal a PayPal `jloa.dev@gmail.com`. | **\$20 – \$40 USD/hora** | **Casi Nula** (Screening superado) | **APROBADO**: Screening completado. Dashboard habilitado para comenzar tareas remuneradas. |
 | **EXT-2** | **White-Label Overflow para Agencias B2B** | Resolución de tickets acumulados, bugs y web scrapers para agencias boutique de software y automatización (US/EU/LatAm). | **\$100 – \$250 USD/ticket** (\$800–\$1,500/mes) | **0 personas** (Trato directo 1 a 1 con dueño/CTO) | **LISTO PARA ACTIVAR**: Usar skill `linkedin-recruiter-outreach` con perfil `jloa-dev`. |
 | **EXT-3** | **Reverse Bounty a Startups** (YC / DevTools / ProductHunt) | Detección de issues críticos en SDKs/librerías públicas de startups con clientes de pago. Desarrollo del fix previo y envío de demo/commit listo. | **\$150 – \$400 USD/fix** (o retainer mensual) | **0 a 1 persona** (Nadie codea la solución antes del cobro) | **LISTO PARA ACTIVAR**: Filtrar 3 SDKs con issues estancados y enviar solución llave en mano. |
 
