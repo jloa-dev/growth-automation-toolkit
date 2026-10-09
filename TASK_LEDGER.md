@@ -32,14 +32,22 @@
 | **15** | GPS Distance counter label localized with Intl | [#103488](https://github.com/Expensify/App/issues/103488) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103488-gps-distance-intl) | `fix/103488-gps-distance-intl` (`766e7f0`) | Pre-codeado & testeado | Propuesta formal publicada; validada por `melvin-bot` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **16** | Workspaces - Unable to remove RBR on archived Workspace | [#103492](https://github.com/Expensify/App/issues/103492) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103492-archived-workspace-rbr) | `fix/103492-archived-workspace-rbr` (`3947b8f`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6067591602`) | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **17** | Inconsistent receipt replacement on drag and drop | [#103493](https://github.com/Expensify/App/issues/103493) | — | — | — | Propuesta formal publicada (`#issuecomment-6067633114`) | **OPEN** (Evaluando C+ `@truph01`) | \$175 USD |
+| **18** | Deploy Blocker - Bank account nickname refresh | [#103538](https://github.com/Expensify/App/issues/103538) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103538-bank-nickname-refresh) | `fix/103538-bank-nickname-refresh` (`863ac1ef`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6071930067`); 0 competidores | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **19** | iOS Attachments - Password input of protected PDF closes on rotation | [#103531](https://github.com/Expensify/App/issues/103531) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103531-ios-carousel-rotation) | `fix/103531-ios-carousel-rotation` (`13c1ae67`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072026161`); 0 competidores | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **20** | Concierge - Image appears cut on preview in Concierge RHP | [#103533](https://github.com/Expensify/App/issues/103533) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103533-concierge-preview-rhp-dimensions) | `fix/103533-concierge-preview-rhp-dimensions` (`f94f4c9a`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072042505`); 1 competidor | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **21** | Expense members input always shown in RHP | [#103355](https://github.com/Expensify/App/issues/103355) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103355-expense-members-filter-threshold) | `fix/103355-expense-members-filter-threshold` (`7338fd41`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072054634`); 1 competidor | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 
 ---
 
-## 2. Balance Financiero y Métricas del Pipeline en Efectivo
-- **Total en juego activo con alta probabilidad de cobro:** **\$2,735 USD**
+### 2. Balance Financiero y Métricas del Pipeline en Efectivo
+- **Total en juego activo con alta probabilidad de cobro:** **\$3,435 USD**
   - Expensify [#102525](https://github.com/Expensify/App/issues/102525): **\$250 USD**
   - Expensify [#102437](https://github.com/Expensify/App/issues/102437): **\$250 USD**
   - Expensify [#102072](https://github.com/Expensify/App/issues/102072): **\$250 USD**
+  - Expensify [#103538](https://github.com/Expensify/App/issues/103538): **\$175 USD** (Deploy Blocker - 0 comp)
+  - Expensify [#103531](https://github.com/Expensify/App/issues/103531): **\$175 USD** (0 comp)
+  - Expensify [#103533](https://github.com/Expensify/App/issues/103533): **\$175 USD** (1 comp)
+  - Expensify [#103355](https://github.com/Expensify/App/issues/103355): **\$175 USD** (1 comp)
   - Expensify [#103492](https://github.com/Expensify/App/issues/103492): **\$175 USD**
   - Expensify [#103493](https://github.com/Expensify/App/issues/103493): **\$175 USD**
   - Expensify [#103488](https://github.com/Expensify/App/issues/103488): **\$175 USD**
@@ -55,9 +63,9 @@
   - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **\$50 USD**
   - Omi [#20849](https://github.com/BasedHardware/omi/pull/20849): **\$10 USD**
 - **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **17 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
-- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 10,250 – S/. 10,500 PEN** en juego activo.
-- **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **7 ramas listas (\$1,100 USD en código listo)**.
+- **Total de Bounties Pagados en Gestión Activa:** **21 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 12,900 – S/. 13,200 PEN** en juego activo.
+- **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **11 ramas listas (\$1,800 USD en código listo)**.
 
 ---
 
@@ -75,18 +83,22 @@
 - **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #103244 (\$175 USD)**: Supresión de anuncios de producto durante onboarding de empleados invitados (`ProductMarketingWindowManager.tsx` / `useAIFeaturesPromoModal.ts`).
 - **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #103240 (\$50 USD)**: Desacoplamiento de `keyForList` vs `baseKey` en barra de filtros de búsqueda (`SearchUIUtils.ts`).
 - **[2026-10-08 03:43]**: **Propuesta formal publicada en Expensify #102437 (\$250 USD)**: Preservación de `NVP_TRY_NEW_DOT` y mitigación de parpadeo en verificación 2FA para Xero en HybridApp (`Session/index.ts`).
--[2026-10-08 03:44]: **Propuesta formal publicada en Expensify #102072 ($250 USD)**: Reserva de altura de banner de depuración en mWeb para acceso a botón "Sign out" (`TabBarBottomContent.tsx` / `useDebugTabViewHeight`).
-- **[2026-10-08 08:26]**: **Pre-codeado & Pushed Expensify #103183 ($175 USD)**: Rama `fix/103183-tag-escaping` (`9d6b950`) subida a `jloa-dev/App`. Escape de backslash/colon verificado con suite de pruebas.
-- **[2026-10-08 08:27]**: **Pre-codeado & Pushed Expensify #103403 ($175 USD)**: Rama `fix/103403-offline-nav-arrows` (`2a73160`) subida a `jloa-dev/App`. Estabilización de `ReportNotFoundGuard` sin desmontaje de árbol.
-- **[2026-10-08 08:30]**: **Pre-codeado & Pushed Expensify #103406 ($175 USD)**: Rama `fix/103406-archived-cards` (`061f6fc`) subida a `jloa-dev/App`. Retención de tarjetas en workspaces archivados con tests unitarios.
-- **[2026-10-08 08:33]**: **Pre-codeado & Pushed Expensify #103240 ($50 USD)**: Rama `fix/103240-duplicate-key-search-filter` (`d0dbc62`) subida a `jloa-dev/App`. Desambiguación de chips mediante `filterKey ?? key`.
-- **[2026-10-08 11:20]**: **Pre-codeado & Pushed Expensify #103345 ($175 USD)**: Rama `fix/103345-contact-method-percent-crash` (`9379e9e`) subida a `jloa-dev/App`. C+ `@hoangzinh` consultó a MelvinBot confirmando nuestro diagnóstico sobre decodificación en router.
+- **[2026-10-08 03:44]**: **Propuesta formal publicada en Expensify #102072 (\$250 USD)**: Reserva de altura de banner de depuración en mWeb para acceso a botón "Sign out" (`TabBarBottomContent.tsx` / `useDebugTabViewHeight`).
+- **[2026-10-08 08:26]**: **Pre-codeado & Pushed Expensify #103183 (\$175 USD)**: Rama `fix/103183-tag-escaping` (`9d6b950`) subida a `jloa-dev/App`. Escape de backslash/colon verificado con suite de pruebas.
+- **[2026-10-08 08:27]**: **Pre-codeado & Pushed Expensify #103403 (\$175 USD)**: Rama `fix/103403-offline-nav-arrows` (`2a73160`) subida a `jloa-dev/App`. Estabilización de `ReportNotFoundGuard` sin desmontaje de árbol.
+- **[2026-10-08 08:30]**: **Pre-codeado & Pushed Expensify #103406 (\$175 USD)**: Rama `fix/103406-archived-cards` (`061f6fc`) subida a `jloa-dev/App`. Retención de tarjetas en workspaces archivados con tests unitarios.
+- **[2026-10-08 08:33]**: **Pre-codeado & Pushed Expensify #103240 (\$50 USD)**: Rama `fix/103240-duplicate-key-search-filter` (`d0dbc62`) subida a `jloa-dev/App`. Desambiguación de chips mediante `filterKey ?? key`.
+- **[2026-10-08 11:20]**: **Pre-codeado & Pushed Expensify #103345 (\$175 USD)**: Rama `fix/103345-contact-method-percent-crash` (`9379e9e`) subida a `jloa-dev/App`. C+ `@hoangzinh` consultó a MelvinBot confirmando nuestro diagnóstico sobre decodificación en router.
 - **[2026-10-08 11:25]**: **Formalizado Grupo "Tareas Fuera de GitHub"**: Registradas las 3 vías de baja competencia (\$0 costo de entrada: Eval de IA en DataAnnotation, White-Label B2B y Reverse Bounties a Startups).
 - **[2026-10-08 13:31]**: **Screening Inicial en Outlier.ai Superado**: Evaluación oral y escrita de competencias aprobada con éxito por Scale AI. Dashboard de proyectos desbloqueado.
 - **[2026-10-08 13:35]**: **Publicado Recordatorio de Liquidación en Omi #20574 (\$25 USD)**: Solicitada liberación de fondos a PayPal `jloa.dev@gmail.com` al maintainer `@kodjima33` tras merge en `main`.
 - **[2026-10-08 14:05]**: **Publicada Propuesta & Pre-codeado Expensify #103488 (\$175 USD)**: Propuesta técnica registrada con `Intl.NumberFormat.formatToParts` validada por `melvin-bot`; rama `fix/103488-gps-distance-intl` (`766e7f0`) subida a `jloa-dev/App`.
 - **[2026-10-08 14:35]**: **Publicada Propuesta & Pre-codeado Expensify #103492 (\$175 USD)**: Propuesta técnica de alta precisión publicada (`#issuecomment-6067591602`); rama `fix/103492-archived-workspace-rbr` (`3947b8f`) subida a `jloa-dev/App`.
 - **[2026-10-08 14:38]**: **Publicada Propuesta Expensify #103493 (\$175 USD)**: Solución exhaustiva a reemplazo de recibo por Drag & Drop publicada (`#issuecomment-6067633114`).
+- **[2026-10-08 19:45]**: **Publicada Propuesta & Pre-codeado Expensify #103538 (\$175 USD)**: Deploy Blocker (bank nickname refresh) resuelto en frontend; propuesta `#issuecomment-6071930067`; rama `fix/103538-bank-nickname-refresh` (`863ac1ef`) subida a `jloa-dev/App`. (0 competidores).
+- **[2026-10-08 19:53]**: **Publicada Propuesta & Pre-codeado Expensify #103531 (\$175 USD)**: Mitigación de reseteo de carrusel en rotación iOS; propuesta `#issuecomment-6072026161`; rama `fix/103531-ios-carousel-rotation` (`13c1ae67`) subida a `jloa-dev/App`. (0 competidores).
+- **[2026-10-08 19:55]**: **Publicada Propuesta & Pre-codeado Expensify #103533 (\$175 USD)**: Ajuste de dimensiones de thumbnail en panel lateral Concierge con `useIsInSidePanel`; propuesta `#issuecomment-6072042505`; rama `fix/103533-concierge-preview-rhp-dimensions` (`f94f4c9a`) subida a `jloa-dev/App`. (1 competidor).
+- **[2026-10-08 19:56]**: **Publicada Propuesta & Pre-codeado Expensify #103355 (\$175 USD)**: Restauración del umbral `members.length >= 12` en `ReportParticipantsTable`; propuesta `#issuecomment-6072054634`; rama `fix/103355-expense-members-filter-threshold` (`7338fd41`) subida a `jloa-dev/App`. (1 competidor).
 
 ---
 
