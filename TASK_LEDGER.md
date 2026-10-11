@@ -21,7 +21,7 @@
 | **4** | Domains - Error displayed when verifying Domain | [#103324](https://github.com/Expensify/App/issues/103324) | — | — | — | Maintainer `@mountiny` identificó fallo en credenciales de prueba | **INVESTIGANDO TEST ACC** | \$175 USD |
 | **5** | Offline - Navigation arrows disappear after delete sync | [#103403](https://github.com/Expensify/App/issues/103403) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103403-offline-nav-arrows) | `fix/103403-offline-nav-arrows` (`2a73160`) | Pre-codeado & testeado | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **6** | Tags - Transaction tag truncated when selecting tag with `\:` | [#103183](https://github.com/Expensify/App/issues/103183) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103183-tag-escaping) | `fix/103183-tag-escaping` (`9d6b950`) | PASS (Tests Node/Jest) | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
-| **7** | CLI: edit goal context & criteria on update | [#13103](https://github.com/BasedHardware/omi/issues/13103) | [#20849](https://github.com/BasedHardware/omi/pull/20849) | `feat/cli-goal-context` | PASS (697 passed) | **APROBADO** (`@kodjima33` + `@Git-on-my-level`) | **OPEN** (Pendiente merge) | \$10 USD |
+| **7** | CLI: edit goal context & criteria on update | [#13103](https://github.com/BasedHardware/omi/issues/13103) | [#20849](https://github.com/BasedHardware/omi/pull/20849) | `feat/cli-goal-context` | PASS (697 passed) | Mantenedor cerró PR en triage de Omi (sin merge) | **CLOSED** (Sin cobro) | \$10 USD |
 | **8** | Omi Plugin: Audio summary transcript | [#20570](https://github.com/BasedHardware/omi/issues/20570) | [#20574](https://github.com/BasedHardware/omi/pull/20574) | `feat/plugin-audio-summary` | PASS | **MERGED** (Ticket #143458830 en cola) | **MERGED** | \$25 USD |
 | **9** | Expensify Card - No card visible in archived workspace | [#103406](https://github.com/Expensify/App/issues/103406) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103406-archived-cards) | `fix/103406-archived-cards` (`061f6fc`) | Pre-codeado & testeado | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **10** | Manual expense defaults to Payment currency instead of workspace | [#103216](https://github.com/Expensify/App/issues/103216) | — | — | — | Propuesta técnica formal registrada | **OPEN** (Evaluando C+ `@FitseTLT`) | \$175 USD |
@@ -62,7 +62,7 @@
 ---
 
 ### 2. Balance Financiero y Métricas del Pipeline en Efectivo
-- **Total en juego activo con alta probabilidad de cobro:** **\$6,295 USD**
+- **Total en juego activo con alta probabilidad de cobro:** **\$6,285 USD**
   - Expensify [#103341](https://github.com/Expensify/App/issues/103341): **\$175 USD** (Pre-codeado & testeado)
   - Expensify [#103198](https://github.com/Expensify/App/issues/103198): **\$175 USD** (Pre-codeado & testeado)
   - Expensify [#103307](https://github.com/Expensify/App/issues/103307): **\$175 USD** (Pre-codeado & testeado)
@@ -101,13 +101,11 @@
   - Expensify [#103214](https://github.com/Expensify/App/issues/103214): **\$175 USD**
   - Expensify [#103244](https://github.com/Expensify/App/issues/103244): **\$175 USD**
   - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **\$50 USD**
-  - Omi [#21098](https://github.com/BasedHardware/omi/pull/21098): **\$25 USD**
   - Omi [#18987](https://github.com/BasedHardware/omi/issues/18987): **\$25 USD**
-  - Omi [#20849](https://github.com/BasedHardware/omi/pull/20849): **\$10 USD**
   - Outlier.ai EXT-1: **\$35 USD**
 - **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **38 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
-- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 23,200 – S/. 23,800 PEN** en juego activo.
+- **Total de Bounties Pagados en Gestión Activa:** **37 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 23,100 – S/. 23,700 PEN** en juego activo.
 - **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **16 ramas listas (\$2,650 USD en código listo)**.
 
 ---
