@@ -1,6 +1,6 @@
 # TASK CONTINUITY LEDGER
 
-> **Última actualización:** 2026-10-11T10:47:00.610321-05:00
+> **Última actualización:** 2026-10-11T12:28:46.472570-05:00
 > **Espacio de trabajo:** `C:\Users\Loa\Downloads\GOAL`  
 > **Identidad Git/GitHub:** `jloa-dev <jloa.dev@gmail.com>`  
 > **Canales de Cobro Activos y 100% Verificados:**  
@@ -48,21 +48,41 @@
 | **31** | Deploy Blocker: Expense - Unable to enter negative sign in tax amount field | [#103663](https://github.com/Expensify/App/issues/103663) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103663-negative-tax-amount-field) | `fix/103663-negative-tax-amount-field` (`bb50bfb0537`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6099036393`); 0 competidores | **LISTO PARA PR** (DeployBlockerCash) | $250 USD |
 | **32** | Clear AI consent & onboarding flags on session expiry | [#20774](https://github.com/BasedHardware/omi/issues/20774) | [PR #21143](https://github.com/BasedHardware/omi/pull/21143) | `fix/20774-session-expiry-clear-consent` (`7bfac88e`) | PASS (Hermetic Dart test) | Aprobado oficialmente por lead maintainer (`@kodjima33`); propuesta formal fijada | **APROBADO** | $30 USD |
 | **33** | Quad footprint zero pitch coordinate NaN fix | [#871](https://github.com/tscircuit/footprinter/issues/871) | [PR #912](https://github.com/tscircuit/footprinter/pull/912) | `fix/871-quad-zero-pitch` (`b3e3ef0`) | PASS (100% 4/4 CI Verde) | PR abierto en tscircuit/footprinter; 0 conflictos | **PR ABIERTO** | $25 USD |
-
+| **34** | Reimbursable toggle on Do Not Force company card expenses | [#103341](https://github.com/Expensify/App/issues/103341) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103341-company-card-reimbursable-toggle) | `fix/103341-company-card-reimbursable-toggle` (`a338bdc0e55`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111668416](https://github.com/Expensify/App/issues/103341#issuecomment-6111668416)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **35** | Company card removal warning message clarification | [#103198](https://github.com/Expensify/App/issues/103198) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103198-unassign-card-warning-clarification) | `fix/103198-unassign-card-warning-clarification` (`7d908d7c32b`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111671636](https://github.com/Expensify/App/issues/103198#issuecomment-6111671636)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **36** | Gusto integration defaults to CUSTOM approval mode when custom workflows exist | [#103307](https://github.com/Expensify/App/issues/103307) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103307-gusto-custom-approval-mode) | `fix/103307-gusto-custom-approval-mode` (`d75ebbdb8fb`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111673686](https://github.com/Expensify/App/issues/103307#issuecomment-6111673686)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **37** | Role page access error for member with optimistic accountID | [#103058](https://github.com/Expensify/App/issues/103058) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103058-member-role-optimistic-account-id) | `fix/103058-member-role-optimistic-account-id` (`1a1841616c1`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111675799](https://github.com/Expensify/App/issues/103058#issuecomment-6111675799)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **38** | Agents page infinite skeleton when switching to Copilot/Delegator | [#103245](https://github.com/Expensify/App/issues/103245) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103245-agent-page-copilot-loading) | `fix/103245-agent-page-copilot-loading` (`37df96934f6`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111677895](https://github.com/Expensify/App/issues/103245#issuecomment-6111677895)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **39** | Export To-do bucket parity with Search connection exporter | [#102868](https://github.com/Expensify/App/issues/102868) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102868-export-todo-connection-exporter) | `fix/102868-export-todo-connection-exporter` (`4a8d87648a3`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111680072](https://github.com/Expensify/App/issues/102868#issuecomment-6111680072)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **40** | LHN RBR red brick road parity on submitted reports with receipt violations | [#102792](https://github.com/Expensify/App/issues/102792) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102792-submitted-report-violation-rbr) | `fix/102792-submitted-report-violation-rbr` (`92d48f60de4`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111682190](https://github.com/Expensify/App/issues/102792#issuecomment-6111682190)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **41** | Member Security unlock request missing optimistic pending feedback | [#102734](https://github.com/Expensify/App/issues/102734) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102734-member-security-unlock-pending-ui) | `fix/102734-member-security-unlock-pending-ui` (`6db251f8d39`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111684343](https://github.com/Expensify/App/issues/102734#issuecomment-6111684343)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **42** | Expensify Card feed selector admin check when removed as admin | [#102730](https://github.com/Expensify/App/issues/102730) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102730-ecard-feed-selector-admin-check) | `fix/102730-ecard-feed-selector-admin-check` (`7b78695c39d`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111686447](https://github.com/Expensify/App/issues/102730#issuecomment-6111686447)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **43** | Spend page Card filter dropdown company card nickname search | [#102683](https://github.com/Expensify/App/issues/102683) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102683-company-card-nicknames-spend-filter) | `fix/102683-company-card-nicknames-spend-filter` (`6f87dbce7b9`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111688448](https://github.com/Expensify/App/issues/102683#issuecomment-6111688448)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
 
 ---
 
 ### 2. Balance Financiero y Métricas del Pipeline en Efectivo
-- **Total en juego activo con alta probabilidad de cobro:** **\$4,545 USD**
+- **Total en juego activo con alta probabilidad de cobro:** **\$6,295 USD**
+  - Expensify [#103341](https://github.com/Expensify/App/issues/103341): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#103198](https://github.com/Expensify/App/issues/103198): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#103307](https://github.com/Expensify/App/issues/103307): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#103058](https://github.com/Expensify/App/issues/103058): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#103245](https://github.com/Expensify/App/issues/103245): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#102868](https://github.com/Expensify/App/issues/102868): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#102792](https://github.com/Expensify/App/issues/102792): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#102734](https://github.com/Expensify/App/issues/102734): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#102730](https://github.com/Expensify/App/issues/102730): **\$175 USD** (Pre-codeado & testeado)
+  - Expensify [#102683](https://github.com/Expensify/App/issues/102683): **\$175 USD** (Pre-codeado & testeado)
   - Expensify [#103671](https://github.com/Expensify/App/issues/103671): **\$250 USD** (DeployBlockerCash - 0 comp)
   - Expensify [#103664](https://github.com/Expensify/App/issues/103664): **\$250 USD** (DeployBlockerCash - 0 comp)
+  - Expensify [#103663](https://github.com/Expensify/App/issues/103663): **\$250 USD** (DeployBlockerCash - 0 comp)
   - Expensify [#102525](https://github.com/Expensify/App/issues/102525): **\$250 USD**
   - Expensify [#102437](https://github.com/Expensify/App/issues/102437): **\$250 USD**
   - Expensify [#102072](https://github.com/Expensify/App/issues/102072): **\$250 USD**
   - Expensify [#103662](https://github.com/Expensify/App/issues/103662): **\$175 USD**
   - Expensify [#103648](https://github.com/Expensify/App/issues/103648): **\$175 USD**
   - Expensify [#103497](https://github.com/Expensify/App/issues/103497): **\$175 USD**
-  - Expensify [#103593](https://github.com/Expensify/App/issues/103593): **\$175 USD** (1st human proposal)
+  - Expensify [#103593](https://github.com/Expensify/App/issues/103593): **\$175 USD**
   - Expensify [#103595](https://github.com/Expensify/App/issues/103595): **\$175 USD**
   - Expensify [#103538](https://github.com/Expensify/App/issues/103538): **\$175 USD** (Deploy Blocker - 0 comp)
   - Expensify [#103531](https://github.com/Expensify/App/issues/103531): **\$175 USD** (0 comp)
@@ -86,8 +106,8 @@
   - Omi [#20849](https://github.com/BasedHardware/omi/pull/20849): **\$10 USD**
   - Outlier.ai EXT-1: **\$35 USD**
 - **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **28 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
-- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 17,000 – S/. 17,500 PEN** en juego activo.
+- **Total de Bounties Pagados en Gestión Activa:** **38 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 23,200 – S/. 23,800 PEN** en juego activo.
 - **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **16 ramas listas (\$2,650 USD en código listo)**.
 
 ---
