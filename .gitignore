@@ -5,5 +5,7 @@ output*/
 omi_repo/
 localbiz_repo/
 *.log
+.env
+*.env
 
 
