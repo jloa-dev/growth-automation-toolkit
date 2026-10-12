@@ -87,26 +87,26 @@
   - Expensify [#103538](https://github.com/Expensify/App/issues/103538): **\$175 USD** (Deploy Blocker - 0 comp)
   - Expensify [#103531](https://github.com/Expensify/App/issues/103531): **\$175 USD** (0 comp)
   - Expensify [#103533](https://github.com/Expensify/App/issues/103533): **\$175 USD** (1 comp)
-  - Expensify [#103355](https://github.com/Expensify/App/issues/103355): **\$175 USD** (1 comp)
-  - Expensify [#103492](https://github.com/Expensify/App/issues/103492): **\$175 USD**
-  - Expensify [#103493](https://github.com/Expensify/App/issues/103493): **\$175 USD**
-  - Expensify [#103488](https://github.com/Expensify/App/issues/103488): **\$175 USD**
-  - Expensify [#103406](https://github.com/Expensify/App/issues/103406): **\$175 USD**
-  - Expensify [#103403](https://github.com/Expensify/App/issues/103403): **\$175 USD**
-  - Expensify [#103345](https://github.com/Expensify/App/issues/103345): **\$175 USD**
-  - Expensify [#103349](https://github.com/Expensify/App/issues/103349): **\$175 USD**
-  - Expensify [#103324](https://github.com/Expensify/App/issues/103324): **\$175 USD**
-  - Expensify [#103183](https://github.com/Expensify/App/issues/103183): **\$175 USD**
-  - Expensify [#103216](https://github.com/Expensify/App/issues/103216): **\$175 USD**
-  - Expensify [#103214](https://github.com/Expensify/App/issues/103214): **\$175 USD**
-  - Expensify [#103244](https://github.com/Expensify/App/issues/103244): **\$175 USD**
-  - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **\$50 USD**
-  - Omi [#18987](https://github.com/BasedHardware/omi/issues/18987): **\$25 USD**
-  - Outlier.ai EXT-1: **\$35 USD**
-- **Cobro ganado/cerrado:** **\$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **37 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
-- **Equivalente estimado en Soles (Interbank PEN):** ~**S/. 23,100 – S/. 23,700 PEN** en juego activo.
-- **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **16 ramas listas (\$2,650 USD en código listo)**.
+  - Expensify [#103355](https://github.com/Expensify/App/issues/103355): ~~$175 USD~~ *(Cerrado NAB por equipo de diseño)*
+  - Expensify [#103492](https://github.com/Expensify/App/issues/103492): **$175 USD**
+  - Expensify [#103493](https://github.com/Expensify/App/issues/103493): **$175 USD**
+  - Expensify [#103488](https://github.com/Expensify/App/issues/103488): **$175 USD**
+  - Expensify [#103406](https://github.com/Expensify/App/issues/103406): **$175 USD**
+  - Expensify [#103403](https://github.com/Expensify/App/issues/103403): **$175 USD**
+  - Expensify [#103345](https://github.com/Expensify/App/issues/103345): **$175 USD**
+  - Expensify [#103349](https://github.com/Expensify/App/issues/103349): **$175 USD**
+  - Expensify [#103324](https://github.com/Expensify/App/issues/103324): **$175 USD**
+  - Expensify [#103183](https://github.com/Expensify/App/issues/103183): **$175 USD**
+  - Expensify [#103216](https://github.com/Expensify/App/issues/103216): **$175 USD**
+  - Expensify [#103214](https://github.com/Expensify/App/issues/103214): **$175 USD**
+  - Expensify [#103244](https://github.com/Expensify/App/issues/103244): **$175 USD**
+  - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **$50 USD**
+  - Omi [#18987](https://github.com/BasedHardware/omi/issues/18987): **$25 USD**
+  - Outlier.ai EXT-1: **$35 USD**
+- **Cobro ganado/cerrado:** **$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
+- **Total de Bounties Pagados en Gestión Activa:** **35 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago**.
+- **Monto total en juego activo:** **$6,080 USD** (~**S/. 22,500 – S/. 23,000 PEN**).
+- **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **15 ramas listas ($2,475 USD en código listo)**.
 
 ---
 
@@ -161,6 +161,7 @@
 - **[2026-10-09 23:21]**: **Completado Hito EXT-1 Outlier.ai / Scale AI (\$35 USD)**: Evaluación técnica de código y tests unitarios completada y registrada en ledger.
 - **[2026-10-09 23:22]**: **HITO DIARIO 10/10 COMPLETADO (Meta de 10 Tareas Diarias Alcanzada - \$1,460 USD en pipeline activo hoy)**.
 - **[2026-10-11 10:31]**: **Propuesta Formalizada en BasedHardware/omi PR #21143 ($30 USD)**: Título y descripción del PR actualizados con `($30 bounty proposal)` y `PayPal: jloa.dev@gmail.com` tras aprobación oficial de `@kodjima33`. Balance total Omi en cola de desembolso: **$65 USD** ($25 + $10 + $30).
+- **[2026-10-11 20:25]**: **Expensify #103355 Cerrado (NAB por Diseño)**: El equipo de diseño de Expensify (`@shawnborton` / `@dubielzyk-expensify`) determinó mantener la barra de búsqueda en tablas independientemente del número de miembros. Ticket cerrado como no-bug. Pipeline activo ajustado a **$6,080 USD** (~S/. 22,800 PEN) en **35 tareas**.
 
 ---
 
