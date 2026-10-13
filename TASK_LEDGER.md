@@ -63,6 +63,7 @@
 | **47** | Offline - Grey text with "Upload Attachment" doesn't appear during uploading | [#103326](https://github.com/Expensify/App/issues/103326) | — | `fix/103326-offline-uploading-attachment-card` | Pre-codeado & verificado | Propuesta formal publicada ([#6138194152](https://github.com/Expensify/App/issues/103326#issuecomment-6138194152)); 0 rivales | **PROPUESTA EN EVALUACIÓN** (C+ `@TaduJR`) | $175 USD |
 | **48** | Workflows - Offline Bank Unlock Doesn’t Open Concierge | [#103156](https://github.com/Expensify/App/issues/103156) | — | `fix/103156-offline-bank-unlock-concierge` | Pre-codeado & verificado | Propuesta formal publicada ([#6138198987](https://github.com/Expensify/App/issues/103156#issuecomment-6138198987)); 0 rivales | **PROPUESTA EN EVALUACIÓN** (C+ `@rojiphil`) | $175 USD |
 | **49** | Navigation - View button from email navigates to WS chat but not specific expense | [#103063](https://github.com/Expensify/App/issues/103063) | — | `fix/103063-email-view-button-expense-nav` | Pre-codeado & verificado | Propuesta formal publicada ([#6138205553](https://github.com/Expensify/App/issues/103063#issuecomment-6138205553)); 0 rivales | **PROPUESTA EN EVALUACIÓN** (C+ `@gijoe0295`) | $175 USD |
+| **50** | Footprint layout yDist edgeToEdge constraint overlap fix | [#4101](https://github.com/tscircuit/core/issues/4101) | [PR #4606](https://github.com/tscircuit/core/pull/4606) | `fix/4101-constraint-ydist-edge-to-edge` (`5b9d783`) | PASS (Bun test & Biome format) | PR formal en main de tscircuit/core; 0 conflictos | **PR ABIERTO** | Algora / tscircuit |
 
 ---
 
@@ -121,6 +122,7 @@
 ---
 
 ## 3. Log Cronológico de Eventos Clave (Append-Only)
+- **[2026-10-13 22:38 UTC]**: **PR #4606 abierto en tscircuit/core**: Fix para [Issue #4101](https://github.com/tscircuit/core/issues/4101) corrección del offset Y superior en `<constraint edgeToEdge yDist="...">`. Validado con nuevo test de regresión unitario en Bun, TypeScript typecheck y Biome format ([PR #4606](https://github.com/tscircuit/core/pull/4606)).
 - **[2026-10-13 22:05 UTC]**: **Pings de Seguimiento en PRs Activos**:
   - [tscircuit/footprinter PR #912](https://github.com/tscircuit/footprinter/pull/912) (\$25 USD - Algora): Ping a `@seveibar` y `@techmannih` recordando 4/4 checks verdes de CI ([#6156170933](https://github.com/tscircuit/footprinter/pull/912#issuecomment-6156170933)).
   - [iii123iii/Crystal-PDF PR #120](https://github.com/iii123iii/Crystal-PDF/pull/120) (\$100 USD - Opire): Ping a `@iii123iii` para revisión de mobile responsiveness ([#6156185078](https://github.com/iii123iii/Crystal-PDF/pull/120#issuecomment-6156185078)).
