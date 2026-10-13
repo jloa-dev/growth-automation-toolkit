@@ -121,6 +121,7 @@
 ---
 
 ## 3. Log Cronológico de Eventos Clave (Append-Only)
+- **[2026-10-13 21:30 UTC]**: **Expensify #103307 (\$175 USD)**: Ping de seguimiento enviado a C+ `@thelullabyy` ([#6155620056](https://github.com/Expensify/App/issues/103307#issuecomment-6155620056)) ofreciendo trazas de test de workspace rules; detalles de Upwork confirmados por `melvin-bot`.
 - **[2026-10-13 21:23 UTC]**: **Propuesta formal publicada en Expensify #103944 (\$175 USD)**: Fix a flechas de navegación visibles tras unreport mediante `removeActiveTransactionIDs` multi-prefijo ([#6155497566](https://github.com/Expensify/App/issues/103944#issuecomment-6155497566)).
 - **[2026-10-13 21:19 UTC]**: **Propuesta formal publicada en Expensify #103935 (\$175 USD)**: Filtro centralizado de campos de reporte tipo lista eliminados en `getAvailableReportFields` ([#6155419842](https://github.com/Expensify/App/issues/103935#issuecomment-6155419842)).
 - **[2026-10-13 21:11 UTC]**: **Propuesta formal publicada en Expensify #103931 (\$175 USD)**: Fix a flakey `SessionTest` por spies no restaurados y promesas un-awaited en `signOutAndRedirectToSignIn` ([#6155363533](https://github.com/Expensify/App/issues/103931#issuecomment-6155363533)).
