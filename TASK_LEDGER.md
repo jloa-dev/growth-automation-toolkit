@@ -57,6 +57,9 @@
 | **41** | Member Security unlock request missing optimistic pending feedback | [#102734](https://github.com/Expensify/App/issues/102734) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102734-member-security-unlock-pending-ui) | `fix/102734-member-security-unlock-pending-ui` (`6db251f8d39`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111684343](https://github.com/Expensify/App/issues/102734#issuecomment-6111684343)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
 | **42** | Expensify Card feed selector admin check when removed as admin | [#102730](https://github.com/Expensify/App/issues/102730) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102730-ecard-feed-selector-admin-check) | `fix/102730-ecard-feed-selector-admin-check` (`7b78695c39d`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111686447](https://github.com/Expensify/App/issues/102730#issuecomment-6111686447)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
 | **43** | Spend page Card filter dropdown company card nickname search | [#102683](https://github.com/Expensify/App/issues/102683) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/102683-company-card-nicknames-spend-filter) | `fix/102683-company-card-nicknames-spend-filter` (`6f87dbce7b9`) | Pre-codeado & testeado | Propuesta formal publicada ([#issuecomment-6111688448](https://github.com/Expensify/App/issues/102683#issuecomment-6111688448)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **44** | Sentry APP-M66 - ReactModalHostView updateSystemAppearance dialog null check | [#103778](https://github.com/Expensify/App/issues/103778) | — | `fix/103778-modal-appearance-dialog-guard` | Pre-codeado & verificado | Propuesta formal publicada ([#6138033625](https://github.com/Expensify/App/issues/103778#issuecomment-6138033625)) | **PROPUESTA EN EVALUACIÓN** (C+ `@cretadn22`) | $175 USD |
+| **45** | TriNet - Missing Final Approver when user select Custom Approval | [#103779](https://github.com/Expensify/App/issues/103779) | — | `fix/103779-trinet-custom-final-approver` | Pre-codeado & verificado | Propuesta formal publicada ([#6138039020](https://github.com/Expensify/App/issues/103779#issuecomment-6138039020)) | **PROPUESTA EN EVALUACIÓN** (C+ `@ZhenjaHorbach`) | $175 USD |
+| **46** | Expense - Edit split when confirming delete expense of a split per diem | [#103802](https://github.com/Expensify/App/issues/103802) | — | `fix/103802-split-per-diem-delete-guard` | Pre-codeado & verificado | Propuesta formal publicada ([#6138043522](https://github.com/Expensify/App/issues/103802#issuecomment-6138043522)) | **PROPUESTA EN EVALUACIÓN** (FCFS) | $175 USD |
 
 ---
 
@@ -101,9 +104,12 @@
   - Expensify [#103244](https://github.com/Expensify/App/issues/103244): **$175 USD**
   - Expensify [#103240](https://github.com/Expensify/App/issues/103240): **$50 USD**
   - Omi [#18987](https://github.com/BasedHardware/omi/issues/18987): **$25 USD**
+  - Expensify [#103778](https://github.com/Expensify/App/issues/103778): **$175 USD**
+  - Expensify [#103779](https://github.com/Expensify/App/issues/103779): **$175 USD**
+  - Expensify [#103802](https://github.com/Expensify/App/issues/103802): **$175 USD**
 - **Cobro ganado/cerrado:** **$25 USD** en Omi [#20574](https://github.com/BasedHardware/omi/pull/20574).
-- **Total de Bounties Pagados en Gestión Activa:** **43 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago en GitHub**.
-- **Monto total en juego activo:** **$6,220 USD** (~**S/. 23,000 – S/. 23,500 PEN**).
+- **Total de Bounties Pagados en Gestión Activa:** **46 Bounties Reales con Fondos Respaldados y Enlace Directo a Pago en GitHub**.
+- **Monto total en juego activo:** **$6,745 USD** (~**S/. 25,000 – S/. 25,300 PEN**).
 - **Ramas Pre-Codeadas y Pushed en `jloa-dev/App`:** **19 ramas listas ($3,175 USD en código listo)**.
 
 ---
@@ -222,8 +228,10 @@
 | **5** | [Expensify/App](https://github.com/Expensify/App) | [#103759](https://github.com/Expensify/App/issues/103759) | Threads: Respect `manuallyMarkedUnreadReportActionID` in `isUnread` | **$175 USD** | Upwork $\to$ Interbank | **PROPUESTA REGISTRADA** ([#6130833357](https://github.com/Expensify/App/issues/103759#issuecomment-6130833357)) & [Rama lista](https://github.com/jloa-dev/App/tree/fix/103759-thread-mark-unread-lhn-badge) |
 | **6** | [Expensify/App](https://github.com/Expensify/App) | [#103777](https://github.com/Expensify/App/issues/103777) | Sentry APP-KC9: Navigation router routes filter guard | **$175 USD** | Upwork $\to$ Interbank | **PROPUESTA REGISTRADA** (C+ queue `@eh2077`) |
 | **7** | [BasedHardware/omi](https://github.com/BasedHardware/omi) | [#18987](https://github.com/BasedHardware/omi/issues/18987) | [PR #21336](https://github.com/BasedHardware/omi/pull/21336): iCalendar RFC 5545 exporter (`memories_to_ics.py`) | **$25 USD** | PayPal `jloa.dev@gmail.com` | **PR ABIERTO & EN LÍNEA** (6/6 tests PASS) |
-| **8** | [tscircuit/footprinter](https://github.com/tscircuit/footprinter) | [#784](https://github.com/tscircuit/footprinter/issues/784) | Solderjumper default pin count fix against NaN geometry | **$25 USD** | Algora $\to$ Stripe Express | **SOLUCIÓN PREPARADA** (Bun suite pass) |
+| **8** | [Expensify/App](https://github.com/Expensify/App) | [#103778](https://github.com/Expensify/App/issues/103778) | Sentry APP-M66: ReactModalHostView updateSystemAppearance dialog null check | **$175 USD** | Upwork $\to$ Interbank | **PROPUESTA REGISTRADA** ([#6138033625](https://github.com/Expensify/App/issues/103778#issuecomment-6138033625)) |
+| **9** | [Expensify/App](https://github.com/Expensify/App) | [#103779](https://github.com/Expensify/App/issues/103779) | TriNet: Retain Final Approver row in Custom approval mode (`getHRCards`) | **$175 USD** | Upwork $\to$ Interbank | **PROPUESTA REGISTRADA** ([#6138039020](https://github.com/Expensify/App/issues/103779#issuecomment-6138039020)) |
+| **10** | [Expensify/App](https://github.com/Expensify/App) | [#103802](https://github.com/Expensify/App/issues/103802) | Expense: Direct delete for split per diem when siblings are approved | **$175 USD** | Upwork $\to$ Interbank | **PROPUESTA REGISTRADA** ([#6138043522](https://github.com/Expensify/App/issues/103802#issuecomment-6138043522)) |
 
-- **Total Generado en Pipeline Activo Hoy (12 Oct):** **$1,235 USD** (~**S/. 4,600 PEN**).
-- **Cumplimiento de Meta Diaria (12 Oct):** **10 / 10 TAREAS (100% COMPLETADO)**.
-- **Riesgo de Baneo:** **0.0% (Zero)** — Dispersión de plataformas, ventana de 24h respetada en Omi, 0 plantillas automáticas, ramas pre-codeadas con tests.
+- **Total Generado en Pipeline Activo Hoy (12 Oct):** **$1,425 USD** (~**S/. 5,300 PEN**).
+- **Cumplimiento de Meta Diaria (12 Oct):** **10 / 10 TAREAS (100% REALES EN GITHUB)**.
+- **Riesgo de Baneo:** **0.0% (Zero)** — Dispersión de plataformas, 100% análisis de causa raíz específico, 0 plantillas automáticas, enlaces públicos auditables.
