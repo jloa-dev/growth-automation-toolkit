@@ -1,6 +1,6 @@
 # TASK CONTINUITY LEDGER
 
-> **Última actualización:** 2026-10-14T23:31:24.785984-05:00
+> **Última actualización:** 2026-10-15T09:29:11.329018-05:00
 > **Espacio de trabajo:** `C:\Users\Loa\Downloads\GOAL`  
 > **Identidad Git/GitHub:** `jloa-dev <jloa.dev@gmail.com>`  
 > **Canales de Cobro Activos y 100% Verificados:**  
@@ -33,7 +33,7 @@
 | **16** | Workspaces - Unable to remove RBR on archived Workspace | [#103492](https://github.com/Expensify/App/issues/103492) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103492-archived-workspace-rbr) | `fix/103492-archived-workspace-rbr` (`3947b8f`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6067591602`) | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **17** | Inconsistent receipt replacement on drag and drop | [#103493](https://github.com/Expensify/App/issues/103493) | — | — | — | Propuesta formal publicada (`#issuecomment-6067633114`) | **OPEN** (Evaluando C+ `@truph01`) | \$175 USD |
 | **18** | Deploy Blocker - Bank account nickname refresh | [#103538](https://github.com/Expensify/App/issues/103538) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103538-bank-nickname-refresh) | `fix/103538-bank-nickname-refresh` (`863ac1ef`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6071930067`); 0 competidores | **LISTO PARA PR** (Asignación C+) | \$175 USD |
-| **19** | iOS Attachments - Password input of protected PDF closes on rotation | [#103531](https://github.com/Expensify/App/issues/103531) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103531-ios-carousel-rotation) | `fix/103531-ios-carousel-rotation` (`13c1ae67`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072026161`); 0 competidores | **LISTO PARA PR** (Asignación C+) | \$175 USD |
+| **19** | iOS Attachments - Password input of protected PDF closes on rotation | [#103531](https://github.com/Expensify/App/issues/103531) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103531-ios-carousel-rotation) | `fix/103531-ios-carousel-rotation` (`13c1ae67`) | Pre-codeado & testeado | C+ `@huult` / `@grgia` asignaron a `@nabi-ebrahimi` | **ASIGNADO A OTRO** | \$250 USD |
 | **20** | Concierge - Image appears cut on preview in Concierge RHP | [#103533](https://github.com/Expensify/App/issues/103533) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103533-concierge-preview-rhp-dimensions) | `fix/103533-concierge-preview-rhp-dimensions` (`f94f4c9a`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072042505`); 1 competidor | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **21** | Expense members input always shown in RHP | [#103355](https://github.com/Expensify/App/issues/103355) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103355-expense-members-filter-threshold) | `fix/103355-expense-members-filter-threshold` (`7338fd41`) | Pre-codeado & testeado | Propuesta formal publicada (`#issuecomment-6072054634`); 1 competidor | **LISTO PARA PR** (Asignación C+) | \$175 USD |
 | **22** | Omi CLI: memories to SQLite recipe & exporter | — | [#21098](https://github.com/BasedHardware/omi/pull/21098) | `feat/cli-memories-sqlite` | PASS (9 unit tests) | Maintainers cerraron clase docs (98% unmerged gate) | **CLOSED** (Sin reintentos de docs) | \$25 USD |
