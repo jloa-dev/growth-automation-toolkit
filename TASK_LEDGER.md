@@ -16,7 +16,7 @@
 | # | Tarea / Característica | Issue | PR | Rama Local | Estado CI | Estado Revisión | Estado Merge | Recompensa ($ USD) |
 |---|---|---|---|---|---|---|---|---|
 | **1** | User Settings - Crash when adding contact with '%' | [#103345](https://github.com/Expensify/App/issues/103345) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103345-contact-method-percent-crash) | `fix/103345-contact-method-percent-crash` (`9379e9e`) | Pre-codeado & testeado | C+ `@hoangzinh` validó diagnóstico con MelvinBot | **LISTO PARA PR** (Asignación C+) | \$175 USD |
-| **2** | To do - Employee held report in To do tab | [#102525](https://github.com/Expensify/App/issues/102525) | — | — | — | Propuesta registrada; C+ reviewed | **OPEN** (Escalado a `@stitesExpensify`) | \$250 USD |
+| **2** | To do - Employee held report in To do tab | [#102525](https://github.com/Expensify/App/issues/102525) | — | — | — | Frontend confirmado por `@stitesExpensify`; bump técnico a C+ `@QichenZhu` publicado ([#6231569215](https://github.com/Expensify/App/issues/102525#issuecomment-6231569215)) | **EN EVALUACIÓN C+** (Frontend approach) | \$250 USD |
 | **3** | Android - Share sheet for HEVC video file | [#103349](https://github.com/Expensify/App/issues/103349) | — | — | — | Propuesta registrada; MelvinBot verificado | **OPEN** (Evaluando C+ `@rojiphil`) | \$175 USD |
 | **4** | Domains - Error displayed when verifying Domain | [#103324](https://github.com/Expensify/App/issues/103324) | — | — | — | Maintainer `@mountiny` identificó fallo en credenciales de prueba | **INVESTIGANDO TEST ACC** | \$175 USD |
 | **5** | Offline - Navigation arrows disappear after delete sync | [#103403](https://github.com/Expensify/App/issues/103403) | [Rama lista](https://github.com/jloa-dev/App/tree/fix/103403-offline-nav-arrows) | `fix/103403-offline-nav-arrows` (`2a73160`) | Pre-codeado & testeado | Propuesta registrada (FCFS); commit en `jloa-dev/App` | **LISTO PARA PR** (Asignación C+) | \$175 USD |
@@ -132,6 +132,7 @@
 ---
 
 ## 3. Log Cronológico de Eventos Clave (Append-Only)
+- **[2026-10-17 08:09 UTC]**: **Expensify #102525 ($250 USD)**: Tras confirmación oficial del Staff Engineer `@stitesExpensify` ("let's take the frontend approach"), se publicó bump técnico proactivo a C+ `@QichenZhu` ([#6231569215](https://github.com/Expensify/App/issues/102525#issuecomment-6231569215)) destacando nuestra propuesta de cliente basada en agregados de `unheldTotal` sin llamadas de red.
 - **[2026-10-13 22:38 UTC]**: **PR #4606 abierto en tscircuit/core**: Fix para [Issue #4101](https://github.com/tscircuit/core/issues/4101) corrección del offset Y superior en `<constraint edgeToEdge yDist="...">`. Validado con nuevo test de regresión unitario en Bun, TypeScript typecheck y Biome format ([PR #4606](https://github.com/tscircuit/core/pull/4606)).
 - **[2026-10-13 22:05 UTC]**: **Pings de Seguimiento en PRs Activos**:
   - [tscircuit/footprinter PR #912](https://github.com/tscircuit/footprinter/pull/912) (\$25 USD - Algora): Ping a `@seveibar` y `@techmannih` recordando 4/4 checks verdes de CI ([#6156170933](https://github.com/tscircuit/footprinter/pull/912#issuecomment-6156170933)).
