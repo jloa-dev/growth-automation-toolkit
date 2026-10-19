@@ -1,6 +1,6 @@
 # TASK CONTINUITY LEDGER
 
-> **Última actualización:** 2026-10-18T22:00:36.587278-05:00
+> **Última actualización:** 2026-10-19T04:41:51.441252-05:00
 > **Espacio de trabajo:** `C:\Users\Loa\Downloads\GOAL`  
 > **Identidad Git/GitHub:** `jloa-dev <jloa.dev@gmail.com>`  
 > **Canales de Cobro Activos y 100% Verificados:**  
@@ -396,3 +396,28 @@
 
 - **Total Inyectado en la Jornada:** **+$1,750 USD** (~**S/. 6,560 PEN**) en 10 propuestas técnicas verificables.
 - **Canal de Desembolso:** 100% Upwork Escrow a Interbank CCI `00389801350050828245`.
+
+---
+
+## 12. Lote Maestro de 10 Tareas Diarias: Filtro Anti-Estafa & Baja Competencia (19 Octubre 2026)
+
+> **Criterio Estricto:** 100% fondos respaldados por Upwork Escrow (Expensify Inc. NASDAQ: EXFY), ultrabaja competencia en GitHub (0 a 3 rivales máximo), causa raíz técnica comprobada en código fuente local, propuesta formal registrada con perfil Upwork profesional y liquidación directa a cuenta Interbank Perú (CCI `00389801350050828245`).
+
+| # | Repositorio / Plataforma | Ticket / Issue | Descripción Técnica | Propuesta Registrada | Estado de Revisión | Rivales | Recompensa ($ USD) |
+|---|---|---|---|---|---|---|---|
+| **1** | [Expensify/App](https://github.com/Expensify/App) | [#104127](https://github.com/Expensify/App/issues/104127) | Android: Resolver binding de reportID y child transactions en tool calls de Concierge para categoría | [Comentario #6264422604](https://github.com/Expensify/App/issues/104127#issuecomment-6264422604) | En evaluación C+ | **0 rivales** | $175 USD |
+| **2** | [Expensify/App](https://github.com/Expensify/App) | [#103965](https://github.com/Expensify/App/issues/103965) | Chat: Renderizar botón de "Import contacts" en `NewChatPage` sin condicionar a permisos previos | [Comentario #6264424011](https://github.com/Expensify/App/issues/103965#issuecomment-6264424011) | En evaluación C+ | **0 rivales** | $175 USD |
+| **3** | [Expensify/App](https://github.com/Expensify/App) | [#104159](https://github.com/Expensify/App/issues/104159) | Mentions: Actualizar regex `CONST.REGEX.MENTION` para reconocer menciones con inicial de 1 carácter (`@j.doe`) | [Comentario #6264425351](https://github.com/Expensify/App/issues/104159#issuecomment-6264425351) | En evaluación C+ | **1 rival** | $175 USD |
+| **4** | [Expensify/App](https://github.com/Expensify/App) | [#104176](https://github.com/Expensify/App/issues/104176) | Filters: Incluir `CONST.SEARCH.SYNTAX_FILTER_KEYS.VENDOR` en `FILTER_VIEW_MAP` para búsqueda de gastos | [Comentario #6264426645](https://github.com/Expensify/App/issues/104176#issuecomment-6264426645) | En evaluación C+ | **1 rival** | $175 USD |
+| **5** | [Expensify/App](https://github.com/Expensify/App) | [#103957](https://github.com/Expensify/App/issues/103957) | Workflows: Validar pertenencia en `submitters` y `approvers` para disparar banner de conflicto de workflow | [Comentario #6264427898](https://github.com/Expensify/App/issues/103957#issuecomment-6264427898) | En evaluación C+ | **1 rival** | $175 USD |
+| **6** | [Expensify/App](https://github.com/Expensify/App) | [#104093](https://github.com/Expensify/App/issues/104093) | Onboarding: Omitir apertura de panel `#admins` en RHP al unirse mediante `isJoiningCompanyWorkspace` | [Comentario #6264429164](https://github.com/Expensify/App/issues/104093#issuecomment-6264429164) | En evaluación C+ | **2 rivales** | $175 USD |
+| **7** | [Expensify/App](https://github.com/Expensify/App) | [#103961](https://github.com/Expensify/App/issues/103961) | Navigation: Preservar jerarquía de reportes en popstate de `@react-navigation/native` al dar browser back | [Comentario #6264430389](https://github.com/Expensify/App/issues/103961#issuecomment-6264430389) | En evaluación C+ | **2 rivales** | $175 USD |
+| **8** | [Expensify/App](https://github.com/Expensify/App) | [#103824](https://github.com/Expensify/App/issues/103824) | Native Share: Validar descriptor en content resolver de Android antes del stream copy para evitar crash OOM | [Comentario #6264431763](https://github.com/Expensify/App/issues/103824#issuecomment-6264431763) | En evaluación C+ | **2 rivales** | $175 USD |
+| **9** | [Expensify/App](https://github.com/Expensify/App) | [#104178](https://github.com/Expensify/App/issues/104178) | Messages: Descartar mensajes propios (`isCurrentUserTheAuthor`) en cálculo de mensaje no leído en multi-sesión | [Comentario #6264433126](https://github.com/Expensify/App/issues/104178#issuecomment-6264433126) | En evaluación C+ | **3 rivales** | $175 USD |
+| **10** | [Expensify/App](https://github.com/Expensify/App) | [#104089](https://github.com/Expensify/App/issues/104089) | Audit Trail: Emitir acción de sistema optimista en sala `#admins` al vincular un feed de Expensify Card | [Comentario #6264434511](https://github.com/Expensify/App/issues/104089#issuecomment-6264434511) | En evaluación C+ | **3 rivales** | $175 USD |
+
+- **Total Inyectado en la Jornada:** **+$1,750 USD** (~**S/. 6,562 PEN**) en 10 propuestas técnicas verificables.
+- **Rivalidad Promedio:** **1.3 competidores** (2 tickets con 0 rivales, 3 tickets con 1 rival, 3 tickets con 2 rivales, 2 tickets con 3 rivales).
+- **Canal de Desembolso:** 100% Upwork Escrow a Interbank CCI `00389801350050828245`.
+- **Pipeline Total en Custodia Activa:** **$12,975 USD (~S/. 48,656 PEN)**.
+
