@@ -1,0 +1,521 @@
+[
+  {
+    "number": 104519,
+    "title": "[$175] Search - Contextual suggestion for new Held Report is missing",
+    "proposals": 3,
+    "proposal_authors": [
+      "taieddie",
+      "khizzcr7",
+      "jloa-dev"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112683613241355184\">https://www.upwork.com/jobs/~022112683613241355184</a></li>",
+    "createdAt": "2026-10-20T23:08:00Z"
+  },
+  {
+    "number": 104515,
+    "title": "[$175] All - Empty \"Check your info\" page appears in RHP after adding BA to Wallet",
+    "proposals": 2,
+    "proposal_authors": [
+      "camesenin",
+      "khizzcr7"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112662032795692456\">https://www.upwork.com/jobs/~022112662032795692456</a></li>",
+    "createdAt": "2026-10-20T21:39:57Z"
+  },
+  {
+    "number": 104509,
+    "title": "[$175] Expensify Card - Next button replaced with loading button after enabled then disabled rule",
+    "proposals": 3,
+    "proposal_authors": [
+      "camesenin",
+      "khizzcr7",
+      "jloa-dev"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112649059231981593\">https://www.upwork.com/jobs/~022112649059231981593</a></li>",
+    "createdAt": "2026-10-20T20:50:58Z"
+  },
+  {
+    "number": 104505,
+    "title": "[$175] [Sentry: APP-N5H] HybridApp Android: native tab bar crashes with more than 6 items",
+    "proposals": 2,
+    "proposal_authors": [
+      "jloa-dev",
+      "RajGahoi"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112637848604843209\">https://www.upwork.com/jobs/~022112637848604843209</a></li>",
+    "createdAt": "2026-10-20T20:11:15Z"
+  },
+  {
+    "number": 104504,
+    "title": "[$175] [Sentry: APP-JVF] Web: useSidebarOrderedReports setState loop, \"Maximum update depth exceeded\"",
+    "proposals": 3,
+    "proposal_authors": [
+      "magomedta",
+      "camesenin",
+      "stacklancer"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112637803657814041\">https://www.upwork.com/jobs/~022112637803657814041</a></li>",
+    "createdAt": "2026-10-20T20:11:06Z"
+  },
+  {
+    "number": 104503,
+    "title": "[$175] [Sentry: APP-MD4] HybridApp Android: startup abort, \"Cannot find native module 'ExpoAudio'\"",
+    "proposals": 3,
+    "proposal_authors": [
+      "haiquywork",
+      "taieddie",
+      "jloa-dev"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112637793222357815\">https://www.upwork.com/jobs/~022112637793222357815</a></li>",
+    "createdAt": "2026-10-20T20:10:59Z"
+  },
+  {
+    "number": 104502,
+    "title": "[$175] [Sentry: APP-MHA] HybridApp iOS: FlashList onScroll throws \"LayoutManager is not initialized\"",
+    "proposals": 2,
+    "proposal_authors": [
+      "haiquywork",
+      "jloa-dev"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112637743125227618\">https://www.upwork.com/jobs/~022112637743125227618</a></li>",
+    "createdAt": "2026-10-20T20:10:51Z"
+  },
+  {
+    "number": 104501,
+    "title": "[$175] [Sentry: APP-DQ2] Web: FlashList commitLayout loops into \"Maximum update depth exceeded\" on Add existing expenses",
+    "proposals": 2,
+    "proposal_authors": [
+      "magomedta",
+      "jloa-dev"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112637720568651801\">https://www.upwork.com/jobs/~022112637720568651801</a></li>",
+    "createdAt": "2026-10-20T20:10:44Z"
+  },
+  {
+    "number": 104500,
+    "title": "[$175] Agent - Agent's fallback avatar is displayed in the threaded comment",
+    "proposals": 5,
+    "proposal_authors": [
+      "camesenin",
+      "jloa-dev",
+      "fitzyracing1",
+      "magomedta",
+      "xomaxie"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112633586567027913\">https://www.upwork.com/jobs/~022112633586567027913</a></li>",
+    "createdAt": "2026-10-20T19:54:22Z"
+  },
+  {
+    "number": 104477,
+    "title": "[$175] [DEV] Console error when the location changes in the iOS simulator",
+    "proposals": 3,
+    "proposal_authors": [
+      "camesenin",
+      "magomedta",
+      "taieddie"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112527950722309321\">https://www.upwork.com/jobs/~022112527950722309321</a></li>",
+    "createdAt": "2026-10-20T12:50:18Z"
+  },
+  {
+    "number": 104471,
+    "title": "[$175] Per Diem Empty state is not centered on Tablet",
+    "proposals": 1,
+    "proposal_authors": [
+      "camesenin"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112523344238965559\">https://www.upwork.com/jobs/~022112523344238965559</a></li>",
+    "createdAt": "2026-10-20T12:31:26Z"
+  },
+  {
+    "number": 104467,
+    "title": "[$175] Room - WS list selector in create room chat doesn't have a search input when we have >= 12 WS",
+    "proposals": 1,
+    "proposal_authors": [
+      "camesenin"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112519616514432201\">https://www.upwork.com/jobs/~022112519616514432201</a></li>",
+    "createdAt": "2026-10-20T12:06:38Z"
+  },
+  {
+    "number": 104461,
+    "title": "[$175] Issue with adding contact method in offline mode",
+    "proposals": 3,
+    "proposal_authors": [
+      "camesenin",
+      "khizzcr7",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112501287831531014\">https://www.upwork.com/jobs/~022112501287831531014</a></li>",
+    "createdAt": "2026-10-20T10:56:58Z"
+  },
+  {
+    "number": 104426,
+    "title": "[$175] October 2026 product update - Add persistent bottom-right product marketing window",
+    "proposals": 4,
+    "proposal_authors": [
+      "camesenin",
+      "RajGahoi",
+      "sijo0218",
+      "janiya2"
+    ],
+    "labels": [
+      "External",
+      "Daily"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112330648272329318\">https://www.upwork.com/jobs/~022112330648272329318</a></li>",
+    "createdAt": "2026-10-19T23:46:29Z"
+  },
+  {
+    "number": 104425,
+    "title": "[$175] \u2013 PR 103367 \u2013  Concierge \u2013 Custom Agent Replies When @Concierge Is Mentioned",
+    "proposals": 2,
+    "proposal_authors": [
+      "camesenin",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112316544088484422\">https://www.upwork.com/jobs/~022112316544088484422</a></li>",
+    "createdAt": "2026-10-19T22:45:58Z"
+  },
+  {
+    "number": 104396,
+    "title": "[$175] Test drive - Test drive steps when choosing Track onboarding flow are outdated",
+    "proposals": 3,
+    "proposal_authors": [
+      "camesenin",
+      "sijo0218",
+      "janiya2"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112267327180926742\">https://www.upwork.com/jobs/~022112267327180926742</a></li>",
+    "createdAt": "2026-10-19T19:33:59Z"
+  },
+  {
+    "number": 104388,
+    "title": "[$175] Pay is shown when one of the reports contains only nonreimbursable expense during bulk select",
+    "proposals": 1,
+    "proposal_authors": [
+      "janiya2"
+    ],
+    "labels": [
+      "External",
+      "Engineering",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112284799078923331\">https://www.upwork.com/jobs/~022112284799078923331</a></li>",
+    "createdAt": "2026-10-19T18:15:57Z"
+  },
+  {
+    "number": 104363,
+    "title": "[$175] Spend-Sticky header does not stick when scrolling offline, then online",
+    "proposals": 5,
+    "proposal_authors": [
+      "camesenin",
+      "dhaulagani",
+      "janiya2",
+      "khizzcr7",
+      "azhumide"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112201138513669910\">https://www.upwork.com/jobs/~022112201138513669910</a></li>",
+    "createdAt": "2026-10-19T14:53:01Z"
+  },
+  {
+    "number": 104361,
+    "title": "[$175] Scheduled Submit - Retracting a report fails restore the workspace Scheduled Submit policy",
+    "proposals": 4,
+    "proposal_authors": [
+      "camesenin",
+      "khizzcr7",
+      "dhaulagani",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112193818585048068\">https://www.upwork.com/jobs/~022112193818585048068</a></li>",
+    "createdAt": "2026-10-19T14:32:00Z"
+  },
+  {
+    "number": 104360,
+    "title": "[$175] Web-Chat- Edit comment input is not focused",
+    "proposals": 5,
+    "proposal_authors": [
+      "camesenin",
+      "khizzcr7",
+      "azhumide",
+      "magomedta",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112190878495307640\">https://www.upwork.com/jobs/~022112190878495307640</a></li>",
+    "createdAt": "2026-10-19T14:20:58Z"
+  },
+  {
+    "number": 104352,
+    "title": "[$175] Company Cards - Cannot assign new TD Canada Trust card (card ending in xxxx not listed in dashboard dropdown after successful \"Assign new cards\")",
+    "proposals": 2,
+    "proposal_authors": [
+      "camesenin",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug",
+      "#feeds-2026"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112169735580111595\">https://www.upwork.com/jobs/~022112169735580111595</a></li>",
+    "createdAt": "2026-10-19T13:05:07Z"
+  },
+  {
+    "number": 104350,
+    "title": "[$175] Enabling Expensify Travel in New Expensify does not complete activation for the workspace.",
+    "proposals": 3,
+    "proposal_authors": [
+      "camesenin",
+      "sijo0218",
+      "janiya2"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112164788154939723\">https://www.upwork.com/jobs/~022112164788154939723</a></li>",
+    "createdAt": "2026-10-19T12:43:21Z"
+  },
+  {
+    "number": 104341,
+    "title": "[$175] Expense - Both approved & held expenses' total is shown after approving",
+    "proposals": 3,
+    "proposal_authors": [
+      "khizzcr7",
+      "sijo0218",
+      "janiya2"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112136231790515292\">https://www.upwork.com/jobs/~022112136231790515292</a></li>",
+    "createdAt": "2026-10-19T10:44:59Z"
+  },
+  {
+    "number": 104307,
+    "title": "[$175] Report - Arrow navigation is displayed with only one expense after two splits are deleted.",
+    "proposals": 11,
+    "proposal_authors": [
+      "camesenin",
+      "bonnhatnguyen",
+      "pranav440",
+      "khizzcr7",
+      "jloa-dev",
+      "azhumide",
+      "saranshbalyan-1234",
+      "zackthompson317",
+      "taieddie",
+      "RajGahoi",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111648967118290361\">https://www.upwork.com/jobs/~022111648967118290361</a></li>",
+    "createdAt": "2026-10-18T02:28:57Z"
+  },
+  {
+    "number": 104302,
+    "title": "[$175] Workflows - The report goes directly to the over-limit approver",
+    "proposals": 6,
+    "proposal_authors": [
+      "camesenin",
+      "bonnhatnguyen",
+      "khizzcr7",
+      "jloa-dev",
+      "kushu7",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111523459480110255\">https://www.upwork.com/jobs/~022111523459480110255</a></li>",
+    "createdAt": "2026-10-17T18:16:58Z"
+  },
+  {
+    "number": 104301,
+    "title": "[$175] mWeb - Concierge RHP - Swiping back doesn't close the Concierge RHP",
+    "proposals": 7,
+    "proposal_authors": [
+      "camesenin",
+      "bonnhatnguyen",
+      "khizzcr7",
+      "jloa-dev",
+      "magomedta",
+      "zackthompson317",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111520566246267670\">https://www.upwork.com/jobs/~022111520566246267670</a></li>",
+    "createdAt": "2026-10-17T18:02:57Z"
+  },
+  {
+    "number": 104300,
+    "title": "[$175] Web - Emoji Suggestions-Irrelevant emoji suggestions displayed when typing an emoji keyword",
+    "proposals": 4,
+    "proposal_authors": [
+      "camesenin",
+      "azhumide",
+      "jloa-dev",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111513537216464047\">https://www.upwork.com/jobs/~022111513537216464047</a></li>",
+    "createdAt": "2026-10-17T17:36:57Z"
+  },
+  {
+    "number": 104299,
+    "title": "[$175] Search - An asterisk (*) is added after merchant in the search query",
+    "proposals": 6,
+    "proposal_authors": [
+      "camesenin",
+      "bonnhatnguyen",
+      "jloa-dev",
+      "azhumide",
+      "zackthompson317",
+      "sijo0218"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111511880257919766\">https://www.upwork.com/jobs/~022111511880257919766</a></li>",
+    "createdAt": "2026-10-17T17:29:03Z"
+  },
+  {
+    "number": 104298,
+    "title": "[$175] [Exploratory] Held report displays zero amount",
+    "proposals": 0,
+    "proposal_authors": [],
+    "labels": [
+      "External",
+      "Daily",
+      "Not a priority",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022112160385895986766\">https://www.upwork.com/jobs/~022112160385895986766</a></li>",
+    "createdAt": "2026-10-17T17:04:58Z"
+  },
+  {
+    "number": 104287,
+    "title": "[$175] Search - Error and From filter dropped after entering \"group-by: reports\" on a saved search (follow-up to #89168)",
+    "proposals": 2,
+    "proposal_authors": [
+      "jloa-dev",
+      "nabi-ebrahimi"
+    ],
+    "labels": [
+      "Daily",
+      "Bug"
+    ],
+    "upwork_url": "<li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022111443332056306411\">https://www.upwork.com/jobs/~022111443332056306411</a></li>",
+    "createdAt": "2026-10-16T22:02:16Z"
+  }
+]

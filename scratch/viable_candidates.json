@@ -1,0 +1,232 @@
+[
+  {
+    "number": 104505,
+    "title": "[$175] [Sentry: APP-N5H] HybridApp Android: native tab bar crashes with more than 6 items",
+    "price": 175,
+    "proposals": 1,
+    "assignees": [
+      "mananjadhav",
+      "mountiny"
+    ],
+    "createdAt": "2026-10-20 15:11",
+    "url": "https://github.com/Expensify/App/issues/104505"
+  },
+  {
+    "number": 104503,
+    "title": "[$175] [Sentry: APP-MD4] HybridApp Android: startup abort, \"Cannot find native module 'ExpoAudio'\"",
+    "price": 175,
+    "proposals": 1,
+    "assignees": [
+      "mountiny",
+      "ikevin127"
+    ],
+    "createdAt": "2026-10-20 15:10",
+    "url": "https://github.com/Expensify/App/issues/104503"
+  },
+  {
+    "number": 104502,
+    "title": "[$175] [Sentry: APP-MHA] HybridApp iOS: FlashList onScroll throws \"LayoutManager is not initialized\"",
+    "price": 175,
+    "proposals": 1,
+    "assignees": [
+      "mountiny",
+      "linhvovan29546"
+    ],
+    "createdAt": "2026-10-20 15:10",
+    "url": "https://github.com/Expensify/App/issues/104502"
+  },
+  {
+    "number": 104501,
+    "title": "[$175] [Sentry: APP-DQ2] Web: FlashList commitLayout loops into \"Maximum update depth exceeded\" on Add existing expenses",
+    "price": 175,
+    "proposals": 1,
+    "assignees": [
+      "mountiny",
+      "getusha"
+    ],
+    "createdAt": "2026-10-20 15:10",
+    "url": "https://github.com/Expensify/App/issues/104501"
+  },
+  {
+    "number": 104390,
+    "title": "[$175] Chat - Unable to scroll PDF with keyboard after pressing right arrow key",
+    "price": 175,
+    "proposals": 1,
+    "assignees": [
+      "inimaga",
+      "nyomanjyotisa"
+    ],
+    "createdAt": "2026-10-19 13:38",
+    "url": "https://github.com/Expensify/App/issues/104390"
+  },
+  {
+    "number": 104425,
+    "title": "[$175] \u2013 PR 103367 \u2013  Concierge \u2013 Custom Agent Replies When @Concierge Is Mentioned",
+    "price": 175,
+    "proposals": 2,
+    "assignees": [
+      "eVoloshchak"
+    ],
+    "createdAt": "2026-10-19 17:45",
+    "url": "https://github.com/Expensify/App/issues/104425"
+  },
+  {
+    "number": 104388,
+    "title": "[$175] Pay is shown when one of the reports contains only nonreimbursable expense during bulk select",
+    "price": 175,
+    "proposals": 2,
+    "assignees": [
+      "s77rt",
+      "FitseTLT",
+      "stitesExpensify"
+    ],
+    "createdAt": "2026-10-19 13:15",
+    "url": "https://github.com/Expensify/App/issues/104388"
+  },
+  {
+    "number": 104352,
+    "title": "[$175] Company Cards - Cannot assign new TD Canada Trust card (card ending in xxxx not listed in dashboard dropdown after successful \"Assign new cards\")",
+    "price": 175,
+    "proposals": 2,
+    "assignees": [
+      "thelullabyy"
+    ],
+    "createdAt": "2026-10-19 08:05",
+    "url": "https://github.com/Expensify/App/issues/104352"
+  },
+  {
+    "number": 104519,
+    "title": "[$175] Search - Contextual suggestion for new Held Report is missing",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "rojiphil"
+    ],
+    "createdAt": "2026-10-20 18:08",
+    "url": "https://github.com/Expensify/App/issues/104519"
+  },
+  {
+    "number": 104515,
+    "title": "[$175] All - Empty \"Check your info\" page appears in RHP after adding BA to Wallet",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "brunovjk"
+    ],
+    "createdAt": "2026-10-20 16:39",
+    "url": "https://github.com/Expensify/App/issues/104515"
+  },
+  {
+    "number": 104509,
+    "title": "[$175] Expensify Card - Next button replaced with loading button after enabled then disabled rule",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "eh2077"
+    ],
+    "createdAt": "2026-10-20 15:50",
+    "url": "https://github.com/Expensify/App/issues/104509"
+  },
+  {
+    "number": 104494,
+    "title": "[$175] LHN - Avatar tooltip is not horizontally centered on the avatar",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "roryabraham",
+      "Krishna2323"
+    ],
+    "createdAt": "2026-10-20 14:07",
+    "url": "https://github.com/Expensify/App/issues/104494"
+  },
+  {
+    "number": 104461,
+    "title": "[$175] Issue with adding contact method in offline mode",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "getusha"
+    ],
+    "createdAt": "2026-10-20 05:56",
+    "url": "https://github.com/Expensify/App/issues/104461"
+  },
+  {
+    "number": 104396,
+    "title": "[$175] Test drive - Test drive steps when choosing Track onboarding flow are outdated",
+    "price": 175,
+    "proposals": 3,
+    "assignees": [
+      "getusha"
+    ],
+    "createdAt": "2026-10-19 14:33",
+    "url": "https://github.com/Expensify/App/issues/104396"
+  },
+  {
+    "number": 104504,
+    "title": "[$175] [Sentry: APP-JVF] Web: useSidebarOrderedReports setState loop, \"Maximum update depth exceeded\"",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "parasharrajat",
+      "mountiny"
+    ],
+    "createdAt": "2026-10-20 15:11",
+    "url": "https://github.com/Expensify/App/issues/104504"
+  },
+  {
+    "number": 104477,
+    "title": "[$175] [DEV] Console error when the location changes in the iOS simulator",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "mananjadhav"
+    ],
+    "createdAt": "2026-10-20 07:50",
+    "url": "https://github.com/Expensify/App/issues/104477"
+  },
+  {
+    "number": 104426,
+    "title": "[$175] October 2026 product update - Add persistent bottom-right product marketing window",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "ahmedGaber93",
+      "catdevore"
+    ],
+    "createdAt": "2026-10-19 18:46",
+    "url": "https://github.com/Expensify/App/issues/104426"
+  },
+  {
+    "number": 104373,
+    "title": "[$175] Share Sheet > Submit - Default workspace doesn't appear in the pick list when account has many workspaces/chats (only findable via search)",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "nkdengineer"
+    ],
+    "createdAt": "2026-10-19 11:47",
+    "url": "https://github.com/Expensify/App/issues/104373"
+  },
+  {
+    "number": 104350,
+    "title": "[$175] Enabling Expensify Travel in New Expensify does not complete activation for the workspace.",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "mananjadhav"
+    ],
+    "createdAt": "2026-10-19 07:43",
+    "url": "https://github.com/Expensify/App/issues/104350"
+  },
+  {
+    "number": 104341,
+    "title": "[$175] Expense - Both approved & held expenses' total is shown after approving",
+    "price": 175,
+    "proposals": 4,
+    "assignees": [
+      "hoangzinh"
+    ],
+    "createdAt": "2026-10-19 05:44",
+    "url": "https://github.com/Expensify/App/issues/104341"
+  }
+]

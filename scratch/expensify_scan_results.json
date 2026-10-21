@@ -1,0 +1,1364 @@
+[
+  {
+    "num": "102072",
+    "state": "OPEN",
+    "assignees": [
+      "jasperhuangg",
+      "FitseTLT",
+      "yusufdeveloper2903"
+    ],
+    "title": "[$250] mWeb - Sign out on the Account page is covered by the debug indicator banner and cannot be scrolled into view.",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "FitseTLT",
+      "yusufdeveloper2903",
+      "FitseTLT"
+    ],
+    "c_plus_selected": "@yusufdeveloper2903 's Proposal LGTM. As it solves the bug without causing a regression on the workspace page.\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+    "comments_count": 126,
+    "last_comment_author": "jasperhuangg",
+    "last_comment_date": "2026-10-19T22:58:07Z"
+  },
+  {
+    "num": "102437",
+    "state": "CLOSED",
+    "assignees": [
+      "madmax330",
+      "huult"
+    ],
+    "title": "[$250] 2FA - User admin is redirected to NewDot instead of completing the OldDot 2FA flow for Xero",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 56,
+    "last_comment_author": "madmax330",
+    "last_comment_date": "2026-10-16T09:35:56Z"
+  },
+  {
+    "num": "102525",
+    "state": "OPEN",
+    "assignees": [
+      "stitesExpensify",
+      "QichenZhu"
+    ],
+    "title": "[$250] To do - The employee held report displays in To do tab",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "QichenZhu",
+      "QichenZhu",
+      "QichenZhu"
+    ],
+    "c_plus_selected": "In that case I'd switch to [@neerajbachani's proposal](https://github.com/Expensify/App/issues/102525#issuecomment-5912863749).\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed\n",
+    "comments_count": 135,
+    "last_comment_author": "David-2002065",
+    "last_comment_date": "2026-10-20T12:54:24Z"
+  },
+  {
+    "num": "102683",
+    "state": "OPEN",
+    "assignees": [
+      "ChavdaSachin"
+    ],
+    "title": "[$175] Company card nicknames don\u2019t show in the Spend page Card filter",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:51:54Z"
+  },
+  {
+    "num": "102730",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "title": "[$175] Ecard - The empty illustration is not shown after removing user admin permission",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 20,
+    "last_comment_author": "jayeshmangwani",
+    "last_comment_date": "2026-10-19T06:20:59Z"
+  },
+  {
+    "num": "102734",
+    "state": "OPEN",
+    "assignees": [
+      "dubielzyk-expensify",
+      "marufsharifi"
+    ],
+    "title": "[$175] Member Security - UI does not reflect that the unlock request was submitted.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 26,
+    "last_comment_author": "MelvinBot",
+    "last_comment_date": "2026-10-16T06:55:59Z"
+  },
+  {
+    "num": "102792",
+    "state": "OPEN",
+    "assignees": [
+      "MonilBhavsar",
+      "brunovjk",
+      "dukenv0307"
+    ],
+    "title": "[$175] Inbox shows RBR and Fix for violations on submitted reports that Home and Spend correctly ignore",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T20:16:18Z"
+  },
+  {
+    "num": "102868",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "situchan",
+      "dukenv0307"
+    ],
+    "title": "[$175] Export to-do omits reports that Search returns for `action:export`",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "dukenv0307",
+    "last_comment_date": "2026-10-12T01:50:48Z"
+  },
+  {
+    "num": "103058",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "title": "[$175] WS settings - Error appear when changing role just after adding User",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 15,
+    "last_comment_author": "marufsharifi",
+    "last_comment_date": "2026-10-17T07:26:18Z"
+  },
+  {
+    "num": "103063",
+    "state": "OPEN",
+    "assignees": [
+      "Beamanator",
+      "KioCoan",
+      "gijoe0295"
+    ],
+    "title": "[$175] Navigation - View button from email navigates to WS chat but not the specific expense",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "gijoe0295"
+    ],
+    "c_plus_selected": "Backend bug. I think email link parameter mismatch\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed\n\n",
+    "comments_count": 18,
+    "last_comment_author": "KioCoan",
+    "last_comment_date": "2026-10-19T23:19:04Z"
+  },
+  {
+    "num": "103156",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Offline Bank Unlock Doesn\u2019t Open Concierge",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:55:51Z"
+  },
+  {
+    "num": "103183",
+    "state": "OPEN",
+    "assignees": [
+      "bernhardoj"
+    ],
+    "title": "[$175] Transaction's tag isn't updated correctly when selecting a tag contain `\\:`",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 23,
+    "last_comment_author": "MelvinBot",
+    "last_comment_date": "2026-10-18T00:51:05Z"
+  },
+  {
+    "num": "103198",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "joekaufmanexpensify",
+      "thelullabyy"
+    ],
+    "title": "[$175] Make the remove/unassign card warning clearer about which expenses get deleted",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "thelullabyy"
+    ],
+    "c_plus_selected": "@MelvinBot's [proposal](https://github.com/Expensify/App/issues/103198#issuecomment-6066775296) LGTM\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+    "comments_count": 22,
+    "last_comment_author": "joekaufmanexpensify",
+    "last_comment_date": "2026-10-19T19:36:59Z"
+  },
+  {
+    "num": "103214",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "title": "[$175] The new avatar is not reflected after uploading new photo to the profile",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "emkhalid",
+    "last_comment_date": "2026-10-14T07:55:41Z"
+  },
+  {
+    "num": "103216",
+    "state": "OPEN",
+    "assignees": [
+      "jasperhuangg",
+      "FitseTLT"
+    ],
+    "title": "[$175] New Expensify defaults a manual expense to my Payment currency, not to the currency of the selected default workspace.",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "FitseTLT"
+    ],
+    "c_plus_selected": "@MelvinBot implement\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+    "comments_count": 14,
+    "last_comment_author": "jasperhuangg",
+    "last_comment_date": "2026-10-19T20:24:20Z"
+  },
+  {
+    "num": "103240",
+    "state": "OPEN",
+    "assignees": [
+      "eVoloshchak"
+    ],
+    "title": "[$50] DEV - Duplicate key error showing up in the console",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 16,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:04Z"
+  },
+  {
+    "num": "103244",
+    "state": "OPEN",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "title": "[$175] Onboarding - Product update / feature announcements still shown to employees invited to a workspace (should be removed)",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 25,
+    "last_comment_author": "emkhalid",
+    "last_comment_date": "2026-10-19T19:42:53Z"
+  },
+  {
+    "num": "103245",
+    "state": "OPEN",
+    "assignees": [
+      "mananjadhav"
+    ],
+    "title": "[$175] Agent: Agent page stuck in infinity loading after switch to Copilot",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "mananjadhav",
+    "last_comment_date": "2026-10-15T17:05:51Z"
+  },
+  {
+    "num": "103307",
+    "state": "OPEN",
+    "assignees": [
+      "MonilBhavsar",
+      "thelullabyy"
+    ],
+    "title": "[$175] Gusto-Setting defaulted to \"Manager approval\" instead of \"Custom approval\"",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "thelullabyy"
+    ],
+    "c_plus_selected": "It looks like BE issue to me\n\nNeeds help from bc-team/internal team \n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-15T18:41:17Z"
+  },
+  {
+    "num": "103324",
+    "state": "CLOSED",
+    "assignees": [
+      "mountiny",
+      "rayane-d",
+      "brunovjk"
+    ],
+    "title": "[$175] Domains- Error displayed when user attempt to verify Domain",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 10,
+    "last_comment_author": "rayane-d",
+    "last_comment_date": "2026-10-08T18:03:06Z"
+  },
+  {
+    "num": "103326",
+    "state": "OPEN",
+    "assignees": [
+      "TaduJR"
+    ],
+    "title": "[$175] When offline Grey text with \"Upload Attachment\" doesn't appear during uploading attachment",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "TaduJR",
+    "last_comment_date": "2026-10-20T11:02:15Z"
+  },
+  {
+    "num": "103341",
+    "state": "OPEN",
+    "assignees": [
+      "blimpich",
+      "joekaufmanexpensify",
+      "dmkt9"
+    ],
+    "title": "[CFI] [$175] Show the Reimbursable toggle on company card expenses when the card feed is set to Do Not Force",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 27,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T10:06:16Z"
+  },
+  {
+    "num": "103345",
+    "state": "OPEN",
+    "assignees": [
+      "pecanoro",
+      "hoangzinh"
+    ],
+    "title": "[Due for payment 2026-10-26] [$175] User Settings - App crashes when adding a new contact with a \"%\" character in the email",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "hoangzinh"
+    ],
+    "c_plus_selected": "MelvinBot's proposal LGTM\n\nLink to his proposal https://github.com/Expensify/App/issues/103345#issuecomment-6039595978\n\n\ud83c\udf80\ud83d\udc40\ud83c\udf80 C+ reviewed",
+    "comments_count": 20,
+    "last_comment_author": "hoangzinh",
+    "last_comment_date": "2026-10-20T09:25:40Z"
+  },
+  {
+    "num": "103349",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Android - Expensify app is not available in the share sheet when sharing an HEVC video file",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:53:12Z"
+  },
+  {
+    "num": "103355",
+    "state": "CLOSED",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "title": "[$175] Expense members input always shown",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "dubielzyk-expensify",
+    "last_comment_date": "2026-10-11T23:32:56Z"
+  },
+  {
+    "num": "103403",
+    "state": "OPEN",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "title": "[$250] Android/iOS-Offline-Navigation arrows disappear after deleted expense syncs online",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 48,
+    "last_comment_author": "github-actions",
+    "last_comment_date": "2026-10-20T09:33:55Z"
+  },
+  {
+    "num": "103406",
+    "state": "OPEN",
+    "assignees": [
+      "aimane-chnaif"
+    ],
+    "title": "[$175] Expensify Card - No card is visible in archived workspace",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 15,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:14Z"
+  },
+  {
+    "num": "103488",
+    "state": "OPEN",
+    "assignees": [
+      "chuckdries",
+      "ahmedGaber93"
+    ],
+    "title": "[Due for payment 2026-10-23] [$175] Make the GPS distance counter label a fully localized phrase",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 22,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:53:56Z"
+  },
+  {
+    "num": "103492",
+    "state": "OPEN",
+    "assignees": [
+      "deetergp",
+      "cretadn22"
+    ],
+    "title": "[$175] Workspaces - Unable to remove the RBR on archived Workspace",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "cretadn22"
+    ],
+    "c_plus_selected": "@MelvinBot's [proposal](https://github.com/Expensify/App/issues/103492#issuecomment-6064615154) looks good to me\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed\n\n",
+    "comments_count": 16,
+    "last_comment_author": "deetergp",
+    "last_comment_date": "2026-10-12T23:43:56Z"
+  },
+  {
+    "num": "103493",
+    "state": "OPEN",
+    "assignees": [
+      "truph01"
+    ],
+    "title": "[$175] Dragging and dropping a receipt onto an existing receipt image on an expense behaves inconsistently.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 24,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:23Z"
+  },
+  {
+    "num": "103497",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] Composer - Input field renders at two-line height before typing starts",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 21,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-20T06:06:53Z"
+  },
+  {
+    "num": "103531",
+    "state": "OPEN",
+    "assignees": [
+      "huult",
+      "grgia",
+      "nabi-ebrahimi"
+    ],
+    "title": "[$250] iOS - Attachments - Password input of protected PDF closes after rotating to landscape",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 56,
+    "last_comment_author": "grgia",
+    "last_comment_date": "2026-10-15T17:40:52Z"
+  },
+  {
+    "num": "103533",
+    "state": "OPEN",
+    "assignees": [
+      "roryabraham",
+      "abzokhattab"
+    ],
+    "title": "[$175] Concierge - Image appears cut on its preview on the Concierge RHP",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 23,
+    "last_comment_author": "abzokhattab",
+    "last_comment_date": "2026-10-19T22:27:28Z"
+  },
+  {
+    "num": "103538",
+    "state": "CLOSED",
+    "assignees": [
+      "NicolasBonet",
+      "shubham1206agra"
+    ],
+    "title": "Wallet - Bank account name reverts to default after refreshing the page",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 15,
+    "last_comment_author": "NicolasBonet",
+    "last_comment_date": "2026-10-13T15:14:09Z"
+  },
+  {
+    "num": "103593",
+    "state": "OPEN",
+    "assignees": [
+      "hungvu193",
+      "blimpich",
+      "nkdengineer"
+    ],
+    "title": "[Due for payment 2026-10-22] [$175] Android - Preview of taken photo is not displayed before sending",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 9,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-15T16:46:38Z"
+  },
+  {
+    "num": "103595",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] [Auto] - Android - Public Room - Error appears when opening public room as anon user",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-14T21:53:39Z"
+  },
+  {
+    "num": "103619",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "title": "[$175] Attachments - Image flashes briefly after uploading",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "marufsharifi",
+    "last_comment_date": "2026-10-17T07:25:34Z"
+  },
+  {
+    "num": "103648",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] Image attachment - Pinch-to-zoom stops working after reaching maximum zoom",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-14T21:53:42Z"
+  },
+  {
+    "num": "103662",
+    "state": "OPEN",
+    "assignees": [
+      "NicolasBonet",
+      "Pujan92"
+    ],
+    "title": "[$175] Native share - File size too large error is not displayed",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "Pujan92"
+    ],
+    "c_plus_selected": "It seems to be fixed in https://github.com/Expensify/App/pull/103623, but we can avoid getPlatform usage there and rename file to `index.ios.ts` to follow guidelines.\n\nhttps://github.com/Expensify/App",
+    "comments_count": 29,
+    "last_comment_author": "MelvinBot",
+    "last_comment_date": "2026-10-16T18:18:40Z"
+  },
+  {
+    "num": "103663",
+    "state": "CLOSED",
+    "assignees": [
+      "grgia"
+    ],
+    "title": "Expense - Unable to enter negative sign in tax amount field",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "grgia",
+    "last_comment_date": "2026-10-15T17:27:45Z"
+  },
+  {
+    "num": "103664",
+    "state": "CLOSED",
+    "assignees": [
+      "grgia"
+    ],
+    "title": "Expense - Tax amount field is not negative when amount is negative",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "grgia",
+    "last_comment_date": "2026-10-15T17:27:38Z"
+  },
+  {
+    "num": "103671",
+    "state": "CLOSED",
+    "assignees": [
+      "AndrewGable",
+      "grgia",
+      "bernhardoj"
+    ],
+    "title": "[Due for payment 2026-10-21] [QA Retest & Close] Expense - Tax amount is not negative after merging expenses with negative tax amount offline",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 31,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-14T12:58:34Z"
+  },
+  {
+    "num": "103721",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] 103421 - Per Diem - Not here page after going back online when the destination loads",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:46Z"
+  },
+  {
+    "num": "103726",
+    "state": "OPEN",
+    "assignees": [
+      "MariaHCD",
+      "cretadn22"
+    ],
+    "title": "[Due for payment 2026-10-23] [$175] Global reimbursement-Registration number is prefilled for second BA global reimbursement",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "cretadn22",
+    "last_comment_date": "2026-10-19T04:13:22Z"
+  },
+  {
+    "num": "103759",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Threads - Nothing happens in LHN when message is mark as unread",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "MelvinBot",
+    "last_comment_date": "2026-10-17T02:46:12Z"
+  },
+  {
+    "num": "103764",
+    "state": "OPEN",
+    "assignees": [
+      "eVoloshchak",
+      "VickyStash",
+      "mountiny"
+    ],
+    "title": "[Due for payment 2026-10-26] [$175] [Android] \"Update Required\" shown after updating the app because the startup ReconnectApp prefetch sends the old `appversion`",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T17:30:24Z"
+  },
+  {
+    "num": "103770",
+    "state": "CLOSED",
+    "assignees": [
+      "marcaaron",
+      "nyomanjyotisa"
+    ],
+    "title": "[$175] Animations for pages in account settings are stuck",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "nyomanjyotisa"
+    ],
+    "c_plus_selected": "Web illustrations are intentionally static in [#76336](https://github.com/Expensify/App/pull/76336). Confirmed on staging macOS Chrome. I think we can close this as expected behavior.\n\n\ud83c\udf80\ud83d\udc40\ud83c\udf80 C+ reviewed",
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:54:15Z"
+  },
+  {
+    "num": "103775",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "ikevin127"
+    ],
+    "title": "[Due for payment 2026-10-26] [$175] [Sentry: APP-KT0] Search bulk actions crash reading undefined search results data",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "ikevin127"
+    ],
+    "c_plus_selected": "### Sentry findings (APP-KT0):\n- The crash line is confirmed. It's the `selectedMergeReports` lookup, now at `src/hooks/useSearchBulkActions.ts:2936` on main. It has 107 events from 98 users.\n- It goe",
+    "comments_count": 17,
+    "last_comment_author": "ikevin127",
+    "last_comment_date": "2026-10-19T20:41:11Z"
+  },
+  {
+    "num": "103776",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "thelullabyy"
+    ],
+    "title": "[$175] [Sentry: APP-JQB] FlashList \"right operand of 'in' is not an object\" in participant selector",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "MelvinBot",
+    "last_comment_date": "2026-10-18T11:01:14Z"
+  },
+  {
+    "num": "103777",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "eh2077"
+    ],
+    "title": "[$175] [Sentry: APP-KC9] Navigation crash: 'filter' of undefined in getStateForRouteNamesChange",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 14,
+    "last_comment_author": "eh2077",
+    "last_comment_date": "2026-10-20T12:39:31Z"
+  },
+  {
+    "num": "103778",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "cretadn22"
+    ],
+    "title": "[$175] [Sentry: APP-M66] Android: ReactModalHostView updateSystemAppearance \"dialog must exist\"",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 9,
+    "last_comment_author": "cretadn22",
+    "last_comment_date": "2026-10-19T04:09:48Z"
+  },
+  {
+    "num": "103779",
+    "state": "OPEN",
+    "assignees": [
+      "ZhenjaHorbach"
+    ],
+    "title": "[$175] TriNet - Missing Final Approver when user select Custom Approval",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 9,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:52Z"
+  },
+  {
+    "num": "103802",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] Expense - Edit split when confirming delete expense of a split per diem expense",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 14,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:56:58Z"
+  },
+  {
+    "num": "103824",
+    "state": "OPEN",
+    "assignees": [
+      "huult",
+      "luacmartins"
+    ],
+    "title": "[$175] Native share - The app crashes after sharing a large video file (>125 MB)",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 16,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T09:50:10Z"
+  },
+  {
+    "num": "103831",
+    "state": "OPEN",
+    "assignees": [
+      "sobitneupane"
+    ],
+    "title": "[$175] Netsuite - \"This site can\u2019t be reached\" error occurs if incorrect credentials is entered",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "sobitneupane",
+    "last_comment_date": "2026-10-19T14:56:01Z"
+  },
+  {
+    "num": "103838",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "title": "[$175] The tab bar does not visible above the spinner",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 9,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:54:24Z"
+  },
+  {
+    "num": "103863",
+    "state": "CLOSED",
+    "assignees": [
+      "luacmartins",
+      "rushatgabhane",
+      "JS00001",
+      "Krishna2323"
+    ],
+    "title": "[$175] Rules - Category that has already been selected in existing rule can be selected again",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 15,
+    "last_comment_author": "kavimuru",
+    "last_comment_date": "2026-10-13T17:47:01Z"
+  },
+  {
+    "num": "103875",
+    "state": "OPEN",
+    "assignees": [
+      "FitseTLT"
+    ],
+    "title": "[$175] Pressing Delete while selecting text inside a composer duplicates the content instead of clearing it.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "FitseTLT",
+    "last_comment_date": "2026-10-19T12:01:55Z"
+  },
+  {
+    "num": "103876",
+    "state": "OPEN",
+    "assignees": [
+      "TaduJR"
+    ],
+    "title": "[$175] Amex feed error persists after reconnect until manual scrape",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 10,
+    "last_comment_author": "TaduJR",
+    "last_comment_date": "2026-10-20T11:02:37Z"
+  },
+  {
+    "num": "103898",
+    "state": "OPEN",
+    "assignees": [
+      "neil-marcellini",
+      "Eskalifer1"
+    ],
+    "title": "[Due for payment 2026-10-23] [$175] Improvement: Update copy in empty screen of creating Per diem expense flow",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 19,
+    "last_comment_author": "Eskalifer1",
+    "last_comment_date": "2026-10-20T12:42:58Z"
+  },
+  {
+    "num": "103908",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "title": "[$175] Infinite loading or not here page found page shown when a submitted expense opens",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-17T16:23:45Z"
+  },
+  {
+    "num": "103931",
+    "state": "OPEN",
+    "assignees": [
+      "marcochavezf",
+      "truph01"
+    ],
+    "title": "[$175] Fix flakey SessionTest",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-20T04:59:44Z"
+  },
+  {
+    "num": "103935",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "title": "[$175] Report fields - Disabled list type report field appears on report after deletion",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T21:55:15Z"
+  },
+  {
+    "num": "103944",
+    "state": "OPEN",
+    "assignees": [
+      "carlosmiceli",
+      "MelvinBot",
+      "Eskalifer1"
+    ],
+    "title": "[Due for payment 2026-10-23] [$175] Expense - After unreporting expense, arrows are shown on report which lead to self DM",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 31,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-16T11:57:01Z"
+  },
+  {
+    "num": "103957",
+    "state": "OPEN",
+    "assignees": [
+      "danieldoglas",
+      "brunovjk"
+    ],
+    "title": "[$175] WS - \"This member already belongs to another approval workflow\" message does not appear",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "brunovjk"
+    ],
+    "c_plus_selected": "This appears to be expected behavior, as explained in Melvin's analysis: https://github.com/Expensify/App/issues/103957#issuecomment-6160977553. \n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+    "comments_count": 11,
+    "last_comment_author": "NicolasBonet",
+    "last_comment_date": "2026-10-19T22:18:52Z"
+  },
+  {
+    "num": "103961",
+    "state": "OPEN",
+    "assignees": [
+      "suneox"
+    ],
+    "title": "[$175] Web - Chat -Browser back navigates to previous action instead of previous report",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "suneox",
+    "last_comment_date": "2026-10-19T15:47:18Z"
+  },
+  {
+    "num": "103965",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Import contacts-Import contacts option is not displayed when tapping Start chat",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 8,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:57:02Z"
+  },
+  {
+    "num": "104089",
+    "state": "OPEN",
+    "assignees": [
+      "Ollyws",
+      "joekaufmanexpensify",
+      "rayane-d"
+    ],
+    "title": "[$175] Post a message in the #admins room when an Expensify Card feed is shared to a workspace",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "rayane-d",
+    "last_comment_date": "2026-10-19T10:57:08Z"
+  },
+  {
+    "num": "104093",
+    "state": "OPEN",
+    "assignees": [
+      "carlosmiceli",
+      "abzokhattab"
+    ],
+    "title": "[$175] Onboarding - #admins room opens in RHP after joining a workspace with the Join my company workspace intent",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T09:50:02Z"
+  },
+  {
+    "num": "104113",
+    "state": "OPEN",
+    "assignees": [
+      "ahmedGaber93"
+    ],
+    "title": "[$175] Scan - Expense Amount Shows 00 While Offline",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-18T15:05:11Z"
+  },
+  {
+    "num": "104127",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Android - Concierge does not change category in report when asked in natural language",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 6,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T09:49:41Z"
+  },
+  {
+    "num": "104138",
+    "state": "OPEN",
+    "assignees": [
+      "sobitneupane"
+    ],
+    "title": "[$175] Receipts are not showing fully when sent to receipts@expensify.com",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 10,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-17T16:21:16Z"
+  },
+  {
+    "num": "104147",
+    "state": "OPEN",
+    "assignees": [
+      "neil-marcellini",
+      "truph01"
+    ],
+    "title": "[$175] Spend-Expense appears in Spend results despite not matching the applied merchant filter",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-17T16:03:41Z"
+  },
+  {
+    "num": "104159",
+    "state": "OPEN",
+    "assignees": [
+      "ahmedGaber93"
+    ],
+    "title": "[$175] Chat - short mention with a single character followed by dot isn't recognized",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 10,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T10:30:34Z"
+  },
+  {
+    "num": "104161",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "title": "[$175] Spend -  It's not here page when opening a split expense from chat filter",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 11,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-17T16:18:12Z"
+  },
+  {
+    "num": "104162",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "title": "[$175] Expense - Report files is enable when all report contain non-reimbursable expense",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 9,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-18T15:09:06Z"
+  },
+  {
+    "num": "104165",
+    "state": "OPEN",
+    "assignees": [
+      "puneetlath",
+      "nyomanjyotisa"
+    ],
+    "title": "[$175] Bank account - Address line is not saved when adding an US bank account",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "nyomanjyotisa"
+    ],
+    "c_plus_selected": "The App-only change still loses address line 2 on staging. Could a CME investigate the backend support needed by the [revised proposal](https://github.com/Expensify/App/issues/104165#issuecomment-6245",
+    "comments_count": 17,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T10:30:24Z"
+  },
+  {
+    "num": "104176",
+    "state": "OPEN",
+    "assignees": [
+      "suneox"
+    ],
+    "title": "[$175] Filters - Vendor option is missing in filters",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 10,
+    "last_comment_author": "suneox",
+    "last_comment_date": "2026-10-19T16:09:30Z"
+  },
+  {
+    "num": "104178",
+    "state": "OPEN",
+    "assignees": [
+      "hoangzinh"
+    ],
+    "title": "[$175] mweb-New message indicator displays on self chat when open chat login on 3 sessions",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 15,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:57:34Z"
+  },
+  {
+    "num": "104218",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "title": "[$175] QuickBooks Desktop Sync Now in New Expensify repeatedly returns a stale-data error without requesting a fresh Codat refresh, while a Classic sync successfully refreshes the same connection.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 13,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-19T21:58:06Z"
+  },
+  {
+    "num": "104221",
+    "state": "OPEN",
+    "assignees": [
+      "abdulrahuman5196"
+    ],
+    "title": "[$175] Workspace admin can view card transactions from a different workspace (Y) in a shared Expensify Card program despite not being a member/admin there",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-20T15:32:25Z"
+  },
+  {
+    "num": "104231",
+    "state": "OPEN",
+    "assignees": [
+      "deetergp",
+      "abzokhattab"
+    ],
+    "title": "[$175] Rules option should not be displayed when duplicating workspace",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "abzokhattab",
+    "last_comment_date": "2026-10-19T22:11:05Z"
+  },
+  {
+    "num": "104247",
+    "state": "OPEN",
+    "assignees": [
+      "linhvovan29546"
+    ],
+    "title": "[$175] Spend- From column Is missing when filtering by From is owner account",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 19,
+    "last_comment_author": "trjExpensify",
+    "last_comment_date": "2026-10-19T20:57:29Z"
+  },
+  {
+    "num": "104262",
+    "state": "OPEN",
+    "assignees": [
+      "arosiclair",
+      "marufsharifi"
+    ],
+    "title": "[$175] Invited member is displayed after refresh the page",
+    "has_jloa": true,
+    "c_plus_reviewers": [
+      "marufsharifi"
+    ],
+    "c_plus_selected": "#### Backend Issue\n\n\nWhen we invite a `user`, the frontend creates a temporary `account ID` and `personal details`, so the member appears immediately. After the server responds, the frontend removes t",
+    "comments_count": 19,
+    "last_comment_author": "arosiclair",
+    "last_comment_date": "2026-10-20T17:42:31Z"
+  },
+  {
+    "num": "104280",
+    "state": "OPEN",
+    "assignees": [
+      "daledah"
+    ],
+    "title": "[$175] Android - Troubleshoot - App crashes after \"Insigths Page\" beta is disabled.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 17,
+    "last_comment_author": "daledah",
+    "last_comment_date": "2026-10-20T18:36:23Z"
+  },
+  {
+    "num": "104287",
+    "state": "OPEN",
+    "assignees": [
+      "nabi-ebrahimi",
+      "truph01"
+    ],
+    "title": "[$175] Search - Error and From filter dropped after entering \"group-by: reports\" on a saved search (follow-up to #89168)",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 12,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-20T18:55:38Z"
+  },
+  {
+    "num": "104299",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "title": "[$175] Search - An asterisk (*) is added after merchant in the search query",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 23,
+    "last_comment_author": "rojiphil",
+    "last_comment_date": "2026-10-20T11:08:29Z"
+  },
+  {
+    "num": "104300",
+    "state": "OPEN",
+    "assignees": [
+      "ChavdaSachin"
+    ],
+    "title": "[$175] Web - Emoji Suggestions-Irrelevant emoji suggestions displayed when typing an emoji keyword",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 14,
+    "last_comment_author": "emkhalid",
+    "last_comment_date": "2026-10-19T14:51:19Z"
+  },
+  {
+    "num": "104301",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "title": "[$175] mWeb - Concierge RHP - Swiping back doesn't close the Concierge RHP",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 18,
+    "last_comment_author": "melvin-bot",
+    "last_comment_date": "2026-10-20T11:12:53Z"
+  },
+  {
+    "num": "104302",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "title": "[$175] Workflows - The report goes directly to the over-limit approver",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 16,
+    "last_comment_author": "emkhalid",
+    "last_comment_date": "2026-10-19T15:04:18Z"
+  },
+  {
+    "num": "104307",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "title": "[$175] Report - Arrow navigation is displayed with only one expense after two splits are deleted.",
+    "has_jloa": true,
+    "c_plus_reviewers": [],
+    "c_plus_selected": null,
+    "comments_count": 28,
+    "last_comment_author": "emkhalid",
+    "last_comment_date": "2026-10-19T14:56:48Z"
+  }
+]
