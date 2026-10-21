@@ -1,0 +1,23 @@
+{
+  "number": 102730,
+  "title": "[$175] Ecard - The empty illustration is not shown after removing user admin permission",
+  "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.0-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/100667\n**Email or phone of affected tester (no customers):** applausetester+bg098oo@applause.expensifail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** macOS/chrome\n**App Component:** Other\n\n## Action Performed:\nPrecondition.\nUser A: Has Workspace with Expensify Card configured on it.\nUser A: Add user B as admin member\n\nSteps: \nAs User B\n1. Create a workspace whose currency is not USD, GBP or EUR\n2. Enable the Expensify Card feature\n3. Go to workspace > Expensify Card > View Card > Select Workspace \nAs User A: \n1. Remove user B's admin permission on workspace that has the Expensify Card configured on it.\n\n## Expected Result:\nUser B see the empty illustration after admin permission removed\n\n## Actual Result:\nUser B workspace still has access to Expensify Card\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [x] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [x] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/235d8c7f-48dd-4075-9251-7d6bc95e4407\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Julia Ponikarchuk\n> Bug ID: 7274007\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022105573983988233029\">https://www.upwork.com/jobs/~022105573983988233029</a></li>\n        <li>Upwork Job ID: 2105573983988233029</li>\n        <li>Last Price Increase: 2026-10-01</li>\n    </ul>\n</details>",
+  "comments_count": 13,
+  "last_3_comments": [
+    {
+      "author": "jayeshmangwani",
+      "body": "@jponikarchuk Right now, I\u2019m not able to proceed past the `Add your work email` page. I\u2019m getting an error for every email address I try. Do you see this page as well? If so, how are you able to get past it?\n\nhttps://github.com/user-attachments/assets/b004173f-ebdc-45a2-bd26-f7c7d3eac1b1",
+      "createdAt": "2026-10-05T06:57:03Z"
+    },
+    {
+      "author": "jponikarchuk",
+      "body": "@jayeshmangwani The issue is still reproducible with Expensify accounts\n\nhttps://github.com/user-attachments/assets/c9babeec-75b5-4db8-83e7-ad5f78ccc4a3",
+      "createdAt": "2026-10-06T07:15:01Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "@jayeshmangwani Uh oh! This issue is overdue by 2 days. Don't forget to update your issues!",
+      "createdAt": "2026-10-08T22:08:58Z"
+    }
+  ]
+}

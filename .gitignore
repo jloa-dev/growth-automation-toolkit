@@ -9,3 +9,7 @@ localbiz_repo/
 *.env
 
 
+
+expensify_app/
+repos/
+scratch/

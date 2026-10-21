@@ -1,0 +1,23 @@
+{
+  "number": 103307,
+  "title": "[$175] Gusto-Setting defaulted to \"Manager approval\" instead of \"Custom approval\"",
+  "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.4-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Unable to validate in Prod - Provide reasoning.\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/102750\n**Email or phone of affected tester (no customers):** N/A\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** Windows 11 / Chrome, iPhone 13 / iOS 27 Beta, Samsung Galaxy A52 / Android 14\n**App Component:** Workspace Settings\n\n## Action Performed:\nPreconditions: \n- logged in to a new gmail account\n- create a workspace, invite 2 members to the workspace\n\nSteps:\n1. Go to workflow in workspace setting\n2. Navigate to approval in workflow, disable and enable the approval\n3. Click edit on default workflow, add a second approver\n4. Add another approval workflow that will create 2 approvers\n5. Go to more features, enable HR\n6. Connect Gusto in HR\n7. Close the gusto sync complete RHP page\n8. Observe the approval mode\n\n## Expected Result:\nit should starts with a Custom approval setting as default\n\n## Actual Result:\nit starts with a Manager approval setting as default\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [x] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [x] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/2eb1d064-0748-426f-aeb5-4aa8fe2cc1ab\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Julia Ponikarchuk\n> Bug ID: 7279603\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022107779832826515888\">https://www.upwork.com/jobs/~022107779832826515888</a></li>\n        <li>Upwork Job ID: 2107779832826515888</li>\n        <li>Last Price Increase: 2026-10-07</li>\n    </ul>\n</details>",
+  "comments_count": 5,
+  "last_3_comments": [
+    {
+      "author": "melvin-bot",
+      "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @thelullabyy (`External`)",
+      "createdAt": "2026-10-07T10:27:23Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "Job added to Upwork: https://www.upwork.com/jobs/~022107779832826515888",
+      "createdAt": "2026-10-07T10:27:29Z"
+    },
+    {
+      "author": "yuvrajangadsingh",
+      "body": "## Proposal\n\n### Re-state problem\n\nThis is a bug, not a surface issue. After the custom workflows are created and Gusto is connected, the workspace is saved with Gusto\u2019s Manager approval mode instead of preserving Custom approval. PR #102750 is only where QA discovered the regression.\n\n### Root cause\n\nThe App renders Gusto\u2019s stored connection approval mode directly, so the Manager label means the connection was initialized with `MANAGER`. It is not a copy or selection-list issue.\n\nhttps://github.com/Expensify/App/blob/fe288f387af20cbd2fd9b51c9751ab13b9b5481e/src/pages/workspace/hr/gusto/GustoA",
+      "createdAt": "2026-10-07T20:26:14Z"
+    }
+  ]
+}

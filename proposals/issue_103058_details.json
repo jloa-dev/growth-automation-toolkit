@@ -1,0 +1,23 @@
+{
+  "number": 103058,
+  "title": "[$175] WS settings - Error appear when changing role just after adding User",
+  "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.2-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/test-runs/77022182/folder/54013438/41237088/1825018507\n**Email or phone of affected tester (no customers):** emady.syed1234+sam1@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Windows 11 / Chrome\n**App Component:** Workspace Settings\n\n## Action Performed:\n1. Open staging.new.expensify\n2. Go to WS settings > members > invite a non-existing expensify user\n3. Click on newly added user \n4. Click on Role\n\n## Expected Result:\nError should not appear.\n\n## Actual Result:\nError appear when user click on Role quickly after adding the User\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/1cf6aa63-2408-4303-9217-14e968b637ff\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Rizky Gunawan\n> Bug ID: 7277483\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022107143301856965003\">https://www.upwork.com/jobs/~022107143301856965003</a></li>\n        <li>Upwork Job ID: 2107143301856965003</li>\n        <li>Last Price Increase: 2026-10-05</li>\n    </ul>\n</details>",
+  "comments_count": 9,
+  "last_3_comments": [
+    {
+      "author": "franklincg",
+      "body": "## Proposal\n\n### Root cause\nThe Role page keeps the optimistic accountID in the route, but after AddMembersToWorkspace resolves that temporary personal-details entry is replaced. Its direct lookup then returns no login/member, so AccessOrNotFoundWrapper blocks the page. The parent Member Details page already handles this race via the #96449 optimistic-ID fallback.\n\n### Fix\nReuse that fallback in WorkspaceMemberDetailsRolePage, resolve the permanent accountID with usePersonalDetailByLogin, and use the resolved identity for permission checks, isRuleBotEnforcingRules, updateWorkspaceMembersRole, ",
+      "createdAt": "2026-10-06T06:36:16Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "@marufsharifi Whoops! This issue is 2 days overdue. Let's get this updated quick!",
+      "createdAt": "2026-10-08T22:10:05Z"
+    },
+    {
+      "author": "marufsharifi",
+      "body": "checking this today. ",
+      "createdAt": "2026-10-09T09:44:26Z"
+    }
+  ]
+}

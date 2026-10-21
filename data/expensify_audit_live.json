@@ -1,0 +1,1363 @@
+{
+  "102072": {
+    "title": "[$250] mWeb - Sign out on the Account page is covered by the debug indicator banner and cannot be scrolled into view.",
+    "state": "OPEN",
+    "assignees": [
+      "jasperhuangg",
+      "FitseTLT"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Help Wanted",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 113,
+    "cplus_review": null,
+    "last_comment_author": "RajGahoi"
+  },
+  "102437": {
+    "title": "[$250] 2FA - User admin is redirected to NewDot instead of completing the OldDot 2FA flow for Xero",
+    "state": "CLOSED",
+    "assignees": [
+      "madmax330",
+      "huult"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 56,
+    "cplus_review": {
+      "author": "huult",
+      "body": "At 0:12 in the ticket video, I can see QA clicking \u201cClear Cache and Restart,\u201d which makes the \u201cSwitch to Expensify Classic\u201d button appear briefly and allows them to click it. However, the test account"
+    },
+    "last_comment_author": "madmax330"
+  },
+  "102525": {
+    "title": "[$250] To do - The employee held report displays in To do tab",
+    "state": "OPEN",
+    "assignees": [
+      "stitesExpensify",
+      "QichenZhu"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 122,
+    "cplus_review": {
+      "author": "QichenZhu",
+      "body": "> Before [#100784](https://github.com/Expensify/App/pull/100784) the patch only worked because the held report happened to win the walk.\n\nI agree with @preston-56's analysis that the behavior before P"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "102683": {
+    "title": "[$175] Company card nicknames don\u2019t show in the Spend page Card filter",
+    "state": "OPEN",
+    "assignees": [
+      "ChavdaSachin"
+    ],
+    "labels": [
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "102730": {
+    "title": "[$175] Ecard - The empty illustration is not shown after removing user admin permission",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 20,
+    "cplus_review": null,
+    "last_comment_author": "jayeshmangwani"
+  },
+  "102734": {
+    "title": "[$175] Member Security - UI does not reflect that the unlock request was submitted.",
+    "state": "OPEN",
+    "assignees": [
+      "dubielzyk-expensify",
+      "marufsharifi"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Design",
+      "Bug"
+    ],
+    "comments_count": 26,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "102792": {
+    "title": "[$175] Inbox shows RBR and Fix for violations on submitted reports that Home and Spend correctly ignore",
+    "state": "OPEN",
+    "assignees": [
+      "MonilBhavsar",
+      "brunovjk",
+      "dukenv0307"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "102868": {
+    "title": "[$175] Export to-do omits reports that Search returns for `action:export`",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "situchan",
+      "dukenv0307"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Monthly",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "dukenv0307"
+  },
+  "103058": {
+    "title": "[$175] WS settings - Error appear when changing role just after adding User",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": null,
+    "last_comment_author": "marufsharifi"
+  },
+  "103063": {
+    "title": "[$175] Navigation - View button from email navigates to WS chat but not the specific expense",
+    "state": "OPEN",
+    "assignees": [
+      "Beamanator",
+      "gijoe0295"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 14,
+    "cplus_review": {
+      "author": "gijoe0295",
+      "body": "Backend bug. I think email link parameter mismatch\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed\n\n"
+    },
+    "last_comment_author": "Beamanator"
+  },
+  "103156": {
+    "title": "[$175] Offline Bank Unlock Doesn\u2019t Open Concierge",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 10,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103183": {
+    "title": "[$175] Transaction's tag isn't updated correctly when selecting a tag contain `\\:`",
+    "state": "OPEN",
+    "assignees": [
+      "bernhardoj"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 23,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103198": {
+    "title": "[$175] Make the remove/unassign card warning clearer about which expenses get deleted",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "joekaufmanexpensify",
+      "thelullabyy"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly"
+    ],
+    "comments_count": 21,
+    "cplus_review": {
+      "author": "thelullabyy",
+      "body": "@MelvinBot's [proposal](https://github.com/Expensify/App/issues/103198#issuecomment-6066775296) LGTM\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed"
+    },
+    "last_comment_author": "mountiny"
+  },
+  "103214": {
+    "title": "[$175] The new avatar is not reflected after uploading new photo to the profile",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "emkhalid"
+  },
+  "103216": {
+    "title": "[$175] New Expensify defaults a manual expense to my Payment currency, not to the currency of the selected default workspace.",
+    "state": "OPEN",
+    "assignees": [
+      "jasperhuangg",
+      "FitseTLT"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": {
+      "author": "FitseTLT",
+      "body": "@MelvinBot implement\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed"
+    },
+    "last_comment_author": "emkhalid"
+  },
+  "103240": {
+    "title": "[$50] DEV - Duplicate key error showing up in the console",
+    "state": "OPEN",
+    "assignees": [
+      "eVoloshchak"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Needs Reproduction",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103244": {
+    "title": "[$175] Onboarding - Product update / feature announcements still shown to employees invited to a workspace (should be removed)",
+    "state": "OPEN",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 19,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103245": {
+    "title": "[$175] Agent: Agent page stuck in infinity loading after switch to Copilot",
+    "state": "OPEN",
+    "assignees": [
+      "mananjadhav"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "mananjadhav"
+  },
+  "103307": {
+    "title": "[$175] Gusto-Setting defaulted to \"Manager approval\" instead of \"Custom approval\"",
+    "state": "OPEN",
+    "assignees": [
+      "MonilBhavsar",
+      "thelullabyy"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": {
+      "author": "thelullabyy",
+      "body": "It looks like BE issue to me\n\nNeeds help from bc-team/internal team \n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "103324": {
+    "title": "[$175] Domains- Error displayed when user attempt to verify Domain",
+    "state": "CLOSED",
+    "assignees": [
+      "mountiny",
+      "rayane-d",
+      "brunovjk"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 10,
+    "cplus_review": null,
+    "last_comment_author": "rayane-d"
+  },
+  "103326": {
+    "title": "[$175] When offline Grey text with \"Upload Attachment\" doesn't appear during uploading attachment",
+    "state": "OPEN",
+    "assignees": [
+      "TaduJR"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103341": {
+    "title": "[CFI] [$175] Show the Reimbursable toggle on company card expenses when the card feed is set to Do Not Force",
+    "state": "OPEN",
+    "assignees": [
+      "blimpich",
+      "joekaufmanexpensify",
+      "dmkt9"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "NewFeature"
+    ],
+    "comments_count": 27,
+    "cplus_review": {
+      "author": "dmkt9",
+      "body": "MelvinBot's [proposal](https://github.com/Expensify/App/issues/103341#issuecomment-6166418045) looks good to me\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "103345": {
+    "title": "[$175] User Settings - App crashes when adding a new contact with a \"%\" character in the email",
+    "state": "OPEN",
+    "assignees": [
+      "pecanoro",
+      "hoangzinh"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": {
+      "author": "hoangzinh",
+      "body": "MelvinBot's proposal LGTM\n\nLink to his proposal https://github.com/Expensify/App/issues/103345#issuecomment-6039595978\n\n\ud83c\udf80\ud83d\udc40\ud83c\udf80 C+ reviewed"
+    },
+    "last_comment_author": "MelvinBot"
+  },
+  "103349": {
+    "title": "[$175] Android - Expensify app is not available in the share sheet when sharing an HEVC video file",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103355": {
+    "title": "[$175] Expense members input always shown",
+    "state": "CLOSED",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "dubielzyk-expensify"
+  },
+  "103403": {
+    "title": "[$250] Android/iOS-Offline-Navigation arrows disappear after deleted expense syncs online",
+    "state": "OPEN",
+    "assignees": [
+      "shubham1206agra"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Help Wanted",
+      "Bug"
+    ],
+    "comments_count": 35,
+    "cplus_review": null,
+    "last_comment_author": "lopezpope"
+  },
+  "103406": {
+    "title": "[$175] Expensify Card - No card is visible in archived workspace",
+    "state": "OPEN",
+    "assignees": [
+      "aimane-chnaif"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 14,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103488": {
+    "title": "[Due for payment 2026-10-23] [$175] Make the GPS distance counter label a fully localized phrase",
+    "state": "OPEN",
+    "assignees": [
+      "chuckdries",
+      "ahmedGaber93"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Improvement",
+      "Overdue"
+    ],
+    "comments_count": 22,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103492": {
+    "title": "[$175] Workspaces - Unable to remove the RBR on archived Workspace",
+    "state": "OPEN",
+    "assignees": [
+      "deetergp",
+      "cretadn22"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 16,
+    "cplus_review": {
+      "author": "cretadn22",
+      "body": "@MelvinBot's [proposal](https://github.com/Expensify/App/issues/103492#issuecomment-6064615154) looks good to me\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed\n\n"
+    },
+    "last_comment_author": "deetergp"
+  },
+  "103493": {
+    "title": "[$175] Dragging and dropping a receipt onto an existing receipt image on an expense behaves inconsistently.",
+    "state": "OPEN",
+    "assignees": [
+      "truph01"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 23,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103497": {
+    "title": "[$175] Composer - Input field renders at two-line height before typing starts",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Needs Reproduction",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103531": {
+    "title": "[$250] iOS - Attachments - Password input of protected PDF closes after rotating to landscape",
+    "state": "OPEN",
+    "assignees": [
+      "huult",
+      "grgia",
+      "nabi-ebrahimi"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 56,
+    "cplus_review": null,
+    "last_comment_author": "grgia"
+  },
+  "103533": {
+    "title": "[$175] Concierge - Image appears cut on its preview on the Concierge RHP",
+    "state": "OPEN",
+    "assignees": [
+      "roryabraham",
+      "abzokhattab"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 22,
+    "cplus_review": {
+      "author": "abzokhattab",
+      "body": "Going forward with melvin proposal as it fixes the root cause\n\n:ribbon: :eyes: :ribbon: C+ reviewed"
+    },
+    "last_comment_author": "MelvinBot"
+  },
+  "103538": {
+    "title": "Wallet - Bank account name reverts to default after refreshing the page",
+    "state": "CLOSED",
+    "assignees": [
+      "NicolasBonet",
+      "shubham1206agra"
+    ],
+    "labels": [
+      "Engineering",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": null,
+    "last_comment_author": "NicolasBonet"
+  },
+  "103593": {
+    "title": "[Due for payment 2026-10-22] [$175] Android - Preview of taken photo is not displayed before sending",
+    "state": "OPEN",
+    "assignees": [
+      "hungvu193",
+      "blimpich",
+      "nkdengineer"
+    ],
+    "labels": [
+      "Daily",
+      "Internal",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103595": {
+    "title": "[$175] [Auto] - Android - Public Room - Error appears when opening public room as anon user",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103619": {
+    "title": "[$175] Attachments - Image flashes briefly after uploading",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "labels": [
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "marufsharifi"
+  },
+  "103648": {
+    "title": "[$175] Image attachment - Pinch-to-zoom stops working after reaching maximum zoom",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103662": {
+    "title": "[$175] Native share - File size too large error is not displayed",
+    "state": "OPEN",
+    "assignees": [
+      "NicolasBonet",
+      "Pujan92"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 29,
+    "cplus_review": {
+      "author": "Pujan92",
+      "body": "It seems to be fixed in https://github.com/Expensify/App/pull/103623, but we can avoid getPlatform usage there and rename file to `index.ios.ts` to follow guidelines.\n\nhttps://github.com/Expensify/App"
+    },
+    "last_comment_author": "MelvinBot"
+  },
+  "103663": {
+    "title": "Expense - Unable to enter negative sign in tax amount field",
+    "state": "CLOSED",
+    "assignees": [
+      "grgia"
+    ],
+    "labels": [
+      "Reviewing",
+      "Engineering",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 11,
+    "cplus_review": null,
+    "last_comment_author": "grgia"
+  },
+  "103664": {
+    "title": "Expense - Tax amount field is not negative when amount is negative",
+    "state": "CLOSED",
+    "assignees": [
+      "grgia"
+    ],
+    "labels": [
+      "Reviewing",
+      "Engineering",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "grgia"
+  },
+  "103671": {
+    "title": "[Due for payment 2026-10-21] [QA Retest & Close] Expense - Tax amount is not negative after merging expenses with negative tax amount offline",
+    "state": "CLOSED",
+    "assignees": [
+      "AndrewGable",
+      "grgia",
+      "bernhardoj"
+    ],
+    "labels": [
+      "Reviewing",
+      "Engineering",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 31,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103721": {
+    "title": "[$175] 103421 - Per Diem - Not here page after going back online when the destination loads",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 10,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103726": {
+    "title": "[Due for payment 2026-10-23] [$175] Global reimbursement-Registration number is prefilled for second BA global reimbursement",
+    "state": "OPEN",
+    "assignees": [
+      "MariaHCD",
+      "cretadn22"
+    ],
+    "labels": [
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": null,
+    "last_comment_author": "cretadn22"
+  },
+  "103759": {
+    "title": "[$175] Threads - Nothing happens in LHN when message is mark as unread",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103764": {
+    "title": "[$175] [Android] \"Update Required\" shown after updating the app because the startup ReconnectApp prefetch sends the old `appversion`",
+    "state": "OPEN",
+    "assignees": [
+      "eVoloshchak",
+      "VickyStash",
+      "mountiny"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 11,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103770": {
+    "title": "[$175] Animations for pages in account settings are stuck",
+    "state": "CLOSED",
+    "assignees": [
+      "marcaaron",
+      "nyomanjyotisa"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 11,
+    "cplus_review": {
+      "author": "nyomanjyotisa",
+      "body": "Web illustrations are intentionally static in [#76336](https://github.com/Expensify/App/pull/76336). Confirmed on staging macOS Chrome. I think we can close this as expected behavior.\n\n\ud83c\udf80\ud83d\udc40\ud83c\udf80 C+ reviewed"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "103775": {
+    "title": "[$175] [Sentry: APP-KT0] Search bulk actions crash reading undefined search results data",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "ikevin127"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": {
+      "author": "ikevin127",
+      "body": "### Sentry findings (APP-KT0):\n- The crash line is confirmed. It's the `selectedMergeReports` lookup, now at `src/hooks/useSearchBulkActions.ts:2936` on main. It has 107 events from 98 users.\n- It goe"
+    },
+    "last_comment_author": "MelvinBot"
+  },
+  "103776": {
+    "title": "[$175] [Sentry: APP-JQB] FlashList \"right operand of 'in' is not an object\" in participant selector",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "thelullabyy"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103777": {
+    "title": "[$175] [Sentry: APP-KC9] Navigation crash: 'filter' of undefined in getStateForRouteNamesChange",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "eh2077"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103778": {
+    "title": "[$175] [Sentry: APP-M66] Android: ReactModalHostView updateSystemAppearance \"dialog must exist\"",
+    "state": "OPEN",
+    "assignees": [
+      "mountiny",
+      "cretadn22"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "cretadn22"
+  },
+  "103779": {
+    "title": "[$175] TriNet - Missing Final Approver when user select Custom Approval",
+    "state": "OPEN",
+    "assignees": [
+      "ZhenjaHorbach"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 8,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103802": {
+    "title": "[$175] Expense - Edit split when confirming delete expense of a split per diem expense",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103831": {
+    "title": "[$175] Netsuite - \"This site can\u2019t be reached\" error occurs if incorrect credentials is entered",
+    "state": "OPEN",
+    "assignees": [
+      "sobitneupane"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103838": {
+    "title": "[$175] The tab bar does not visible above the spinner",
+    "state": "OPEN",
+    "assignees": [
+      "situchan"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103863": {
+    "title": "[$175] Rules - Category that has already been selected in existing rule can be selected again",
+    "state": "CLOSED",
+    "assignees": [
+      "luacmartins",
+      "rushatgabhane",
+      "JS00001",
+      "Krishna2323"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Engineering",
+      "Hourly",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": null,
+    "last_comment_author": "kavimuru"
+  },
+  "103875": {
+    "title": "[$175] Pressing Delete while selecting text inside a composer duplicates the content instead of clearing it.",
+    "state": "OPEN",
+    "assignees": [
+      "FitseTLT"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Needs Reproduction",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103876": {
+    "title": "[$175] Amex feed error persists after reconnect until manual scrape",
+    "state": "OPEN",
+    "assignees": [
+      "TaduJR"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug",
+      "#feeds-2026"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103898": {
+    "title": "[Due for payment 2026-10-23] [$175] Improvement: Update copy in empty screen of creating Per diem expense flow",
+    "state": "OPEN",
+    "assignees": [
+      "neil-marcellini",
+      "Eskalifer1"
+    ],
+    "labels": [
+      "External",
+      "Weekly",
+      "Improvement",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103908": {
+    "title": "[$175] Infinite loading or not here page found page shown when a submitted expense opens",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103931": {
+    "title": "[$175] Fix flakey SessionTest",
+    "state": "OPEN",
+    "assignees": [
+      "truph01"
+    ],
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly"
+    ],
+    "comments_count": 17,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "103935": {
+    "title": "[$175] Report fields - Disabled list type report field appears on report after deletion",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "103944": {
+    "title": "[Due for payment 2026-10-23] [$175] Expense - After unreporting expense, arrows are shown on report which lead to self DM",
+    "state": "OPEN",
+    "assignees": [
+      "carlosmiceli",
+      "MelvinBot",
+      "Eskalifer1"
+    ],
+    "labels": [
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "comments_count": 31,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104113": {
+    "title": "[$175] Scan - Expense Amount Shows 00 While Offline",
+    "state": "OPEN",
+    "assignees": [
+      "ahmedGaber93"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 11,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104138": {
+    "title": "[$175] Receipts are not showing fully when sent to receipts@expensify.com",
+    "state": "OPEN",
+    "assignees": [
+      "sobitneupane"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 10,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104147": {
+    "title": "[$175] Spend-Expense appears in Spend results despite not matching the applied merchant filter",
+    "state": "OPEN",
+    "assignees": [
+      "neil-marcellini",
+      "truph01"
+    ],
+    "labels": [
+      "External",
+      "Engineering",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 18,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104161": {
+    "title": "[$175] Spend -  It's not here page when opening a split expense from chat filter",
+    "state": "OPEN",
+    "assignees": [
+      "mkhutornyi"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 11,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104162": {
+    "title": "[$175] Expense - Report files is enable when all report contain non-reimbursable expense",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104165": {
+    "title": "[$175] Bank account - Address line is not saved when adding an US bank account",
+    "state": "OPEN",
+    "assignees": [
+      "puneetlath",
+      "nyomanjyotisa"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 15,
+    "cplus_review": {
+      "author": "nyomanjyotisa",
+      "body": "The App-only change still loses address line 2 on staging. Could a CME investigate the backend support needed by the [revised proposal](https://github.com/Expensify/App/issues/104165#issuecomment-6245"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "104218": {
+    "title": "[$175] QuickBooks Desktop Sync Now in New Expensify repeatedly returns a stale-data error without requesting a fresh Codat refresh, while a Classic sync successfully refreshes the same connection.",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 12,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104221": {
+    "title": "[$175] Workspace admin can view card transactions from a different workspace (Y) in a shared Expensify Card program despite not being a member/admin there",
+    "state": "OPEN",
+    "assignees": [
+      "abdulrahuman5196"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104231": {
+    "title": "[$175] Rules option should not be displayed when duplicating workspace",
+    "state": "OPEN",
+    "assignees": [
+      "deetergp",
+      "abzokhattab"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 16,
+    "cplus_review": {
+      "author": "abzokhattab",
+      "body": "Thanks, all, for your proposals. \n\nGoing with Melvin's proposal, as it fixes the bug\n\n\n:ribbon: :eyes: :ribbon: C+ reviewed"
+    },
+    "last_comment_author": "melvin-bot"
+  },
+  "104247": {
+    "title": "[$175] Spend- From column Is missing when filtering by From is owner account",
+    "state": "OPEN",
+    "assignees": [
+      "linhvovan29546"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 16,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104262": {
+    "title": "[$175] Invited member is displayed after refresh the page",
+    "state": "OPEN",
+    "assignees": [
+      "marufsharifi"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104280": {
+    "title": "[$175] Android - Troubleshoot - App crashes after \"Insigths Page\" beta is disabled.",
+    "state": "OPEN",
+    "assignees": [
+      "daledah"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 14,
+    "cplus_review": null,
+    "last_comment_author": "MelvinBot"
+  },
+  "104287": {
+    "title": "[$175] Search - Error and From filter dropped after entering \"group-by: reports\" on a saved search (follow-up to #89168)",
+    "state": "OPEN",
+    "assignees": [
+      "truph01"
+    ],
+    "labels": [
+      "Daily",
+      "Overdue",
+      "Bug"
+    ],
+    "comments_count": 9,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104299": {
+    "title": "[$175] Search - An asterisk (*) is added after merchant in the search query",
+    "state": "OPEN",
+    "assignees": [
+      "rojiphil"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 19,
+    "cplus_review": null,
+    "last_comment_author": "HiepPP"
+  },
+  "104300": {
+    "title": "[$175] Web - Emoji Suggestions-Irrelevant emoji suggestions displayed when typing an emoji keyword",
+    "state": "OPEN",
+    "assignees": [
+      "ChavdaSachin"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104301": {
+    "title": "[$175] mWeb - Concierge RHP - Swiping back doesn't close the Concierge RHP",
+    "state": "OPEN",
+    "assignees": [
+      "jayeshmangwani"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 14,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104302": {
+    "title": "[$175] Workflows - The report goes directly to the over-limit approver",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 13,
+    "cplus_review": null,
+    "last_comment_author": "melvin-bot"
+  },
+  "104307": {
+    "title": "[$175] Report - Arrow navigation is displayed with only one expense after two splits are deleted.",
+    "state": "OPEN",
+    "assignees": [
+      "Krishna2323"
+    ],
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "comments_count": 22,
+    "cplus_review": null,
+    "last_comment_author": "mkhutornyi"
+  }
+}

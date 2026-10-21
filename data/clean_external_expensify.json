@@ -1,0 +1,558 @@
+[
+  {
+    "number": "103156",
+    "title": "[$175] Offline Bank Unlock Doesn\u2019t Open Concierge",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-06",
+    "url": "https://github.com/Expensify/App/issues/103156"
+  },
+  {
+    "number": "103075",
+    "title": "Reports/Search filter times out when querying several years of history",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103075"
+  },
+  {
+    "number": "103045",
+    "title": "[$175] iOS - User lands in ND when invited to the workspace via OD",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103045"
+  },
+  {
+    "number": "103043",
+    "title": "[$175] Chat - User does not scrolled to the bottom of the chat when press on new messages",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103043"
+  },
+  {
+    "number": "103036",
+    "title": "[$175] Threads -Composer isn't focused after empty the message navigate to another report and return",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103036"
+  },
+  {
+    "number": "102920",
+    "title": "[$175] Android: Migrate to Android Contact Picker and remove READ_CONTACTS",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-02",
+    "url": "https://github.com/Expensify/App/issues/102920"
+  },
+  {
+    "number": "102873",
+    "title": "[$175] Workflows - No changelog generated for adding approval workflow with report amount limit",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-02",
+    "url": "https://github.com/Expensify/App/issues/102873"
+  },
+  {
+    "number": "102740",
+    "title": "[$175] [Sentry: APP-MF6] NSDictionary setObject:forKeyedSubscript: key cannot be nil",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102740"
+  },
+  {
+    "number": "102685",
+    "title": "[$175] Users are unable to add all AmEx cards through the AmEx Direct Connection when multiple AmEx sign-ins return card lists that share the same main card.",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-09-30",
+    "url": "https://github.com/Expensify/App/issues/102685"
+  },
+  {
+    "number": "102684",
+    "title": "[$175] Payment option required for open balance on New Expensify",
+    "amount": "$175 USD",
+    "props_count": 0,
+    "proposals": [],
+    "created": "2026-09-30",
+    "url": "https://github.com/Expensify/App/issues/102684"
+  },
+  {
+    "number": "103326",
+    "title": "[$175] When offline Grey text with \"Upload Attachment\" doesn't appear during uploading attachment",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-07",
+    "url": "https://github.com/Expensify/App/issues/103326"
+  },
+  {
+    "number": "103307",
+    "title": "[$175] Gusto-Setting defaulted to \"Manager approval\" instead of \"Custom approval\"",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-07",
+    "url": "https://github.com/Expensify/App/issues/103307"
+  },
+  {
+    "number": "103215",
+    "title": "[$175] Receipt preview displays 403 forbidden error when scan/per diem expense via Old dot",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-06",
+    "url": "https://github.com/Expensify/App/issues/103215"
+  },
+  {
+    "number": "103198",
+    "title": "[$175] Make the remove/unassign card warning clearer about which expenses get deleted",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-06",
+    "url": "https://github.com/Expensify/App/issues/103198"
+  },
+  {
+    "number": "103067",
+    "title": "[$175] Invite - Custom message does not render correctly on email",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103067"
+  },
+  {
+    "number": "103063",
+    "title": "[$175] Navigation - View button from email navigates to WS chat but not the specific expense",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "yuvrajangadsingh"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103063"
+  },
+  {
+    "number": "102868",
+    "title": "[$175] Export to-do omits reports that Search returns for `action:export`",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "camesenin"
+    ],
+    "created": "2026-10-02",
+    "url": "https://github.com/Expensify/App/issues/102868"
+  },
+  {
+    "number": "102792",
+    "title": "[$175] Inbox shows RBR and Fix for violations on submitted reports that Home and Spend correctly ignore",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "camesenin"
+    ],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102792"
+  },
+  {
+    "number": "102743",
+    "title": "[$175] [Sentry: APP-2AP] RNSNavigationController pushes same screen instance twice",
+    "amount": "$175 USD",
+    "props_count": 1,
+    "proposals": [
+      "jamarnat12"
+    ],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102743"
+  },
+  {
+    "number": "103479",
+    "title": "[$175] Expenses tab: Pay does nothing on a non-reimbursable-only expense",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "yuvrajangadsingh",
+      "camesenin"
+    ],
+    "created": "2026-10-08",
+    "url": "https://github.com/Expensify/App/issues/103479"
+  },
+  {
+    "number": "103341",
+    "title": "[$175] Show the Reimbursable toggle on company card expenses when the card feed is set to Do Not Force",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "yuvrajangadsingh",
+      "ashusatyarthi-wq"
+    ],
+    "created": "2026-10-07",
+    "url": "https://github.com/Expensify/App/issues/103341"
+  },
+  {
+    "number": "103245",
+    "title": "[$175] Agent: Agent page stuck in infinity loading after switch to Copilot",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "yuvrajangadsingh",
+      "bonnhatnguyen"
+    ],
+    "created": "2026-10-06",
+    "url": "https://github.com/Expensify/App/issues/103245"
+  },
+  {
+    "number": "103148",
+    "title": "[$175] Avoid repeating full search and filtering work while typing in SearchRouter",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "mohamad-shafeez",
+      "camesenin"
+    ],
+    "created": "2026-10-06",
+    "url": "https://github.com/Expensify/App/issues/103148"
+  },
+  {
+    "number": "103059",
+    "title": "[$175] Distance receipts: Hide the \"Page X of Y\" indicator",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "kushu7",
+      "camesenin"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103059"
+  },
+  {
+    "number": "103058",
+    "title": "[$175] WS settings - Error appear when changing role just after adding User",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "camesenin",
+      "franklincg"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103058"
+  },
+  {
+    "number": "102943",
+    "title": "[$175] 102699 - Xero - Vendor no longer valid is displayed in Supplier row when archived in Xero",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "CodeDeityX",
+      "kushu7"
+    ],
+    "created": "2026-10-04",
+    "url": "https://github.com/Expensify/App/issues/102943"
+  },
+  {
+    "number": "102888",
+    "title": "[$175] Dependent Tags only accept one uploaded file in New Expensify, preventing customers from uploading more than 50,000 tag rows",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "bonnhatnguyen",
+      "tuananh4865"
+    ],
+    "created": "2026-10-02",
+    "url": "https://github.com/Expensify/App/issues/102888"
+  },
+  {
+    "number": "102734",
+    "title": "[$175] Member Security - UI does not reflect that the unlock request was submitted.",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "camesenin",
+      "bonnhatnguyen"
+    ],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102734"
+  },
+  {
+    "number": "102730",
+    "title": "[$175] Ecard - The empty illustration is not shown after removing user admin permission",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "camesenin",
+      "bonnhatnguyen"
+    ],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102730"
+  },
+  {
+    "number": "102683",
+    "title": "[$175] Company card nicknames don\u2019t show in the Spend page Card filter",
+    "amount": "$175 USD",
+    "props_count": 2,
+    "proposals": [
+      "camesenin",
+      "bonnhatnguyen"
+    ],
+    "created": "2026-09-30",
+    "url": "https://github.com/Expensify/App/issues/102683"
+  },
+  {
+    "number": "103619",
+    "title": "[$175] Attachments - Image flashes briefly after uploading",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "yuvrajangadsingh",
+      "khizzcr7",
+      "janiya2"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103619"
+  },
+  {
+    "number": "103480",
+    "title": "[$175] Spend - Deleted card expenses display with no owner (From column)",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "yuvrajangadsingh",
+      "strzj1317",
+      "ashusatyarthi-wq"
+    ],
+    "created": "2026-10-08",
+    "url": "https://github.com/Expensify/App/issues/103480"
+  },
+  {
+    "number": "103478",
+    "title": "[$175] Workflows - First time set date for submission frequency to Monthly, the date change to the 1st",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "ashusatyarthi-wq",
+      "krsnak",
+      "janiya2"
+    ],
+    "created": "2026-10-08",
+    "url": "https://github.com/Expensify/App/issues/103478"
+  },
+  {
+    "number": "103444",
+    "title": "[$175] Search - Report submit errors show as a separate RBR outside the report row",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "yuvrajangadsingh",
+      "ashusatyarthi-wq",
+      "RajGahoi"
+    ],
+    "created": "2026-10-08",
+    "url": "https://github.com/Expensify/App/issues/103444"
+  },
+  {
+    "number": "103066",
+    "title": "[$175] Workspace Members - Error message does not match the actual field name when importing CSV",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "camesenin",
+      "franklincg",
+      "laveshfonix"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103066"
+  },
+  {
+    "number": "103030",
+    "title": "[$175] Search-\"Multiple tax export\" is suggested after typing for \"..USD-only workspace..\"",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "camesenin",
+      "franklincg",
+      "VitorBernalRodrigues"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/103030"
+  },
+  {
+    "number": "102956",
+    "title": "[$175] Android - Concierge opens before onboarding is completed",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "amar-sheikh",
+      "kushu7",
+      "camesenin"
+    ],
+    "created": "2026-10-05",
+    "url": "https://github.com/Expensify/App/issues/102956"
+  },
+  {
+    "number": "102878",
+    "title": "[$175] Rules - Category tax rule created offline is not grayed out.",
+    "amount": "$175 USD",
+    "props_count": 3,
+    "proposals": [
+      "camesenin",
+      "amar-sheikh",
+      "tuananh4865"
+    ],
+    "created": "2026-10-02",
+    "url": "https://github.com/Expensify/App/issues/102878"
+  },
+  {
+    "number": "103624",
+    "title": "[$175] Search - \"has:submitted violation\" filter results show violations only after clicking into each expense individually",
+    "amount": "$175 USD",
+    "props_count": 4,
+    "proposals": [
+      "ashusatyarthi-wq",
+      "camesenin",
+      "khizzcr7",
+      "bonnhatnguyen"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103624"
+  },
+  {
+    "number": "103578",
+    "title": "[$175] Expensify card - Sorting/display options are missing on Expensify card page",
+    "amount": "$175 USD",
+    "props_count": 4,
+    "proposals": [
+      "yuvrajangadsingh",
+      "krsnak",
+      "RajGahoi",
+      "taieddie"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103578"
+  },
+  {
+    "number": "103576",
+    "title": "[$175] Attachments - Chat scroll bar moves  by arrow keys when PDF is opened",
+    "amount": "$175 USD",
+    "props_count": 4,
+    "proposals": [
+      "yuvrajangadsingh",
+      "camesenin",
+      "krsnak",
+      "taieddie"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103576"
+  },
+  {
+    "number": "103430",
+    "title": "[$175] Choosing a large file to share doesn't redirect App to Home after attach error msg appears",
+    "amount": "$175 USD",
+    "props_count": 4,
+    "proposals": [
+      "yuvrajangadsingh",
+      "krsnak",
+      "RajGahoi",
+      "camesenin"
+    ],
+    "created": "2026-10-08",
+    "url": "https://github.com/Expensify/App/issues/103430"
+  },
+  {
+    "number": "103622",
+    "title": "[$175] Filters - Expense \"From\" filter pill is cleared when navigating to Workspace via Go to room > Header > Go to workspace",
+    "amount": "$175 USD",
+    "props_count": 5,
+    "proposals": [
+      "yuvrajangadsingh",
+      "ashusatyarthi-wq",
+      "krsnak",
+      "khizzcr7",
+      "ahmetberkinc"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103622"
+  },
+  {
+    "number": "102742",
+    "title": "[$250] [Sentry: APP-MDA] FragmentManager race in legacy OldDot navigation (yapl)",
+    "amount": "$250 USD",
+    "props_count": 15,
+    "proposals": [
+      "Dip-G-Git",
+      "samranahm",
+      "dilshodmackbook-sketch",
+      "alazarlemma02",
+      "yusufdeveloper2903",
+      "SARAMALI15792",
+      "xmejl",
+      "phuchoang23",
+      "abdullahitijani",
+      "camesenin",
+      "neerajbachani",
+      "quantumchain-core",
+      "Abdukhamid000",
+      "amar-sheikh",
+      "TemirlanGithubT700"
+    ],
+    "created": "2026-10-01",
+    "url": "https://github.com/Expensify/App/issues/102742"
+  },
+  {
+    "number": "103650",
+    "title": "[CFI] [$250] Spend - Add a Paid column option to the reports table",
+    "amount": "$250 USD",
+    "props_count": 25,
+    "proposals": [
+      "yuvrajangadsingh",
+      "wildan-m",
+      "KJ21-ENG",
+      "Dip-G-Git",
+      "samranahm",
+      "nabi-ebrahimi",
+      "yusufdeveloper2903",
+      "yinkaadx",
+      "sam5235",
+      "neerajbachani",
+      "RajGahoi",
+      "camesenin",
+      "Codesensitive",
+      "laveshfonix",
+      "bonnhatnguyen",
+      "Rodrigoue9",
+      "Yuosefabuolim",
+      "SARAMALI15792",
+      "phuchoang23",
+      "kasyap1234",
+      "dilshodmackbook-sketch",
+      "jdymitarai",
+      "sudal40019",
+      "taieddie",
+      "leoliu201204-cmyk"
+    ],
+    "created": "2026-10-09",
+    "url": "https://github.com/Expensify/App/issues/103650"
+  }
+]

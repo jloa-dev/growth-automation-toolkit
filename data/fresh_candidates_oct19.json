@@ -1,0 +1,592 @@
+[
+  {
+    "number": "104127",
+    "title": "[$175] Android - Concierge does not change category in report when asked in natural language",
+    "price": "175",
+    "comp_count": 0,
+    "proposers": [],
+    "created_at": "2026-10-15",
+    "comment_count": 4
+  },
+  {
+    "number": "103965",
+    "title": "[$175] Import contacts-Import contacts option is not displayed when tapping Start chat",
+    "price": "175",
+    "comp_count": 0,
+    "proposers": [],
+    "created_at": "2026-10-14",
+    "comment_count": 5
+  },
+  {
+    "number": "104159",
+    "title": "[$175] Chat - short mention with a single character followed by dot isn't recognized",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 6
+  },
+  {
+    "number": "104176",
+    "title": "[$175] Filters - Vendor option is missing in filters",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "camesenin"
+    ],
+    "created_at": "2026-10-16",
+    "comment_count": 7
+  },
+  {
+    "number": "104000",
+    "title": "[$175] Agent - Issue moving expenses to a report (Agent tool failure)",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "j3ffffff"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 7
+  },
+  {
+    "number": "103957",
+    "title": "[$175] WS - \"This member already belongs to another approval workflow\" message does not appear",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "haiquywork"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 7
+  },
+  {
+    "number": "103616",
+    "title": "[$175] [Performance] Onyx: skip unchanged cached objects when removing nested nulls on set",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "haiquywork"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 7
+  },
+  {
+    "number": "104164",
+    "title": "[$175] When tapping back button in profile not found page, the entire module closes",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "camesenin"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 8
+  },
+  {
+    "number": "103822",
+    "title": "[$175] Web - Workspace - Can't move focus to the search bar by arrow keys when invite member",
+    "price": "175",
+    "comp_count": 1,
+    "proposers": [
+      "taieddie"
+    ],
+    "created_at": "2026-10-13",
+    "comment_count": 12
+  },
+  {
+    "number": "104093",
+    "title": "[$175] Onboarding - #admins room opens in RHP after joining a workspace with the Join my company workspace intent",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "camesenin",
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 9
+  },
+  {
+    "number": "103993",
+    "title": "[$175] Chat - Downloaded video uses storage hash instead of uploaded file name",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "camesenin",
+      "GhulamMustufa"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 10
+  },
+  {
+    "number": "103774",
+    "title": "[$175] [Sentry: APP-J60] Cannot read 'submitsTo' of null in getSuggestedSearchesVisibility",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "camesenin",
+      "haiquywork"
+    ],
+    "created_at": "2026-10-12",
+    "comment_count": 12
+  },
+  {
+    "number": "103961",
+    "title": "[$175] Web - Chat -Browser back navigates to previous action instead of previous report",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "camesenin",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 14
+  },
+  {
+    "number": "103824",
+    "title": "[$175] Native share - The app crashes after sharing a large video file (>125 MB)",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "taieddie",
+      "j3ffffff"
+    ],
+    "created_at": "2026-10-13",
+    "comment_count": 14
+  },
+  {
+    "number": "104216",
+    "title": "[$175] The From filter in New Expensify cannot find a removed workspace member. The main search field can.",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "camesenin",
+      "janiya2"
+    ],
+    "created_at": "2026-10-16",
+    "comment_count": 15
+  },
+  {
+    "number": "103444",
+    "title": "[$175] Search - Report submit errors show as a separate RBR outside the report row",
+    "price": "175",
+    "comp_count": 2,
+    "proposers": [
+      "RajGahoi",
+      "ashusatyarthi-wq"
+    ],
+    "created_at": "2026-10-08",
+    "comment_count": 23
+  },
+  {
+    "number": "104028",
+    "title": "[$175] Duplicate expenses is put on hold when select keep this one",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "khizzcr7",
+      "juni2003"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 8
+  },
+  {
+    "number": "104060",
+    "title": "[$175] Different error appear after network reconnect",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "GhulamMustufa",
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 10
+  },
+  {
+    "number": "104178",
+    "title": "[$175] mweb-New message indicator displays on self chat when open chat login on 3 sessions",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "taieddie",
+      "janiya2"
+    ],
+    "created_at": "2026-10-16",
+    "comment_count": 12
+  },
+  {
+    "number": "104089",
+    "title": "[$175] Post a message in the #admins room when an Expensify Card feed is shared to a workspace",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "taieddie",
+      "camesenin",
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 14
+  },
+  {
+    "number": "104048",
+    "title": "[$175] Expense report- This expense was rejected not appears in expense preview",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "khizzcr7",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 15
+  },
+  {
+    "number": "104043",
+    "title": "[$175] Remove the centered AI features promo modal and announce features only in the bottom-right window",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "taieddie",
+      "khizzcr7",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 15
+  },
+  {
+    "number": "103514",
+    "title": "[$175] iOS - Attachments - Double-tap doesn't zoom in PDF",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "RajGahoi",
+      "janiya2",
+      "camesenin"
+    ],
+    "created_at": "2026-10-08",
+    "comment_count": 17
+  },
+  {
+    "number": "104050",
+    "title": "[$175] Auto -Split- Report total is calculating totals incorrectly when offline",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "khizzcr7",
+      "Mukedlii",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 18
+  },
+  {
+    "number": "104049",
+    "title": "[$175] Bank account-This field is required error in the company name field after completing Onfido",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "taieddie",
+      "khizzcr7",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 19
+  },
+  {
+    "number": "104175",
+    "title": "[$175] Allow the Per Diem import template to be downloaded before adding rates.",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "taieddie",
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 21
+  },
+  {
+    "number": "103576",
+    "title": "[$175] Attachments - Chat scroll bar moves  by arrow keys when PDF is opened",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "taieddie",
+      "krsnak"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 22
+  },
+  {
+    "number": "103430",
+    "title": "[$175] Choosing a large file to share doesn't redirect App to Home after attach error msg appears",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "RajGahoi",
+      "krsnak",
+      "camesenin"
+    ],
+    "created_at": "2026-10-08",
+    "comment_count": 26
+  },
+  {
+    "number": "103480",
+    "title": "[$175] Spend - Deleted card expenses display with no owner (From column)",
+    "price": "175",
+    "comp_count": 3,
+    "proposers": [
+      "camesenin",
+      "ashusatyarthi-wq",
+      "strzj1317"
+    ],
+    "created_at": "2026-10-08",
+    "comment_count": 30
+  },
+  {
+    "number": "104236",
+    "title": "[$175] Scan expenses - Multiple scan expenses with different recipients all get added to the workspace of whichever one you tap Submit on",
+    "price": "175",
+    "comp_count": 4,
+    "proposers": [
+      "camesenin",
+      "saranshbalyan-1234",
+      "Metarenessans",
+      "janiya2"
+    ],
+    "created_at": "2026-10-16",
+    "comment_count": 10
+  },
+  {
+    "number": "104045",
+    "title": "[$175] Expense-IOU expense with 0.00 amount is created after replacing a failed scan receipt",
+    "price": "175",
+    "comp_count": 4,
+    "proposers": [
+      "taieddie",
+      "khizzcr7",
+      "saranshbalyan-1234",
+      "janiya2"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 12
+  },
+  {
+    "number": "103624",
+    "title": "[$175] Search - \"has:submitted violation\" filter results show violations only after clicking into each expense individually",
+    "price": "175",
+    "comp_count": 4,
+    "proposers": [
+      "camesenin",
+      "khizzcr7",
+      "bonnhatnguyen",
+      "ashusatyarthi-wq"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 13
+  },
+  {
+    "number": "103478",
+    "title": "[$175] Workflows - First time set date for submission frequency to Monthly, the date change to the 1st",
+    "price": "175",
+    "comp_count": 4,
+    "proposers": [
+      "camesenin",
+      "krsnak",
+      "ashusatyarthi-wq",
+      "janiya2"
+    ],
+    "created_at": "2026-10-08",
+    "comment_count": 15
+  },
+  {
+    "number": "104067",
+    "title": "[$175] Workspace - No error shown when saving a report field with an invalid formula",
+    "price": "175",
+    "comp_count": 4,
+    "proposers": [
+      "camesenin",
+      "taieddie",
+      "ashu75575",
+      "janiya2"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 16
+  },
+  {
+    "number": "104150",
+    "title": "[$175] Distance - Map shows km instead of miles",
+    "price": "175",
+    "comp_count": 5,
+    "proposers": [
+      "janiya2",
+      "camesenin",
+      "tnclaudecode",
+      "taieddie",
+      "itappskitkool"
+    ],
+    "created_at": "2026-10-15",
+    "comment_count": 15
+  },
+  {
+    "number": "103622",
+    "title": "[$175] Filters - Expense \"From\" filter pill is cleared when navigating to Workspace via Go to room > Header > Go to workspace",
+    "price": "175",
+    "comp_count": 5,
+    "proposers": [
+      "ashusatyarthi-wq",
+      "camesenin",
+      "ahmetberkinc",
+      "khizzcr7",
+      "krsnak"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 17
+  },
+  {
+    "number": "104039",
+    "title": "[$175] Web - App review modal opens without the dimmed backdrop",
+    "price": "175",
+    "comp_count": 5,
+    "proposers": [
+      "janiya2",
+      "kks0488",
+      "nkdengineer",
+      "taieddie",
+      "khizzcr7"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 18
+  },
+  {
+    "number": "103357",
+    "title": "[$250] [CFI] Wrap long option names in search filter select lists",
+    "price": "250",
+    "comp_count": 15,
+    "proposers": [
+      "yuvrajangadsingh",
+      "samarroy84",
+      "ashusatyarthi-wq",
+      "camesenin",
+      "David-2002065",
+      "abbasifaizan70",
+      "nabi-ebrahimi",
+      "ahmdshrif",
+      "emkhalid",
+      "mohamad-shafeez",
+      "Abdulloh0109",
+      "KJ21-ENG",
+      "samranahm",
+      "wildan-m",
+      "yusufdeveloper2903"
+    ],
+    "created_at": "2026-10-07",
+    "comment_count": 49
+  },
+  {
+    "number": "103620",
+    "title": "[$250] Merchant name changes save on an expense, but the Reports tab continues to show the old merchant name.",
+    "price": "250",
+    "comp_count": 16,
+    "proposers": [
+      "trasnake87",
+      "ashusatyarthi-wq",
+      "neerajbachani",
+      "yusufdeveloper2903",
+      "camesenin",
+      "David-2002065",
+      "jdymitarai",
+      "nkdengineer",
+      "lopezpope",
+      "Abdulloh0109",
+      "wildan-m",
+      "taieddie",
+      "khizzcr7",
+      "dhaulagani",
+      "haiquywork",
+      "Eskalifer1"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 41
+  },
+  {
+    "number": "103650",
+    "title": "[CFI] [$250] Spend - Add a Paid column option to the reports table",
+    "price": "250",
+    "comp_count": 27,
+    "proposers": [
+      "yuvrajangadsingh",
+      "bonnhatnguyen",
+      "leoliu201204-cmyk",
+      "nabi-ebrahimi",
+      "samranahm",
+      "sam5235",
+      "Yuosefabuolim",
+      "kasyap1234",
+      "trasnake87",
+      "Codesensitive",
+      "hamzasaleem22",
+      "SARAMALI15792",
+      "wildan-m",
+      "laveshfonix",
+      "yinkaadx",
+      "Dip-G-Git",
+      "camesenin",
+      "David-2002065",
+      "KJ21-ENG",
+      "taieddie",
+      "sudal40019",
+      "Rodrigoue9",
+      "yusufdeveloper2903",
+      "neerajbachani",
+      "jdymitarai",
+      "RajGahoi",
+      "phuchoang23"
+    ],
+    "created_at": "2026-10-09",
+    "comment_count": 95
+  },
+  {
+    "number": "104027",
+    "title": "[$175] Close the side panel after onboarding for all intents",
+    "price": "175",
+    "comp_count": 29,
+    "proposers": [
+      "yuvrajangadsingh",
+      "paulnjs",
+      "nabi-ebrahimi",
+      "ahmdshrif",
+      "samranahm",
+      "khizzcr7",
+      "trasnake87",
+      "zackthompson317",
+      "wildan-m",
+      "laveshfonix",
+      "Dip-G-Git",
+      "camesenin",
+      "David-2002065",
+      "saranshbalyan-1234",
+      "mukhrr",
+      "oqildev",
+      "pvaghasiya087-has",
+      "yusufdeveloper2903",
+      "Enard52",
+      "neerajbachani",
+      "janiya2",
+      "jdymitarai",
+      "open5588",
+      "itsbryanman",
+      "Abdulloh0109",
+      "b4fpj6jrzf-boop",
+      "Akopyan0",
+      "RajGahoi",
+      "stacklancer"
+    ],
+    "created_at": "2026-10-14",
+    "comment_count": 74
+  }
+]

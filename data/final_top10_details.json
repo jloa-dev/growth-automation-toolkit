@@ -1,0 +1,1780 @@
+{
+  "104127": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.9-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** No\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/test-runs/78680875/folder/57600464/123622472/1861098617?sort=%2Bidentifier\n**Email or phone of affected tester (no customers):** N/A\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Android 13\n**App Component:** Other\n\n## Action Performed:\n1. Sign in to New expensify app\n2. Navigate to a report with expenses (create one)\n3. In the compose box type \"Update all transactions in this report to have category Car\" and send\n\n## Expected Result:\nConcierge updates category of all expenses in the report to Car\n\n## Actual Result:\nConcierge does not update category\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [ ] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/b73843e4-b556-40a7-9e9c-f99b8548cfe7\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Svetlana Lazutkina\n> Bug ID: 7286523\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110784962634286346\">https://www.upwork.com/jobs/~022110784962634286346</a></li>\n        <li>Upwork Job ID: 2110784962634286346</li>\n        <li>Last Price Increase: 2026-10-15</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcWwWYw",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/b6830fbd13eac2ea3c1d196b1228443a384bedd8d65423d559a8e5974861df4d",
+        "createdAt": "2026-10-15T17:12:01Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104127#issuecomment-6197876323",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcXDToA",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Issue Analysis\n\n**Root Cause:** This looks like a backend issue. The fix can't be made in the App repo. In both production `9.5.8-5` and staging `9.5.9-0`, the App sends a message in an expense report as a plain `AddComment`. It sends no Concierge or AI parameters. That code is byte-identical in both versions ([Report/index.ts:1031-1055](https://github.com/Expensify/App/blob/3e4911fb6f9b4de1d26d66a5cb56f951615956a1/src/libs/actions/Report/index.ts#L1031-L1055)). The backend alone decides whether Concierge acts on the message and edits the expenses.\n\n**Recommended Fix:** An internal engineer with backend access should trace the tester's `AddComment` on 2026-10-15. Check whether Concierge ran on that message and whether it tried to set the category. No App code change is recommended.\n\n**Reproduced on web (against the dev backend):** Yes. I sent the same message in a report with two uncategorized expenses. \"Car\" was an enabled workspace category. After more than 5 minutes, Concierge had not replied, and both expenses still showed \"Missing category\".\n\n<img src=\"https://melvinbot-assets.exops.io/10-final-check-0b04dbaf-ae23-4205-9b15-edc959364426.png\" alt=\"Report chat with only the user's message and no Concierge reply\" height=\"360\">\n\n<details>\n<summary>Investigation details</summary>\n\n**No relevant App change between production and staging**\n- I diffed `9.5.8-5` (production when the issue was filed) against `9.5.9-0-staging`. Neither `addActions` nor the `AddComment` parameters changed.\n- Concierge-specific parameters go only to the Concierge DM, its threads, or admin rooms. An expense report gets none of them in either version: [Report/index.ts:1031-1055](https://github.com/Expensify/App/blob/3e4911fb6f9b4de1d26d66a5cb56f951615956a1/src/libs/actions/Report/index.ts#L1031-L1055).\n- Nothing changed in the Pusher or Onyx update handling, or in the expense report view. A category update pushed by the backend would still appear in the App.\n\n**Weak App suspects (ruled out as the likely cause)**\n- [Migrate tap and fling gestures to Gesture Handler 3 hooks](https://github.com/Expensify/App/pull/103454) (`Expensify/App#103454`) changed the native send button. If it broke, the message would not be sent at all, in every chat. In the video, the message is sent.\n- [Keep the Concierge thread row visible while Concierge is thinking](https://github.com/Expensify/App/pull/102732) (`Expensify/App#102732`) only changes how a thread row is displayed. It can't stop a category update.\n\n**Repro caveat**\nThe web test ran against the dev backend. Concierge AI there may not match staging, so the repro supports this analysis but doesn't prove it.\n\n<img src=\"https://melvinbot-assets.exops.io/11-categories-missing-detail-c3833f48-8816-4729-bb01-9df3cf14cedb.png\" alt=\"Both expenses still show Missing category\" height=\"360\">\n\n**Possibly related**\n- [\\[$175\\] AI - Expense categorization - Expense category is not updated to the mentioned option](https://github.com/Expensify/App/issues/102993) (`Expensify/App#102993`) also involves Concierge not setting a category from a chat reply, and it was also traced to the backend.\n\n</details>\n\n---\n**Next Steps:** Reply with `@MelvinBot <your feedback>` to refine this analysis. This needs an internal engineer to look at the backend.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38775337389)_ \u00b7 _[view recording](https://melvinbot-assets.exops.io/session-38775337389-1-3d9a2ace-3b77-4dbd-b95b-6b9bbada6563.webm)_\n",
+        "createdAt": "2026-10-15T17:28:34Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104127#issuecomment-6198186912",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcXDdTA",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @rojiphil (`External`)",
+        "createdAt": "2026-10-15T17:28:42Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104127#issuecomment-6198189388",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcXDlbw",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110784962634286346",
+        "createdAt": "2026-10-15T17:28:48Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104127#issuecomment-6198191471",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 104127,
+    "title": "[$175] Android - Concierge does not change category in report when asked in natural language",
+    "url": "https://github.com/Expensify/App/issues/104127"
+  },
+  "103965": {
+    "body": "\nIf you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.8-3\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/102928\n**Email or phone of affected tester (no customers):** N/A\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** iPhone 15 iOS 26.6.2\n**App Component:** Other\n\n## Action Performed:\n1. Fresh install the app\n2. Sign in with a new gmail account\n3. Tap FAB - Start chat\n4. Look for an \"Import contacts\" option\n\n## Expected Result:\n\"Import contacts\" option is shown when tapping \"Start chat\"\n\n## Actual Result:\n\"Import contacts\" option does not appear when tapping \"Start chat\"\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [x] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [ ] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\nhttps://github.com/user-attachments/assets/34eeeb94-3386-4b88-bcc5-98f81440792f\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Rizky Gunawan\n> Bug ID: 7285674\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110270660163217377\">https://www.upwork.com/jobs/~022110270660163217377</a></li>\n        <li>Upwork Job ID: 2110270660163217377</li>\n        <li>Last Price Increase: 2026-10-14</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb1mPrQ",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/e4473b3b0b34dab457efc91fe92e7b32cbab4e861c2c559245b471fae8d46a24",
+        "createdAt": "2026-10-14T07:21:02Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103965#issuecomment-6163107757",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb1p4Cw",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Issue Analysis\n\n**Root Cause:** This is expected behavior, not a bug. [Migrate to Android Contact Picker and remove READ_CONTACTS](https://github.com/Expensify/App/pull/102928) added the \"Import contacts\" row in Start chat **on Android only**. Its test steps are Android-only. Its behavior table says the New chat row is \"Not present\" on iOS, and iOS is unchanged.\n\nThe code matches that design:\n- [`src/libs/ContactPicker/index.ts:4`](https://github.com/Expensify/App/blob/26cd2cdc8e7031f970878740623694483f64b397/src/libs/ContactPicker/index.ts#L4) sets `canPickContacts = false` for every platform except Android ([`index.android.ts:7`](https://github.com/Expensify/App/blob/26cd2cdc8e7031f970878740623694483f64b397/src/libs/ContactPicker/index.android.ts#L7)).\n- [`src/hooks/useSearchSelector/index.native.ts:41`](https://github.com/Expensify/App/blob/26cd2cdc8e7031f970878740623694483f64b397/src/hooks/useSearchSelector/index.native.ts#L41) passes `pickContact` only when `canPickContacts` is true.\n- [`src/pages/NewChatPage/index.tsx:405`](https://github.com/Expensify/App/blob/26cd2cdc8e7031f970878740623694483f64b397/src/pages/NewChatPage/index.tsx#L405) renders the row only when `pickContact` exists.\n\nOn iOS, the app still imports the whole address book after you grant the contacts permission. No row is needed.\n\n**Recommended Fix:** No code change. Close this issue. To retest the PR, use an Android device, following the PR's \"Android 17+\" and \"Android 16 or lower\" steps.\n\n---\n**Next Steps:** Reply with `@MelvinBot <your feedback>` if iOS should get an \"Import contacts\" row too. That would be a new feature, not a regression.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38527753571)_\n",
+        "createdAt": "2026-10-14T07:24:55Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103965#issuecomment-6163167243",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb1p9CA",
+        "author": {
+          "login": "j3ffffff"
+        },
+        "authorAssociation": "NONE",
+        "body": "VERDICT: POST\nROOT_CAUSE_ONELINER: PR #102928 added the \"Import contacts\" button to `NewChatPage` gated on `contactState?.pickContact`, but `pickContact` is only non-null on Android \u2014 on iOS, `ContactPicker/index.ts` hardcodes `canPickContacts = false`, so the button is never rendered.\nPROPOSAL_TYPE: FIRST\nAUTOPOST_SAFE: YES\n",
+        "createdAt": "2026-10-14T07:25:00Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103965#issuecomment-6163168520",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb1p-qw",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @rojiphil (`External`)",
+        "createdAt": "2026-10-14T07:25:02Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103965#issuecomment-6163168939",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb1qFQA",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110270660163217377",
+        "createdAt": "2026-10-14T07:25:09Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103965#issuecomment-6163170624",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 103965,
+    "title": "[$175] Import contacts-Import contacts option is not displayed when tapping Start chat",
+    "url": "https://github.com/Expensify/App/issues/103965"
+  },
+  "104159": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding and email contributors@expensify.com to request to join our Slack channel!\n___\n\n**Version Number:** 9.5.10-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/Expensify/issues/557782\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Windows Windows 11 - Chrome\n\n## Action Performed:\n1. Open the WS chat\n2. Send a short mention with a single character followed by dot (for example, @j.doe)\n\n## Expected Result:\nthe mention is recognized\n\n## Actual Result:\nthe short mention isn't recognized\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [x] MacOS: Chrome / Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/7ff24822-da26-4dd3-88fe-5b0e9135a66d\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110828231641473065\">https://www.upwork.com/jobs/~022110828231641473065</a></li>\n        <li>Upwork Job ID: 2110828231641473065</li>\n        <li>Last Price Increase: 2026-10-15</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcaLxqQ",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "> \u26a0\ufe0f **Preliminary analysis (low confidence)**: treat this as a starting point, not a conclusion.\n\nI don't think this is a code bug in the current build. The same bug was already fixed in `expensify-common`, and version 9.5.10 ships with that fix. More likely, the test accounts don't meet the conditions for short mentions.\n\n**Why the parser isn't the likely cause**\n- [At-mentions do not work when user's handle starts with a single character then a dot](https://github.com/Expensify/App/issues/69685) reported the same symptom and was closed on 2025-10-16.\n- The fix landed in [Fix short mention with single character followed by dot isn't recognized](https://github.com/Expensify/expensify-common/pull/881) and [improve shortmention regex to match short prefix(1,2 char) email addr\u2026](https://github.com/Expensify/expensify-common/pull/891).\n- App 9.5.10 locks `expensify-common` at `2.0.211`. That version's `shortMentions` regex has both fixes.\n- The upstream test still asserts `@j.doe` \u2192 `<mention-short>@j.doe</mention-short>` ([`__tests__/ExpensiMark-HTML-test.js:1791-1799`](https://github.com/Expensify/expensify-common/blob/a61b5b46e47e1f5ba0527a20839b3416de4dfeae/__tests__/ExpensiMark-HTML-test.js#L1791-L1799)).\n\n**What a short mention needs to resolve**\nA short mention only resolves if all of these are true ([`src/hooks/useShortMentionsList.ts:27-43`](https://github.com/Expensify/App/blob/b9a952165248cf929e8f2b6840a679429d57cd25/src/hooks/useShortMentionsList.ts#L27-L43)):\n1. The sender's login is on a **private** domain. Public domains such as gmail.com return an empty list.\n2. The mentioned user's login is on the **same** domain as the sender's.\n3. The mentioned user is in the sender's personal details.\n\nIf the check passes, the composer keeps the highlight ([`src/libs/ParsingUtils.ts:23-43`](https://github.com/Expensify/App/blob/b9a952165248cf929e8f2b6840a679429d57cd25/src/libs/ParsingUtils.ts#L23-L43)). Sending then expands it to a full mention ([`src/libs/ParsingUtils.ts:72-127`](https://github.com/Expensify/App/blob/b9a952165248cf929e8f2b6840a679429d57cd25/src/libs/ParsingUtils.ts#L72-L127)). I found no rule in this path that limits length or dot placement.\n\n**What I couldn't verify**\n- I couldn't run ExpensiMark in this environment. The parser result above comes from reading the regex and the upstream test, not from running it.\n- I didn't try to reproduce it in the app. That needs two accounts on the same private domain, and the available test account uses a public domain.\n\n**To confirm**, please share:\n- The sender's login and the mentioned user's login, or at least their domains. Do they share the same private domain?\n- Whether the failure is in the composer highlight, in the sent message, or both.\n- Whether a longer short mention, such as `@john.doe`, works with the same two accounts.\n\nIf a same-domain pair still fails, that points to a new cause, and this needs a deeper look.\n\n---\n**Next Steps:** Reply with `@MelvinBot <your feedback>` to refine this analysis.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38799286810)_\n",
+        "createdAt": "2026-10-15T20:20:29Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6201471401",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcaL7-g",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @ahmedGaber93 (`External`)",
+        "createdAt": "2026-10-15T20:20:37Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6201474042",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcaMD4A",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110828231641473065",
+        "createdAt": "2026-10-15T20:20:44Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6201476064",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcaf-pg",
+        "author": {
+          "login": "janiya2"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: janithad2@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/janithad\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nIn chat, typing a short mention that starts with a single character followed by a dot (e.g. `@j.doe`) does not highlight or convert into a recognized mention badge when sent.\n\n---\n\n### What is the root cause of that problem?\n\nThere are two layers involved in short mention handling in Expensify (as documented in [`contributingGuides/MENTIONS_HIGHLIGHTING_IN_CHAT.md`](https://github.com/Expensify/App/blob/main/contributingGuides/MENTIONS_HIGHLIGHTING_IN_CHAT.md)):\n1. **Tokenization Layer (`ExpensiMark` / `expensify-common` & `@expensify/react-native-live-markdown`):**\n   - The tokenization regex for `shortMentions` in `ExpensiMark.ts`:\n     ```ts\n     new RegExp(\n         `${Constants.CONST.REG_EXP.PRE_MENTION_TEXT_PART}(@(?=((?=[\\\\w]+[\\\\w'#%+-]*(?:\\\\.[\\\\w'#%+-]+)*)[\\\\w\\\\.'#%+-]{1,64}(?= |_|\\\\b))(?!([:\\\\/\\\\\\\\]))(?<end>.*))(?!here)\\\\S{1,254}(?=\\\\k<end>$))(?!((?:(?!<a).)+)?<\\\\/a>|[^<]*(<\\\\/pre>|<\\\\/code>|<\\\\/mention-user>|<\\\\/mention-here>))`,\n         'gim'\n     )\n     ```\n   - Running the current shipped `expensify-common@2.0.211` on `@j.doe` produces:\n     ```html\n     <mention-short>@j.doe</mention-short>\n     ```\n   - Both upstream PRs ([Expensify/expensify-common#881](https://github.com/Expensify/expensify-common/pull/881) and [Expensify/expensify-common#891](https://github.com/Expensify/expensify-common/pull/891)) are already present. The parser itself tokenizes single-char-dot mentions like `@j.doe` without issues.\n\n2. **Resolution & Styling Layer (`useShortMentionsList.ts` & `ParsingUtils.ts`):**\n   - In accordance with Expensify's architecture guidelines:\n     > *\"Short mention - a special type of mention that contains only the login part of a user email AND the email domain has to be the same as our email domain. Any other `@mention` will not get highlighted if domains don't match.\"*\n   - Specifically, in `useShortMentionsList.ts`:\n     ```ts\n     const currentUserDomain = getEmailDomain(currentUserLogin);\n     if (isDomainPublic(currentUserDomain)) {\n         return emptyLoginsList;\n     }\n\n     const availableLogins: string[] = [];\n     for (const personalDetail of Object.values(personalDetails)) {\n         if (!personalDetail?.login || getEmailDomain(personalDetail.login) !== currentUserDomain) {\n             continue;\n         }\n         const [username] = personalDetail.login.split('@');\n         if (username) {\n             availableLogins.push(username);\n         }\n     }\n     ```\n   - And in `ParsingUtils.ts` (`decorateRangesWithShortMentions` & `addDomainToShortMention`):\n     ```ts\n     if (availableMentions.includes(mentionValue)) {\n         return { ...range, type: 'mention-user' };\n     }\n     ```\n     and\n     ```ts\n     const mentionWithEmailDomain = `${mention}@${userPrivateDomain}`;\n     if (availableMentionLogins.includes(mentionWithEmailDomain)) {\n         return mentionWithEmailDomain;\n     }\n     ```\n\n**Why it failed in the reporter's video:**\n- In the attached video, the workspace is `Applause's Workspace 16!`.\n- The only member invited in the chat history is `zc` (`fdbvdbxzn@gmail.com`).\n- There is **no member `j.doe` or `j.doe@applause.expensifail.com` in personal details or workspace members**.\n- Because `j.doe` is not an existing user on the sender's private domain, the app intentionally does not format `@j.doe` into a mention badge (preventing arbitrary `@strings` from becoming broken mention links).\n- This is the exact identical situation seen in [Issue #96348](https://github.com/Expensify/App/issues/96348) (which had the identical regression test case ID `https://github.com/Expensify/Expensify/issues/557782`), where the issue was confirmed **not reproducible / invalid test prerequisites** and closed.\n\n---\n\n### What changes do you think we should make in order to solve the problem?\n\n#### Primary Recommendation (QA / Test Verification):\nVerify with proper test prerequisites:\n1. Ensure the logged-in user is on a private domain (e.g. `user1@testdomain.com`).\n2. Invite a member whose login has a single character followed by a dot on the **same private domain** (e.g. `j.doe@testdomain.com`).\n3. Type `@j.doe` in the workspace chat.\n4. **Result:** The mention `@j.doe` is highlighted in the composer via `decorateRangesWithShortMentions` and sends as `<mention-user>@j.doe@testdomain.com</mention-user>` as expected.\n\n#### Alternative (If Product Team wants short mentions to resolve across all workspace members regardless of domain matching):\nIf product design decides that short mentions within workspace chats should resolve for any workspace member even across different or public domains, we should update `useShortMentionsList.ts` and `ReportUtils.ts` to look up member logins from `report.participants` or `policy.employeeList` instead of strictly enforcing `currentUserDomain === memberDomain`:\n\nIn `src/hooks/useShortMentionsList.ts`:\n```diff\n--- a/src/hooks/useShortMentionsList.ts\n+++ b/src/hooks/useShortMentionsList.ts\n@@ -28,9 +28,6 @@ const buildAvailableLoginsList = memoize(\n         if (!personalDetails) {\n             return emptyLoginsList;\n         }\n \n         const currentUserDomain = getEmailDomain(currentUserLogin);\n-        if (isDomainPublic(currentUserDomain)) {\n-            return emptyLoginsList;\n-        }\n \n         const availableLogins: string[] = [];\n         for (const personalDetail of Object.values(personalDetails)) {\n-            if (!personalDetail?.login || getEmailDomain(personalDetail.login) !== currentUserDomain) {\n+            if (!personalDetail?.login) {\n                 continue;\n             }\n \n             const [username] = personalDetail.login.split('@');\n             if (username) {\n                 availableLogins.push(username);\n             }\n         }\n         return availableLogins;\n```\n\n---\n\n### What alternative solutions did you explore? (Optional)\nInvestigated whether autocomplete suggestion handling in `SuggestionMention.tsx` had an issue with dotted handles; confirmed that [PR #81262](https://github.com/Expensify/App/pull/81262) already added `normalizedPrefix` handling for trailing dots, so typing `@j.` or `@j.doe` matches any existing member whose handle starts with `j.` without issues.\n",
+        "createdAt": "2026-10-15T20:39:05Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6201802406",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcagBgQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-15T20:39:07Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6201803137",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABdGGBpQ",
+        "author": {
+          "login": "stacklancer"
+        },
+        "authorAssociation": "NONE",
+        "body": "@ahmedGaber93 I tested this with two accounts on the same private domain (r.bhati@stacklance.in and rahul@stacklance.in) on web, on latest main.\n\nFrom rahul@ I typed `@r.bhati test` in the DM:\n- the composer highlights `@r.bhati` as a mention\n- after sending, the message shows a proper mention for `@r.bhati@stacklance.in`\n\nSo a short mention with a single character followed by a dot works when both users share a private domain. My guess is the tester used accounts on a public domain (like gmail.com) or on different domains, where short mentions are not supported by design (`useShortMentionsList` returns an empty list for public domains). That matches what MelvinBot suggested above.\n\nIt may be worth asking the tester which two logins they used before going further.\n\n<img width=\"800\" height=\"423\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c6e7be01-7298-4fc9-b67b-15bf2dcceadf\" />",
+        "createdAt": "2026-10-18T08:13:58Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104159#issuecomment-6247514533",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTg0MTUwOTI1",
+        "name": "Overdue",
+        "description": "",
+        "color": "D93F0B"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 104159,
+    "title": "[$175] Chat - short mention with a single character followed by dot isn't recognized",
+    "url": "https://github.com/Expensify/App/issues/104159"
+  },
+  "104176": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.10--1\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/test-runs/78924844/folder/13176908/145045748/1865574081\n**Email or phone of affected tester (no customers):** applausetester+bm8900011@applause.expensifail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Web, android\n**App Component:** Other\n\n## Action Performed:\nPreconditions:\nUser is an admin of a workspace connected to QBO with Export company card expenses set to Credit card\nWorkspace has at least one non-reimbursable expense with a vendor assigned and one without\n\n1. Go to staging.new.expensify.com\n2. Go to Search > Expenses\n3. Click on Filters\n\n## Expected Result:\nVendor option should appear in filters\n\n## Actual Result:\nVendor option does not appear in filters\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n_To be added by Applause Leads_\n\nhttps://github.com/user-attachments/assets/588a820f-a9f1-4110-a152-1bfeeadcf6b8\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Chandana Kiran\n> Bug ID: 7287648\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110885193812397155\">https://www.upwork.com/jobs/~022110885193812397155</a></li>\n        <li>Upwork Job ID: 2110885193812397155</li>\n        <li>Last Price Increase: 2026-10-16</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdYGEg",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/dc6da9e6b1d55f79410b0fb8fc6b353786b8c4128294e3d8b1095d2340dc34ba",
+        "createdAt": "2026-10-16T00:00:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204818962",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdd7WQ",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\n\nThis is not a code regression. The Vendor filter was removed on purpose before it reached production, and the regression test case was not updated.\n\n- [\\[Payment due @eVoloshchak\\] Add Vendor filter to expense Search](https://github.com/Expensify/App/pull/101309) added the filter on 2026-10-05.\n- [\\[CP Staging\\] Revert \"Add Vendor filter to expense Search\"](https://github.com/Expensify/App/pull/103211) removed it on 2026-10-06 to unblock the deploy. Members could see the filter, but the picker only listed \"No vendor\" ([\\[Due for payment 2026-10-13\\] iOS-Spend- Synced Vendors list is not updated in Filter with non-admin member](https://github.com/Expensify/App/issues/103145)).\n\nOn current `main`, the expense filter list has no `VENDOR` entry. `TAG` is followed directly by `TAX_RATE` in [`src/hooks/useAdvancedSearchFilters.ts:39-41`](https://github.com/Expensify/App/blob/e658897455c1884a03d2cb24ff07bd556f20ff8b/src/hooks/useAdvancedSearchFilters.ts#L39-L41). The QBO + Credit card setup is not the cause. That workspace passes the vendor feature gate in [`src/libs/PolicyUtils/vendor.ts:20-23`](https://github.com/Expensify/App/blob/e658897455c1884a03d2cb24ff07bd556f20ff8b/src/libs/PolicyUtils/vendor.ts#L20-L23), which is why the Vendor column still appears.\n\n### What changes do you think we should make in order to solve the problem?\n\nNo new fix is needed on this issue. The work is already in progress:\n\n1. Bring the filter back by reverting the revert, combined with the picker fix in [List workspace vendors from connections in the Search Vendor filter](https://github.com/Expensify/App/pull/103151). That PR is open but has merge conflicts. It was branched before the revert, so it also needs to re-apply the original filter PR.\n2. When the filter is re-landed, gate it with [`useIsVendorColumnAvailable`](https://github.com/Expensify/App/blob/e658897455c1884a03d2cb24ff07bd556f20ff8b/src/hooks/useIsVendorColumnAvailable.ts#L19-L25) so the Vendor column and the Vendor filter always appear together.\n3. Until then, hold or close this issue, and mark the regression test case as blocked on the PR in step 1.\n\n<details>\n<summary>Investigation details</summary>\n\n- `CONST.SEARCH.SYNTAX_FILTER_KEYS.VENDOR` still exists ([`src/CONST/index.ts:8326`](https://github.com/Expensify/App/blob/e658897455c1884a03d2cb24ff07bd556f20ff8b/src/CONST/index.ts#L8326)). Only violation messages use it now, not Search filters.\n- The search parser, the advanced filters form type and `SearchQueryUtils.ts` have no vendor support. `VendorSelector.tsx` and `useLoadSearchVendorData.ts` were deleted by the revert.\n- The revert's own QA step says \"Verify there is no Vendor filter\", so the current behavior is what that PR intended.\n- The docs PR [\\[HOLD\\] \\[No QA\\] \\[Merge 10/7\\] Docs updates for E/A#101309 Add vendor search operator to search operators article](https://github.com/Expensify/App/pull/103104) is still open. It describes an operator that is not live, so it should stay on hold.\n\n**Related open issue:** [\\[$175\\] Spend - Unable to sort expenses by Vendor](https://github.com/Expensify/App/issues/101827) is about the Vendor column, not the filter.\n\n</details>\n\n---\n**Next Steps for Contributor+ team:**\n**To accept:** `@MelvinBot implement [this](https://github.com/Expensify/App/issues/104176)` to create a draft PR.\n**To refine:** `@MelvinBot <your feedback>`\n**To reject:** Explain why you are rejecting Melvin's proposal.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38826909744)_\n",
+        "createdAt": "2026-10-16T00:06:51Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204914521",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdeAyg",
+        "author": {
+          "login": "j3ffffff"
+        },
+        "authorAssociation": "NONE",
+        "body": "VERDICT: POST\nROOT_CAUSE_ONELINER: `CONST.SEARCH.SYNTAX_FILTER_KEYS.VENDOR` is absent from both `FILTER_VIEW_MAP` in `SearchUIUtils.ts` and the `typeFiltersKeys[EXPENSE]` section of `useAdvancedSearchFilters.ts`, so the vendor option is never added to the filter list.\nPROPOSAL_TYPE: FIRST\nAUTOPOST_SAFE: YES\n",
+        "createdAt": "2026-10-16T00:06:57Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204915914",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdeCpg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @suneox (`External`)",
+        "createdAt": "2026-10-16T00:06:59Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204916390",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdeHLg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110885193812397155",
+        "createdAt": "2026-10-16T00:07:05Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204917550",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdf1eA",
+        "author": {
+          "login": "camesenin"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nThe \"Vendor\" option is missing from the filter list in Search > Expenses > Filters for a workspace connected to QuickBooks Online with credit card export enabled.\n\n### What is the root cause of that problem?\nThe Vendor filter was originally added in PR #101309 but was intentionally reverted in PR #103211 to unblock staging due to Issue #103145 (where synced vendor lists showed empty for non-admin members).\n\nConsequently, `VENDOR` is currently omitted from `useAdvancedSearchFilters.ts:39-41` (where `TAG` is followed directly by `TAX_RATE`) and `SearchUIUtils.ts`. The regression test case run by QA expected the Vendor filter before PR #103151 (which fixes the connection vendor list resolution) has landed.\n\n### What changes do you think we should make in order to solve the problem?\nThis issue should be held for open PR #103151 (\"List workspace vendors from connections in the Search Vendor filter\"), which re-introduces the Vendor filter alongside the proper connections vendor loader. \n\nIf this issue is addressed directly in this ticket:\n1. Re-add `CONST.SEARCH.SYNTAX_FILTER_KEYS.VENDOR` to `typeFiltersKeys[CONST.SEARCH.DATA_TYPES.EXPENSE]` in `src/hooks/useAdvancedSearchFilters.ts`.\n2. Map `CONST.SEARCH.SYNTAX_FILTER_KEYS.VENDOR` to `VendorSelector` in `src/libs/SearchUIUtils.ts`.\n3. Gate its visibility with `useIsVendorColumnAvailable` so the filter only appears on workspaces where the Vendor column is enabled.\n\n### What alternative solutions did you explore? (Optional)\nRe-introducing the filter without connection vendor resolution from PR #103151 would re-introduce regression #103145.\n\nContributor details\nYour Expensify account email: camesenin@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~0170d6b02e9440e604\n",
+        "createdAt": "2026-10-16T00:09:06Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204945784",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcdf4lQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-16T00:09:10Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104176#issuecomment-6204946581",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 104176,
+    "title": "[$175] Filters - Vendor option is missing in filters",
+    "url": "https://github.com/Expensify/App/issues/104176"
+  },
+  "103957": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.8-4\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/test-runs/78446977/folder/57610056/41236913/1853259239\n**Email or phone of affected tester (no customers):** applausetester+bm8900011@applause.expensifail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Web, android\n**App Component:** Workspace Settings\n\n## Action Performed:\nPreconditions:\nUse an Expensifail account\nAn existing workflow exists with a submitter and an approver\n\n1. Go to staging.new.expensify.com\n2. Go to Workspace Settings > Workflows\n3. Click to add an approval workflow\n4. Select a member who is not selected in the existing workflow\n5. Select an approver who is already assigned to the existing workflow > Next\n\n## Expected Result:\n\"This member already belongs to another approval workflow. Any updates here will reflect there too.\" message should appear below the approver\n\n## Actual Result:\n\"This member already belongs to another approval workflow. Any updates here will reflect there too.\" message does not appear below the approver\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/656dc0b1-1c91-49b1-b943-204a9a1f0e72\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Julia Ponikarchuk\n> Bug ID: 7285399\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110227914968716833\">https://www.upwork.com/jobs/~022110227914968716833</a></li>\n        <li>Upwork Job ID: 2110227914968716833</li>\n        <li>Last Price Increase: 2026-10-14</li>\n    </ul>\n</details>\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @danieldoglas</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbzgCnA",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/055589950185d67fd1f207f1b1b06afbe9c4057c371be556403ff348e0ec3e96",
+        "createdAt": "2026-10-14T04:29:18Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6160908956",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbzkOkQ",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Issue Analysis\n\n**Root Cause:** This is expected behavior, not a bug. [Hide single-approver hint when in beta](https://github.com/Expensify/App/pull/102087) (merged 2026-09-23) hides the hint on purpose for accounts on the `multipleApprovers` beta. Expensifail accounts get that beta through the `all` beta, so the hint never shows for them. See [`ApprovalWorkflowEditor.tsx:217-220`](https://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/pages/workspace/workflows/approvals/ApprovalWorkflowEditor.tsx#L217-L220).\n\n**Recommended Fix:** No code change. Close this issue and update the regression test case. With the `multipleApprovers` beta, the hint should not appear. Without the beta, it should still appear.\n\n<details>\n<summary>Investigation details</summary>\n\n- The hint shows only when `!isMultipleApproversBetaEnabled && !errorText && usedApproverEmails` includes the approver ([`ApprovalWorkflowEditor.tsx:219-220`](https://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/pages/workspace/workflows/approvals/ApprovalWorkflowEditor.tsx#L219-L220)). The beta flag is read at [line 56](https://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/pages/workspace/workflows/approvals/ApprovalWorkflowEditor.tsx#L56).\n- The code comment explains why. Without the beta, an approver has one `employeeList` entry that every workflow shares, so an edit spreads to all of them. With the beta, each workflow uses its own approval rules, so the hint would be false.\n- The `all` beta turns on `multipleApprovers` unless the backend lists that beta as `explicitOnly` ([`Permissions.ts:33-51`](https://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/libs/Permissions.ts#L33-L51)).\n- The QA steps in PR 102087 match this repro: \"With an expensifail account \u2026 Create a new approval workflow \u2026 Confirm you do NOT see this message.\"\n- Alternative ruled out: `usedApproverEmails` is filled in correctly for the create flow. The beta check is the only thing that hides the hint.\n\n**To confirm:** On staging or dev, use a beta override to turn off `multipleApprovers` for the test account. Then repeat the steps. The hint should come back.\n\n</details>\n\n---\n**Next Steps:** Reply with `@MelvinBot <your feedback>` to refine this analysis.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38511634676)_\n",
+        "createdAt": "2026-10-14T04:35:02Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6160977553",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbzkVlg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @brunovjk (`External`)",
+        "createdAt": "2026-10-14T04:35:11Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6160979350",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbzkafQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110227914968716833",
+        "createdAt": "2026-10-14T04:35:17Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6160980605",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbzl7xQ",
+        "author": {
+          "login": "haiquywork"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\nIn `ApprovalWorkflowEditor`, the hint is only built when `isApproverInMultipleWorkflows` is true, and that flag now includes `!isMultipleApproversBetaEnabled`. Accounts with the MULTIPLE_APPROVERS beta (such as the Expensifail tester account) therefore never see the hint, even though `usedApproverEmails` is still correctly filled by `convertApprovalWorkflowRulesToWorkflows` and contains the approver. The beta gate was added in commit 3b08e76cecf (\"hide behind beta\") on the assumption that, with the beta, an approver's edit stays inside one workflow. That contradicts the expected behaviour in the QA test case, which still requires the message.\nhttps://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/pages/workspace/workflows/approvals/ApprovalWorkflowEditor.tsx#L217-L228\n\n### What changes do you think we should make in order to solve the problem?\n- In `ApprovalWorkflowEditor.tsx`, drop the `!isMultipleApproversBetaEnabled` condition so the flag is just `!errorText && approvalWorkflow.usedApproverEmails.includes(approver?.email)`. The hint then shows for both beta and non-beta users.\n- Remove the now-unused `usePermissions`/`isMultipleApproversBetaEnabled` lines in this component if nothing else uses them.\n- If product wants different wording with the beta, add a beta-specific translation key and pick it based on the beta flag; the default is to keep the existing text.\n- Update the test added in 3b08e76cecf in `WorkspaceWorkflowsApprovalsEditPageTest.tsx`, which asserts the hint is hidden with the beta, so it asserts the hint is shown with the beta on and off. Keep the `// Given/When/Then` comments.\n\n### What alternative solutions did you explore? (Optional)\n- Keep the gate and only update the QA test case. This is worse because the issue expects the message, and the hint is still true for users who share an approver.\n",
+        "createdAt": "2026-10-14T04:37:28Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6161005509",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb9nxEg",
+        "author": {
+          "login": "brunovjk"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "This appears to be expected behavior, as explained in Melvin's analysis: https://github.com/Expensify/App/issues/103957#issuecomment-6160977553. \n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 C+ reviewed",
+        "createdAt": "2026-10-14T15:08:04Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6171521298",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb9oOjQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to @danieldoglas, see https://stackoverflow.com/c/expensify/questions/7972 for more details.",
+        "createdAt": "2026-10-14T15:08:26Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103957#issuecomment-6171528845",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTg0MTUwOTI1",
+        "name": "Overdue",
+        "description": "",
+        "color": "D93F0B"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 103957,
+    "title": "[$175] WS - \"This member already belongs to another approval workflow\" message does not appear",
+    "url": "https://github.com/Expensify/App/issues/103957"
+  },
+  "103616": {
+    "body": "## Problem\nEvery `Onyx.set` runs `removeNestedNullValues` over the whole value before caching and storing it. The App rewrites some large values repeatedly, especially derived values with one entry per report. On heavy accounts, each Pusher update takes ~350 ms on iOS and Android, and part of that cost scales with the stored value's size rather than the update's.\n\n## Solution (react-native-onyx)\n1. Keep the cache free of nulls. This restores the rule from Expensify/react-native-onyx#554 by fixing 4 paths that put nulls in the cache today: batched remove-then-replace merges, lazy SQLite reads, web cross-tab sync, and `Onyx.clear()`.\n2. Pass the cached value to `removeNestedNullValues`. It then skips any nested object that is the same object as in the cache. This relies on the shared references kept since Expensify/react-native-onyx#765, and subscribers receive the same values.\n3. Add a dev-only alert if App code mutates a cached object in place.\n\n## Behavior change\nOn those 4 paths, subscribers get a missing key instead of `null`. Testing on web and native found this only for `account.errors`, `report.errorFields.export`, and `report.errorFields.notFound`. All three treat `null` and missing the same way.\n\n## Results (heavy account, median before \u2192 after)\n- Each Pusher update: iOS 347\u2192331 ms (-4.6%), Android 349\u2192336 ms (-3.7%), Web CPU x4 326\u2192310 ms (-4.9%)\n- Incremental reconnect: iOS ~700\u2192~660 ms, Web CPU x4 602\u2192564 ms (-6.6%)\n- Setting a large object: iOS ~290\u2192~265 ms, Android 293\u2192282 ms\n- Tested on top of the pending OnyxDerived no-op-write skip, the gain holds: Pusher update 341\u2192316 ms (-7.2%), reconnect 580\u2192532 ms (-5.5%), 5/5 runs faster.\n- Most of the gain comes from `visibleReportActions`, `sortedReportActions`, and `outstandingReportsByPolicyID`. `reportAttributes` doesn't benefit, because its `undefined` fields break sharing after a full recompute. Fixing that on the App side is a possible follow-up.\n\n## Verify in production\nIn Sentry, `StartupData.Apply` should get shorter for ReconnectApp on heavy accounts (~40 ms on iOS).\n\n## Links\n- Onyx PR: https://github.com/Expensify/react-native-onyx/pull/856\n- Background: https://github.com/Expensify/App/issues/71205\n- Related: https://github.com/Expensify/App/pull/98956\n\n_Reported in [Slack](https://expensify.slack.com/archives/C08CZDJFJ77/p1791370922492219)._\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @arekm213</details>\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022109596033799181646\">https://www.upwork.com/jobs/~022109596033799181646</a></li>\n        <li>Upwork Job ID: 2109596033799181646</li>\n        <li>Last Price Increase: 2026-10-12</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbPC1xQ",
+        "author": {
+          "login": "mountiny"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "Let us know when the PR is ready",
+        "createdAt": "2026-10-12T10:44:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6122681797",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbPDDrQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @Krishna2323 (`External`)",
+        "createdAt": "2026-10-12T10:44:19Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6122685357",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbPDKVQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022109596033799181646",
+        "createdAt": "2026-10-12T10:44:25Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6122687061",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbPE88Q",
+        "author": {
+          "login": "haiquywork"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\nThe cost is in react-native-onyx, not in App code. `Onyx.set` calls `removeNestedNullValues` on the entire new value and walks every nested object, even though most of those objects are the same references already held in the cache (shared since react-native-onyx#765). The walk cannot skip them because the cache cannot be trusted to be null-free: four paths still put nulls into it (batched remove-then-replace merges, lazy SQLite reads, web cross-tab sync, `Onyx.clear()`), which breaks the rule from react-native-onyx#554. App only consumes the library through the pinned dependency at https://github.com/Expensify/App/blob/37e2b8b8fb247f003796221219ebb979d78cff94/package.json#L204. I did not have the library source in this checkout, so the library-side description below follows the issue and the linked Onyx PR #856.\n\n### What changes do you think we should make in order to solve the problem?\n- In react-native-onyx, strip nulls on the four paths above (batched remove-then-replace merge, lazy SQLite read, web cross-tab sync, `Onyx.clear()`) so the cache never holds nulls.\n- Give `removeNestedNullValues` an optional cached-value argument and return early for any nested object that is `===` to the cached one, since a null-free cached object needs no scan.\n- Have `Onyx.set` pass the current cached value into that call.\n- Add a dev-only check that warns when App code mutates a cached object in place, since the skip depends on cached objects staying unchanged.\n- Add Onyx unit tests: a nested object that is the same reference as the cached one is not traversed, and each of the four paths leaves no nulls in the cache.\n- Release react-native-onyx and bump the version in App's package.json (currently 3.0.116).\n- In App, check that the only subscriber-visible change is `null` becoming missing for `account.errors`, `report.errorFields.export` and `report.errorFields.notFound`. The issue says all three treat the two the same.\n- Optional follow-up in App: stop `reportAttributes` from emitting `undefined` fields so its shared references survive a full recompute.\n\n### What alternative solutions did you explore? (Optional)\n- Skip only the OnyxDerived no-op writes in App: this is a separate fix that already exists, and it does not help when a value changes slightly while most of its nested objects stay the same.\n- Keep scanning but cache a \"null-free\" flag per object: this needs an extra WeakSet lookup per object and is more complex than comparing against the cached reference.",
+        "createdAt": "2026-10-12T10:46:18Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6122716401",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbPLS0g",
+        "author": {
+          "login": "mountiny"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "Not looking for proposals, only wanted to get C+ assigned",
+        "createdAt": "2026-10-12T10:53:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6122820306",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcTIPNA",
+        "author": {
+          "login": "arekm213"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "https://github.com/Expensify/react-native-onyx/pull/856 - Its ready for review now",
+        "createdAt": "2026-10-15T14:08:34Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6194073396",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcTtGtA",
+        "author": {
+          "login": "arekm213"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "I'm OOO from tomorrow until the end of next week. Since I have a lot of context on this, I'd prefer to continue it myself when I'm back, including the review on [react-native-onyx#856](https://github.com/Expensify/react-native-onyx/pull/856). @mountiny let me know if that's fine with you. If not, someone from Software Mansion will take it over in the meantime, thanks!",
+        "createdAt": "2026-10-15T14:36:54Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103616#issuecomment-6194677428",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTcyMjM0NzMz",
+        "name": "Task",
+        "description": "",
+        "color": "ededed"
+      }
+    ],
+    "number": 103616,
+    "title": "[$175] [Performance] Onyx: skip unchanged cached objects when removing nested nulls on set",
+    "url": "https://github.com/Expensify/App/issues/103616"
+  },
+  "104093": {
+    "body": "**Reproducible in staging?:** Yes\n**Reproducible in production?:** N/A - new feature\n**Related:** https://github.com/Expensify/App/pull/103652\n\n## Action Performed:\n1. Sign up with a private-domain email that has a joinable workspace.\n2. Skip validation.\n3. Select Join my company workspace.\n4. Validate the account.\n5. Select a workspace to join.\n\n## Expected Result:\nThe #admins room does not open in the RHP after you join the workspace.\n\n## Actual Result:\nThe #admins room opens in the RHP.\n\n## Why:\nThe person joins an existing workspace. Its setup tasks may already be done and its settings already changed. The #admins room is the wrong place for them to start, so we should not open it.\n\n_Reported in [Slack](https://expensify.slack.com/archives/C07HPDRELLD/p1791799050270439)._\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110747210238018431\">https://www.upwork.com/jobs/~022110747210238018431</a></li>\n        <li>Upwork Job ID: 2110747210238018431</li>\n        <li>Last Price Increase: 2026-10-15</li>\n    </ul>\n</details>\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @abzokhattab</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUJCnw",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\n\nWhen you tap **Join now** on a workspace that has auto-join turned on and uses the Submit plan, `finishOnboarding` takes the old Employer/Submit exit path. It checks only the workspace and never checks your onboarding intent ([`BaseOnboardingWorkspaces.tsx:146-147`](https://github.com/Expensify/App/blob/1400f77a313feeee09b53aaf8304867f89ce4cf3/src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx#L146-L147), [`L181-L184`](https://github.com/Expensify/App/blob/1400f77a313feeee09b53aaf8304867f89ce4cf3/src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx#L181-L184)).\n\nThat path does three things ([`navigateAfterOnboarding.ts:171-173`](https://github.com/Expensify/App/blob/1400f77a313feeee09b53aaf8304867f89ce4cf3/src/libs/navigateAfterOnboarding.ts#L171-L173)):\n- sets the side panel variant to `RHP_ADMINS_ROOM`\n- navigates to Expenses\n- opens the side panel\n\nWith that variant, the side panel shows the active workspace's #admins room ([`SidePanelContextProvider.tsx:88-95`](https://github.com/Expensify/App/blob/1400f77a313feeee09b53aaf8304867f89ce4cf3/src/components/SidePanel/SidePanelContextProvider.tsx#L88-L95)). It does this only when `canEditWorkspaceSettings` passes, and on a Submit workspace an editor passes that check.\n\n[\\[Payment due @abzokhattab\\] Add the join-workspace onboarding intent and Concierge follow up tasks](https://github.com/Expensify/App/pull/103652) added the **Join my company workspace** intent. It did not exclude that intent from this branch.\n\n### What changes do you think we should make in order to solve the problem?\n\nIn `finishOnboarding`, turn off the Submit flow when you are joining with the Join my company workspace intent. To do that, add `!isJoiningCompanyWorkspace` to `shouldUseSubmitFlow`. The intent then falls through to `navigateAfterOnboardingWithMicrotaskQueue`, which lands on Home and keeps the side panel closed.\n\nNext to the existing Employer test in `tests/ui/WorkspaceOnboarding.tsx`, add a UI test. It should check that joining an auto-join Submit workspace with the Join intent does not set `RHP_ADMINS_ROOM` and does not navigate to Expenses. The Employer test must keep passing.\n\n### What alternative solutions did you explore? (Optional)\n\nYou could limit the Submit flow to the Employer intent only. That would also change the existing flow with no intent (`LOOKING_AROUND`), so it needs a product decision first.\n\n<details>\n<summary>Investigation details</summary>\n\n- The skip-validation step doesn't cause this. The validated path also ends in `finishOnboarding`, and the branch depends only on `automaticJoiningEnabled && policyType === SUBMIT`. The PR's Test 1 probably didn't show #admins because its test workspace wasn't an auto-join Submit workspace. I haven't confirmed this.\n- The backend doesn't supply the variant. The App sets it on the client in `navigateToSubmitWorkspaceAfterOnboarding`. The backend decides only your role and active workspace after you join.\n- Edge case: if the server already stored an RHP variant for a micro-size company, `handleRHPVariantNavigation` could still open the side panel. That's unlikely here because the join flow doesn't set company size.\n- I didn't reproduce this in a browser, because it needs a private-domain account with a joinable auto-join Submit workspace.\n\n</details>\n\n**Possibly related:** [\\[HOLD UX discussion\\]\\[$175\\] Close the side panel after onboarding for non-manage-team intents](https://github.com/Expensify/App/issues/104027) changes the same Employer/Submit exit path.\n\n---\n**Next Steps for Contributor+ team:**\n**To accept:** `@MelvinBot implement [this](https://github.com/Expensify/App/issues/104093)` to create a draft PR.\n**To refine:** `@MelvinBot <your feedback>`\n**To reject:** Explain why you are rejecting Melvin's proposal.\n",
+        "createdAt": "2026-10-15T14:58:30Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195135135",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUJLOA",
+        "author": {
+          "login": "j3ffffff"
+        },
+        "authorAssociation": "NONE",
+        "body": "VERDICT: POST\nROOT_CAUSE_ONELINER: `shouldUseSubmitFlow` in `BaseOnboardingWorkspaces.tsx::finishOnboarding` never checks `isJoiningCompanyWorkspace`, so it calls `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue` \u2014 which sets `RHP_ADMINS_ROOM` variant and opens the side panel \u2014 even when the user is joining an existing Submit-type workspace instead of creating a new one.\nPROPOSAL_TYPE: FIRST\nAUTOPOST_SAFE: YES\n",
+        "createdAt": "2026-10-15T14:58:36Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195137336",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUJRGQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @gijoe0295 (`External`)",
+        "createdAt": "2026-10-15T14:58:40Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195138841",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUJbRQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110747210238018431",
+        "createdAt": "2026-10-15T14:58:47Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195141445",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUQu6A",
+        "author": {
+          "login": "abzokhattab"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "Reassigning as it's a part of the Bottom-Up Submit Plan project  ",
+        "createdAt": "2026-10-15T15:04:13Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195261160",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUXEwQ",
+        "author": {
+          "login": "camesenin"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nWhen a user signs up and joins an existing workspace using the **Join my company workspace** onboarding intent (`CONST.ONBOARDING_CHOICES.JOIN_WORKSPACE`), if the workspace has automatic joining enabled and uses the Submit plan, the app unexpectedly navigates to Expenses and opens the workspace's `#admins` room in the Right Hand Panel (RHP / Concierge Anywhere). Since the user is joining an already established company workspace, opening the `#admins` room in the RHP is irrelevant and disruptive.\n\n### What is the root cause of that problem?\nIn `src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx` (lines 146\u2013147, 181\u2013184):\n```typescript\nconst isJoiningSubmitPolicy = policy.policyType === CONST.POLICY.TYPE.SUBMIT;\nconst shouldUseSubmitFlow = policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n...\nif (shouldUseSubmitFlow) {\n    navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue(policy.policyID, shouldUseNarrowLayout);\n    return;\n}\n```\n1. `shouldUseSubmitFlow` only checks whether `policy.automaticJoiningEnabled` and `policy.policyType === CONST.POLICY.TYPE.SUBMIT` are truthy. It fails to check `onboardingIntent` or `isJoiningCompanyWorkspace` (`onboardingIntent === CONST.ONBOARDING_CHOICES.JOIN_WORKSPACE`).\n2. When a user joins an existing Submit workspace via the join intent, `shouldUseSubmitFlow` evaluates to `true` and invokes `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue`.\n3. In `src/libs/navigateAfterOnboarding.ts` (lines 171\u2013173), `navigateToSubmitWorkspaceAfterOnboarding` unconditionally sets `setOnboardingRHPVariant(CONST.ONBOARDING_RHP_VARIANT.RHP_ADMINS_ROOM)` and calls `SidePanelActions.openSidePanel(!shouldUseNarrowLayout)`, forcing the `#admins` room to open.\n4. When PR #103652 introduced the `JOIN_WORKSPACE` intent, it did not exclude it from `shouldUseSubmitFlow`.\n\n### What changes do you think we should make in order to solve the problem?\n\n1. **In `src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx`:**\nGate `shouldUseSubmitFlow` so that it never applies when joining a company workspace:\n```diff\n  const isJoiningSubmitPolicy = policy.policyType === CONST.POLICY.TYPE.SUBMIT;\n- const shouldUseSubmitFlow = policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n+ const shouldUseSubmitFlow = !isJoiningCompanyWorkspace && policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n```\n\n2. When `isJoiningCompanyWorkspace` is `true`, `shouldUseSubmitFlow` is `false`, falling through cleanly to `navigateAfterOnboardingWithMicrotaskQueue`:\n```diff\n  navigateAfterOnboardingWithMicrotaskQueue(\n      isSmallScreenWidth,\n      isBetaEnabled(CONST.BETAS.DEFAULT_ROOMS),\n      conciergeReportID,\n      reportNameValuePairs,\n      policy.automaticJoiningEnabled ? policy.policyID : undefined,\n      undefined,\n-     false,\n+     isJoiningCompanyWorkspace,\n  );\n```\nPassing `isJoiningCompanyWorkspace` as `shouldPreventOpenAdminRoom` guarantees that the `#admins` room is never resolved as the target report across screen layouts, landing the member on Home with the side panel closed.\n\n### What alternative solutions did you explore? (Optional)\n- Restricting `shouldUseSubmitFlow` strictly to `onboardingIntent === CONST.ONBOARDING_CHOICES.EMPLOYER`: Rejected to prevent unintended side effects on legacy flows (`LOOKING_AROUND`). Explicitly checking `!isJoiningCompanyWorkspace` is surgical and directly addresses the regression from PR #103652.\n- Suppressing the RHP variant inside `SidePanelContextProvider.tsx`: Rejected because treating the symptom inside the side panel provider leaves improper navigation calls firing in the onboarding lifecycle.\n\n### What specific scenarios should we cover in automated tests?\nIn `tests/unit/pages/OnboardingWorkspacesTest.tsx` (or `tests/unit/libs/navigateAfterOnboarding.test.ts`):\n1. User joins an auto-join Submit workspace with intent `JOIN_WORKSPACE`: Verify `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue` is not called, `setOnboardingRHPVariant(CONST.ONBOARDING_RHP_VARIANT.RHP_ADMINS_ROOM)` is not invoked, and the side panel remains closed.\n2. User creates/joins a Submit workspace with intent `EMPLOYER`: Verify `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue` continues to execute normally.\n\nContributor details\nYour Expensify account email: camesenin@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~0170d6b02e9440e604\n",
+        "createdAt": "2026-10-15T15:09:10Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195365057",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUXITg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-15T15:09:13Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195365966",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUrWSA",
+        "author": {
+          "login": "janiya2"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: janithad2@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/janithad\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nWhen a user signs up and joins an existing company workspace with automatic joining enabled using the **Join my company workspace** onboarding intent (`CONST.ONBOARDING_CHOICES.JOIN_WORKSPACE`), if the workspace uses the Submit plan, the app unexpectedly navigates to Expenses and opens the workspace's `#admins` room in the Right Hand Panel (RHP / Concierge Anywhere). Since the user is joining an existing company workspace as an employee/member rather than creating or managing a workspace as an employer/admin, opening the `#admins` room and Expenses view is disruptive and irrelevant.\n\n---\n\n### What is the root cause of that problem?\n\nIn `src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx` (lines 146\u2013147, 181\u2013195):\n```typescript\nconst isJoiningSubmitPolicy = policy.policyType === CONST.POLICY.TYPE.SUBMIT;\nconst shouldUseSubmitFlow = policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n...\nif (shouldUseSubmitFlow) {\n    navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue(policy.policyID, shouldUseNarrowLayout);\n    return;\n}\n\nnavigateAfterOnboardingWithMicrotaskQueue(\n    isSmallScreenWidth,\n    isBetaEnabled(CONST.BETAS.DEFAULT_ROOMS),\n    conciergeReportID,\n    reportNameValuePairs,\n    policy.automaticJoiningEnabled ? policy.policyID : undefined,\n    undefined,\n    false,\n);\n```\n\n1. **`shouldUseSubmitFlow` Ignores the Join Intent**:  \n   `shouldUseSubmitFlow` checks only whether `policy.automaticJoiningEnabled` and `policy.policyType === CONST.POLICY.TYPE.SUBMIT` are truthy. It does **not** check `isJoiningCompanyWorkspace` (`onboardingIntent === CONST.ONBOARDING_CHOICES.JOIN_WORKSPACE`).\n2. **Submit Flow Action Trigger**:  \n   When a user joins an existing Submit workspace with the `JOIN_WORKSPACE` intent, `shouldUseSubmitFlow` evaluates to `true`, dispatching `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue`.\n3. **Unconditional Admin Room & Side Panel Activation**:  \n   In `src/libs/navigateAfterOnboarding.ts` (lines 163\u2013174), `navigateToSubmitWorkspaceAfterOnboarding` unconditionally executes:\n   ```typescript\n   setOnboardingRHPVariant(CONST.ONBOARDING_RHP_VARIANT.RHP_ADMINS_ROOM);\n   Navigation.navigate(ROUTES.SEARCH_ROOT.getRoute({query: buildCannedSearchQuery({type: CONST.SEARCH.DATA_TYPES.EXPENSE}), searchKey: CONST.SEARCH.SEARCH_KEYS.EXPENSES}));\n   SidePanelActions.openSidePanel(!shouldUseNarrowLayout);\n   ```\n   This forcefully sets the RHP variant to `RHP_ADMINS_ROOM`, navigates to Expenses (`ROUTES.SEARCH_ROOT`), and opens the side panel.\n4. **Default `shouldPreventOpenAdminRoom` is `false`**:  \n   In `BaseOnboardingWorkspaces.tsx` line 193, `navigateAfterOnboardingWithMicrotaskQueue` hardcodes `false` for parameter 7 (`shouldPreventOpenAdminRoom`), which on wide screens can also resolve the target report to `onboardingAdminsChatReportID`.\n\n---\n\n### What changes do you think we should make in order to solve the problem?\n\n#### 1. In `src/pages/OnboardingWorkspaces/BaseOnboardingWorkspaces.tsx`:\nGate `shouldUseSubmitFlow` so that it is strictly disabled when the user is joining a company workspace (`!isJoiningCompanyWorkspace`):\n\n```diff\n         const isJoiningSubmitPolicy = policy.policyType === CONST.POLICY.TYPE.SUBMIT;\n-        const shouldUseSubmitFlow = policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n+        const shouldUseSubmitFlow = !isJoiningCompanyWorkspace && policy.automaticJoiningEnabled && isJoiningSubmitPolicy;\n\n...\n\n         navigateAfterOnboardingWithMicrotaskQueue(\n             isSmallScreenWidth,\n             isBetaEnabled(CONST.BETAS.DEFAULT_ROOMS),\n             conciergeReportID,\n             reportNameValuePairs,\n             policy.automaticJoiningEnabled ? policy.policyID : undefined,\n             undefined,\n-            false,\n+            isJoiningCompanyWorkspace,\n         );\n```\n\n- When `isJoiningCompanyWorkspace` is `true`, `shouldUseSubmitFlow` will be `false`, bypassing `navigateToSubmitWorkspaceAfterOnboardingWithMicrotaskQueue`.\n- The flow cleanly falls through to `navigateAfterOnboardingWithMicrotaskQueue`, which passes `shouldPreventOpenAdminRoom = true`, ensuring the member lands on Home / the joined workspace without opening the `#admins` room and keeping the side panel closed.\n\n---\n\n### What alternative solutions did you explore? (Optional)\n\n1. **Restricting `shouldUseSubmitFlow` exclusively to `onboardingIntent === CONST.ONBOARDING_CHOICES.EMPLOYER`**:  \n   *Why discarded*: While fixing the immediate issue, this would alter legacy flows (e.g. `LOOKING_AROUND` or unselected intent paths) that may rely on Submit workspace auto-creation. Guarding specifically with `!isJoiningCompanyWorkspace` is surgical and directly fixes the regression introduced in PR #103652.\n2. **Suppressing the RHP variant inside `SidePanelContextProvider.tsx` or `navigateAfterOnboarding.ts`**:  \n   *Why discarded*: Treating the symptom downstream inside the side panel provider or navigation handler leaves improper navigation calls firing in the onboarding lifecycle.\n\n---\n\n### What specific scenarios should we cover in automated tests?\n\nIn `tests/ui/WorkspaceOnboarding.tsx`:\nAdd a UI test next to the existing Employer test (around line 514):\n```typescript\nit('should not navigate to Submit workspace or open #admins room when joining an auto-join Submit policy with JOIN_WORKSPACE intent', async () => {\n    await TestHelper.signInWithTestUser();\n\n    const submitPolicy: JoinablePolicy = {\n        policyID: 'test-submit-policy',\n        name: 'Corporate Workspace',\n        policyType: CONST.POLICY.TYPE.SUBMIT,\n        automaticJoiningEnabled: true,\n    };\n\n    await act(async () => {\n        await Onyx.set(ONYXKEYS.ONBOARDING_PURPOSE_SELECTED, CONST.ONBOARDING_CHOICES.JOIN_WORKSPACE);\n        await Onyx.set(ONYXKEYS.JOINABLE_POLICIES, {[submitPolicy.policyID]: submitPolicy});\n        await Onyx.set(ONYXKEYS.VALIDATE_USER_AND_GET_ACCESSIBLE_POLICIES, {loading: false});\n    });\n\n    renderOnboardingWorkspacesPage(SCREENS.ONBOARDING.WORKSPACES, {backTo: ''});\n    await waitForBatchedUpdatesWithAct();\n\n    const joinButton = screen.getByText(IntlStore.translate('en', 'common.join'));\n    fireEvent.press(joinButton);\n    await waitForBatchedUpdatesWithAct();\n\n    // Verify navigateToSubmitWorkspaceAfterOnboarding was NOT triggered (search route not opened)\n    expect(Navigation.navigate).not.toHaveBeenCalledWith(\n        ROUTES.SEARCH_ROOT.getRoute({\n            query: buildCannedSearchQuery({type: CONST.SEARCH.DATA_TYPES.EXPENSE}),\n            searchKey: CONST.SEARCH.SEARCH_KEYS.EXPENSES,\n        }),\n    );\n});\n```\nThis guarantees that joining an auto-join Submit workspace under the `JOIN_WORKSPACE` intent never triggers the Submit workspace onboarding flow or `#admins` room.\n",
+        "createdAt": "2026-10-15T15:24:12Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195697224",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcUrZSw",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-15T15:24:15Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/104093#issuecomment-6195697995",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyMjgzMTQzOTkx",
+        "name": "Reviewing",
+        "description": "Has a PR in review",
+        "color": "dddddd"
+      },
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNTE1Mzc1",
+        "name": "Weekly",
+        "description": "KSv2",
+        "color": "009800"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 104093,
+    "title": "[$175] Onboarding - #admins room opens in RHP after joining a workspace with the Join my company workspace intent",
+    "url": "https://github.com/Expensify/App/issues/104093"
+  },
+  "103961": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** 9.5.8-4\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://github.com/Expensify/App/pull/103346\n**Email or phone of affected tester (no customers):** jose.sat94+10jul@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Pull Request QA execution\n**Device used:** MacBook Pro/13.7.8\n**App Component:** Other\n\n## Action Performed:\n1. Launch Expensify app\n2. Log in with valid credentials\n3. Open a few reports one after another from the Inbox.\n4. Press the browser back button several times, then forward.\n\n## Expected Result:\nEach navigation step lands on the expected report, and the URL matches the displayed screen.\n\n## Actual Result:\nPressing the browser back button navigates to Home or previous action instead of the previously opened report.\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [x] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/255fa10b-563e-497e-9f99-690817d4db1d\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Julia Ponikarchuk\n> Bug ID: 7285750\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022110241879857618845\">https://www.upwork.com/jobs/~022110241879857618845</a></li>\n        <li>Upwork Job ID: 2110241879857618845</li>\n        <li>Last Price Increase: 2026-10-14</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb0CvNA",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/3150e67c0b5102d771624d909a14e0ff47c700d2c15cb867a9aea8b6f4a4d4f3",
+        "createdAt": "2026-10-14T05:17:59Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6161477428",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb0LxeQ",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "> \u26a0\ufe0f **Preliminary analysis (low confidence)** \u2014 treat as a starting point, not a conclusion.\n\nThis is likely a regression from [Bump @react-navigation/bottom-tabs to 7.18.16 and @react-navigation/native to 7.3.16](https://github.com/Expensify/App/pull/103346), not a production bug. That bump is in `9.5.8-0-staging` and later, but not in production `9.5.7-3`, so the \"Reproducible in production: Yes\" answer needs a recheck.\n\n**Likely mechanism:** Since native 7.3, a one-step browser back no longer calls `resetRoot(record.state)`. It dispatches an untargeted `CommonActions.goBack()` instead ([upstream useLinking](https://github.com/react-navigation/react-navigation/blob/749aaf57b5189363194d63a6b09fe29bacc6740f/packages/native/src/useLinking.tsx#L412-L430)). Our `native+001` patch keeps that branch. The deepest focused navigator (the reports split) always handles that `goBack`, even when the history change was at the tab or root level. On wide layouts, [`SplitRouter.ts:150-152`](https://github.com/Expensify/App/blob/7a9dc9809b2642053eb7e0262220c7beb3a480ae/src/libs/Navigation/AppNavigator/createSplitNavigator/SplitRouter.ts#L150-L152) then pops the whole split, and the tab router (`fullHistory`) falls back to Home. The URL and the screen then drift apart.\n\nI couldn't fully verify this for two reasons:\n- The web test tool can't press the browser's back or forward buttons, so I couldn't reproduce the bug.\n- By the code trace, a pure report-to-report sequence inside Inbox should still pop correctly. The trigger is probably a tab switch, RHP, or modal earlier in QA's flow.\n\nTo confirm, someone should:\n1. Follow the video while logging which branch `useLinking`'s popstate handler takes (`goBack` or `resetRoot`).\n2. Check whether the same steps work on production `9.5.7-3`.\n\n**Possible fix to test:** In `patches/react-navigation/@react-navigation+native+7.4.1+001+initial.patch`, make the popstate branch always call `resetRoot(record.state, \u2026)`, which was the behavior before 7.3. `SplitRouter`, `addRootHistoryRouterExtension`, and `useDiscardChangesConfirmation` all assume browser back arrives as `RESET`.\n\n**Related:** [Web - Navigation regression from React Navigation bump (PR 103346)](https://github.com/Expensify/App/issues/103839) has the same root behavior (browser back now sends `GO_BACK` instead of `RESET`).\n\n---\n**Next Steps:** Reply with `@MelvinBot <your feedback>` to refine this analysis.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38515890434)_ \u00b7 _[view recording](https://melvinbot-assets.exops.io/session-38515890434-1-f59fd51a-fbe7-4fe6-8116-d76aeaaf6f43.webm)_\n",
+        "createdAt": "2026-10-14T05:30:31Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6161625465",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb0L5SQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @suneox (`External`)",
+        "createdAt": "2026-10-14T05:30:40Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6161627465",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb0L5Tg",
+        "author": {
+          "login": "j3ffffff"
+        },
+        "authorAssociation": "NONE",
+        "body": "VERDICT: POST\nROOT_CAUSE_ONELINER: The new `getStaleHistoryDiff` call in the patched `useLinking.js` (`@react-navigation/native`) fires unconditionally in the `historyDelta === 0` branch \u2014 which is exactly the branch hit on every browser back press \u2014 and when it incorrectly returns a positive diff it calls `history.go(-N)` followed by `history.push()`, moving the browser further back than intended and landing on Home or a previous action URL instead of the previous report.\nPROPOSAL_TYPE: FIRST\nAUTOPOST_SAFE: YES\n",
+        "createdAt": "2026-10-14T05:30:40Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6161627470",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb0L_NA",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022110241879857618845",
+        "createdAt": "2026-10-14T05:30:47Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6161628980",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3dsww",
+        "author": {
+          "login": "janiya2"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\nIn PR #103346 and the corresponding patch in `patches/react-navigation/@react-navigation+native+7.4.1+001+initial.patch`, navigation history reconciliation on Web is handled in `useLinking.js`.\n\nWhen opening multiple reports and then pressing the browser back button, the navigation state change arrives at the `else` branch of the `historyDelta` check (where `historyDelta === 0`, indicating that history length between states is unchanged):\n\n```javascript\n} else {\n  // If history length is unchanged, we want to replaceState\n  // and remove any entries from history which focused route no longer exists in state\n  // That may happen if we replace a whole navigator.\n\n  const staleHistoryDiff = getStaleHistoryDiff(history.items.slice(0, history.index + 1), state);\n  if (staleHistoryDiff <= 0) {\n    history.replace({\n      path,\n      state\n    });\n  } else {\n    try {\n      await history.go(-staleHistoryDiff);\n      history.push({\n        path,\n        state\n      });\n    } catch (e) {\n      // The navigation was interrupted\n    }\n  }\n}\n```\n\nThere are two root causes causing the regression:\n1. **Unconditional execution of `history.go(-staleHistoryDiff)` during browser popstate**:\nWhen the user presses the browser back/forward button, `pendingPopStateDelta` is active because the browser has **already** moved in history. Firing `await history.go(-staleHistoryDiff)` within the popstate callback triggers an additional artificial history rewind (`history.go(-N)`), jumping past the intended previous report and landing on Home or a previous action.\n2. **False positive matching in `getStaleHistoryDiff`**:\n`getStaleHistoryDiff` iterates backwards looking for matching keys via `findFocusedRouteKey`:\n```javascript\nfunction getStaleHistoryDiff(items, newState) {\n  const newStateKeys = getAllStateKeys(newState);\n  for (let i = items.length - 1; i >= 0; i--) {\n    const itemFocusedKey = findFocusedRouteKey(items[i].state);\n    if (newStateKeys.includes(itemFocusedKey)) {\n      return items.length - i - 1;\n    }\n  }\n  return -1;\n}\n```\nDuring report-to-report transitions within the shared Central/RHP navigator, `newStateKeys.includes(itemFocusedKey)` can match an earlier container entry from previous interactions in `history.items`, computing a positive `staleHistoryDiff > 0`. Because it then executes `history.go(-staleHistoryDiff)` followed by `history.push()`, it corrupts the browser history stack instead of performing a simple state replacement.\n\n---\n\n### What changes do you think we should make in order to solve the problem?\nIn `patches/react-navigation/@react-navigation+native+7.4.1+001+initial.patch` (targeting `node_modules/@react-navigation/native/lib/module/useLinking.js`):\n\n1. Prevent `staleHistoryDiff` history rewinds from executing when the navigation was triggered by browser popstate (`pendingPopStateDelta` is non-zero). During popstate reconciliation, the browser has already navigated to the target history entry, so we only need to sync state via `history.replace({ path, state })`:\n\n```javascript\n} else {\n  // If history length is unchanged, we want to replaceState\n  // and remove any entries from history which focused route no longer exists in state\n  // That may happen if we replace a whole navigator.\n\n  const isPopState = pendingPopStateDelta != null && pendingPopStateDelta !== 0;\n  const staleHistoryDiff = !isPopState ? getStaleHistoryDiff(history.items.slice(0, history.index + 1), state) : 0;\n  if (staleHistoryDiff <= 0) {\n    history.replace({\n      path,\n      state\n    });\n  } else {\n    try {\n      await history.go(-staleHistoryDiff);\n      history.push({\n        path,\n        state\n      });\n    } catch (e) {\n      // The navigation was interrupted\n    }\n  }\n}\n```\n\n2. Additionally, ensure `getStaleHistoryDiff` checks for route param identity (e.g. `reportID`) rather than solely top-level navigator keys so that navigating between different reports does not falsely classify previous reports as stale entries.\n\n---\n\n### What alternative solutions did you explore? (Optional)\n- Revert PR #103346 (downgrading `@react-navigation/native` from 7.3.16). While reverting the bump is an option if other blockers persist, fixing the popstate guard in the patch allows Expensify to keep the updated library while restoring correct browser back/forward report navigation on Web.\n",
+        "createdAt": "2026-10-14T09:18:57Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165064899",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3qp5w",
+        "author": {
+          "login": "khizzcr7"
+        },
+        "authorAssociation": "NONE",
+        "body": "Hi, I'd like to work on this.\n\n**Root cause:** Regression from the `@react-navigation/native` 7.3.16 bump (PR #103346). In 7.3.x `useLinking`, the `popstate` handler restores the previous screen only when the browser history entry for the target index carries a stored navigation `state` (`history.get(index)` -> `record.state`); it then either dispatches `goBack()` or `resetRoot(record.state)`. When that stored state is missing, the handler falls into the \"treat like a regular deep link\" branch: it re-derives state from the path via `getStateFromPath` and resets the root to that, which resolves to Home (or the previous action route) instead of the recorded previous report. Opening reports from the Inbox pushes history entries whose stored state the back handler cannot use, so every browser back drops into the deep-link/reset path.\n\n**Fix approach:**\n1. Ensure the navigation integration stores the full navigation state with every browser history entry pushed on report navigation (`history.push/replace({path, state})`), so the back handler's `record.state` branch restores the previous report.\n2. As a safety net, when a one-step back finds no stored state for the target entry, resolve the target from the app's own previous navigation state instead of resetting to the deep-linked/Home route.\n3. Keep native behavior untouched (no browser history involved on native apps).\n\n**Verification:** (1) On web staging, open several reports from the Inbox, press browser back multiple times then forward - every step lands on the expected report and the URL matches the displayed screen. (2) Single back from a deep-linked report still works. (3) Existing navigation/linking unit tests pass; add a regression test driving `window.history` back/forward across report navigations.",
+        "createdAt": "2026-10-14T09:31:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165277159",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3qxZA",
+        "author": {
+          "login": "khizzcr7"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: khizar.akram.ka@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01c5c6bc0e7d162f7b",
+        "createdAt": "2026-10-14T09:31:09Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165279076",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3q0bA",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-14T09:31:12Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165279852",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3ui_g",
+        "author": {
+          "login": "janiya2"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: janithad2@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/janithad\n\n",
+        "createdAt": "2026-10-14T09:34:42Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165340926",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb3umZQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-14T09:34:45Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6165341797",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb6wltQ",
+        "author": {
+          "login": "camesenin"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: camesenin@gmail.com\nUpwork Profile link: https://www.upwork.com/freelancers/~0170d6b02e9440e604\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nOn Web and Desktop platforms, after opening multiple reports consecutively from the Inbox, pressing the browser's Back button jumps back to Home or an earlier screen instead of navigating sequentially to the immediately preceding report.\n\n### What is the root cause of that problem?\nThis is a direct regression introduced in PR #103346 (*Bump `@react-navigation/native` to 7.3.16*) inside our patch `patches/react-navigation/@react-navigation+native+7.3.16+001+initial.patch` (targeting `node_modules/@react-navigation/native/lib/module/useLinking.js`).\n\n1. **Unconditional `staleHistoryDiff` traversal during native `popstate`**:\n   In `useLinking.js` (lines 446\u2013460 in the patched output):\n   ```javascript\n   } else {\n     // If history length is unchanged, we want to replaceState\n     // and remove any entries from history which focused route no longer exists in state\n     // That may happen if we replace a whole navigator.\n\n     const staleHistoryDiff = getStaleHistoryDiff(history.items.slice(0, history.index + 1), state);\n     if (staleHistoryDiff <= 0) {\n       history.replace({\n         path,\n         state\n       });\n     } else {\n       try {\n         await history.go(-staleHistoryDiff);\n         history.push({\n           path,\n           state\n         });\n       } catch (e) {\n         // The navigation was interrupted\n       }\n     }\n   }\n   ```\n   When switching between reports in the Central navigator, navigator route history length is unchanged (`historyDelta === 0`), routing into this `else` block.\n\n2. **The Double-Rewind Mechanism**:\n   When the user clicks the browser Back button:\n   - The browser has **already** transitioned back by 1 history entry in `window.history`, triggering a `popstate` event.\n   - `useLinking` computes the matching state for the destination report.\n   - Because `pendingPopStateDelta` is active (e.g. `-1`), the browser navigation is already underway.\n   - However, the `else` block above unconditionally executes `getStaleHistoryDiff`. Because `getStaleHistoryDiff` compares `findFocusedRouteKey` against historical container keys in `history.items`, it matches an earlier ancestor entry, calculating `staleHistoryDiff > 0`.\n   - It then issues an additional `await history.go(-staleHistoryDiff)`. Because the browser had **already** moved back 1 step, executing `history.go(-staleHistoryDiff)` forces a secondary, artificial backward traversal on top of the browser's own transition.\n   - This secondary rewind skips right past the previous report and lands the user on Home or an earlier action.\n\n3. Why existing proposals miss the mark:\n   - Proposing generic state rehydration or referencing unreleased patch names (e.g. referencing 7.4.1 instead of our codebase's `7.3.16+001+initial.patch`) does not address the actual execution flow.\n   - The `staleHistoryDiff` logic was created strictly for programmatic navigator replacements from JS code, but must never fire when reconciliation is already responding to a browser `popstate`.\n\n---\n\n### What changes do you think we should make in order to solve the problem?\n\nIn `patches/react-navigation/@react-navigation+native+7.3.16+001+initial.patch` (targeting `node_modules/@react-navigation/native/lib/module/useLinking.js`):\n\n1. **Guard `staleHistoryDiff` during `popstate` transitions**:\n   Check if the navigation was triggered by browser popstate (`pendingPopStateDelta` is non-zero). During popstate reconciliation, the browser has already moved to the target history entry, so we only need to synchronize the state via `history.replace({ path, state })`:\n\n   ```javascript\n   } else {\n     // If history length is unchanged, we want to replaceState\n     // and remove any entries from history which focused route no longer exists in state\n     // That may happen if we replace a whole navigator.\n\n     const isPopState = pendingPopStateDelta != null && pendingPopStateDelta !== 0;\n     const staleHistoryDiff = !isPopState ? getStaleHistoryDiff(history.items.slice(0, history.index + 1), state) : 0;\n     if (staleHistoryDiff <= 0) {\n       history.replace({\n         path,\n         state\n       });\n     } else {\n       try {\n         await history.go(-staleHistoryDiff);\n         history.push({\n           path,\n           state\n         });\n       } catch (e) {\n         // The navigation was interrupted\n       }\n     }\n   }\n   ```\n\n2. **Rebuild the patch**:\n   Run `npm run postinstall` (or `npx patch-package @react-navigation/native`) to update `patches/react-navigation/@react-navigation+native+7.3.16+001+initial.patch` cleanly.\n\n3. **Regression & Safety**:\n   - Programmatic navigator replacements (where `pendingPopStateDelta == null || pendingPopStateDelta === 0`) continue to execute `getStaleHistoryDiff` and prune dead history entries as designed.\n   - Browser Back and Forward buttons now strictly follow single-step browser navigation without triggering redundant, asynchronous `history.go()` hops.\n   - Native mobile platforms (iOS and Android) do not use `createMemoryHistory` or browser popstate, so native behavior remains completely untouched.\n\n---\n\n### Test Plan\n\n#### Manual QA Steps:\n1. Open the Expensify Web app (Chrome, Safari, Firefox, or Desktop).\n2. From the Inbox / LHN, click on **Report A**.\n3. Click on **Report B**.\n4. Click on **Report C**.\n5. Press the browser **Back** button once.\n   - **Verify:** The app navigates to **Report B** and the URL changes to `/r/<reportB_ID>`.\n6. Press the browser **Back** button again.\n   - **Verify:** The app navigates to **Report A** and the URL changes to `/r/<reportA_ID>`.\n7. Press the browser **Forward** button.\n   - **Verify:** The app navigates forward to **Report B**.\n8. Open a report in the Right Hand Panel (RHP) from Spend/Search, press the browser Back button, and verify the RHP closes while Spend stays on the same search.\n\n#### Automated Unit Tests:\nIn `tests/unit/Navigation/createMemoryHistoryTest.ts`:\n- Add a test case simulating consecutive `history.replace` and `history.push` report navigation followed by simulated `popstate` events, asserting that `pendingPopStateDelta` suppresses secondary `history.go` dispatching.\n",
+        "createdAt": "2026-10-14T12:38:10Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6168520117",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABb6wpBQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-14T12:38:13Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6168520965",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABcetg7Q",
+        "author": {
+          "login": "suneox"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "Hello everyone! Please make sure to read our contributing [guidelines](https://github.com/Expensify/App/blob/ccc47b1ea6a0f6478486694d76d92e299e0dd165/contributingGuides/CONTRIBUTING.md?plain=1#L80)\n",
+        "createdAt": "2026-10-16T01:51:31Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103961#issuecomment-6206218477",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 103961,
+    "title": "[$175] Web - Chat -Browser back navigates to previous action instead of previous report",
+    "url": "https://github.com/Expensify/App/issues/103961"
+  },
+  "103824": {
+    "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.7-3\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/folder/13176721/test-cases/41236970\n**Email or phone of affected tester (no customers):** vupham12990+14@gmail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** Samsung M51/Android 12, iOS 26.2.1 / iPhone 13\n**App Component:** Other\n\n## Action Performed:\nPreconditions: You have a large video file that is more than 125 MB\n1. Open the Gallery app\n2. Tap on the video at the preconditions.\n3. Tap on the share icon\n4. Swipe to the right and choose the Expensify app\n\n## Expected Result:\nThe user is redirected to the app, and an in-app error message appears indicating that the file is too large to upload.\n\n## Actual Result:\nThe user observes that the Expensify app crashes. The user also tested sharing another video file of 119 MB and confirmed that the crash did not occur.\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [x] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [ ] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n[Bug7284638_1791871090289!log.txt](https://github.com/user-attachments/files/33369162/Bug7284638_1791871090289.log.txt)\n\nhttps://github.com/user-attachments/assets/2e631ea7-ecf0-47d4-8fd1-aa9e30051be0\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Rizky Gunawan\n> Bug ID: 7284638\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022109895596413811824\">https://www.upwork.com/jobs/~022109895596413811824</a></li>\n        <li>Upwork Job ID: 2109895596413811824</li>\n        <li>Last Price Increase: 2026-10-13</li>\n    </ul>\n</details>\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @luacmartins</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfRncw",
+        "author": {
+          "login": "applause-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "While Applause doesn't embed attachments for this bug, here are the links for quick view:\nhttps://platform.applause.com/services/links/v1/external/9bfd6b61cdb6e9cd0abdfcac50b5e6fd739032ae2b955bb5741e1b29ff2f098c\n\nhttps://platform.applause.com/services/links/v1/external/a20d2860d61aba132eb6c8d4005377b60c3a9494d893e4d4ccc621947a34b69e",
+        "createdAt": "2026-10-13T06:29:09Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6139701107",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfWpoA",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Issue Analysis\n\n**Root Cause:** On Android, the native share handler loads the whole shared file into memory before it hands the file to the app. A 130 MB video needs one 135 MB allocation, which exceeds the remaining heap and kills the app with an `OutOfMemoryError`. The crash happens during the native copy, before the \"Attachment is too large\" check in JS can run. This handler is in the HybridApp native layer (Mobile-Expensify), not in this repo.\n\n**Recommended Fix:** The Android fix requires changes outside the App repo. Please escalate to an internal engineer with Mobile-Expensify access. The handler should check the file size before it copies the file, and it should stream the copy instead of reading the whole file into memory.\n\nThe iOS crash likely has a similar cause, but I could not confirm it because there is no iOS log. App's share extension reads the whole file into memory at [`ios/ShareViewController/ShareViewController.swift:189`](https://github.com/Expensify/App/blob/1b7288822e3cb41d512b8bf13e26b4c6be418b62/ios/ShareViewController/ShareViewController.swift#L189). iOS share extensions have a low memory limit. If HybridApp iOS ships this extension, that line should use a file copy instead of loading `NSData`.\n\n<details>\n<summary>Investigation details</summary>\n\n**Evidence from the attached log** (`Bug7284638_1791871090289.log.txt`, crashes at 12:57:12 and 12:57:24 in `org.me.mobiexpensifyg`):\n\n```\njava.lang.OutOfMemoryError: Failed to allocate a 135000016 byte allocation with 8388608 free bytes and 119MB until OOM\n  at java.io.ByteArrayOutputStream.toByteArray\n  at kotlin.io.ByteStreamsKt.readBytes\n  ... (HybridApp share intent handler, called from Activity.onResume)\n```\n\n- `readBytes()` buffers the full file in memory. A 119 MB file fits in the remaining heap and a 130 MB file does not, which matches the reported threshold.\n- App's own Android share code is not affected because it streams the copy through a buffer: [`FileUtils.kt:57-66`](https://github.com/Expensify/App/blob/1b7288822e3cb41d512b8bf13e26b4c6be418b62/android/app/src/main/java/com/expensify/chat/utils/FileUtils.kt#L57-L66). The HybridApp handler should follow the same pattern.\n\n**Why the user sees a crash instead of an error:**\n- The size limit is 24 MB: [`src/CONST/index.ts:436-438`](https://github.com/Expensify/App/blob/1b7288822e3cb41d512b8bf13e26b4c6be418b62/src/CONST/index.ts#L436-L438).\n- [`ShareRootPage.tsx:101-126`](https://github.com/Expensify/App/blob/1b7288822e3cb41d512b8bf13e26b4c6be418b62/src/pages/Share/ShareRootPage.tsx#L101-L126) checks the size only after the native copy has finished.\n- Any file over 24 MB is rejected anyway. The native side can read the size from metadata first (`OpenableColumns.SIZE` on Android, `fileSizeKey` on iOS), skip the copy, and let JS show the existing error.\n\n**Not verified:**\n- I could not access the Mobile-Expensify source, so I could not check the exact line or whether a recent change caused this.\n- I could not confirm which share extension HybridApp iOS uses.\n- I did not run a web test because native share does not exist on web.\n\n</details>\n\n---\n**Next Steps:** Escalate to an internal engineer with Mobile-Expensify access to fix the Android handler. Reply with `@MelvinBot <your feedback>` to refine this analysis.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/38356960377)_\n",
+        "createdAt": "2026-10-13T06:34:32Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6139783584",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfWxuQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to Contributor-plus team member for initial proposal review - @huult (`External`)",
+        "createdAt": "2026-10-13T06:34:41Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6139785657",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfW2kg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022109895596413811824",
+        "createdAt": "2026-10-13T06:34:46Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6139786898",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfeDbQ",
+        "author": {
+          "login": "j3ffffff"
+        },
+        "authorAssociation": "NONE",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\n\nWhen a user shares a large video from the Gallery, the OS delivers the file to the native `ShareActionHandler` module (`src/libs/ShareActionHandlerModule/index.ts`). This native module **copies** the video to an app-accessible temp folder *before* calling the JS callback (confirmed by the `ShareTempFile` type comment: \"Path to the file copy in the app folder\"). Only after that copy completes does the JS layer in `ShareRootPage.handleProcessFiles` (`src/pages/Share/ShareRootPage.tsx`) run the size check:\n\n```\ngetFileSize(tempFile?.content).then((size) => {\n    if (size > CONST.API_ATTACHMENT_VALIDATIONS.MAX_SIZE) {   // 24 MB\n        setErrorTitle(...)\n```\n\nFor files \u2264 ~119 MB the copy succeeds, the callback fires, and the async size check correctly shows \"file too large.\" For files > 125 MB the native copy exhausts process memory (or the device I/O buffer) **before** the callback ever fires, crashing the app. The JS validation code is never reached.\n\nThe exact threshold aligns with documented native platform memory constraints for app processes receiving share intents on both Android and iOS.\n\n### What changes do you think we should make in order to solve the problem?\n\nThe fix belongs in the **native** `ShareActionHandler` module:\n\n1. Before copying the file, read the file-size metadata only (via `ContentResolver.query(uri, SIZE)` on Android, or `NSFileManager.attributesOfItem` on iOS). This is a cheap metadata-only call \u2014 it does not buffer the file.\n2. If the size exceeds `CONST.API_ATTACHMENT_VALIDATIONS.MAX_SIZE` (currently 24 MB), invoke the callback immediately with a special error payload (e.g., a `{error: \"FILE_TOO_LARGE\"}` flag) instead of attempting the copy.\n3. In `ShareRootPage.handleProcessFiles`, handle that error flag by calling `setErrorTitle` / `setErrorMessage` with the \"file too large\" strings, exactly as the async JS size check already does.\n\nThis ensures the \"file too large\" error is shown before any memory-intensive operation is started, matching the expected behavior described in the issue.\n\n### What alternative solutions did you explore? (Optional)\n\n- **JS-only guard**: `getFileSize` uses `RNFS.stat()`, which is a metadata call and does not copy the file. It could theoretically be called before `processFiles`. However, on Android the share intent delivers a `content://` URI, and `RNFS.stat` cannot resolve that without the native module first making the file accessible. A JS-only guard is therefore not reliable cross-platform.\n- **Increase `MAX_SIZE`**: Not a fix \u2014 the crash is memory-related and would simply shift the threshold.\n",
+        "createdAt": "2026-10-13T06:43:30Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6139904877",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbflioA",
+        "author": {
+          "login": "taieddie"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: taieddie8@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01af851c9a7f771775\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nWhen sharing a large video file (>125 MB) through the native system share sheet on iOS or Android, the app crashes before redirecting the user into the app or showing the file size limit alert.\n\n### What is the root cause of that problem?\nThe crash happens because both platforms try to load the entire shared video into memory at once in native code before the React Native layer or JS validation ever gets a chance to run:\n\n1. **iOS (`ShareViewController.swift`)**:\nIn `ios/ShareViewController/ShareViewController.swift` (lines 189 and 201), `handleURLData` loads the entire file into memory using `NSData(contentsOf: url as URL)` before saving it with `fileData.write(to: filePath)`. iOS App Extensions run under strict Jetsam memory limits (often capped around 30MB to 120MB depending on the device). Allocating 125MB+ of raw data in user space triggers an immediate Jetsam termination (`EXC_RESOURCE RESOURCE_TYPE_MEMORY`), killing the extension before it can call `openMainApp()` (`new-expensify://share/root`) to reach `ShareRootPage.tsx`.\n\n2. **Android (HybridApp)**:\nAs shown in the crash log (`Bug7284638_1791871090289.log.txt`), during `Activity.onResume`, the share intent handler in `yapl.android.misc.InternalStorageUtils.saveUriToStorage` calls `kotlin.io.ByteStreamsKt.readBytes()`. For files over ~119 MB, allocating a single contiguous 135 MB byte array exceeds the available JVM heap headroom (growth limit 256 MB). This throws an unhandled `java.lang.OutOfMemoryError` on the main thread and crashes the app immediately.\n\n### What changes do you think we should make in order to solve the problem?\n1. **iOS (`ios/ShareViewController/ShareViewController.swift`)**:\nIn `handleURLData`, I propose removing the in-memory `NSData` read and using a direct filesystem copy instead:\n- Replace `NSData(contentsOf: url as URL)` and `fileData.write(to: filePath)` with `FileManager.default.copyItem(at: url as URL, to: filePath)` (removing any existing destination item first).\n- Because `copyItem` operates at the filesystem level, it streams the data on disk without buffering the file in memory, easily staying well within Jetsam memory limits regardless of file size.\n- Once the copy finishes, `openMainApp()` fires as normal, redirecting into `ShareRootPage.tsx`. The existing `getFileSize()` check then catches the oversized file and displays the expected `translate('attachmentPicker.attachmentTooLarge')` error alert.\n\n2. **Android (`Mobile-Expensify` wrapper)**:\nIn `InternalStorageUtils.saveUriToStorage`:\n- Replace the unbuffered `readBytes()` call with a buffered stream copy like `input.copyTo(output)` using an 8KB buffer (matching the pattern used in `Expensify/App` at `android/app/src/main/java/com/expensify/chat/utils/FileUtils.kt:63`).\n- Another clean safeguard is checking `OpenableColumns.SIZE` upfront via `context.contentResolver.query(...)` before starting the copy.\n\n### What alternative solutions did you explore? (Optional)\nI looked into validating the file size directly inside the iOS Share Extension and showing a native alert dialog there. However, the expected behavior described in the issue is to redirect the user into the main app and show the in-app error modal. Doing a streaming copy on disk allows the native extension to hand off cleanly to the existing `ShareRootPage.tsx` flow without memory spikes.",
+        "createdAt": "2026-10-13T06:52:16Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6140027552",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbfllag",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-13T06:52:19Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6140028266",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbhiyuQ",
+        "author": {
+          "login": "huult"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "https://github.com/user-attachments/assets/bbd75205-99a4-485a-a69a-7693531613d9\n\n> Recommended Fix: The Android fix requires changes outside the App repo. Please escalate to an internal engineer with Mobile-Expensify access. The handler should check the file size before it copies the file, and it should stream the copy instead of reading the whole file into memory.\n\nI can reproduce this issue, and it requires an internal engineering fix\n\n\ud83c\udf80 \ud83d\udc40 \ud83c\udf80 c+ reviewed.",
+        "createdAt": "2026-10-13T09:02:05Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [
+          {
+            "content": "THUMBS_UP",
+            "users": {
+              "totalCount": 1
+            }
+          }
+        ],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6142079673",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbhjG3A",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Triggered auto assignment to @luacmartins, see https://stackoverflow.com/c/expensify/questions/7972 for more details.",
+        "createdAt": "2026-10-13T09:02:23Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6142084828",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbr9VIw",
+        "author": {
+          "login": "luacmartins"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "Ok, I have two PRs up. I'm running adhocs so we can test them better.\n\n- https://github.com/Expensify/App/actions/runs/38451639885\n- https://github.com/Expensify/App/actions/runs/38451561624",
+        "createdAt": "2026-10-13T19:02:42Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6153000227",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbs3ppA",
+        "author": {
+          "login": "luacmartins"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@huult do the adhoc links below work for you?\n\n- Android - https://ad-hoc-expensify-cash.s3.us-east-1.amazonaws.com/rock-artifacts/ad-hoc/rock-android-Adhoc-2da2b1a-4fd6b1ab0c-d343187807fa27fe00e31562165d3e90d3076ed2/index.html\n- iOS - https://ad-hoc-expensify-cash.s3.us-east-1.amazonaws.com/rock-artifacts/ad-hoc/rock-ios-device-AdHoc-2da2b1a-94224ea051-c7558a3ea2fed56be2c4e02bb34e28804e065da6/index.html",
+        "createdAt": "2026-10-13T19:55:13Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6153955748",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbx9Vow",
+        "author": {
+          "login": "huult"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "> Android - https://ad-hoc-expensify-cash.s3.us-east-1.amazonaws.com/rock-artifacts/ad-hoc/rock-android-Adhoc-2da2b1a-4fd6b1ab0c-d343187807fa27fe00e31562165d3e90d3076ed2/index.html\n\n@luacmartins I'll test Android first. I don't think I can test on iOS because my iPhone's UUID isn't included in the ad hoc build.",
+        "createdAt": "2026-10-14T02:07:31Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6159291811",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbyWwuw",
+        "author": {
+          "login": "huult"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "I'll test on iOS once [the PR](https://github.com/Expensify/Mobile-Expensify/pull/14181) is ready.",
+        "createdAt": "2026-10-14T02:43:24Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6159708347",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbybrkQ",
+        "author": {
+          "login": "huult"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "https://github.com/user-attachments/assets/5c6933a8-033c-4e7e-849d-1c25f749406e\n\n@luacmartins It's working on the Android ad hoc build.",
+        "createdAt": "2026-10-14T02:50:32Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103824#issuecomment-6159788945",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyMjgzMTQzOTkx",
+        "name": "Reviewing",
+        "description": "Has a PR in review",
+        "color": "dddddd"
+      },
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNDU1ODI5",
+        "name": "Daily",
+        "description": "KSv2",
+        "color": "eb6420"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 103824,
+    "title": "[$175] Native share - The app crashes after sharing a large video file (>125 MB)",
+    "url": "https://github.com/Expensify/App/issues/103824"
+  },
+  "103444": {
+    "body": "**Problem**\nOn the Reports page in Search, a report whose submission failed shows its errors as a separate red-dot error below the report row. This makes it unclear which report the error belongs to. If the report has several errors, several error lines can show for the same report.\n\nIn the reported case, the report had Dynamic External Workflow (DEW) submit errors. DEW enforced that all cash expenses must be reimbursable. Because DEW validates this on submit, the error does not show before submission.\n\n**Expected result**\n- Do not show report errors outside the report row.\n- Show one error line on the report row. If the report has `errors`, add a sentence to the existing violations message:\n  \ud83d\udd34 Report contains expenses with violations. Report failed to submit because of errors.\n- Add each sentence only when it applies. Both sentences end with a full stop.\n- Show the full, dismissible error inside the report, on the submit action.\n- No backend change is needed.\n\n_Reported in [Slack](https://expensify.slack.com/archives/C05LX9D6E07/p1791430096937409)._\n\n\n<details><summary>Issue Owner</summary>Current Issue Owner: @nkdengineer</details>\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022108146787488343160\">https://www.upwork.com/jobs/~022108146787488343160</a></li>\n        <li>Upwork Job ID: 2108146787488343160</li>\n        <li>Last Price Increase: 2026-10-08</li>\n    </ul>\n</details>",
+    "comments": [
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRgFnA",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "## Proposal\n\n### What is the root cause of that problem?\n\nSearch report rows pass the whole report object, including `report.errors`, to the shared row base. That base renders `item.errors` as a separate red-dot (RBR) line under every row.\n\n- [`ListItemPressable.tsx:111-117`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/components/SelectionList/ListItemComposed/ListItemPressable.tsx#L111-L117) wraps the row in `OfflineWithFeedback` with `errors={item.errors}`. Its default `onDismissError` does nothing, so the X can't clear the error.\n- [`SearchUIUtils.ts:2871-2872`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/libs/SearchUIUtils.ts#L2871-L2872) spreads `...reportItem` into the row. Transaction rows already avoid this with `errors: undefined` ([`SearchUIUtils.ts:1957`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/libs/SearchUIUtils.ts#L1957)).\n- The violations line in [`ExpenseReportListItem.tsx:419-450`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L419-L450) only checks violations and never reads `errors`.\n- Inside the report, nothing reads `report.errors`. For DEW, the backend's `DEW_SUBMIT_FAILED` action shows as grey system text that can't be dismissed.\n\n### What changes do you think we should make in order to solve the problem?\n\n1. **Remove the below-row error.** Set `errors: undefined` on the report row in `getReportSections`, matching transaction rows. Do the same in the Merge reports item builder ([`SearchReportsMergeReports.tsx:116-122`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/pages/Search/SearchReportsMergeReports.tsx#L116-L122)), which uses the same row base.\n2. **Show one message on the row.** In `getDescription`, read errors from the live report first, then the snapshot (`reportForViolations?.errors`, [line 184](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L184)). Change the early return at [line 434](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L434) so the line also shows when only errors exist. Join only the sentences that apply. Add `reportViolations.reportFailedToSubmit: 'Report failed to submit because of errors.'` to every locale. The existing violations sentence already ends with a full stop.\n3. **Show the full, dismissible error in the report.** Pick the most recent `DEW_SUBMIT_FAILED` action, or else the latest `SUBMITTED` action. Pass `report.errors` into its `ReportActionItem`, following the existing `linkedTransactionRouteError` pattern ([`ReportActionItem.tsx:155`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/pages/inbox/report/ReportActionItem.tsx#L155)). Add a `clearReportErrors(reportID)` action that merges `errors: null` into the report, and call it from that action's `onClose`.\n4. **Clear stale errors on retry.** Add `errors: null` to the report in the optimistic data of `submitMoneyRequestOnSearch` and `submitReport`. Today, no submit or approve flow clears `report.errors`.\n\n<details>\n<summary>Investigation details</summary>\n\n- Search submit failure writes a generic error to `report_<id>.errors` and removes the optimistic `SUBMITTED` action ([`Search.ts:1654-1665`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/libs/actions/Search.ts#L1654-L1665)).\n- Pay, approve, and export failures from Search write the same generic error to the same field ([`Search.ts:577-583`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/libs/actions/Search.ts#L577-L583)). The team should decide whether those failures also use the \"failed to submit\" sentence or a more general one.\n- `report.errors` also forces the row action to View ([`SearchUIUtils.ts:2163`](https://github.com/Expensify/App/blob/9d187260ff527cc0de020927bd59da1b9b7c326d/src/libs/SearchUIUtils.ts#L2163)). Clearing the error from inside the report brings back the normal action.\n- `DotIndicatorMessage` removes duplicate messages, and the App writes only one generic string. So several lines for one report means the backend sent distinct DEW messages in `report.errors`. I couldn't confirm the backend payload.\n- Changing the shared `ListItemPressable` default is riskier, because many other `SelectionList` rows rely on `item.errors`. Changing the data is more targeted.\n\n</details>\n\n### What alternative solutions did you explore? (Optional)\n\nAdd an opt-out prop to `ListItemPressable` (for example, `shouldShowErrorMessages={false}`) and set it in `ExpenseReportListItem` and `SearchMergeReportsListItem`. This works too, but it differs from how transaction rows already hide errors.\n\n**Related issue:** [Spend - Error message appears below report row on Merge reports and cannot be dismissed](https://github.com/Expensify/App/issues/100499). It has the same root cause, and step 1 fixes it.\n\n---\n**Next Steps for Contributor+ team:**\n**To accept:** `@MelvinBot implement [this](https://github.com/Expensify/App/issues/103444)` to create a draft PR.\n**To refine:** `@MelvinBot <your feedback>`\n**To reject:** Explain why you are rejecting Melvin's proposal.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/37764265388)_\n",
+        "createdAt": "2026-10-08T10:45:27Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058149276",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRgLag",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Current assignee @nkdengineer is eligible for the External assigner, not assigning anyone new.",
+        "createdAt": "2026-10-08T10:45:33Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058150762",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRgRzw",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "Job added to Upwork: https://www.upwork.com/jobs/~022108146787488343160",
+        "createdAt": "2026-10-08T10:45:38Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058152399",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRiJMg",
+        "author": {
+          "login": "yuvrajangadsingh"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "withdrawing this, it went up before the issue had the `Help Wanted` label. will come back if the label is added.",
+        "createdAt": "2026-10-08T10:47:30Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058182962",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRoFqw",
+        "author": {
+          "login": "ashusatyarthi-wq"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: ashusatyarthi@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~010e53044b5828fe60\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nOn Search > Reports, when a report's submission fails (e.g. Dynamic External Workflow / DEW rejection), the report's `errors` are rendered outside the report row as separate red-dot error messages via `OfflineWithFeedback`. When multiple errors exist, several separate error lines appear, making it ambiguous which report they belong to. The row should instead display a single inline warning: *\"Report contains expenses with violations. Report failed to submit because of errors.\"* (with each sentence appearing only when applicable), while the full dismissible error appears inside the report on the submit action.\n\n### What is the root cause of that problem?\n1. **Unwanted External Error Rows via `ListItemPressable`**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx:473`, `ExpenseReportListItem` passes the full `item` (which contains `report.errors`) to `ListItemComposed`:\n   ```tsx\n   <ListItemComposed item={item} ... >\n   ```\n   In `src/components/SelectionList/ListItemComposed/ListItemPressable.tsx:111-114`:\n   ```tsx\n   <OfflineWithFeedback\n       onClose={() => onDismissError(item)}\n       pendingAction={item.pendingAction}\n       errors={item.errors}\n       errorRowStyles={styles.mh5}\n   >\n   ```\n   `ListItemPressable` passes `item.errors` to `OfflineWithFeedback`, which renders each error entry as a separate red-dot line with a dismiss button directly below the pressable row container.\n\n2. **Hardcoded Violation Message in `getDescription`**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx:434-450`, `getDescription` only checks `hasAnyVisibleViolations` and hardcodes `translate('reportViolations.reportContainsExpensesWithViolations')`. It does not inspect `reportItem?.errors` or append the failed submission notice.\n\n### What changes do you think we should make in order to solve the problem?\n\n1. **Suppress External Error Rows on `ExpenseReportListItem` (Zero Blast Radius)**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx`, omit `errors` from the `item` passed to `ListItemComposed`:\n   ```tsx\n   const itemForPressable = useMemo(() => {\n       if (!item.errors) {\n           return item;\n       }\n       const {errors, ...rest} = item;\n       return rest;\n   }, [item]);\n   ```\n   Pass `item={itemForPressable}` to `<ListItemComposed>`. This ensures `ListItemPressable` does not receive `item.errors` and `OfflineWithFeedback` does not render separate error lines below the report row, while keeping `pendingAction` intact for offline styling. Crucially, this avoids modifying `ListItemPressable` globally, preserving expected error rendering for other selection lists throughout the app.\n\n2. **Compose the Combined Inline Warning on the Report Row**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx`:\n   - Add a new translation key in `src/languages/en.ts` (and corresponding locale files):\n     ```ts\n     reportViolations: {\n         ...\n         reportFailedToSubmit: 'Report failed to submit because of errors.',\n     }\n     ```\n   - In `getDescription`, inspect both violations and `liveReportItem?.errors`:\n     ```tsx\n     const hasSubmitErrors = !isEmptyObject(liveReportItem?.errors);\n     const shouldShowViolationsText = hasAnyVisibleViolations && shouldShowViolationDescription;\n\n     if (!shouldShowViolationsText && !hasSubmitErrors) {\n         return;\n     }\n\n     const messages: string[] = [];\n     if (shouldShowViolationsText) {\n         messages.push(translate('reportViolations.reportContainsExpensesWithViolations'));\n     }\n     if (hasSubmitErrors) {\n         messages.push(translate('reportViolations.reportFailedToSubmit'));\n     }\n\n     return (\n         <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt2]}>\n             <Icon\n                 src={expensifyIcons.DotIndicator}\n                 fill={theme.danger}\n                 additionalStyles={[styles.mr1]}\n                 width={12}\n                 height={12}\n             />\n             <Text style={[isLargeScreenWidth ? styles.textMicro : styles.mutedNormalTextLabel, {color: theme.textError}]}>\n                 {messages.join(' ')}\n             </Text>\n         </View>\n     );\n     ```\n\n3. **Display Full Dismissible Error on Report Action Inside Report**:\n   Inside the report view, verify that `report.errors` renders on the failed submission action (`SUBMITTED` / `DEW_SUBMIT_FAILED`) through `OfflineWithFeedback` with `onClose={() => clearReportErrors(reportID)}` so the user can review and dismiss the full error message in context.\n   In `submitMoneyRequestOnSearch` / `submitReport`, clear `errors: null` on retry.\n\n### What specific scenarios should we cover in automated tests?\nIn `tests/unit/ExpenseReportListItemTest.tsx`:\n1. When report has violations only: displays `\"Report contains expenses with violations.\"`.\n2. When report has submit errors only: displays `\"Report failed to submit because of errors.\"`.\n3. When report has both violations and submit errors: displays `\"Report contains expenses with violations. Report failed to submit because of errors.\"`.\n4. When report has neither: renders no warning.\n5. In all cases, verify no separate `OfflineWithFeedback` error rows render outside the report row.\n",
+        "createdAt": "2026-10-08T10:53:14Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058280363",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaRoI2Q",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-08T10:53:17Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058281177",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaR53qg",
+        "author": {
+          "login": "RajGahoi"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: gahoiraj01@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01b77415f16d156068\n\n## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nOn Search > Reports, when a report's submission fails, its errors render outside the report row as separate red-dot rows via `OfflineWithFeedback`. When multiple errors exist, several separate error rows appear, making it unclear which report they belong to. The row should instead display a single inline warning: *\"Report contains expenses with violations. Report failed to submit because of errors.\"* (with each sentence appearing only when applicable), while the full dismissible error appears inside the report on the submit action.\n\n### What is the root cause of that problem?\n1. **Unwanted External Error Rows via `ListItemPressable`**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx`, `ExpenseReportListItem` passes the full `item` (which contains `report.errors`) directly to `ListItemComposed`. In `src/components/SelectionList/ListItemComposed/ListItemPressable.tsx`, `item.errors` is passed to `OfflineWithFeedback`, which renders each error entry as a separate red-dot row with dismiss buttons below the pressable row container.\n2. **Incomplete Violation Message in `getDescription`**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx:434-450`, `getDescription` only checks `hasAnyVisibleViolations` and hardcodes `reportViolations.reportContainsExpensesWithViolations`. It does not inspect `reportItem?.errors` or append the failed submission notice.\n\n### What changes do you think we should make in order to solve the problem?\n\n1. **Suppress External Error Rows on `ExpenseReportListItem` (Zero Blast Radius)**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx`, strip `errors` from the `item` passed to `ListItemComposed`:\n   ```tsx\n   const itemForPressable = useMemo(() => {\n       if (!item.errors) {\n           return item;\n       }\n       const {errors, ...rest} = item;\n       return rest;\n   }, [item]);\n   ```\n   Pass `item={itemForPressable}` to `<ListItemComposed>`. This ensures `ListItemPressable` does not receive `item.errors` and `OfflineWithFeedback` does not render separate error lines below the report row, while keeping `pendingAction` intact for offline styling. Crucially, this avoids modifying `ListItemPressable` globally, preserving expected error rendering for other selection lists throughout the app.\n\n2. **Compose the Combined Inline Warning on the Report Row**:\n   In `src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx`:\n   - Add a new translation key in `src/languages/en.ts` (and corresponding locale files):\n     ```ts\n     reportViolations: {\n         ...\n         reportFailedToSubmit: 'Report failed to submit because of errors.',\n     }\n     ```\n   - In `getDescription`, inspect both violations and `liveReportItem?.errors`:\n     ```tsx\n     const hasSubmitErrors = !isEmptyObject(liveReportItem?.errors);\n     const shouldShowViolationsText = hasAnyVisibleViolations && shouldShowViolationDescription;\n\n     if (!shouldShowViolationsText && !hasSubmitErrors) {\n         return;\n     }\n\n     const messages: string[] = [];\n     if (shouldShowViolationsText) {\n         messages.push(translate('reportViolations.reportContainsExpensesWithViolations'));\n     }\n     if (hasSubmitErrors) {\n         messages.push(translate('reportViolations.reportFailedToSubmit'));\n     }\n\n     return (\n         <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt2]}>\n             <Icon\n                 src={expensifyIcons.DotIndicator}\n                 fill={theme.danger}\n                 additionalStyles={[styles.mr1]}\n                 width={12}\n                 height={12}\n             />\n             <Text style={[isLargeScreenWidth ? styles.textMicro : styles.mutedNormalTextLabel, {color: theme.textError}]}>\n                 {messages.join(' ')}\n             </Text>\n         </View>\n     );\n     ```\n\n3. **Display Full Dismissible Error on Report Action Inside Report**:\n   Inside the report view, verify that `report.errors` renders on the failed submission action through `OfflineWithFeedback` with `onClose={() => clearReportErrors(reportID)}` so the user can review and dismiss the full error message in context.\n\n### What specific scenarios should we cover in automated tests?\nIn `tests/unit/ExpenseReportListItemTest.tsx`:\n1. When report has violations only: displays `\"Report contains expenses with violations.\"`.\n2. When report has submit errors only: displays `\"Report failed to submit because of errors.\"`.\n3. When report has both violations and submit errors: displays `\"Report contains expenses with violations. Report failed to submit because of errors.\"`.\n4. When report has neither: renders no warning.\n5. In all cases, verify no separate `OfflineWithFeedback` error rows render outside the report row.\n",
+        "createdAt": "2026-10-08T11:10:28Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058571690",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaR56yQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": ":warning: Unable to store contributor details\n\n<details>\n<summary>Details</summary>\n<pre>\nAuth SetContributorDetails returned an error\n401 Contributor details already exist\n</pre>\n</details>",
+        "createdAt": "2026-10-08T11:10:31Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6058572489",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaUBEqg",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+        "createdAt": "2026-10-08T13:20:25Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6060786858",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaUxo7w",
+        "author": {
+          "login": "RajGahoi"
+        },
+        "authorAssociation": "NONE",
+        "body": "@nkdengineer @mountiny Just flagging for transparency: the comment posted above by @strzj1317 (at 13:20 UTC) is a direct copy of my original proposal submitted at 11:10 UTC ([comment](https://github.com/Expensify/App/issues/103444#issuecomment-6058571690)), and they even copied my own Upwork profile URL (\\https://www.upwork.com/freelancers/~01b77415f16d156068\\).\n\nMy original proposal at 11:10 UTC remains the canonical submission with full timestamp priority. Looking forward to your review!",
+        "createdAt": "2026-10-08T14:02:54Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6061582575",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaUxz2w",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": "\ud83d\udce3 @RajGahoi! \ud83d\udce3\nHey, it seems we don\u2019t have your contributor details yet! You'll only have to do this once, and this is how we'll hire you on Upwork.\nPlease follow these steps:\n1. Make sure you've read and understood the [contributing guidelines](https://github.com/Expensify/App/blob/main/contributingGuides/CONTRIBUTING.md).\n2. Get the email address used to login to your Expensify account. If you don't already have an Expensify account, create one [here](https://new.expensify.com/). If you have multiple accounts (e.g. one for testing), please use your main account email.\n3. Get the link to your Upwork profile. It's necessary because we only pay via Upwork. You can access it by logging in, and then clicking on your name. It'll look like [this](https://www.upwork.com/freelancers/~01ca8ad8ce36b9eceb). If you don't already have an account, sign up for one [here](https://www.upwork.com/nx/signup/?dest=home).\n4. Copy the format below and paste it in a comment on this issue. Replace the placeholder text with your actual details.\n![Screen Shot 2022-11-16 at 4 42 54 PM](https://user-images.githubusercontent.com/30609178/231263719-a8a3b7d3-36a0-4d7f-8ad4-cebe1f560fa4.png)\nFormat:\n```\nContributor details\nYour Expensify account email: <REPLACE EMAIL HERE>\nUpwork Profile Link: <REPLACE LINK HERE>\n```",
+        "createdAt": "2026-10-08T14:03:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6061585371",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaU86BA",
+        "author": {
+          "login": "RajGahoi"
+        },
+        "authorAssociation": "NONE",
+        "body": "Contributor details\nYour Expensify account email: gahoiraj01@gmail.com\nUpwork Profile Link: https://www.upwork.com/freelancers/~01b77415f16d156068",
+        "createdAt": "2026-10-08T14:12:28Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6061767172",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaU9CEQ",
+        "author": {
+          "login": "melvin-bot"
+        },
+        "authorAssociation": "NONE",
+        "body": ":warning: Unable to store contributor details\n\n<details>\n<summary>Details</summary>\n<pre>\nAuth SetContributorDetails returned an error\n401 Contributor details already exist\n</pre>\n</details>",
+        "createdAt": "2026-10-08T14:12:34Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6061769233",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaWcUFg",
+        "author": {
+          "login": "nkdengineer"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@MelvinBot, can we concatenate the `item.errors` with the text [here](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L447)\n\n\nThen pass the item without error here; then `OfflineWithFeedback` doesn't display errors\n\nhttps://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L474\n\n> Show the full, dismissible error inside the report, on the submit action.\n\nSince it's the report's error, it will be displayed in the report screen and can be dismissable.",
+        "createdAt": "2026-10-08T15:29:55Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [
+          {
+            "content": "EYES",
+            "users": {
+              "totalCount": 1
+            }
+          }
+        ],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6063330326",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaWkinQ",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "`nkdengineer` Your plan for the row works, with one change. But the report screen won't show `report.errors` today, so the in-report part needs more work.\n\n**1. Row text: use a fixed sentence, not the raw `item.errors` text.** The issue asks for one short line: \"Report contains expenses with violations. Report failed to submit because of errors.\" Raw `item.errors` can hold several long DEW messages, or the generic \"Oops\u2026 something went wrong\" that Search writes on failure. So:\n- At [line 447](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L447), add a new translation key, for example `reportViolations.reportFailedToSubmit`, when `item.errors` is not empty.\n- Change the early return just above it. Today the line only shows when there are violations, but it should also show when there are only errors.\n\n**2. Passing the item without errors at [line 474](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/components/Search/SearchList/ListItem/ExpenseReportListItem.tsx#L474) works.** It removes the line under Search rows. It does not fix the Merge reports page, which uses `SearchMergeReportsListItem` ([Spend - Error message appears below report row on Merge reports and cannot be dismissed](https://github.com/Expensify/App/issues/100499)). If you want that fixed too, strip `errors` there as well.\n\n**3. The report screen does not show `report.errors`.** `MoneyRequestReportView` gets its errors from `getReportOfflinePendingActionAndErrors` ([`MoneyRequestReportView.tsx:125`](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/components/MoneyRequestReportView/MoneyRequestReportView.tsx#L125)). That function reads only `errorFields.addWorkspaceRoom`, `createChat`, and `createReport` ([`ReportUtils.ts:11364`](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/libs/ReportUtils.ts#L11364)). Also, nothing in the App clears `report.errors`. So with only steps 1 and 2:\n- The user sees \"failed to submit\" on the row but can't find the error in the report.\n- The sentence stays on the row until the backend overwrites `report.errors`.\n\nTo meet the \"full, dismissible error on the submit action\" requirement:\n- Pass `report.errors` into the latest `DEW_SUBMIT_FAILED` action, or else the latest `SUBMITTED` action. Follow the existing `linkedTransactionRouteError` prop pattern in [`ReportActionItem.tsx`](https://github.com/Expensify/App/blob/b3308174d8394eacc2cc9bbcb6d93b685c3634df/src/pages/inbox/report/ReportActionItem.tsx).\n- Add a `clearReportErrors(reportID)` action that merges `errors: null`, and call it from that action's `onClose`.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/37801264056)_\n",
+        "createdAt": "2026-10-08T15:36:53Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6063465117",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABaYOegw",
+        "author": {
+          "login": "RajGahoi"
+        },
+        "authorAssociation": "NONE",
+        "body": "@nkdengineer Exactly \u2014 that matches the architecture detailed in my [original proposal](https://github.com/Expensify/App/issues/103444#issuecomment-6058571690):\n\n1. **Row Text**: We compose the localized fixed sentence (\\\reportViolations.reportFailedToSubmit: 'Report failed to submit because of errors.'\\) combined with violations in \\getDescription\\, updating the guard so it displays whenever either violations or submit errors exist.\n2. **Row Error Suppression**: In \\ExpenseReportListItem.tsx:474\\, we pass \\itemForPressable\\ (memoized with \\^[rrors\\ stripped) to \\<ListItemComposed>\\, preventing \\OfflineWithFeedback\\ from rendering external lines outside the row while keeping \\pendingAction\\ intact.\n3. **In-Report Dismissible Action**: We pass \\\report.errors\\ to the latest \\SUBMITTED\\ / \\DEW_SUBMIT_FAILED\\ action in \\ReportActionItem\\, rendered via \\OfflineWithFeedback\\ with \\onClose={() => clearReportErrors(reportID)}\\ which sets \\{errors: null}\\ in Onyx.\n\nReady to implement and open the PR as soon as assigned!",
+        "createdAt": "2026-10-08T17:15:21Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6065200771",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABag3dcg",
+        "author": {
+          "login": "nkdengineer"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@RajGahoi, please note that the proposal posted before `Help Wanted` label will be skipped.",
+        "createdAt": "2026-10-09T04:27:32Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6074260850",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABag4_2w",
+        "author": {
+          "login": "nkdengineer"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@MelvinBot For report screen or money request report screen,  we can fall back to the error to `report?.errors`.\n\n\nhttps://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/components/MoneyRequestReportView/MoneyRequestReportView.tsx#L141\n\nAnd update `dismissReportCreationError` to have a new case which only clears report's `errors` if it's not report creation errors.\n\nhttps://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/components/MoneyRequestReportView/MoneyRequestReportView.tsx#L146\n",
+        "createdAt": "2026-10-09T04:30:02Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [
+          {
+            "content": "EYES",
+            "users": {
+              "totalCount": 1
+            }
+          }
+        ],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6074286043",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABag78dw",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "`nkdengineer` Yes, this works. Keep the fallback local to the two screens, and add a small action to clear `report.errors`.\n\n**Changes:**\n\n1. **`MoneyRequestReportView`** ([line 141](https://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/components/MoneyRequestReportView/MoneyRequestReportView.tsx#L141)): fall back with `allReportErrors ?? report?.errors`. The single-transaction guard on that line still applies. Don't put the fallback in `getReportOfflinePendingActionAndErrors`, because the header, footer, toolbar, and composer also call it.\n2. **`dismissReportCreationError`** ([line 146](https://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/components/MoneyRequestReportView/MoneyRequestReportView.tsx#L146)): if `getCreationReportErrors(report)` returns errors, keep the current go-back and `removeFailedReport`. Otherwise, call a new `clearReportErrors(reportID)` and stay on the screen.\n3. **New action:** add `clearReportErrors(reportID)` near [`clearIOUError`](https://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/libs/actions/Report/index.ts#L5327). It merges `{errors: null}` into the report. No action like this exists today.\n4. **`ReportScreen`:** its selector reads only `errorFields.createReport` ([lines 92-98](https://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/pages/inbox/ReportScreen.tsx#L92-L98)). Add `?? r?.errors`, plus a flag for whether `createReport` errors exist. Use that flag to branch its dismiss handler ([lines 100-104](https://github.com/Expensify/App/blob/a3b57851ca4022672935d851993be36ad5ef7920/src/pages/inbox/ReportScreen.tsx#L100-L104)) the same way as step 2.\n\n**Things to check:**\n\n- The error shows as a row at the bottom of the report, not on the submit action as the issue body says. Confirm this placement with the C+ reviewer.\n- After a failed submit, the report has no pending creation action, so this fallback won't dim the screen. The header's `OfflineWithFeedback` wrappers use `shouldShowErrorMessages={false}`, so the error won't show twice.\n- Submit doesn't clear `report.errors` on retry today. Add `errors: null` to the report in the optimistic data of `submitMoneyRequestOnSearch` and `submitReport`. Otherwise, the old error stays after a successful retry.\n\n---\n**Next Steps for Contributor+ team:**\n**To accept:** `@MelvinBot implement [this](https://github.com/Expensify/App/issues/103444)` to create a draft PR.\n**To refine:** `@MelvinBot <your feedback>`\n**To reject:** Explain why you are rejecting Melvin's proposal.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/37884167984)_\n",
+        "createdAt": "2026-10-09T04:34:47Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6074334327",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABahGD8A",
+        "author": {
+          "login": "nkdengineer"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@MelvinBot Implement [this](https://github.com/Expensify/App/issues/103444#issuecomment-6074334327).",
+        "createdAt": "2026-10-09T04:51:01Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [
+          {
+            "content": "EYES",
+            "users": {
+              "totalCount": 1
+            }
+          }
+        ],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6074500080",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABahQakg",
+        "author": {
+          "login": "MelvinBot"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "\ud83e\udd16 I opened a draft PR: [Show report submit errors in the Search row and make them dismissible in the report](https://github.com/Expensify/App/pull/103547).\nPlease mark it as \"Ready for review\" or ask me to do that for you when it is ready for review.\n\n**What changed:**\n- **Search row:** the report no longer shows a separate error line under the row. Instead, the row message adds \"Report failed to submit because of errors.\", joined with the violations sentence when both apply.\n- **In the report:** `MoneyRequestReportView` and `ReportScreen` now fall back to `report.errors`. Clicking X on that error calls the new `clearReportErrors(reportID)` action, and you stay on the report. Report-creation errors still go back and remove the failed report, as before.\n- **Retry:** `submitMoneyRequestOnSearch` and `submitReport` now clear `report.errors` optimistically, so an old error doesn't stay after a successful retry.\n\n**Checks:** Typecheck, ESLint, React Compiler, and spelling checks passed. 9 related Jest files passed, including 2 new tests for the error reset on retry.\n\n**Still needs a manual check:** I couldn't test this in the browser because the test session loaded a blank page.\n\n**Please also check:**\n- The non-English translations of the new sentence are mine.\n- Failed pay, approve, and export actions in Search also write to `report.errors`, so their rows also say \"failed to submit\".\n- I left the Merge reports page unchanged, because [Fix regressions with merging reports](https://github.com/Expensify/App/pull/101034) already changes that page.\n\n\n---\n_[view run](https://github.com/Expensify/melvin/actions/runs/37885799881)_ \u00b7 _no recording available_\n",
+        "createdAt": "2026-10-09T05:06:04Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6074669714",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbS3ZwQ",
+        "author": {
+          "login": "mountiny"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@nkdengineer how is it looking? ",
+        "createdAt": "2026-10-12T14:51:37Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6126688705",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDOEQqHYc8AAAABbTahJw",
+        "author": {
+          "login": "nkdengineer"
+        },
+        "authorAssociation": "CONTRIBUTOR",
+        "body": "@mountiny Still discussing on Slack.",
+        "createdAt": "2026-10-12T15:23:19Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/Expensify/App/issues/103444#issuecomment-6127264039",
+        "viewerDidAuthor": false
+      }
+    ],
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwyMjgzMTQzOTkx",
+        "name": "Reviewing",
+        "description": "Has a PR in review",
+        "color": "dddddd"
+      },
+      {
+        "id": "MDU6TGFiZWwyODczMjQ2MTAy",
+        "name": "External",
+        "description": "Added to denote the issue can be worked on by a contributor",
+        "color": "a7b8ef"
+      },
+      {
+        "id": "MDU6TGFiZWwyODkzNTE1Mzc1",
+        "name": "Weekly",
+        "description": "KSv2",
+        "color": "009800"
+      },
+      {
+        "id": "LA_kwDOEQqHYc8AAAABFgv49w",
+        "name": "Bug",
+        "description": "Something is broken. Auto assigns a BugZero manager.",
+        "color": "93074F"
+      }
+    ],
+    "number": 103444,
+    "title": "[$175] Search - Report submit errors show as a separate RBR outside the report row",
+    "url": "https://github.com/Expensify/App/issues/103444"
+  }
+}

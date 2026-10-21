@@ -1,0 +1,264 @@
+[
+  {
+    "number": "103665",
+    "title": "[$175] Expense - Negative tax amount is not retained after unreporting expense",
+    "amount": "$175 USD",
+    "created": "2026-10-09T21:31:56Z",
+    "updated": "2026-10-10T05:54:36Z",
+    "labels": [
+      "Reviewing",
+      "DeployBlockerCash",
+      "Engineering",
+      "Hourly",
+      "Bug"
+    ],
+    "proposals": [],
+    "prop_count": 0,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103665"
+  },
+  {
+    "number": "103666",
+    "title": "Distance - Tax amount field shows negative amount briefly after editing amount to negative",
+    "amount": "$250 USD",
+    "created": "2026-10-09T21:40:58Z",
+    "updated": "2026-10-10T04:25:46Z",
+    "labels": [
+      "DeployBlockerCash",
+      "Engineering",
+      "Hourly",
+      "Bug"
+    ],
+    "proposals": [],
+    "prop_count": 0,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103666"
+  },
+  {
+    "number": "103491",
+    "title": "[$175] Spend - \"Remove hold\" option not display in bulk action bar when offline",
+    "amount": "$175 USD",
+    "created": "2026-10-08T16:30:55Z",
+    "updated": "2026-10-11T03:22:21Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "RajGahoi"
+    ],
+    "prop_count": 2,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103491"
+  },
+  {
+    "number": "103480",
+    "title": "[$175] Spend - Deleted card expenses display with no owner (From column)",
+    "amount": "$175 USD",
+    "created": "2026-10-08T14:23:15Z",
+    "updated": "2026-10-10T09:04:13Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "strzj1317",
+      "ashusatyarthi-wq"
+    ],
+    "prop_count": 3,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103480"
+  },
+  {
+    "number": "103514",
+    "title": "[$175] iOS - Attachments - Double-tap doesn't zoom in PDF",
+    "amount": "$175 USD",
+    "created": "2026-10-08T19:46:59Z",
+    "updated": "2026-10-10T12:04:34Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "RajGahoi",
+      "camesenin",
+      "janiya2"
+    ],
+    "prop_count": 3,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103514"
+  },
+  {
+    "number": "103560",
+    "title": "[$175] Attendees - Error is not announced in Attendees row",
+    "amount": "$175 USD",
+    "created": "2026-10-09T08:34:57Z",
+    "updated": "2026-10-09T10:38:41Z",
+    "labels": [
+      "Reviewing",
+      "External",
+      "Weekly",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "ahmetberkinc",
+      "ashusatyarthi-wq"
+    ],
+    "prop_count": 3,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103560"
+  },
+  {
+    "number": "103619",
+    "title": "[$175] Attachments - Image flashes briefly after uploading",
+    "amount": "$175 USD",
+    "created": "2026-10-09T16:03:57Z",
+    "updated": "2026-10-10T09:07:02Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "khizzcr7",
+      "janiya2"
+    ],
+    "prop_count": 3,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103619"
+  },
+  {
+    "number": "103576",
+    "title": "[$175] Attachments - Chat scroll bar moves  by arrow keys when PDF is opened",
+    "amount": "$175 USD",
+    "created": "2026-10-09T10:29:57Z",
+    "updated": "2026-10-11T15:02:23Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "camesenin",
+      "krsnak",
+      "taieddie"
+    ],
+    "prop_count": 4,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103576"
+  },
+  {
+    "number": "103578",
+    "title": "[$175] Expensify card - Sorting/display options are missing on Expensify card page",
+    "amount": "$175 USD",
+    "created": "2026-10-09T10:45:59Z",
+    "updated": "2026-10-11T04:03:16Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "krsnak",
+      "RajGahoi",
+      "taieddie"
+    ],
+    "prop_count": 4,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103578"
+  },
+  {
+    "number": "103624",
+    "title": "[$175] Search - \"has:submitted violation\" filter results show violations only after clicking into each expense individually",
+    "amount": "$175 USD",
+    "created": "2026-10-09T17:09:12Z",
+    "updated": "2026-10-10T19:49:15Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "ashusatyarthi-wq",
+      "camesenin",
+      "khizzcr7",
+      "bonnhatnguyen"
+    ],
+    "prop_count": 4,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103624"
+  },
+  {
+    "number": "103622",
+    "title": "[$175] Filters - Expense \"From\" filter pill is cleared when navigating to Workspace via Go to room > Header > Go to workspace",
+    "amount": "$175 USD",
+    "created": "2026-10-09T16:47:55Z",
+    "updated": "2026-10-09T21:20:59Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Bug"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "ashusatyarthi-wq",
+      "krsnak",
+      "khizzcr7",
+      "ahmetberkinc"
+    ],
+    "prop_count": 5,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103622"
+  },
+  {
+    "number": "103650",
+    "title": "[CFI] [$250] Spend - Add a Paid column option to the reports table",
+    "amount": "$250 USD",
+    "created": "2026-10-09T18:58:17Z",
+    "updated": "2026-10-11T15:13:20Z",
+    "labels": [
+      "External",
+      "Daily",
+      "Help Wanted"
+    ],
+    "proposals": [
+      "yuvrajangadsingh",
+      "wildan-m",
+      "KJ21-ENG",
+      "Dip-G-Git",
+      "samranahm",
+      "nabi-ebrahimi",
+      "yusufdeveloper2903",
+      "yinkaadx",
+      "sam5235",
+      "neerajbachani",
+      "RajGahoi",
+      "camesenin",
+      "Codesensitive",
+      "laveshfonix",
+      "bonnhatnguyen",
+      "Rodrigoue9",
+      "Yuosefabuolim",
+      "SARAMALI15792",
+      "phuchoang23",
+      "kasyap1234",
+      "dilshodmackbook-sketch",
+      "jdymitarai",
+      "sudal40019",
+      "taieddie",
+      "leoliu201204-cmyk"
+    ],
+    "prop_count": 25,
+    "has_hired": false,
+    "url": "https://github.com/Expensify/App/issues/103650"
+  }
+]

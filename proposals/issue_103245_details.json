@@ -1,0 +1,23 @@
+{
+  "number": 103245,
+  "title": "[$175] Agent: Agent page stuck in infinity loading after switch to Copilot",
+  "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:**\n**Reproducible in staging?:** Needs Reproduction (Unable reproduce)\n**Reproducible in production?:** Needs Reproduction\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:**\n**Email or phone of affected tester (no customers):**\n**Logs:** https://stackoverflow.com/c/expensify/questions/4856\n**Expensify/Expensify Issue URL:**\n**Issue reported by:** @paulnjs \n**Slack conversation** (hyperlinked to channel name): [#Opensource](https://expensify.slack.com/archives/C01GTK53T8Q/p1791300892652869)\n\n## Action Performed:\nPrecondition:\n- Have copilot access to account B\n\n1. Open https://staging.new.expensify.com/\n2. Go to Account -> Agent\n3. Create one or some agents\n4. Switch to account B\n## Expected Result:\nAgent page should load successfully with\n## Actual Result:\nAgent page stuck in infinity loading\n## RCA:\nRCA: ARE_AGENTS_LOADED gets cleared on the delegate switch, but AgentsPage only called openAgentsPage() once on mount ([]). The screen stays mounted, so it never re-fetches and the table skeleton never clears.\n## Workaround:\nUnknown\n## Platforms:\nSelect the officially supported platforms where the issue was reproduced:\n- [ ] Android: App\n- [ ] Android: mWeb Chrome\n- [ ] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [x] MacOS: Chrome / Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/80cfe6e3-1fe7-4683-b055-2b253ad68608\n\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022107586883241239186\">https://www.upwork.com/jobs/~022107586883241239186</a></li>\n        <li>Upwork Job ID: 2107586883241239186</li>\n        <li>Last Price Increase: 2026-10-06</li>\n    </ul>\n</details>",
+  "comments_count": 10,
+  "last_3_comments": [
+    {
+      "author": "bonnhatnguyen",
+      "body": "## Proposal\n\n### Please re-state the problem that we are trying to solve in this issue.\nOn Web/Desktop, when the Agents settings page (`/settings/agents`) is open in the central pane and the user switches to a Copilot account (or delegator), the page gets stuck displaying an infinite loading skeleton table and never displays the delegator's agents.\n\n### What is the root cause of that problem?\nThe root cause consists of two factors in how Onyx state is cleared during delegate switching and how `AgentsPage` triggers data fetching:\n\n1. **Onyx State Clearance on Copilot Switch (`Delegate.ts`)**:\nW",
+      "createdAt": "2026-10-08T07:51:47Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+      "createdAt": "2026-10-08T07:51:49Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "@mananjadhav Uh oh! This issue is overdue by 2 days. Don't forget to update your issues!",
+      "createdAt": "2026-10-09T21:53:44Z"
+    }
+  ]
+}

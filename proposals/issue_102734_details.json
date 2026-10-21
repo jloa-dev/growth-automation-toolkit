@@ -1,0 +1,23 @@
+{
+  "number": 102734,
+  "title": "[$175] Member Security - UI does not reflect that the unlock request was submitted.",
+  "body": "If you haven\u2019t already, check out our [contributing guidelines](https://github.com/Expensify/ReactNativeChat/blob/main/contributingGuides/CONTRIBUTING.md) for onboarding. To join our Slack channel, fill out [this form](https://forms.gle/Q7hnhUJPnQCK7Fe56).\n___\n\n**Version Number:** v9.5.0-0\n**Reproducible in staging?:** Yes\n**Reproducible in production?:** Yes\n**If this was caught during regression testing, add the test name, ID and link from BrowserStack:** https://test-management.browserstack.com/projects/2219752/folder/53678307/test-cases/94420076\n**Email or phone of affected tester (no customers):** nchandekar@applausemail.com\n**Issue reported by:** Applause Internal Team\n**Bug source:** Regression TC Execution\n**Device used:** iOS , Windows 11, Android\n**App Component:** Other\n\n## Action Performed:\nPreconditions\n1.Sign into NewDot as a domain admin. (use admin@expplause.com account)\n2.Add a new member to test this scenario and don't lock any existing members\n\nSteps:\n1. Navigate to Workspace > Domains [Your Domain] > Domain Members and click on a member row\n2. Click Report suspicious activity\n3. Review the warning message and Verify it states: \"Are you sure? This will lock [email]'s account...\"\n4. Click the red Report suspicious activity button at the bottom\n5. Click Lock account to confirm\n6. Click Unlock account\n7. Click Got it\n\n## Expected Result:\nThe modal closes and the UI reflects that the unlock request has been submitted\n\n## Actual Result:\nUI does not reflect that the unlock request was submitted.\n\n## Workaround:\nUnknown\n\n## Platforms:\n- [x] Android: App\n- [ ] Android: mWeb Chrome\n- [x] iOS: App\n- [ ] iOS: mWeb Safari\n- [ ] iOS: mWeb Chrome\n- [x] Windows: Chrome\n- [ ] MacOS: Chrome Safari\n\n## Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/2d8edd84-6f8b-4c23-aaa1-1dfb9185695f\n\n[View all open jobs on GitHub](https://github.com/Expensify/App/issues?q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22)\n\n\n> **Applause Internal Information**\n> Exported by: Julia Ponikarchuk\n> Bug ID: 7272332\n<details><summary>Upwork Automation - Do Not Edit</summary>\n    <ul>\n        <li>Upwork Job URL: <a href=\"https://www.upwork.com/jobs/~022105585895255968582\">https://www.upwork.com/jobs/~022105585895255968582</a></li>\n        <li>Upwork Job ID: 2105585895255968582</li>\n        <li>Last Price Increase: 2026-10-01</li>\n    </ul>\n</details>",
+  "comments_count": 12,
+  "last_3_comments": [
+    {
+      "author": "melvin-bot",
+      "body": "\u2705 Contributor details stored successfully. Thank you for contributing to Expensify!",
+      "createdAt": "2026-10-01T20:14:18Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "@thesahindia Huh... This is 4 days overdue. Who can take care of this?",
+      "createdAt": "2026-10-06T22:07:31Z"
+    },
+    {
+      "author": "melvin-bot",
+      "body": "@thesahindia Still overdue 6 days?! Let's take care of this!",
+      "createdAt": "2026-10-08T22:09:01Z"
+    }
+  ]
+}

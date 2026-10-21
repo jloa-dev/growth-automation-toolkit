@@ -1,0 +1,25 @@
+// Solution for Issue #106 (ubiquity/ts-template):
+// Enable JavaScript inputs in the JSX lint recipe
+// Reward: $18 USD (DevPool verified, Issue #6170)
+
+diff --git a/.agents/skills/ubiquity-code-style/references/deno.md b/.agents/skills/ubiquity-code-style/references/deno.md
+--- a/.agents/skills/ubiquity-code-style/references/deno.md
++++ b/.agents/skills/ubiquity-code-style/references/deno.md
+@@ -136,6 +136,7 @@
+     "forceConsistentCasingInFileNames": true,
+     "typeRoots": ["./tools/lint/node_modules/@types"],
+     "types": ["node"],
++    "allowJs": true,
+     "skipLibCheck": true
+   },
+   "include": ["serve.ts", "src/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts", "benchmarks/**/*.ts", "ops/**/*.ts", ".deno-types.d.ts"]
+@@ -145,8 +146,9 @@
+ Adjust `include` to the target's real source, test, script, ops, and benchmark
+ directories. When the target has `.tsx`/`.jsx`, add those extensions to `include`
+-and set a JSX compiler option matching the runtime (for example
+-`"jsx": "react-jsx"`); the TS/MJS example above does not cover those extensions
+-automatically. The simple profile keeps the same compiler options without the
++and set a JSX compiler option matching the runtime (for example
++`"jsx": "react-jsx"`) along with `"allowJs": true` in `compilerOptions` so that TypeScript
++includes `.jsx` files in the project program rather than skipping JavaScript inputs.
++The TS/MJS example above does not cover those extensions automatically. The simple profile keeps the same compiler options without the

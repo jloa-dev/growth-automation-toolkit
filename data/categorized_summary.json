@@ -1,0 +1,630 @@
+{
+  "closed": [
+    [
+      "102437",
+      "[$250] 2FA - User admin is redirected to NewDot instead of completing the OldDot 2FA flow for Xero",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103324",
+      "[$175] Domains- Error displayed when user attempt to verify Domain",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103355",
+      "[$175] Expense members input always shown",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103538",
+      "Wallet - Bank account name reverts to default after refreshing the page",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103663",
+      "Expense - Unable to enter negative sign in tax amount field",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103664",
+      "Expense - Tax amount field is not negative when amount is negative",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103671",
+      "[Due for payment 2026-10-21] [QA Retest & Close] Expense - Tax amount is not negative after merging expenses with negative tax amount offline",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103770",
+      "[$175] Animations for pages in account settings are stuck",
+      "Cerrado en GitHub"
+    ],
+    [
+      "103863",
+      "[$175] Rules - Category that has already been selected in existing rule can be selected again",
+      "Cerrado en GitHub"
+    ]
+  ],
+  "assigned_others": [
+    [
+      "102072",
+      "[$250] mWeb - Sign out on the Account page is covered by the debug indicator banner and cannot be scrolled into view.",
+      "Asignado a: jasperhuangg"
+    ],
+    [
+      "102525",
+      "[$250] To do - The employee held report displays in To do tab",
+      "C+ recomendo a otro (QichenZhu)"
+    ],
+    [
+      "103063",
+      "[$175] Navigation - View button from email navigates to WS chat but not the specific expense",
+      "Asignado a: beamanator"
+    ],
+    [
+      "103198",
+      "[$175] Make the remove/unassign card warning clearer about which expenses get deleted",
+      "C+ recomendo a otro (thelullabyy)"
+    ],
+    [
+      "103216",
+      "[$175] New Expensify defaults a manual expense to my Payment currency, not to the currency of the selected default workspace.",
+      "Asignado a: jasperhuangg"
+    ],
+    [
+      "103307",
+      "[$175] Gusto-Setting defaulted to \"Manager approval\" instead of \"Custom approval\"",
+      "C+ recomendo a otro (thelullabyy)"
+    ],
+    [
+      "103341",
+      "[CFI] [$175] Show the Reimbursable toggle on company card expenses when the card feed is set to Do Not Force",
+      "C+ recomendo a otro (dmkt9)"
+    ],
+    [
+      "103345",
+      "[$175] User Settings - App crashes when adding a new contact with a \"%\" character in the email",
+      "C+ recomendo a otro (hoangzinh)"
+    ],
+    [
+      "103492",
+      "[$175] Workspaces - Unable to remove the RBR on archived Workspace",
+      "C+ recomendo a otro (cretadn22)"
+    ],
+    [
+      "103531",
+      "[$250] iOS - Attachments - Password input of protected PDF closes after rotating to landscape",
+      "Asignado a: nabi-ebrahimi"
+    ],
+    [
+      "103533",
+      "[$175] Concierge - Image appears cut on its preview on the Concierge RHP",
+      "C+ recomendo a otro (abzokhattab)"
+    ],
+    [
+      "103593",
+      "[Due for payment 2026-10-22] [$175] Android - Preview of taken photo is not displayed before sending",
+      "Asignado a: hungvu193, nkdengineer"
+    ],
+    [
+      "103662",
+      "[$175] Native share - File size too large error is not displayed",
+      "C+ recomendo a otro (Pujan92)"
+    ],
+    [
+      "103775",
+      "[$175] [Sentry: APP-KT0] Search bulk actions crash reading undefined search results data",
+      "C+ recomendo a otro (ikevin127)"
+    ],
+    [
+      "103777",
+      "[$175] [Sentry: APP-KC9] Navigation crash: 'filter' of undefined in getStateForRouteNamesChange",
+      "Asignado a: eh2077"
+    ],
+    [
+      "103944",
+      "[Due for payment 2026-10-23] [$175] Expense - After unreporting expense, arrows are shown on report which lead to self DM",
+      "Asignado a: melvinbot"
+    ],
+    [
+      "104165",
+      "[$175] Bank account - Address line is not saved when adding an US bank account",
+      "Asignado a: puneetlath"
+    ],
+    [
+      "104221",
+      "[$175] Workspace admin can view card transactions from a different workspace (Y) in a shared Expensify Card program despite not being a member/admin there",
+      "Asignado a: abdulrahuman5196"
+    ],
+    [
+      "104231",
+      "[$175] Rules option should not be displayed when duplicating workspace",
+      "C+ recomendo a otro (abzokhattab)"
+    ],
+    [
+      "104247",
+      "[$175] Spend- From column Is missing when filtering by From is owner account",
+      "Asignado a: linhvovan29546"
+    ],
+    [
+      "104280",
+      "[$175] Android - Troubleshoot - App crashes after \"Insigths Page\" beta is disabled.",
+      "Asignado a: daledah"
+    ]
+  ],
+  "alive": [
+    [
+      "102683",
+      "[$175] Company card nicknames don\u2019t show in the Spend page Card filter",
+      [
+        "chavdasachin"
+      ],
+      17,
+      "melvin-bot"
+    ],
+    [
+      "102730",
+      "[$175] Ecard - The empty illustration is not shown after removing user admin permission",
+      [
+        "jayeshmangwani"
+      ],
+      20,
+      "jayeshmangwani"
+    ],
+    [
+      "102734",
+      "[$175] Member Security - UI does not reflect that the unlock request was submitted.",
+      [
+        "dubielzyk-expensify",
+        "marufsharifi"
+      ],
+      26,
+      "MelvinBot"
+    ],
+    [
+      "102792",
+      "[$175] Inbox shows RBR and Fix for violations on submitted reports that Home and Spend correctly ignore",
+      [
+        "monilbhavsar",
+        "brunovjk",
+        "dukenv0307"
+      ],
+      12,
+      "melvin-bot"
+    ],
+    [
+      "102868",
+      "[$175] Export to-do omits reports that Search returns for `action:export`",
+      [
+        "mountiny",
+        "situchan",
+        "dukenv0307"
+      ],
+      12,
+      "dukenv0307"
+    ],
+    [
+      "103058",
+      "[$175] WS settings - Error appear when changing role just after adding User",
+      [
+        "marufsharifi"
+      ],
+      15,
+      "marufsharifi"
+    ],
+    [
+      "103156",
+      "[$175] Offline Bank Unlock Doesn\u2019t Open Concierge",
+      [
+        "rojiphil"
+      ],
+      10,
+      "melvin-bot"
+    ],
+    [
+      "103183",
+      "[$175] Transaction's tag isn't updated correctly when selecting a tag contain `\\:`",
+      [
+        "bernhardoj"
+      ],
+      23,
+      "MelvinBot"
+    ],
+    [
+      "103214",
+      "[$175] The new avatar is not reflected after uploading new photo to the profile",
+      [
+        "mkhutornyi"
+      ],
+      13,
+      "emkhalid"
+    ],
+    [
+      "103240",
+      "[$50] DEV - Duplicate key error showing up in the console",
+      [
+        "evoloshchak"
+      ],
+      15,
+      "MelvinBot"
+    ],
+    [
+      "103244",
+      "[$175] Onboarding - Product update / feature announcements still shown to employees invited to a workspace (should be removed)",
+      [
+        "shubham1206agra"
+      ],
+      19,
+      "MelvinBot"
+    ],
+    [
+      "103245",
+      "[$175] Agent: Agent page stuck in infinity loading after switch to Copilot",
+      [
+        "mananjadhav"
+      ],
+      13,
+      "mananjadhav"
+    ],
+    [
+      "103326",
+      "[$175] When offline Grey text with \"Upload Attachment\" doesn't appear during uploading attachment",
+      [
+        "tadujr"
+      ],
+      12,
+      "melvin-bot"
+    ],
+    [
+      "103349",
+      "[$175] Android - Expensify app is not available in the share sheet when sharing an HEVC video file",
+      [
+        "rojiphil"
+      ],
+      12,
+      "melvin-bot"
+    ],
+    [
+      "103403",
+      "[$250] Android/iOS-Offline-Navigation arrows disappear after deleted expense syncs online",
+      [
+        "shubham1206agra"
+      ],
+      35,
+      "lopezpope"
+    ],
+    [
+      "103406",
+      "[$175] Expensify Card - No card is visible in archived workspace",
+      [
+        "aimane-chnaif"
+      ],
+      14,
+      "melvin-bot"
+    ],
+    [
+      "103488",
+      "[Due for payment 2026-10-23] [$175] Make the GPS distance counter label a fully localized phrase",
+      [
+        "chuckdries",
+        "ahmedgaber93"
+      ],
+      22,
+      "melvin-bot"
+    ],
+    [
+      "103493",
+      "[$175] Dragging and dropping a receipt onto an existing receipt image on an expense behaves inconsistently.",
+      [
+        "truph01"
+      ],
+      23,
+      "MelvinBot"
+    ],
+    [
+      "103497",
+      "[$175] Composer - Input field renders at two-line height before typing starts",
+      [
+        "situchan"
+      ],
+      17,
+      "melvin-bot"
+    ],
+    [
+      "103595",
+      "[$175] [Auto] - Android - Public Room - Error appears when opening public room as anon user",
+      [
+        "situchan"
+      ],
+      12,
+      "melvin-bot"
+    ],
+    [
+      "103619",
+      "[$175] Attachments - Image flashes briefly after uploading",
+      [
+        "marufsharifi"
+      ],
+      13,
+      "marufsharifi"
+    ],
+    [
+      "103648",
+      "[$175] Image attachment - Pinch-to-zoom stops working after reaching maximum zoom",
+      [
+        "situchan"
+      ],
+      18,
+      "melvin-bot"
+    ],
+    [
+      "103721",
+      "[$175] 103421 - Per Diem - Not here page after going back online when the destination loads",
+      [
+        "situchan"
+      ],
+      10,
+      "melvin-bot"
+    ],
+    [
+      "103726",
+      "[Due for payment 2026-10-23] [$175] Global reimbursement-Registration number is prefilled for second BA global reimbursement",
+      [
+        "mariahcd",
+        "cretadn22"
+      ],
+      18,
+      "cretadn22"
+    ],
+    [
+      "103759",
+      "[$175] Threads - Nothing happens in LHN when message is mark as unread",
+      [
+        "rojiphil"
+      ],
+      17,
+      "MelvinBot"
+    ],
+    [
+      "103764",
+      "[$175] [Android] \"Update Required\" shown after updating the app because the startup ReconnectApp prefetch sends the old `appversion`",
+      [
+        "evoloshchak",
+        "vickystash",
+        "mountiny"
+      ],
+      11,
+      "melvin-bot"
+    ],
+    [
+      "103776",
+      "[$175] [Sentry: APP-JQB] FlashList \"right operand of 'in' is not an object\" in participant selector",
+      [
+        "mountiny",
+        "thelullabyy"
+      ],
+      17,
+      "MelvinBot"
+    ],
+    [
+      "103778",
+      "[$175] [Sentry: APP-M66] Android: ReactModalHostView updateSystemAppearance \"dialog must exist\"",
+      [
+        "mountiny",
+        "cretadn22"
+      ],
+      9,
+      "cretadn22"
+    ],
+    [
+      "103779",
+      "[$175] TriNet - Missing Final Approver when user select Custom Approval",
+      [
+        "zhenjahorbach"
+      ],
+      8,
+      "melvin-bot"
+    ],
+    [
+      "103802",
+      "[$175] Expense - Edit split when confirming delete expense of a split per diem expense",
+      [
+        "situchan"
+      ],
+      13,
+      "melvin-bot"
+    ],
+    [
+      "103831",
+      "[$175] Netsuite - \"This site can\u2019t be reached\" error occurs if incorrect credentials is entered",
+      [
+        "sobitneupane"
+      ],
+      17,
+      "melvin-bot"
+    ],
+    [
+      "103838",
+      "[$175] The tab bar does not visible above the spinner",
+      [
+        "situchan"
+      ],
+      9,
+      "melvin-bot"
+    ],
+    [
+      "103875",
+      "[$175] Pressing Delete while selecting text inside a composer duplicates the content instead of clearing it.",
+      [
+        "fitsetlt"
+      ],
+      15,
+      "melvin-bot"
+    ],
+    [
+      "103876",
+      "[$175] Amex feed error persists after reconnect until manual scrape",
+      [
+        "tadujr"
+      ],
+      9,
+      "melvin-bot"
+    ],
+    [
+      "103898",
+      "[Due for payment 2026-10-23] [$175] Improvement: Update copy in empty screen of creating Per diem expense flow",
+      [
+        "neil-marcellini",
+        "eskalifer1"
+      ],
+      18,
+      "melvin-bot"
+    ],
+    [
+      "103908",
+      "[$175] Infinite loading or not here page found page shown when a submitted expense opens",
+      [
+        "jayeshmangwani"
+      ],
+      13,
+      "melvin-bot"
+    ],
+    [
+      "103931",
+      "[$175] Fix flakey SessionTest",
+      [
+        "truph01"
+      ],
+      17,
+      "MelvinBot"
+    ],
+    [
+      "103935",
+      "[$175] Report fields - Disabled list type report field appears on report after deletion",
+      [
+        "mkhutornyi"
+      ],
+      18,
+      "melvin-bot"
+    ],
+    [
+      "104113",
+      "[$175] Scan - Expense Amount Shows 00 While Offline",
+      [
+        "ahmedgaber93"
+      ],
+      11,
+      "melvin-bot"
+    ],
+    [
+      "104138",
+      "[$175] Receipts are not showing fully when sent to receipts@expensify.com",
+      [
+        "sobitneupane"
+      ],
+      10,
+      "melvin-bot"
+    ],
+    [
+      "104147",
+      "[$175] Spend-Expense appears in Spend results despite not matching the applied merchant filter",
+      [
+        "neil-marcellini",
+        "truph01"
+      ],
+      18,
+      "melvin-bot"
+    ],
+    [
+      "104161",
+      "[$175] Spend -  It's not here page when opening a split expense from chat filter",
+      [
+        "mkhutornyi"
+      ],
+      11,
+      "melvin-bot"
+    ],
+    [
+      "104162",
+      "[$175] Expense - Report files is enable when all report contain non-reimbursable expense",
+      [
+        "krishna2323"
+      ],
+      9,
+      "melvin-bot"
+    ],
+    [
+      "104218",
+      "[$175] QuickBooks Desktop Sync Now in New Expensify repeatedly returns a stale-data error without requesting a fresh Codat refresh, while a Classic sync successfully refreshes the same connection.",
+      [
+        "marufsharifi"
+      ],
+      12,
+      "melvin-bot"
+    ],
+    [
+      "104262",
+      "[$175] Invited member is displayed after refresh the page",
+      [
+        "marufsharifi"
+      ],
+      13,
+      "melvin-bot"
+    ],
+    [
+      "104287",
+      "[$175] Search - Error and From filter dropped after entering \"group-by: reports\" on a saved search (follow-up to #89168)",
+      [
+        "truph01"
+      ],
+      9,
+      "melvin-bot"
+    ],
+    [
+      "104299",
+      "[$175] Search - An asterisk (*) is added after merchant in the search query",
+      [
+        "rojiphil"
+      ],
+      19,
+      "HiepPP"
+    ],
+    [
+      "104300",
+      "[$175] Web - Emoji Suggestions-Irrelevant emoji suggestions displayed when typing an emoji keyword",
+      [
+        "chavdasachin"
+      ],
+      13,
+      "melvin-bot"
+    ],
+    [
+      "104301",
+      "[$175] mWeb - Concierge RHP - Swiping back doesn't close the Concierge RHP",
+      [
+        "jayeshmangwani"
+      ],
+      14,
+      "melvin-bot"
+    ],
+    [
+      "104302",
+      "[$175] Workflows - The report goes directly to the over-limit approver",
+      [
+        "krishna2323"
+      ],
+      13,
+      "melvin-bot"
+    ],
+    [
+      "104307",
+      "[$175] Report - Arrow navigation is displayed with only one expense after two splits are deleted.",
+      [
+        "krishna2323"
+      ],
+      22,
+      "mkhutornyi"
+    ]
+  ]
+}
