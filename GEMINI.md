@@ -1,22 +1,31 @@
-# Regla de Workspace: Registro Continuo, Protocolo Anti-Estafas y Lote de 10 Tareas Diarias
+# Regla de Workspace: Registro Continuo, Protocolo Anti-Estafas y Priorización de Tareas Recientes
 
 En este espacio de trabajo (`C:\Users\Loa\Downloads\GOAL`):
 
-1. **Registro Continuo de Cada Tarea**: Toda tarea completada, PR enviado, commit realizado o propuesta técnica publicada debe registrarse inmediatamente en `TASK_LEDGER.md` y persistirse en Git (`jloa-dev/growth-automation-toolkit`).
-2. **Actualización Automática al Preguntar Novedades**: Cada vez que el usuario pregunte por "novedades", "¿cómo van las tareas?", "estado", "avance", "¿me pagaron?" o similar:
+1. **Prioridad Absoluta a Tareas Recientes (Fresh / Same-Day Issues)**:
+   - Al buscar o seleccionar tareas en **Expensify/App** o cualquier repositorio soportado, los issues publicados recientemente (hoy o en las últimas 24–48 horas) tienen **prioridad máxima e indiscutible** sobre cualquier ticket antiguo.
+   - Si hoy se publicaron tareas nuevas donde podemos intervenir y dejar propuesta, **esas se toman de inmediato antes de mirar tickets de días anteriores**, asegurando la ventaja de orden de llegada (*First-Come, First-Served*).
+
+2. **Criterio de Baja Competencia (0 a 2 Rivales Máximo)**:
+   - Prioridad 1: **0 rivales** (cero propuestas de terceros).
+   - Prioridad 2: **1 a 2 rivales** (propuestas genéricas o incompletas superables con diagnóstico exacto local).
+   - Descarte automático: Issues con 3 o más competidores o con debates de semanas de antigüedad.
+
+3. **Filtro Anti-Bot y Anti-Estafas (Zero-Scam & Zero-Bot Merge)**:
+   - **Cero Intervención de Bots**: Prohibido trabajar en issues donde un mantenedor haya llamado a `@MelvinBot implement this` o donde un bot interno ya tenga un PR / Draft PR para resolver el bug (evita que un bot haga merge y nos deje sin cobro).
+   - **Custodia Bancaria Verificada (Escrow Previo)**:
+     - **Expensify / App**: Upwork Escrow directo por empresa cotizada (NASDAQ: EXFY) con retiro a Interbank CCI `00389801350050828245`. Requiere enlace oficial de trabajo de Upwork.
+     - **tscircuit Organigrama**: Bounties de Algora / Stripe Express con liquidación automática al commit de merge a Interbank PEN `••••8245`.
+   - **Lista Negra Explícita**: Prohibido trabajar o enviar PRs a `BasedHardware / omi` (cierre masivo sin merge en triage), `Crystal-PDF`, `Escaro` o plataformas sin contrato de custodia.
+
+4. **Regla Financiera (Pago Mínimo de $25 USD - Monto No Priorizable)**:
+   - El monto de la recompensa **no es priorizable** (un issue reciente de $175 con 0 rivales tiene más prioridad que uno viejo de $250 con 30 rivales).
+   - **Pago Mínimo Obligatorio**: **$25 USD por tarea**, sin excepción alguna, para cualquier proyecto o plataforma.
+
+5. **Registro Continuo de Cada Tarea**: Toda tarea completada, PR enviado, commit realizado o propuesta técnica publicada debe registrarse inmediatamente en `TASK_LEDGER.md` y persistirse en Git (`jloa-dev/growth-automation-toolkit`).
+
+6. **Actualización Automática al Preguntar Novedades**: Cada vez que el usuario pregunte por "novedades", "¿cómo van las tareas?", "estado", "avance", "¿me pagaron?" o similar:
    - Se debe ejecutar OBLIGATORIAMENTE la skill `continuous-task-reporter`:
      `python C:/Users/Loa/.gemini/config/skills/continuous-task-reporter/scripts/sync_report.py`
-   - **Escaneo Dual en Vivo**:
-     1. **GitHub Live**: Monitoreo de PRs, issues, aprobaciones y comentarios de mantenedores (Expensify, tscircuit).
-     2. **Gmail Inbox Live**: Lectura por IMAP seguro de `jloa.dev@gmail.com` para depósitos de PayPal/Stripe, invitaciones/contratos de Upwork y notificaciones de Expensify.
-   - Se actualiza `TASK_LEDGER.md` con el estado en vivo y se realiza commit y push automático.
-   - Se responde al usuario con el estado consolidado de novedades y balance financiero sin pérdida de contexto.
-3. **Protocolo Estricto Anti-Estafas (Zero-Scam Protocol)**:
-   - Solo se trabaja en proyectos con fondos en custodia previa (**Escrow** bancario verificado):
-     - **Expensify / App**: Upwork Escrow directo por empresa cotizada (NASDAQ: EXFY) con retiro a Interbank CCI `00389801350050828245`.
-     - **tscircuit Organigrama**: Bounties de Algora / Stripe Express con liquidación automática al commit de merge a Interbank PEN `••••8245`.
-   - **Lista Negra Explícita**: Prohibido trabajar o enviar PRs a `BasedHardware / omi` (cierre masivo sin merge en triage, tickets de discord sin escrow), `Crystal-PDF`, `Escaro` o plataformas sin contrato de custodia.
-4. **Régimen de 10 Tareas / PRs Diarios (Baja Competencia)**:
-   - Cuando el usuario solicite *"haz las 10 tareas diarias"*, *"tareas del día"* o similar, Antigravity debe ejecutar de forma inmediata y autónoma un lote completo de **10 tareas de alta probabilidad**:
-     - Criterio de selección: **0 a 3 competidores humanos máximo** (prioridad a issues con 0 propuestas o con propuestas genéricas/slop).
-     - Ejecución hermética: Diagnóstico de causa raíz en el código fuente local, tests unitarios, registro de propuesta formal con perfil Upwork/Stripe y persistencia inmediata en el ledger y Git.
+   - Escaneo dual en vivo (GitHub Live + Gmail Inbox `jloa.dev@gmail.com`).
+   - Actualización de `TASK_LEDGER.md` con commit y push automático.
