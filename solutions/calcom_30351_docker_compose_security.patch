@@ -1,8 +1,8 @@
 diff --git a/docker-compose.yml b/docker-compose.yml
-index a481c10..4e9b882 100644
+index 2896b26..9debe6f 100644
 --- a/docker-compose.yml
 +++ b/docker-compose.yml
-@@ -23,12 +23,12 @@ services:
+@@ -25,14 +25,14 @@ services:
  
    redis:
      container_name: redis
@@ -17,8 +17,9 @@ index a481c10..4e9b882 100644
 -      - "${REDIS_PORT:-6379}:6379"
 +      - "${REDIS_BIND_IP:-127.0.0.1}:${REDIS_PORT:-6379}:6379"
  
-@@ -107,7 +107,7 @@ services:
-     restart: always
+   calcom:
+     image: calcom.docker.scarf.sh/calcom/cal.diy
+@@ -124,7 +124,7 @@ services:
      networks:
        - stack
      ports:

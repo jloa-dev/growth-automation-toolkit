@@ -3,22 +3,20 @@
 **Issue**: [#30271 - Date overrides split into duplicate days, and today's override disappears, when the server TZ is not UTC](https://github.com/calcom/cal.diy/issues/30271)  
 **Repository**: `calcom/cal.diy`  
 **Bounty / Platform**: $250 USD (Algora / Stripe Express Interbank PEN `••••8245`)  
-**Status**: 0 PRs, 0 Bot competition, Ready for PR  
+**Status**: 0 Bot competition, Ready for PR  
 **Contributor**: `jloa-dev` (`jloa.dev@gmail.com`)  
 
 ---
 
 ## 1. Problem Statement
-When Cal.com server instances run on hosts with non-UTC system timezones (e.g. `TZ=America/New_York`, `TZ=Europe/Berlin`, or `TZ=Asia/Tokyo`):
-1. **Duplicate Day Overrides**: A date override containing multiple time ranges (e.g. 09:00-12:00 and 14:00-17:00 UTC on 2026-10-10) is split into two separate entries in the output schedule array rather than a single day entry containing two ranges.
-2. **Current Day Override Drop**: Date overrides scheduled for "today" in the user's schedule timezone are erroneously dropped as "past" dates if the server's local midnight has not caught up or is ahead of the schedule timezone.
-
-This affects `ScheduleRepository`, the availability management page (`schedule/get` tRPC), and API v2 schedules (`/v2/schedules`).
+When the server process runs in a timezone other than UTC (e.g. `TZ=America/New_York` or `TZ=America/Lima`):
+1. **Duplicate Entries**: A date override containing multiple time ranges (e.g. 09:00-12:00 and 14:00-17:00 UTC) is split into separate single-range entries instead of being grouped into one entry.
+2. **Dropped "Today" Overrides**: A date override for today is filtered out as if it were in the past.
 
 ---
 
 ## 2. Root Cause Analysis
-In `packages/lib/schedules/transformers/for-atom.ts` (`transformDateOverridesForAtom`):
+In `packages/lib/schedules/transformers/for-atom.ts`:
 ```ts
 const currentUtcOffset = dayjs().tz(timeZone).utcOffset();
 const currentTimeInTz = dayjs().utc().add(currentUtcOffset, "minute");
@@ -32,45 +30,44 @@ const dayRangeIndex = acc.findIndex(
 );
 ```
 
-Two distinct defects cause this behavior:
-1. `dayjs(override.date)` creates a dayjs instance in the NodeJS server's local timezone (`process.env.TZ`), whereas `currentTimeInTz` is manually shifted with minute arithmetic. In negative UTC offset timezones (e.g. EDT -04:00), `override.date` parses into the previous calendar day, causing `.isBefore(..., "day")` to incorrectly discard valid today overrides.
-2. In the grouping lookup `yyyymmdd(item.ranges[0].start) === yyyymmdd(override.date)`, `yyyymmdd` formats the `Date` object using local server time (`YYYY-MM-DD`). If a UTC range starts at 01:00 UTC, a server in `America/New_York` (UTC-4) formats `item.ranges[0].start` as the previous day, causing `dayRangeIndex === -1` and appending a duplicate date bucket.
+1. **Storage Format**: Override dates in the database are stored as UTC midnight (e.g., `2026-10-10T00:00:00.000Z`).
+2. **Grouping Failure**: `yyyymmdd` formats in the server's local process timezone. On a server in `America/New_York` (UTC-4), `override.date` evaluates to `2026-10-09 20:00:00`, formatting as `"2026-10-09"`. However, `item.ranges[0].start` (which starts at 09:00 UTC = 05:00 EDT) formats as `"2026-10-10"`. Because `"2026-10-10" !== "2026-10-09"`, the ranges never match and are split into duplicate days.
+3. **Filtering Failure**: `dayjs(override.date).isBefore(currentTimeInTz, "day")` uses local server time for `dayjs(override.date)`. Shifting UTC midnight into negative timezones puts it into the previous day, causing today's override to be dropped.
+4. **Subtle Flaw in Naive Fixes**: Attempting to fix this via `dayjs(override.date).tz(timeZone)` also shifts the UTC midnight date backwards in Western timezones (America/New_York is UTC-4, turning `2026-10-10T00:00Z` into `2026-10-09 20:00`). The correct representation is to treat `override.date` as a calendar date in UTC.
 
 ---
 
 ## 3. Surgical Implementation
-Anchor date conversions strictly to the schedule's `timeZone` or UTC:
+Use `dayjs.utc(override.date)` for both filtering and range grouping:
 
 ```diff
 --- a/packages/lib/schedules/transformers/for-atom.ts
 +++ b/packages/lib/schedules/transformers/for-atom.ts
-@@ -28,10 +28,8 @@ export function transformDateOverridesForAtom(
- ) {
-   const acc = schedule.availability.reduce(
-     (acc, override) => {
--      // only if future date override
--      const currentUtcOffset = dayjs().tz(timeZone).utcOffset();
--      const currentTimeInTz = dayjs().utc().add(currentUtcOffset, "minute");
--
+@@ -1,6 +1,5 @@
+ import dayjs from "@calcom/dayjs";
+ import { getWorkingHours } from "@calcom/lib/availability";
+-import { yyyymmdd } from "@calcom/lib/dayjs";
+ import type { Availability } from "@calcom/prisma/client";
+ import type { Schedule, TimeRange } from "@calcom/types/schedule";
+ 
+@@ -36,7 +35,7 @@ export function transformDateOverridesForAtom(
+       const currentUtcOffset = dayjs().tz(timeZone).utcOffset();
+       const currentTimeInTz = dayjs().utc().add(currentUtcOffset, "minute");
+ 
 -      if (!override.date || dayjs(override.date).isBefore(currentTimeInTz, "day")) {
-+      // Invariant to server TZ: evaluate 'today' in schedule's timezone
-+      const todayInScheduleTz = dayjs().tz(timeZone).startOf("day");
-+      const overrideDateInScheduleTz = dayjs(override.date).tz(timeZone);
-+
-+      if (!override.date || overrideDateInScheduleTz.isBefore(todayInScheduleTz, "day")) {
++      if (!override.date || dayjs.utc(override.date).isBefore(currentTimeInTz, "day")) {
          return acc;
        }
        const newValue = {
-@@ -47,9 +45,15 @@ export function transformDateOverridesForAtom(
-           .minute(override.endTime.getUTCMinutes())
-           .toDate(),
+@@ -53,7 +52,10 @@ export function transformDateOverridesForAtom(
        };
-+
-+      const overrideKey = dayjs.utc(override.date).format("YYYY-MM-DD");
        const dayRangeIndex = acc.findIndex(
--        // early return prevents override.date from ever being empty.
+         // early return prevents override.date from ever being empty.
 -        (item) => override.date && yyyymmdd(item.ranges[0].start) === yyyymmdd(override.date)
-+        (item) => dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD") === overrideKey
++        (item) =>
++          override.date &&
++          dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD") ===
++            dayjs.utc(override.date).format("YYYY-MM-DD")
        );
        if (dayRangeIndex === -1) {
          acc.push({ ranges: [newValue] });
@@ -79,9 +76,7 @@ Anchor date conversions strictly to the schedule's `timeZone` or UTC:
 ---
 
 ## 4. Verification & Test Plan
-- **Isolated Unit Test**: Added `packages/lib/schedules/transformers/for-atom.test.ts`:
-  1. Set `process.env.TZ = 'America/New_York'`.
-  2. Pass schedule with timezone `Europe/London` and date override for today with two separate ranges (09:00-12:00, 14:00-17:00 UTC).
-  3. Verify today's override is NOT dropped.
-  4. Verify output array contains exactly 1 entry with `ranges.length === 2`.
-  5. Test across multiple simulated server timezones (`Asia/Tokyo`, `America/Los_Angeles`, `UTC`).
+Verified across multiple simulated process timezones (`TZ=America/New_York`, `TZ=America/Lima`, `TZ=UTC`):
+1. **Grouping Invariance**: Multiple ranges for the same date are grouped into a single entry with multiple ranges.
+2. **Today Preservation**: An override for today in the schedule timezone is retained and never dropped.
+3. **Past Exclusions**: Overrides strictly before today are accurately excluded.

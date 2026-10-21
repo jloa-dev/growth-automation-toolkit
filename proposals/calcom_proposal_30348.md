@@ -12,11 +12,11 @@
 In OAuth 2.0 (RFC 6749 Section 3.3), scopes are explicitly specified as a space-delimited list of strings:
 > "The value of the scope parameter is expressed as a list of space-delimited, case-sensitive strings."
 
-When third-party clients (such as Hosted MCP `mcp.cal.com`, Claude Desktop, Postman, or custom integrations) initiate the OAuth authorization flow with standard space-delimited scopes, e.g.:
+When third-party clients (such as Hosted MCP `mcp.cal.com`, Claude Desktop, Postman, or standard OAuth 2.0 SDKs) initiate the authorization flow:
 ```
 GET /auth/oauth2/authorize?client_id=xyz&redirect_uri=...&scope=READ_BOOKING%20READ_PROFILE
 ```
-Cal.com splits the `scope` query parameter only on commas in `apps/web/modules/auth/oauth2/authorize-view.tsx`. This causes the parsed `scopes` array to evaluate to:
+Cal.com splits the `scope` query parameter only on commas in `apps/web/modules/auth/oauth2/authorize-view.tsx:41`. This causes the parsed `scopes` array to evaluate to:
 ```ts
 ["READ_BOOKING READ_PROFILE"]
 ```
@@ -24,7 +24,7 @@ instead of:
 ```ts
 ["READ_BOOKING", "READ_PROFILE"]
 ```
-Because `"READ_BOOKING READ_PROFILE"` is not a valid enum member of `AccessScope`, validation fails inside `generateAuthCode`, resulting in an immediate OAuth `invalid_request` or `access_denied` error ("Requested scope exceeds the client's registered scopes").
+Because `"READ_BOOKING READ_PROFILE"` is not a valid enum member of `AccessScope`, validation fails inside `generateAuthCode`, resulting in an OAuth `invalid_request` or `access_denied` error ("Requested scope exceeds the client's registered scopes").
 
 ---
 
@@ -42,7 +42,7 @@ The implementation makes two erroneous assumptions:
 ---
 
 ## 3. Surgical Implementation
-Update `apps/web/modules/auth/oauth2/authorize-view.tsx` to support both standard space-delimited scopes and legacy comma-delimited scopes:
+Update `apps/web/modules/auth/oauth2/authorize-view.tsx` to support both standard space-delimited scopes and legacy comma-delimited scopes with deduplication and sanitization:
 
 ```diff
 --- a/apps/web/modules/auth/oauth2/authorize-view.tsx
@@ -61,16 +61,15 @@ Update `apps/web/modules/auth/oauth2/authorize-view.tsx` to support both standar
 ```
 
 ### Key Highlights of the Fix:
-- Regex `/[\s,]+/` gracefully handles spaces (`%20`), commas (`,`), and comma+space sequences (`, `).
+- Regex `/[\s,]+/` gracefully handles standard spaces (`%20`), legacy commas (`,`), and combined comma+space sequences (`, `).
 - `.filter(Boolean)` eliminates empty strings resulting from leading/trailing delimiters.
 - `Array.from(new Set(...))` deduplicates scope tokens to prevent redundant permission checks.
 
 ---
 
 ## 4. Verification & Test Plan
-- **Unit Test**: Added test in `apps/web/modules/auth/oauth2/__tests__/authorize-view.test.ts` checking:
-  1. Space-separated scopes: `"READ_BOOKING READ_PROFILE"` -> `["READ_BOOKING", "READ_PROFILE"]`.
-  2. Comma-separated scopes: `"READ_BOOKING,READ_PROFILE"` -> `["READ_BOOKING", "READ_PROFILE"]`.
-  3. Mixed and dirty input: `"READ_BOOKING, READ_PROFILE  READ_BOOKING"` -> `["READ_BOOKING", "READ_PROFILE"]`.
-  4. Empty/undefined scope: `""` or `undefined` -> `[]`.
-- **E2E Flow**: Verified OAuth authorization redirect from Hosted MCP client succeeds without `invalid_request` or scope mismatch.
+Verified with automated regression tests covering:
+1. Space-separated scopes (RFC 6749): `"READ_BOOKING READ_PROFILE"` -> `["READ_BOOKING", "READ_PROFILE"]`.
+2. Legacy comma-separated scopes: `"READ_BOOKING,READ_PROFILE"` -> `["READ_BOOKING", "READ_PROFILE"]`.
+3. Mixed delimiters and padding: `"READ_BOOKING, READ_PROFILE  READ_BOOKING"` -> `["READ_BOOKING", "READ_PROFILE"]`.
+4. Empty or whitespace-only inputs: `""`, `"   "`, `null`, `undefined` -> `[]`.

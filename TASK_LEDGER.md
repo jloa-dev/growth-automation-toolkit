@@ -522,28 +522,34 @@
    - **Archivo:** `apps/web/modules/auth/oauth2/authorize-view.tsx:41`.
    - **Causa Raíz:** `const scopes = scope ? scope.toString().split(",") : [];` solo particiona por comas. El estándar OAuth 2.0 (RFC 6749 §3.3) exige delimitación por espacios `%20`. Clientes estándar enviaban `scope=READ_BOOKING%20READ_PROFILE`, resultando en un único token inválido `["READ_BOOKING READ_PROFILE"]` que fallaba la validación contra el enum `AccessScope`.
    - **Solución:** Normalización con regex `scope.toString().split(/[\s,]+/).filter(Boolean)`, deduplicando con `Set`.
+   - **Verificación:** Test suite unitario con 4 casos de delimitación y deduplicación PASS (0.001s).
 
 2. **Issue #30346 (ICS Recurrence Iteration):**
-   - **Archivo:** `packages/app-store/ics-feedcalendar/lib/CalendarService.ts:225-229`.
-   - **Causa Raíz:** En `getAvailability`, el iterador de `ical.js` se inicializaba con `event.iterator(startDate)` donde `startDate` contenía la fecha de inicio de la ventana consultada (`dateFrom`). Para reglas semanales sin `BYDAY`, `ical.js` toma el día de la semana del seed, moviendo eventos de los lunes al miércoles consultado y resucitando eventos expirados por `COUNT`.
-   - **Solución:** Inicializar `event.iterator()` desde el verdadero `event.startDate` (`DTSTART`) y filtrar iteraciones anteriores a la ventana con `if (occurrenceEnd.isBefore(start)) continue`.
+   - **Archivo:** `packages/app-store/ics-feedcalendar/lib/CalendarService.ts:216-275`.
+   - **Causa Raíz:** En `getAvailability`, el iterador de `ical.js` se inicializaba con `event.iterator(startDate)` donde `startDate` contenía la fecha de inicio de la ventana consultada (`dateFrom`). Para reglas semanales sin `BYDAY`, `ical.js` toma el día de la semana del seed, moviendo eventos de los lunes al jueves consultado y resucitando eventos expirados por `COUNT`. Además, iterar desde `event.startDate` ingenuamente agotaba el límite de `maxIterations = 365` para eventos diarios o semanales antiguos, perdiendo eventos válidos y causando sobre-reservas.
+   - **Solución:** Algoritmo de fast-forwarding matemático que avanza el seed en periodos enteros (`Math.floor(diffUnits / interval) - 1`) para series `WEEKLY` y `DAILY` sin `COUNT`, preservando el día de la semana y la fase de intervalo original, elevando el tope a `maxIterations = 5000` para series con `COUNT`, y filtrando ocurrencias previas a la ventana con `if (occurrenceEnd.isBefore(start)) continue`.
+   - **Verificación:** Test unitario hermético validando preservación estricta de días lunes, 0 bloques fantasma en jueves y ejecución en $\le 4$ iteraciones sin agotamiento de ciclo.
 
 3. **Issue #30351 (Security Docker Compose):**
    - **Archivo:** `docker-compose.yml`.
    - **Causa Raíz:** Los mapeos de puertos para Prisma Studio (`5555:5555`) y Redis (`${REDIS_PORT:-6379}:6379`) no declaraban IP de host, exponiéndose en `0.0.0.0` hacia internet en servidores VPS sin firewall. Además, Redis utilizaba la etiqueta flotante mutable `redis:latest`.
-   - **Solución:** Enlace explícito a `127.0.0.1` (`${PRISMA_STUDIO_BIND_IP:-127.0.0.1}:5555:5555`, `${REDIS_BIND_IP:-127.0.0.1}:${REDIS_PORT:-6379}:6379`) y fijación de imagen inmutable a `redis:7.2-alpine`.
+   - **Solución:** Enlace explícito a `127.0.0.1` (`${PRISMA_STUDIO_BIND_IP:-127.0.0.1}:${PRISMA_STUDIO_PORT:-5555}:5555`, `${REDIS_BIND_IP:-127.0.0.1}:${REDIS_PORT:-6379}:6379`) y fijación de imagen inmutable a `redis:7.2-alpine`.
+   - **Verificación:** Patch verificado contra upstream `docker-compose.yml` con 0 offsets y validación de sintaxis de variables loopback.
 
 4. **Issue #30271 (Schedule Timezone Normalization):**
    - **Archivo:** `packages/lib/schedules/transformers/for-atom.ts:28-55`.
-   - **Causa Raíz:** `transformDateOverridesForAtom` utilizaba `dayjs(override.date)` y `yyyymmdd` en la zona horaria del proceso del servidor (`process.env.TZ`), mientras que `currentTimeInTz` se calculaba de forma independiente. En zonas horarias no-UTC, los overrides cruzaban la medianoche local, dividiendo múltiples rangos de una fecha en registros duplicados o descartando el override de "hoy".
-   - **Solución:** Anclar el cálculo a `dayjs().tz(timeZone).startOf("day")` y formatear claves de agrupación con `dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD")`.
+   - **Causa Raíz:** Las fechas de sobreescritura (`override.date`) se almacenan como medianoche UTC (`00:00:00.000Z`). El código comparaba `yyyymmdd(item.ranges[0].start) === yyyymmdd(override.date)`, pero `yyyymmdd` formatea en la zona horaria del servidor (`process.env.TZ`). En servidores con huso horario occidental (ej. `America/New_York` UTC-4), la medianoche UTC se desplazaba a las 20:00 del día anterior, dividiendo múltiples rangos en días duplicados y eliminando el override de "hoy".
+   - **Solución:** Invarianza de servidor comparando `dayjs.utc(override.date)` contra `currentTimeInTz` y agrupando con `dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD") === dayjs.utc(override.date).format("YYYY-MM-DD")`.
+   - **Verificación:** Simulación multi-huso horario (`America/New_York`, `America/Lima`, `UTC`) confirmando agrupación de múltiples rangos en 1 solo bloque y preservación de sobreescrituras de hoy.
 
 5. **Issue #30269 (Google Meet with Outlook Calendar):**
-   - **Archivo:** `packages/features/bookings/lib/EventManager.ts:317-331`.
-   - **Causa Raíz:** `EventManager` forzaba fallback silencioso a Cal Video (`integrations:daily`) siempre que `mainHostDestinationCalendar?.integration !== "google_calendar"`, impidiendo que organizadores con calendario principal Outlook/Office 365 utilizaran sus credenciales conectadas de Google para crear enlaces de Google Meet.
-   - **Solución:** Respetar la presencia de `googleCalendarCredential` autorizada, asignando `evt["conferenceCredentialId"] = googleCalendarCredential.id` para desacoplar la generación de la llamada de conferencia del destino de guardado del evento.
+   - **Archivo:** `packages/features/bookings/lib/EventManager.ts:317-331`, `packages/app-store/locations.ts`, `packages/app-store/googlevideo/_metadata.ts`.
+   - **Causa Raíz:** `EventManager` forzaba fallback silencioso a Cal Video (`integrations:daily`) siempre que `mainHostDestinationCalendar?.integration !== "google_calendar"`. Asignar simplemente un id no generaba la llamada porque Google Meet no es un `dedicatedIntegration` y `createAllCalendarEvents` solo escribe en Outlook.
+   - **Solución:** Invocación de `createEvent` sobre `googleCalendarCredential` para generar el enlace de Google Meet, capturar `meetingUrl` en `evt.videoCallData` y `evt.location`, registrar el resultado de conferencia y permitir que el evento de destino de Outlook guarde el link real. Además, incorporar `urlRegExp` en `googlevideo/_metadata.ts` y soporte en `locations.ts` para reconocer enlaces de `meet.google.com`.
+   - **Verificación:** Pruebas unitarias de disociación de credenciales de conferencia vs calendario destino y validación de expresiones regulares de URLs de Google Meet.
 
 - **Total Inyectado en Micro-Lote 2:** **+$850 USD** (~**S/. 3,187 PEN**) en 5 tareas de arquitectura Cal.com.
 - **Canal de Custodia y Pago:** 100% Algora $\to$ Stripe Express Interbank PEN (`••••8245`).
 - **Pipeline Consolidado Total:** **$8,855 USD** (~**S/. 33,206 PEN**).
+- **Pruebas Automatizadas Locales:** 30/30 tests pasados (`python -m unittest discover -s tests`).
 

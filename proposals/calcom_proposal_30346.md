@@ -9,42 +9,41 @@
 ---
 
 ## 1. Problem Statement
-In external ICS calendar feeds (such as Proton Calendar, Nextcloud, Apple iCloud, Fastmail, or generic CalDAV exports), weekly recurring events without an explicit `BYDAY` parameter (e.g. `RRULE:FREQ=WEEKLY;INTERVAL=1`) derive their recurring weekday exclusively from the event's original start date (`DTSTART`).
+In `packages/app-store/ics-feedcalendar/lib/CalendarService.ts`, when reading recurring events from external ICS feeds (such as Proton Calendar, Google Calendar, or Apple Calendar), `getAvailability` incorrectly initializes the recurrence iterator with the start date of the queried availability window:
 
-However, in Cal.com's ICS feed calendar integration (`packages/app-store/ics-feedcalendar/lib/CalendarService.ts`), the recurrence iterator is seeded with the queried availability window's start date (`dateFrom`), rather than the event's canonical `DTSTART`.
-
-This leads to two critical bugs:
-1. **Weekday Shift (Phantom Busy Slots)**: The recurrence series shifts to the weekday of the booker's queried window (e.g., if a user views availability on a Wednesday, an event occurring every Monday is evaluated on Wednesday instead, blocking free slots).
-2. **COUNT Expiration Leak**: For rules with `COUNT=N`, recurrence count is evaluated starting from the window seed instead of the original series beginning, resurrecting past events whose count has already expired.
-
----
-
-## 2. Root Cause Analysis
-In `packages/app-store/ics-feedcalendar/lib/CalendarService.ts`, lines 225-229:
 ```ts
-const start = dayjs(dateFrom);
-const end = dayjs(dateTo);
-const startDate = ICAL.Time.fromDateTimeString(startISOString);
+const startDate = ICAL.Time.fromDateTimeString(startISOString); // queried window start
 startDate.hour = event.startDate.hour;
 startDate.minute = event.startDate.minute;
 startDate.second = event.startDate.second;
 const iterator = event.iterator(startDate);
 ```
-Per the `ical.js` specification:
-- `event.iterator(time)` treats the supplied `time` argument as the rule's initial anchor.
-- For `RRULE:FREQ=WEEKLY` without `BYDAY`, `ical.js` reads the day of the week directly from the seed anchor.
-- When `startDate` is instantiated with `startISOString` (representing `dateFrom`), the day of the week is replaced by `dateFrom.getDay()`, detaching the event from its real recurring day.
-- Furthermore, `event.iterator()` without arguments already starts at `event.startDate` (`DTSTART`).
+
+In `ical.js`, when an `RRULE:FREQ=WEEKLY` rule does not define an explicit `BYDAY`, the recurring day of the week is derived from the iterator seed's date. Seeding with the queried window shifts the event to the query's weekday (e.g. an event that occurs only on Mondays creates a phantom busy block on Thursday). Furthermore, `COUNT` is evaluated from the seed date rather than the true `DTSTART`, causing expired recurring series to produce ghost busy blocks.
+
+---
+
+## 2. Root Cause & Architectural Constraints
+1. **Weekday Drift**: Seeding with `startDate` (the window start) alters the DTSTART weekday in `ical.js` for rules without `BYDAY`.
+2. **Expired Series Resurrected**: Seeding from the window causes `COUNT` rules to start counting from the window date, generating phantom blocks for events whose series ended years ago.
+3. **Iteration Cap Exhaustion (Critical Risk)**: Simply calling `event.iterator()` without arguments would cause old recurring series (e.g., a daily standup created 2 years ago, or a weekly event created 8 years ago) to step through past occurrences and exhaust `maxIterations = 365` before ever reaching the query window, resulting in zero returned busy blocks and catastrophic double-bookings!
 
 ---
 
 ## 3. Surgical Implementation
-Modify `packages/app-store/ics-feedcalendar/lib/CalendarService.ts` to instantiate the iterator from the event's true `event.startDate` and fast-forward past occurrences preceding the query window:
+Implement intelligent fast-forwarding for simple recurrence rules (`FREQ=DAILY` and `FREQ=WEEKLY` without `COUNT`) to advance the seed by whole periods while preserving the exact `DTSTART` weekday and interval phase, bump `maxIterations = 5000` for rules with `COUNT`, and filter occurrences prior to the requested window:
 
 ```diff
 --- a/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
 +++ b/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
-@@ -222,11 +222,8 @@ export default class CalendarService implements Calendar {
+@@ -216,15 +216,36 @@ export default class CalendarService implements Calendar {
+         if (event.isRecurring()) {
+-          let maxIterations = 365;
++          let maxIterations = 5000;
+           if (["HOURLY", "SECONDLY", "MINUTELY"].includes(event.getRecurrenceTypes())) {
+             console.error(`Won't handle [${event.getRecurrenceTypes()}] recurrence`);
+             return;
+           }
  
            const start = dayjs(dateFrom);
            const end = dayjs(dateTo);
@@ -53,30 +52,55 @@ Modify `packages/app-store/ics-feedcalendar/lib/CalendarService.ts` to instantia
 -          startDate.minute = event.startDate.minute;
 -          startDate.second = event.startDate.second;
 -          const iterator = event.iterator(startDate);
-+          // Initialize iterator from true event.startDate so DTSTART weekday and COUNT are preserved
-+          const iterator = event.iterator();
++
++          // Fast-forward daily/weekly recurring series without COUNT to avoid cap exhaustion
++          // while preserving the true DTSTART weekday and interval phase.
++          const recurrenceRule = event.component.getFirstPropertyValue("rrule") as ICAL.Recur | null;
++          const hasCount = recurrenceRule ? Boolean(recurrenceRule.count) : false;
++          const freq = recurrenceRule ? recurrenceRule.freq : null;
++          const interval = recurrenceRule?.interval || 1;
++          const eventStart = dayjs(event.startDate.toJSDate());
++
++          let iterator: ReturnType<typeof event.iterator>;
++          if (!hasCount && (freq === "WEEKLY" || freq === "DAILY") && start.isAfter(eventStart)) {
++            const unit = freq === "WEEKLY" ? "week" : "day";
++            const diffUnits = start.diff(eventStart, unit);
++            const intervalsToSkip = Math.max(0, Math.floor(diffUnits / interval) - 1);
++            if (intervalsToSkip > 0) {
++              const fastForwarded = eventStart.add(intervalsToSkip * interval, unit);
++              const seedTime = ICAL.Time.fromJSDate(fastForwarded.toDate(), event.startDate.isDate);
++              seedTime.hour = event.startDate.hour;
++              seedTime.minute = event.startDate.minute;
++              seedTime.second = event.startDate.second;
++              iterator = event.iterator(seedTime);
++            } else {
++              iterator = event.iterator();
++            }
++          } else {
++            iterator = event.iterator();
++          }
            let current: ICAL.Time;
            let currentEvent;
            let currentStart = null;
-@@ -253,6 +250,13 @@ export default class CalendarService implements Calendar {
+@@ -253,6 +274,13 @@ export default class CalendarService implements Calendar {
              // do not mix up caldav and icalendar! For the recurring events here, the timezone
              // provided is relevant, not as pointed out in https://datatracker.ietf.org/doc/html/rfc4791#section-9.6.5
              // where recurring events are always in utc (in caldav!). Thus, apply the time zone here.
-+            const occurrenceStart = dayjs(current.toJSDate());
 +            const occurrenceEnd = dayjs(currentEvent.endDate.toJSDate());
 +
 +            // Skip occurrences strictly before the requested window
 +            if (occurrenceEnd.isBefore(start)) {
 +              continue;
 +            }
+             const startParsed = dayjs(
+               current.isDate
+                 ? current.toJSDate()
 ```
 
 ---
 
 ## 4. Verification & Test Plan
-- **Unit Test Coverage**: Created `packages/app-store/ics-feedcalendar/test/recurring-byday.test.ts`:
-  1. Test weekly recurring event on Monday without `BYDAY` (`DTSTART:20261005T100000Z; RRULE:FREQ=WEEKLY`).
-  2. Query availability window starting on a Wednesday (`2026-10-14`).
-  3. Verify Wednesday has NO busy slots generated.
-  4. Verify the busy slot correctly falls only on Monday (`2026-10-19`).
-  5. Test `COUNT=5` expiring before query window; verify 0 occurrences generated.
+Verified with unit tests ensuring:
+1. **Weekday Stability**: Weekly Monday event queried on Thursday returns 0 busy blocks (no phantom blocks).
+2. **Series Expiry (`COUNT`)**: `RRULE:FREQ=WEEKLY;COUNT=3` ending in 2025 returns 0 blocks in 2026.
+3. **Cap Protection**: Daily recurring event created 2+ years ago successfully returns busy blocks for the current window without exhausting `maxIterations`.

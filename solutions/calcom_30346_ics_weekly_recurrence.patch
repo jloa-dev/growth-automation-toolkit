@@ -1,8 +1,15 @@
 diff --git a/packages/app-store/ics-feedcalendar/lib/CalendarService.ts b/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
-index 8e45d12..c9120de 100644
+index 8e45d12..a83b92c 100644
 --- a/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
 +++ b/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
-@@ -222,11 +222,8 @@ export default class CalendarService implements Calendar {
+@@ -216,15 +216,36 @@ export default class CalendarService implements Calendar {
+         if (event.isRecurring()) {
+-          let maxIterations = 365;
++          let maxIterations = 5000;
+           if (["HOURLY", "SECONDLY", "MINUTELY"].includes(event.getRecurrenceTypes())) {
+             console.error(`Won't handle [${event.getRecurrenceTypes()}] recurrence`);
+             return;
+           }
  
            const start = dayjs(dateFrom);
            const end = dayjs(dateTo);
@@ -11,16 +18,40 @@ index 8e45d12..c9120de 100644
 -          startDate.minute = event.startDate.minute;
 -          startDate.second = event.startDate.second;
 -          const iterator = event.iterator(startDate);
-+          // Initialize iterator from true event.startDate so DTSTART weekday and COUNT are preserved
-+          const iterator = event.iterator();
++
++          // Fast-forward daily/weekly recurring series without COUNT to avoid cap exhaustion
++          // while preserving the true DTSTART weekday and interval phase.
++          const recurrenceRule = event.component.getFirstPropertyValue("rrule") as ICAL.Recur | null;
++          const hasCount = recurrenceRule ? Boolean(recurrenceRule.count) : false;
++          const freq = recurrenceRule ? recurrenceRule.freq : null;
++          const interval = recurrenceRule?.interval || 1;
++          const eventStart = dayjs(event.startDate.toJSDate());
++
++          let iterator: ReturnType<typeof event.iterator>;
++          if (!hasCount && (freq === "WEEKLY" || freq === "DAILY") && start.isAfter(eventStart)) {
++            const unit = freq === "WEEKLY" ? "week" : "day";
++            const diffUnits = start.diff(eventStart, unit);
++            const intervalsToSkip = Math.max(0, Math.floor(diffUnits / interval) - 1);
++            if (intervalsToSkip > 0) {
++              const fastForwarded = eventStart.add(intervalsToSkip * interval, unit);
++              const seedTime = ICAL.Time.fromJSDate(fastForwarded.toDate(), event.startDate.isDate);
++              seedTime.hour = event.startDate.hour;
++              seedTime.minute = event.startDate.minute;
++              seedTime.second = event.startDate.second;
++              iterator = event.iterator(seedTime);
++            } else {
++              iterator = event.iterator();
++            }
++          } else {
++            iterator = event.iterator();
++          }
            let current: ICAL.Time;
            let currentEvent;
            let currentStart = null;
-@@ -253,6 +250,13 @@ export default class CalendarService implements Calendar {
+@@ -253,6 +274,13 @@ export default class CalendarService implements Calendar {
              // do not mix up caldav and icalendar! For the recurring events here, the timezone
              // provided is relevant, not as pointed out in https://datatracker.ietf.org/doc/html/rfc4791#section-9.6.5
              // where recurring events are always in utc (in caldav!). Thus, apply the time zone here.
-+            const occurrenceStart = dayjs(current.toJSDate());
 +            const occurrenceEnd = dayjs(currentEvent.endDate.toJSDate());
 +
 +            // Skip occurrences strictly before the requested window
