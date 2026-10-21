@@ -1,0 +1,13 @@
+diff --git a/src/components/Search/SearchRouter/SearchRouter.tsx b/src/components/Search/SearchRouter/SearchRouter.tsx
+index 3749444..7c2d89a 100644
+--- a/src/components/Search/SearchRouter/SearchRouter.tsx
++++ b/src/components/Search/SearchRouter/SearchRouter.tsx
+@@ -236,7 +236,7 @@ function SearchRouter({
+             const reportAction = getReportAction(contextualReport?.parentReportID, contextualReport?.parentReportActionID);
+             const shouldParserToHTML = !!reportAction && reportAction.actionName !== CONST.REPORT.ACTIONS.TYPE.ADD_COMMENT;
+             if (!reportForContextualSearch) {
+-                if (!contextualReport || isHiddenForCurrentUser(contextualReport)) {
++                if (!contextualReport || (isHiddenForCurrentUser(contextualReport) && !ReportUtils.isMoneyRequestReport(contextualReport))) {
+                     return undefined;
+                 }
+ 

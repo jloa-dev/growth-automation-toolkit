@@ -1,0 +1,61 @@
+diff --git a/src/components/Table/TableBody.tsx b/src/components/Table/TableBody.tsx
+index 4a123bc..8b567de 100644
+--- a/src/components/Table/TableBody.tsx
++++ b/src/components/Table/TableBody.tsx
+@@ -29,6 +29,8 @@ import type {
+ } from './types';
+ 
++const FLASH_LIST_MVCP_DISABLED = {disabled: true} as const;
++
+ function TableBody<TableData extends TableListItem = TableListItem>({
+     data,
+@@ -392,7 +394,10 @@ function TableBody<TableData extends TableListItem = TableListItem>({
+         [data, searchCustomColumns, filteredAndSortedData, customColumnSettings?.columns],
+     );
+ 
+-    const listData = buildTableListData<TableData>(filteredAndSortedData, tableListMetadata);
++    const listData = useMemo(
++        () => buildTableListData<TableData>(filteredAndSortedData, tableListMetadata),
++        [filteredAndSortedData, tableListMetadata],
++    );
+ 
+     const measureScrollbarRef = useScrollbarMeasurement<TableData>({
+         ref: scrollbarRef,
+@@ -467,14 +472,16 @@ function TableBody<TableData extends TableListItem = TableListItem>({
+             {...tableBodyAccessibilityProps}
+             {...props}
+         >
+             <FlashList<TableData>
+-                ref={(instance) => {
+-                    listRef.current = instance;
+-                    measureScrollbarRef(instance);
+-                }}
++                ref={useCallback((instance: FlashList<TableData> | null) => {
++                    listRef.current = instance;
++                    measureScrollbarRef(instance);
++                }, [measureScrollbarRef])}
+                 data={listData}
+                 style={[styles.flex1, styles.mnh0]}
+-                maintainVisibleContentPosition={{disabled: true}}
++                maintainVisibleContentPosition={FLASH_LIST_MVCP_DISABLED}
+                 ListHeaderComponent={listHeaderContent}
+diff --git a/src/pages/AddExistingExpense.tsx b/src/pages/AddExistingExpense.tsx
+index 1234567..89abcdef 100644
+--- a/src/pages/AddExistingExpense.tsx
++++ b/src/pages/AddExistingExpense.tsx
+@@ -93,12 +93,15 @@ function AddExistingExpense({route}: AddExistingExpenseProps) {
+     const transactionIDs = useMemo(() => Object.keys(transactions ?? {}), [transactions]);
+ 
+-    const unreportedExpenses: UnreportedExpenseTableRowData[] = createUnreportedExpenses(transactions).map((item) => ({
+-        ...item,
+-        disabled: item.isDisabled,
+-    }));
++    const unreportedExpenses: UnreportedExpenseTableRowData[] = useMemo(
++        () =>
++            createUnreportedExpenses(transactions).map((item) => ({
++                ...item,
++                disabled: item.isDisabled,
++            })),
++        [transactions],
++    );
+ 

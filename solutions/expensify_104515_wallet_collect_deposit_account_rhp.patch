@@ -1,0 +1,19 @@
+diff --git a/src/pages/settings/Wallet/CollectDepositAccount/index.tsx b/src/pages/settings/Wallet/CollectDepositAccount/index.tsx
+index 45a894b..90e82c1 100644
+--- a/src/pages/settings/Wallet/CollectDepositAccount/index.tsx
++++ b/src/pages/settings/Wallet/CollectDepositAccount/index.tsx
+@@ -58,7 +58,7 @@ function CollectDepositAccount() {
+     const goBack = () => {
+         clearDraftValues(ONYXKEYS.FORMS.COLLECT_DEPOSIT_ACCOUNT_FORM);
+-        Navigation.goBack();
++        Navigation.dismissModal();
+     };
+ 
+     const {CurrentPage, isEditing, nextPage, prevPage, pageIndex, moveTo, isRedirecting} = useSubPage<CustomSubPageProps>({
+@@ -66,6 +66,7 @@ function CollectDepositAccount() {
+         startFrom: STEP_INDEXES.COUNTRY_SELECTOR,
+         onFinished: goBack,
++        shouldReplaceRoute: true,
+         buildRoute: (pageName, action) => ROUTES.SETTINGS_COLLECT_DEPOSIT_ACCOUNT.getRoute(pageName, action),
+     });
+ 

@@ -1,0 +1,16 @@
+diff --git a/patches/react-native-screens/react-native-screens+4.28.0+006+clear-tab-menu-before-update.patch b/patches/react-native-screens/react-native-screens+4.28.0+006+clear-tab-menu-before-update.patch
+new file mode 100644
+--- /dev/null
++++ b/patches/react-native-screens/react-native-screens+4.28.0+006+clear-tab-menu-before-update.patch
+@@ -0,0 +1,13 @@
++--- a/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/gamma/tabs/container/TabsContainer.kt
+++++ b/node_modules/react-native-screens/android/src/main/java/com/swmansion/rnscreens/gamma/tabs/container/TabsContainer.kt
++@@ -542,6 +542,7 @@ class TabsContainer(
++     }
++ 
++     private fun updateNavigationMenuStructure() {
+++        bottomNavigationView.menu.clear()
++         fragments.forEachIndexed { index, fragment ->
++             val menuItem = getOrCreateMenuItemForFragment(fragment)
++             // configure menu item...
++

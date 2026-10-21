@@ -1,0 +1,25 @@
+diff --git a/src/pages/workspace/expensifyCard/issueNew/spendRules/SetSpendRulesStep.tsx b/src/pages/workspace/expensifyCard/issueNew/spendRules/SetSpendRulesStep.tsx
+index 8931a22..c4d98ef 100644
+--- a/src/pages/workspace/expensifyCard/issueNew/spendRules/SetSpendRulesStep.tsx
++++ b/src/pages/workspace/expensifyCard/issueNew/spendRules/SetSpendRulesStep.tsx
+@@ -223,7 +223,12 @@ function SetSpendRulesStep({
+     const validate = (values: FormOnyxValues<typeof ONYXKEYS.FORMS.ISSUE_NEW_EXPENSIFY_CARD_FORM>) => {
+         const errors: FormInputErrors<typeof ONYXKEYS.FORMS.ISSUE_NEW_EXPENSIFY_CARD_FORM> = {};
++        const formSpendRuleError = getSpendRuleErrorMessage();
++        if (formSpendRuleError) {
++            setSpendRuleErrorMessage(formSpendRuleError);
++            errors[INPUT_IDS.EXPIRATION_TOGGLED] = formSpendRuleError;
++        }
+         if (!expirationToggled) {
+-            return {};
++            return errors;
+         }
+ 
+@@ -278,6 +283,7 @@ function SetSpendRulesStep({
+                     enabledWhenOffline
+                     shouldHideFixErrorsAlert
+                     validate={validate}
++                    shouldShowLoadingImmediatelyOnPress={false}
+                 >
+                     <Text style={[styles.textHeadlineLineHeightXXL, styles.mv3]}>{translate('workspace.card.issueNewCard.setCardRules')}</Text>
+ 
