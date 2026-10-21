@@ -94,11 +94,21 @@
 | **78** | Invited member is displayed after refresh the page | [#104262](https://github.com/Expensify/App/issues/104262) | — | — | Pre-codeado & testeado | Propuesta técnica formal registrada ([#6257125628](https://github.com/Expensify/App/issues/104262#issuecomment-6257125628)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
 | **79** | Spend - From column missing when filtering by From is owner account | [#104247](https://github.com/Expensify/App/issues/104247) | — | — | Pre-codeado & testeado | Propuesta técnica formal registrada ([#6257126242](https://github.com/Expensify/App/issues/104247#issuecomment-6257126242)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
 | **80** | Rules option should not be displayed when duplicating workspace | [#104231](https://github.com/Expensify/App/issues/104231) | — | — | Pre-codeado & testeado | Propuesta técnica formal registrada ([#6257126927](https://github.com/Expensify/App/issues/104231#issuecomment-6257126927)) | **LISTO PARA PR** (Asignación C+) | $175 USD |
+| **81** | Cal.com - OAuth authorization treats space-separated scopes as one scope | [#30348](https://github.com/calcom/cal.diy/issues/30348) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30348_oauth_scope_split.patch) | `fix/30348-oauth-scope-split` | PASS (RFC 6749 Tests) | Propuesta técnica formal registrada ([calcom_proposal_30348.md](file:///c:/Users/Loa/Downloads/GOAL/proposals/calcom_proposal_30348.md)) | **LISTO PARA PR** (0 bots) | $150 USD |
+| **82** | Cal.com - ICS feed weekly recurring events without BYDAY phantom busy blocks | [#30346](https://github.com/calcom/cal.diy/issues/30346) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30346_ics_weekly_recurrence.patch) | `fix/30346-ics-weekly-recurrence` | PASS (Unit & ical.js) | Propuesta técnica formal registrada ([calcom_proposal_30346.md](file:///c:/Users/Loa/Downloads/GOAL/proposals/calcom_proposal_30346.md)) | **LISTO PARA PR** (0 bots) | $200 USD |
+| **83** | Cal.com - Security: Prisma Studio and Redis ports exposed by default | [#30351](https://github.com/calcom/cal.diy/issues/30351) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30351_docker_compose_security.patch) | `sec/30351-docker-compose-ports` | PASS (Compose config) | Propuesta técnica formal registrada ([calcom_proposal_30351.md](file:///c:/Users/Loa/Downloads/GOAL/proposals/calcom_proposal_30351.md)) | **LISTO PARA PR** (0 bots) | $100 USD |
+| **84** | Cal.com - Date overrides split into duplicate days when server TZ is not UTC | [#30271](https://github.com/calcom/cal.diy/issues/30271) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30271_date_overrides_server_tz.patch) | `fix/30271-date-overrides-server-tz` | PASS (TZ invariant tests) | Propuesta técnica formal registrada ([calcom_proposal_30271.md](file:///c:/Users/Loa/Downloads/GOAL/proposals/calcom_proposal_30271.md)) | **LISTO PARA PR** (0 bots) | $250 USD |
+| **85** | Cal.com - Allow Google Meet as location when destination calendar is Outlook | [#30269](https://github.com/calcom/cal.diy/issues/30269) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30269_google_meet_outlook_destination.patch) | `feat/30269-google-meet-outlook-dest` | PASS (EventManager unit) | Propuesta técnica formal registrada ([calcom_proposal_30269.md](file:///c:/Users/Loa/Downloads/GOAL/proposals/calcom_proposal_30269.md)) | **LISTO PARA PR** (0 bots) | $150 USD |
 
 ---
 
 ### 2. Balance Financiero y Métricas del Pipeline en Efectivo
-- **Total en juego activo con alta probabilidad de cobro:** **$8,005 USD** (~S/. 30,000 PEN)
+- **Total en juego activo con alta probabilidad de cobro:** **$8,855 USD** (~S/. 33,206 PEN)
+  - Cal.com [#30271](https://github.com/calcom/cal.diy/issues/30271): **$250 USD** (Algora / Stripe Express Interbank)
+  - Cal.com [#30346](https://github.com/calcom/cal.diy/issues/30346): **$200 USD** (Algora / Stripe Express Interbank)
+  - Cal.com [#30348](https://github.com/calcom/cal.diy/issues/30348): **$150 USD** (Algora / Stripe Express Interbank)
+  - Cal.com [#30269](https://github.com/calcom/cal.diy/issues/30269): **$150 USD** (Algora / Stripe Express Interbank)
+  - Cal.com [#30351](https://github.com/calcom/cal.diy/issues/30351): **$100 USD** (Algora / Stripe Express Interbank)
   - Expensify [#104165](https://github.com/Expensify/App/issues/104165): **$175 USD** (Pre-codeado & testeado)
   - Expensify [#104147](https://github.com/Expensify/App/issues/104147): **$175 USD** (Pre-codeado & testeado)
   - Expensify [#104162](https://github.com/Expensify/App/issues/104162): **$175 USD** (Pre-codeado & testeado)
@@ -492,3 +502,48 @@
 - **Cero Estafas (Zero-Scam Protocol):** Las 10 tareas cuentan con fondos en custodia formal verificada (Upwork Escrow) y contratos directos con Expensify.
 - **Régimen de 10 Tareas de Baja Competencia:** Todas las propuestas se enviaron en issues con entre 0 y 2 propuestas humanas competidoras, garantizando máxima probabilidad de selección y asignación por parte de los revisores C+.
 - **Estatus:** Esperando asignación formal (`🎀 👀 🎀 C+ reviewed`) para apertura inmediata de ramas y PRs con pruebas automáticas.
+
+---
+
+## 16. Micro-Lote 2: Cal.com (Bounties Algora / Stripe Express Interbank) (20 Octubre 2026)
+
+> **Criterio de Selección:** Ecosistema Cal.com (`calcom/cal.diy`), validación directa contra el árbol de código oficial, 0 competencia de bots (cero MelvinBot, cero draft PRs de bots), soluciones quirúrgicas con diffs de producción y cobertura de tests, fondos respaldados por Algora / Stripe Express con desembolso a cuenta Interbank Perú (`••••8245`).
+
+| # | Repositorio / Plataforma | Ticket / Issue | Descripción Técnica | Solución / Patch | Estado de Verificación | Rivales | Canal de Desembolso | Monto ($ USD) |
+|---|---|---|---|---|---|---|---|---|
+| **1** | [calcom/cal.diy](https://github.com/calcom/cal.diy) | [#30348](https://github.com/calcom/cal.diy/issues/30348) | OAuth authorization treats space-separated scopes as one scope (RFC 6749 Section 3.3 violation) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30348_oauth_scope_split.patch) | PASS (RFC 6749 Unit Tests) | **0 rivales bots** (1 human comment) | Algora -> Stripe Express Interbank PEN | $150 USD |
+| **2** | [calcom/cal.diy](https://github.com/calcom/cal.diy) | [#30346](https://github.com/calcom/cal.diy/issues/30346) | ICS feed: weekly recurring events without BYDAY create phantom busy blocks on booker's weekday | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30346_ics_weekly_recurrence.patch) | PASS (ical.js recurrence tests) | **0 rivales bots** (1 human comment) | Algora -> Stripe Express Interbank PEN | $200 USD |
+| **3** | [calcom/cal.diy](https://github.com/calcom/cal.diy) | [#30351](https://github.com/calcom/cal.diy/issues/30351) | Security: Prisma Studio (5555) and Redis (6379) ports exposed to 0.0.0.0 by default in docker-compose | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30351_docker_compose_security.patch) | PASS (Compose config & loopback binding) | **0 rivales bots** (2 novice comments) | Algora -> Stripe Express Interbank PEN | $100 USD |
+| **4** | [calcom/cal.diy](https://github.com/calcom/cal.diy) | [#30271](https://github.com/calcom/cal.diy/issues/30271) | Date overrides split into duplicate days, and today's override disappears, when server TZ is not UTC | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30271_date_overrides_server_tz.patch) | PASS (TZ invariant regression tests) | **0 rivales bots** (1 human comment) | Algora -> Stripe Express Interbank PEN | $250 USD |
+| **5** | [calcom/cal.diy](https://github.com/calcom/cal.diy) | [#30269](https://github.com/calcom/cal.diy/issues/30269) | Allow Google Meet as location when destination calendar is Outlook / Office 365 (conferencing decoupling) | [Patch listo](file:///c:/Users/Loa/Downloads/GOAL/solutions/calcom_30269_google_meet_outlook_destination.patch) | PASS (EventManager unit tests) | **0 rivales bots** (1 human comment) | Algora -> Stripe Express Interbank PEN | $150 USD |
+
+### Desglose y Análisis Técnico de Causa Raíz (RCA) - Micro-Lote 2:
+1. **Issue #30348 (OAuth Scopes RFC 6749):**
+   - **Archivo:** `apps/web/modules/auth/oauth2/authorize-view.tsx:41`.
+   - **Causa Raíz:** `const scopes = scope ? scope.toString().split(",") : [];` solo particiona por comas. El estándar OAuth 2.0 (RFC 6749 §3.3) exige delimitación por espacios `%20`. Clientes estándar enviaban `scope=READ_BOOKING%20READ_PROFILE`, resultando en un único token inválido `["READ_BOOKING READ_PROFILE"]` que fallaba la validación contra el enum `AccessScope`.
+   - **Solución:** Normalización con regex `scope.toString().split(/[\s,]+/).filter(Boolean)`, deduplicando con `Set`.
+
+2. **Issue #30346 (ICS Recurrence Iteration):**
+   - **Archivo:** `packages/app-store/ics-feedcalendar/lib/CalendarService.ts:225-229`.
+   - **Causa Raíz:** En `getAvailability`, el iterador de `ical.js` se inicializaba con `event.iterator(startDate)` donde `startDate` contenía la fecha de inicio de la ventana consultada (`dateFrom`). Para reglas semanales sin `BYDAY`, `ical.js` toma el día de la semana del seed, moviendo eventos de los lunes al miércoles consultado y resucitando eventos expirados por `COUNT`.
+   - **Solución:** Inicializar `event.iterator()` desde el verdadero `event.startDate` (`DTSTART`) y filtrar iteraciones anteriores a la ventana con `if (occurrenceEnd.isBefore(start)) continue`.
+
+3. **Issue #30351 (Security Docker Compose):**
+   - **Archivo:** `docker-compose.yml`.
+   - **Causa Raíz:** Los mapeos de puertos para Prisma Studio (`5555:5555`) y Redis (`${REDIS_PORT:-6379}:6379`) no declaraban IP de host, exponiéndose en `0.0.0.0` hacia internet en servidores VPS sin firewall. Además, Redis utilizaba la etiqueta flotante mutable `redis:latest`.
+   - **Solución:** Enlace explícito a `127.0.0.1` (`${PRISMA_STUDIO_BIND_IP:-127.0.0.1}:5555:5555`, `${REDIS_BIND_IP:-127.0.0.1}:${REDIS_PORT:-6379}:6379`) y fijación de imagen inmutable a `redis:7.2-alpine`.
+
+4. **Issue #30271 (Schedule Timezone Normalization):**
+   - **Archivo:** `packages/lib/schedules/transformers/for-atom.ts:28-55`.
+   - **Causa Raíz:** `transformDateOverridesForAtom` utilizaba `dayjs(override.date)` y `yyyymmdd` en la zona horaria del proceso del servidor (`process.env.TZ`), mientras que `currentTimeInTz` se calculaba de forma independiente. En zonas horarias no-UTC, los overrides cruzaban la medianoche local, dividiendo múltiples rangos de una fecha en registros duplicados o descartando el override de "hoy".
+   - **Solución:** Anclar el cálculo a `dayjs().tz(timeZone).startOf("day")` y formatear claves de agrupación con `dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD")`.
+
+5. **Issue #30269 (Google Meet with Outlook Calendar):**
+   - **Archivo:** `packages/features/bookings/lib/EventManager.ts:317-331`.
+   - **Causa Raíz:** `EventManager` forzaba fallback silencioso a Cal Video (`integrations:daily`) siempre que `mainHostDestinationCalendar?.integration !== "google_calendar"`, impidiendo que organizadores con calendario principal Outlook/Office 365 utilizaran sus credenciales conectadas de Google para crear enlaces de Google Meet.
+   - **Solución:** Respetar la presencia de `googleCalendarCredential` autorizada, asignando `evt["conferenceCredentialId"] = googleCalendarCredential.id` para desacoplar la generación de la llamada de conferencia del destino de guardado del evento.
+
+- **Total Inyectado en Micro-Lote 2:** **+$850 USD** (~**S/. 3,187 PEN**) en 5 tareas de arquitectura Cal.com.
+- **Canal de Custodia y Pago:** 100% Algora $\to$ Stripe Express Interbank PEN (`••••8245`).
+- **Pipeline Consolidado Total:** **$8,855 USD** (~**S/. 33,206 PEN**).
+

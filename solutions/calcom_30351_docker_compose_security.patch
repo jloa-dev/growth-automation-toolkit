@@ -1,0 +1,29 @@
+diff --git a/docker-compose.yml b/docker-compose.yml
+index a481c10..4e9b882 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -23,12 +23,12 @@ services:
+ 
+   redis:
+     container_name: redis
+-    image: redis:latest
++    image: redis:7.2-alpine
+     restart: always
+     volumes:
+       - redis-data:/data
+     networks:
+       - stack
+     ports:
+-      - "${REDIS_PORT:-6379}:6379"
++      - "${REDIS_BIND_IP:-127.0.0.1}:${REDIS_PORT:-6379}:6379"
+ 
+@@ -107,7 +107,7 @@ services:
+     restart: always
+     networks:
+       - stack
+     ports:
+-      - 5555:5555
++      - "${PRISMA_STUDIO_BIND_IP:-127.0.0.1}:${PRISMA_STUDIO_PORT:-5555}:5555"
+     env_file: .env
+     environment:
+       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}

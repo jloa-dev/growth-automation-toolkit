@@ -1,0 +1,15 @@
+diff --git a/apps/web/modules/auth/oauth2/authorize-view.tsx b/apps/web/modules/auth/oauth2/authorize-view.tsx
+index 54343aa..b3810ef 100644
+--- a/apps/web/modules/auth/oauth2/authorize-view.tsx
++++ b/apps/web/modules/auth/oauth2/authorize-view.tsx
+@@ -38,7 +38,9 @@ export function Authorize() {
+     value: string;
+     label: string;
+   } | null>();
+-  const scopes = scope ? scope.toString().split(",") : [];
++  const scopes = scope
++    ? Array.from(new Set(scope.toString().split(/[\s,]+/).filter(Boolean)))
++    : [];
+ 
+   const {
+     data: client,

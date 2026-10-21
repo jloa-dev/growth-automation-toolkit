@@ -1,0 +1,34 @@
+diff --git a/packages/lib/schedules/transformers/for-atom.ts b/packages/lib/schedules/transformers/for-atom.ts
+index b89ca21..14dc990 100644
+--- a/packages/lib/schedules/transformers/for-atom.ts
++++ b/packages/lib/schedules/transformers/for-atom.ts
+@@ -28,10 +28,8 @@ export function transformDateOverridesForAtom(
+ ) {
+   const acc = schedule.availability.reduce(
+     (acc, override) => {
+-      // only if future date override
+-      const currentUtcOffset = dayjs().tz(timeZone).utcOffset();
+-      const currentTimeInTz = dayjs().utc().add(currentUtcOffset, "minute");
+-
+-      if (!override.date || dayjs(override.date).isBefore(currentTimeInTz, "day")) {
++      // Invariant to server TZ: evaluate 'today' in schedule's timezone
++      const todayInScheduleTz = dayjs().tz(timeZone).startOf("day");
++      const overrideDateInScheduleTz = dayjs(override.date).tz(timeZone);
++
++      if (!override.date || overrideDateInScheduleTz.isBefore(todayInScheduleTz, "day")) {
+         return acc;
+       }
+       const newValue = {
+@@ -47,9 +45,15 @@ export function transformDateOverridesForAtom(
+           .minute(override.endTime.getUTCMinutes())
+           .toDate(),
+       };
++
++      const overrideKey = dayjs.utc(override.date).format("YYYY-MM-DD");
+       const dayRangeIndex = acc.findIndex(
+-        // early return prevents override.date from ever being empty.
+-        (item) => override.date && yyyymmdd(item.ranges[0].start) === yyyymmdd(override.date)
++        (item) => dayjs.utc(item.ranges[0].start).format("YYYY-MM-DD") === overrideKey
+       );
+       if (dayRangeIndex === -1) {
+         acc.push({ ranges: [newValue] });

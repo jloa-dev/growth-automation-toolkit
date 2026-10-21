@@ -1,0 +1,32 @@
+diff --git a/packages/app-store/ics-feedcalendar/lib/CalendarService.ts b/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
+index 8e45d12..c9120de 100644
+--- a/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
++++ b/packages/app-store/ics-feedcalendar/lib/CalendarService.ts
+@@ -222,11 +222,8 @@ export default class CalendarService implements Calendar {
+ 
+           const start = dayjs(dateFrom);
+           const end = dayjs(dateTo);
+-          const startDate = ICAL.Time.fromDateTimeString(startISOString);
+-          startDate.hour = event.startDate.hour;
+-          startDate.minute = event.startDate.minute;
+-          startDate.second = event.startDate.second;
+-          const iterator = event.iterator(startDate);
++          // Initialize iterator from true event.startDate so DTSTART weekday and COUNT are preserved
++          const iterator = event.iterator();
+           let current: ICAL.Time;
+           let currentEvent;
+           let currentStart = null;
+@@ -253,6 +250,13 @@ export default class CalendarService implements Calendar {
+             // do not mix up caldav and icalendar! For the recurring events here, the timezone
+             // provided is relevant, not as pointed out in https://datatracker.ietf.org/doc/html/rfc4791#section-9.6.5
+             // where recurring events are always in utc (in caldav!). Thus, apply the time zone here.
++            const occurrenceStart = dayjs(current.toJSDate());
++            const occurrenceEnd = dayjs(currentEvent.endDate.toJSDate());
++
++            // Skip occurrences strictly before the requested window
++            if (occurrenceEnd.isBefore(start)) {
++              continue;
++            }
+             const startParsed = dayjs(
+               current.isDate
+                 ? current.toJSDate()
